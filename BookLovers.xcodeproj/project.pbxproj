@@ -84,8 +84,48 @@
 		0935487B2B5EAF1A00CC4955 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0935487C2B5EB1DE00CC4955 /* Coordinator */,
+				093548802B5EB3AC00CC4955 /* Flow */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		0935487C2B5EB1DE00CC4955 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0935487D2B5EB22C00CC4955 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		0935487E2B5EB23500CC4955 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0935487F2B5EB26900CC4955 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		093548802B5EB3AC00CC4955 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				0935487D2B5EB22C00CC4955 /* Auth */,
+				0935487F2B5EB26900CC4955 /* Community */,
+				0935487E2B5EB23500CC4955 /* Home */,
+			);
+			path = Flow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
