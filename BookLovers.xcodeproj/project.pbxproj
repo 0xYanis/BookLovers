@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */; };
-		0935486E2B5EAEDE00CC4955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935486D2B5EAEDE00CC4955 /* ContentView.swift */; };
 		093548702B5EAEE100CC4955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0935486F2B5EAEE100CC4955 /* Assets.xcassets */; };
 		093548732B5EAEE100CC4955 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093548722B5EAEE100CC4955 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +15,6 @@
 /* Begin PBXFileReference section */
 		093548682B5EAEDE00CC4955 /* BookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLoversApp.swift; sourceTree = "<group>"; };
-		0935486D2B5EAEDE00CC4955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0935486F2B5EAEE100CC4955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		093548722B5EAEE100CC4955 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,10 +49,9 @@
 		0935486A2B5EAEDE00CC4955 /* BookLovers */ = {
 			isa = PBXGroup;
 			children = (
-				0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */,
-				0935486D2B5EAEDE00CC4955 /* ContentView.swift */,
-				0935486F2B5EAEE100CC4955 /* Assets.xcassets */,
-				093548712B5EAEE100CC4955 /* Preview Content */,
+				093548792B5EAF0300CC4955 /* Applicaiton */,
+				0935487B2B5EAF1A00CC4955 /* Source */,
+				0935487A2B5EAF0B00CC4955 /* Resources */,
 			);
 			path = BookLovers;
 			sourceTree = "<group>";
@@ -65,6 +62,30 @@
 				093548722B5EAEE100CC4955 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		093548792B5EAF0300CC4955 /* Applicaiton */ = {
+			isa = PBXGroup;
+			children = (
+				0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */,
+			);
+			path = Applicaiton;
+			sourceTree = "<group>";
+		};
+		0935487A2B5EAF0B00CC4955 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0935486F2B5EAEE100CC4955 /* Assets.xcassets */,
+				093548712B5EAEE100CC4955 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0935487B2B5EAF1A00CC4955 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +158,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0935486E2B5EAEDE00CC4955 /* ContentView.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,7 +286,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BookLovers/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BookLovers/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 2B85PH5M9P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -295,7 +315,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BookLovers/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BookLovers/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 2B85PH5M9P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
