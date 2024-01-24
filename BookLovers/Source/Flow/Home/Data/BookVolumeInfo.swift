@@ -13,11 +13,11 @@ struct BookVolumeInfo: Decodable {
     let authors: [String]
     let publisher, publishedDate, description: String
     let pageCount: Int?
-    let categories: [Category]
+    let categories: [String]
     let allowAnonLogging: Bool
     let contentVersion: String
     let imageLinks: ImageLinks
-    let language: Language
+    let language: String
     let previewLink: String
     let infoLink: String
     let canonicalVolumeLink: String
@@ -27,11 +27,4 @@ struct BookVolumeInfo: Decodable {
         let smallThumbnail, thumbnail: String
     }
     
-    enum Language: String, Decodable {
-        case en = "en"
-    }
-    
-    enum Category: String, Decodable {
-        case computers = "Computers"
-    }
 }

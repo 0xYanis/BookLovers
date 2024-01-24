@@ -79,7 +79,7 @@ final class FlowManager: ObservableObject {
         case .auth:
             EmptyView()
         case .home:
-            EmptyView()
+            HomeView()
         case .community:
             EmptyView()
         }
