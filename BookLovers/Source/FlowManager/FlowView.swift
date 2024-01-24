@@ -13,9 +13,16 @@ struct FlowView: View {
     var body: some View {
         NavigationStack(path: $flowManager.path) {
             flowManager.build(flow: .auth)
-            .navigationDestination(for: Flow.self) { newFlow in
-                flowManager.build(flow: newFlow)
-            }
+                .navigationDestination(for: Flow.self) { newFlow in
+                    flowManager.build(flow: newFlow)
+                }
+                .sheet(item: $flowManager.sheet) { sheet in
+                    flowManager.build(sheet: sheet)
+                }
+                .fullScreenCover(item: $flowManager.fullScreenCover) { fullScreenCover in
+                    flowManager.build(fullScreenCover: fullScreenCover)
+                }
         }
+        .environmentObject(flowManager)
     }
 }

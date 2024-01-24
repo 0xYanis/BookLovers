@@ -13,13 +13,35 @@ enum Flow: Hashable {
     case community
 }
 
+enum FullScreenCover: String, Identifiable {
+    case aboutDev
+    
+    var id: String {
+        return self.rawValue
+    }
+}
+
+enum Sheet: String, Identifiable {
+    case onboarding
+    
+    var id: String {
+        return self.rawValue
+    }
+}
+
 final class FlowManager: ObservableObject {
+    
     @Published var path = NavigationPath()
+    @Published var sheet: Sheet?
+    @Published var fullScreenCover: FullScreenCover?
+    
     private var authManager: AuthManager
     
     init(authManager: AuthManager = AuthManagerImpl()) {
         self.authManager = authManager
     }
+    
+    // MARK: - Manager methods
     
     func start(flow: Flow) {
         path.append(flow)
@@ -33,6 +55,24 @@ final class FlowManager: ObservableObject {
         path.removeLast(path.count)
     }
     
+    func present(sheet: Sheet) {
+        self.sheet = sheet
+    }
+    
+    func present(fullScreenCover: FullScreenCover) {
+        self.fullScreenCover = fullScreenCover
+    }
+     
+    func dismissSheet() {
+        self.sheet = nil
+    }
+    
+    func dismissFullScreenCover() {
+        self.fullScreenCover = nil
+    }
+    
+    // MARK: - SwiftUI ViewBuilders
+    
     @ViewBuilder
     func build(flow: Flow) -> some View {
         switch flow {
@@ -41,6 +81,22 @@ final class FlowManager: ObservableObject {
         case .home:
             EmptyView()
         case .community:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    func build(sheet: Sheet) -> some View {
+        switch sheet {
+        case .onboarding:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    func build(fullScreenCover: FullScreenCover) -> some View {
+        switch fullScreenCover {
+        case .aboutDev:
             EmptyView()
         }
     }
