@@ -9,12 +9,11 @@ import Foundation
 
 final class BooksWebRepository {
     
-    func loadBooks(from url: URL?) async throws -> [Book] {
-        guard let url = url else { return [] }
-        let (data, response) = try await URLSession.shared.data(from: url)
-        print(response)
-        print(String(data: data, encoding: .utf8) ?? "NONE")
-        return []
+    func fetchList() async throws -> BookList {
+        let debugUrl = URL(string: "https://www.googleapis.com/books/v1/volumes?q=recommender")!
+        let (data, _) = try await URLSession.shared.data(from: debugUrl)
+        let decoder = JSONDecoder()
+        let list = try decoder.decode(BookList.self, from: data)
+        return list
     }
-    
 }

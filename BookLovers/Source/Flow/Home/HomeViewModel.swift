@@ -20,7 +20,7 @@ final class HomeViewModel: ObservableObject {
         Task {
             switch await booksProvider.getBooks() {
             case .success(let books):
-                await MainActor.run { self.books = books }
+                await MainActor.run { self.books = books.items }
             case .failure(let error):
                 await MainActor.run { print(error) }
             }

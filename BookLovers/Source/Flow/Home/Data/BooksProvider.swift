@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BooksProvider: AnyObject {
-    func getBooks() async -> Result<[Book], Error>
+    func getBooks() async -> Result<BookList, Error>
 }
 
 final class BooksProviderImpl: BooksProvider {
@@ -23,20 +23,28 @@ final class BooksProviderImpl: BooksProvider {
         self.webRepository = webRepository
     }
     
-    func getBooks() async -> Result<[Book], Error> {
+    func getBooks() async -> Result<BookList, Error> {
         do {
-            let books = try await dbRepository.isEmpty ? getBooksFromWeb() : getBooksFromDB()
-            return .success(books)
+            let list = try await dbRepository.isEmpty ? getListFromWeb() : getListFromDB()
+            return .success(list)
         } catch {
             return .failure(error)
         }
     }
     
-    private func getBooksFromDB() async throws -> [Book] {
-        []
+    private func saveList(_ list: BookList) {
+        if list.items.isEmpty == false {
+            dbRepository.save(list: list)
+        }
     }
     
-    private func getBooksFromWeb() async throws -> [Book] {
-        try await webRepository.loadBooks(from: URL(string: "https://www.googleapis.com/books/v1/volumes?q=swift"))
+    private func getListFromDB() async throws -> BookList {
+        try await dbRepository.fetchList()
+    }
+    
+    private func getListFromWeb() async throws -> BookList {
+        let list = try await webRepository.fetchList()
+        saveList(list)
+        return list
     }
 }
