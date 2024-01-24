@@ -18,8 +18,12 @@ final class HomeViewModel: ObservableObject {
     
     func showList() {
         Task {
-            let booksList = await booksProvider.getBooks(page: 0)
-            await MainActor.run { self.books = booksList }
+            switch await booksProvider.getBooks() {
+            case .success(let books):
+                await MainActor.run { self.books = books }
+            case .failure(let error):
+                await MainActor.run { print(error) }
+            }
         }
     }
 }
