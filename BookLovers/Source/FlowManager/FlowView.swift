@@ -12,7 +12,7 @@ struct FlowView: View {
     
     var body: some View {
         NavigationStack(path: $flowManager.path) {
-            flowManager.build(flow: .auth)
+            flowManager.build(flow: .home)
                 .navigationDestination(for: Flow.self) { newFlow in
                     flowManager.build(flow: newFlow)
                 }
