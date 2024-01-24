@@ -15,6 +15,11 @@ enum Flow: Hashable {
 
 final class FlowManager: ObservableObject {
     @Published var path = NavigationPath()
+    private var authManager: AuthManager
+    
+    init(authManager: AuthManager = AuthManagerImpl()) {
+        self.authManager = authManager
+    }
     
     func start(flow: Flow) {
         path.append(flow)
