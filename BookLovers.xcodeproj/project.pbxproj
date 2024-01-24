@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092F6A442B6135ED00DD428F /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F6A432B6135ED00DD428F /* FlowManager.swift */; };
 		0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */; };
 		093548702B5EAEE100CC4955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0935486F2B5EAEE100CC4955 /* Assets.xcassets */; };
 		093548732B5EAEE100CC4955 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093548722B5EAEE100CC4955 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		092F6A432B6135ED00DD428F /* FlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowManager.swift; sourceTree = "<group>"; };
 		093548682B5EAEDE00CC4955 /* BookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLoversApp.swift; sourceTree = "<group>"; };
 		0935486F2B5EAEE100CC4955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,17 +86,18 @@
 		0935487B2B5EAF1A00CC4955 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0935487C2B5EB1DE00CC4955 /* Coordinator */,
+				0935487C2B5EB1DE00CC4955 /* FlowManager */,
 				093548802B5EB3AC00CC4955 /* Flow */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		0935487C2B5EB1DE00CC4955 /* Coordinator */ = {
+		0935487C2B5EB1DE00CC4955 /* FlowManager */ = {
 			isa = PBXGroup;
 			children = (
+				092F6A432B6135ED00DD428F /* FlowManager.swift */,
 			);
-			path = Coordinator;
+			path = FlowManager;
 			sourceTree = "<group>";
 		};
 		0935487D2B5EB22C00CC4955 /* Auth */ = {
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092F6A442B6135ED00DD428F /* FlowManager.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
