@@ -30,15 +30,19 @@ struct ExploreView: View {
             
             VStack {
                 // tags
-                
+                HStack {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(LiteraryGenre.allCases) { genre in
+                                TagItem(title: genre.title, font: .body)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .shadow(color: .black.opacity(0.1), radius: 5)
+                }
                 // most popular now
                 NewParagraphView(title: "Most popular") {
-                    MostPopularItem()
-                        .frame(height: 150)
-                        .padding(.horizontal)
-                }
-                
-                NewParagraphView(title: "Top 50") {
                     MostPopularItem()
                         .frame(height: 150)
                         .padding(.horizontal)

@@ -23,6 +23,8 @@
 		094A652C2B710A0C00E6FF4E /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652B2B710A0C00E6FF4E /* SideMenuView.swift */; };
 		094A652E2B710A5B00E6FF4E /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */; };
 		094A65302B710AAB00E6FF4E /* SideMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */; };
+		09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
+		09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E22B7177D400D1DA77 /* TagItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		094A652B2B710A0C00E6FF4E /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeader.swift; sourceTree = "<group>"; };
 		094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItem.swift; sourceTree = "<group>"; };
+		09B358E02B71770300D1DA77 /* LiteraryGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteraryGenre.swift; sourceTree = "<group>"; };
+		09B358E22B7177D400D1DA77 /* TagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagItem.swift; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +84,7 @@
 				09441DFF2B71326A004A09D0 /* Components */,
 				0935487B2B5EAF1A00CC4955 /* Core */,
 				094A65252B71072600E6FF4E /* Extensions */,
+				09B358DF2B7176E400D1DA77 /* Model */,
 				0935487A2B5EAF0B00CC4955 /* Resources */,
 			);
 			path = BookLovers;
@@ -129,6 +134,7 @@
 				09441E002B7132A9004A09D0 /* MenuContainer.swift */,
 				09441E042B713A49004A09D0 /* NewParagraphView.swift */,
 				09441E062B71433B004A09D0 /* SignInView.swift */,
+				09B358E22B7177D400D1DA77 /* TagItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -209,6 +215,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		09B358DF2B7176E400D1DA77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09B358E02B71770300D1DA77 /* LiteraryGenre.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -282,6 +296,7 @@
 				09441E012B7132A9004A09D0 /* MenuContainer.swift in Sources */,
 				09441E032B7135AE004A09D0 /* MostPopularItem.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
+				09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */,
 				094A652C2B710A0C00E6FF4E /* SideMenuView.swift in Sources */,
 				09441E092B714698004A09D0 /* FavoritesView.swift in Sources */,
 				094A65302B710AAB00E6FF4E /* SideMenuItem.swift in Sources */,
@@ -291,6 +306,7 @@
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
 				094A65272B71073D00E6FF4E /* View+Extension.swift in Sources */,
 				094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */,
+				09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */,
 				09441E052B713A49004A09D0 /* NewParagraphView.swift in Sources */,
 				09441E072B71433B004A09D0 /* SignInView.swift in Sources */,
 			);
