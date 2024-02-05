@@ -11,6 +11,7 @@
 		093548702B5EAEE100CC4955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0935486F2B5EAEE100CC4955 /* Assets.xcassets */; };
 		093548732B5EAEE100CC4955 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093548722B5EAEE100CC4955 /* Preview Assets.xcassets */; };
 		094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A651C2B70EEE800E6FF4E /* MainTabbarView.swift */; };
+		094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A651E2B70F50900E6FF4E /* ExploreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		0935486F2B5EAEE100CC4955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		093548722B5EAEE100CC4955 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		094A651C2B70EEE800E6FF4E /* MainTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarView.swift; sourceTree = "<group>"; };
+		094A651E2B70F50900E6FF4E /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 		094A65192B70EE7700E6FF4E /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				094A651E2B70F50900E6FF4E /* ExploreView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
+				094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */,
 				094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

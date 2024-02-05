@@ -14,7 +14,6 @@ fileprivate enum TabItem: String, Identifiable, CaseIterable {
     
     var id: String { rawValue }
     var name: String { rawValue }
-    
     var image: String {
         switch self {
         case .explore  : return "magnifyingglass"
@@ -26,6 +25,14 @@ fileprivate enum TabItem: String, Identifiable, CaseIterable {
     var filledImage: String {
         guard self != .explore else { return image }
         return "\(image).fill"
+    }
+    
+    var badgeNumber: Int {
+        switch self {
+        case .explore  : return 0
+        case .favorites: return 0
+        case .community: return 4
+        }
     }
     
     @ViewBuilder
@@ -57,10 +64,11 @@ struct MainTabbarView: View {
                         Image(uiImage: item.uiImage(selected: selectedTab))
                         Text(item.name)
                     }
+                    .badge(item.badgeNumber)
                     .tag(item)
-                    .toolbar(visibility, for: .tabBar)
             }
         }
+        .toolbar(visibility, for: .tabBar)
     }
 }
 
