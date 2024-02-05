@@ -25,7 +25,7 @@ struct ExploreHeader: View {
                 }
             }
             .onChange(of: isFocused) { state in
-                withAnimation(.spring(response: 0.15)) {
+                withAnimation(.spring(response: 0.3)) {
                     normalState = !state
                 }
             }

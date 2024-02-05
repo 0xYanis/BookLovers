@@ -13,13 +13,10 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
+            MenuContainer(isOpened: $showSideMenu) {
+                menuScreen
+            } content: {
                 exploreScreen
-                
-                if showSideMenu {
-                    sideMenuScreen
-                        .toolbar(.hidden, for: .tabBar)
-                }
             }
         }
     }
@@ -43,11 +40,10 @@ struct ExploreView: View {
         }
     }
     
-    private var sideMenuScreen: some View {
+    private var menuScreen: some View {
         SideMenuView(
             isShowing: $showSideMenu,
-            selectedOption: $selectedSideOption
-        )
+            selectedOption: $selectedSideOption)
     }
     
     private var leadingItem: some ToolbarContent {
