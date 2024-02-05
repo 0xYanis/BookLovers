@@ -12,6 +12,7 @@
 		093548732B5EAEE100CC4955 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093548722B5EAEE100CC4955 /* Preview Assets.xcassets */; };
 		094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A651C2B70EEE800E6FF4E /* MainTabbarView.swift */; };
 		094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A651E2B70F50900E6FF4E /* ExploreView.swift */; };
+		094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65202B71059200E6FF4E /* ExploreHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		093548722B5EAEE100CC4955 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		094A651C2B70EEE800E6FF4E /* MainTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarView.swift; sourceTree = "<group>"; };
 		094A651E2B70F50900E6FF4E /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		094A65202B71059200E6FF4E /* ExploreHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHeader.swift; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +111,7 @@
 		094A65192B70EE7700E6FF4E /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				094A651E2B70F50900E6FF4E /* ExploreView.swift */,
+				094A65222B7105D300E6FF4E /* Views */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -126,6 +128,15 @@
 			children = (
 			);
 			path = Community;
+			sourceTree = "<group>";
+		};
+		094A65222B7105D300E6FF4E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				094A651E2B70F50900E6FF4E /* ExploreView.swift */,
+				094A65202B71059200E6FF4E /* ExploreHeader.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 			files = (
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */,
+				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
 				094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
