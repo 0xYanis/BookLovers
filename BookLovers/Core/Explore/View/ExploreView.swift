@@ -32,9 +32,18 @@ struct ExploreView: View {
                 // tags
                 
                 // most popular now
-                MostPopularItem()
-                    .frame(height: 150)
-                    .padding(.horizontal)
+                NewParagraphView(title: "Most popular") {
+                    MostPopularItem()
+                        .frame(height: 150)
+                        .padding(.horizontal)
+                }
+                
+                NewParagraphView(title: "Top 50") {
+                    MostPopularItem()
+                        .frame(height: 150)
+                        .padding(.horizontal)
+                }
+                
                 // all books
             }
             .padding(.top)
