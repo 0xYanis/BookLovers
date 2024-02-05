@@ -28,4 +28,5 @@ enum LiteraryGenre: String, CaseIterable, Identifiable {
     
     var id: String { rawValue }
     var title: String { rawValue.capitalized }
+    static var asArray: [String] { LiteraryGenre.allCases.map { $0.title } }
 }

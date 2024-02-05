@@ -30,17 +30,12 @@ struct ExploreView: View {
             
             VStack {
                 // tags
-                HStack {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(LiteraryGenre.allCases) { genre in
-                                TagItem(title: genre.title, font: .body)
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
-                    .shadow(color: .black.opacity(0.1), radius: 5)
-                }
+                TagCaruselView(
+                    tags: LiteraryGenre.asArray,
+                    font: .body,
+                    onTap: tagTapped(_:)
+                )
+                
                 // most popular now
                 NewParagraphView(title: "Most popular") {
                     MostPopularItem()
@@ -97,6 +92,10 @@ struct ExploreView: View {
     }
     
     private func trailingItemAction() {
+        
+    }
+    
+    private func tagTapped(_ id: Int) {
         
     }
 }
