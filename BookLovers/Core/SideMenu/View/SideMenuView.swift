@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SideMenuView: View {
     @Binding var isShowing: Bool
-    @State private var selectedOption: MenuOption = .profile
+    @Binding var selectedOption: MenuOption
     @Environment(\.colorScheme) private var scheme
     
     var body: some View {
@@ -41,10 +41,14 @@ struct SideMenuView: View {
                     
                     // menu
                     ForEach(MenuOption.allCases) { option in
-                        SideMenuItem(
-                            option: option,
-                            selectedOption: $selectedOption
-                        )
+                        Button {
+                            optionTapped(option)
+                        } label: {
+                            SideMenuItem(
+                                option: option,
+                                selectedOption: $selectedOption
+                            )
+                        }
                     }
                 }
                 Spacer()
@@ -63,10 +67,19 @@ struct SideMenuView: View {
             isShowing = false
         }
     }
+    
+    private func optionTapped(_ option: MenuOption) {
+        withAnimation(.easeInOut(duration: 0.1)) {
+            selectedOption = option
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.hideMenu()
+            }
+        }
+    }
 }
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(isShowing: .constant(true))
+        SideMenuView(isShowing: .constant(true), selectedOption: .constant(.home))
     }
 }

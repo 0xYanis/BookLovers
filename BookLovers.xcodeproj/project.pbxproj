@@ -123,7 +123,7 @@
 		094A65192B70EE7700E6FF4E /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				094A65222B7105D300E6FF4E /* Views */,
+				094A65222B7105D300E6FF4E /* View */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -142,13 +142,13 @@
 			path = Community;
 			sourceTree = "<group>";
 		};
-		094A65222B7105D300E6FF4E /* Views */ = {
+		094A65222B7105D300E6FF4E /* View */ = {
 			isa = PBXGroup;
 			children = (
 				094A651E2B70F50900E6FF4E /* ExploreView.swift */,
 				094A65202B71059200E6FF4E /* ExploreHeader.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		094A65252B71072600E6FF4E /* Extensions */ = {
@@ -162,12 +162,28 @@
 		094A65282B7109E500E6FF4E /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				094A65322B7112DE00E6FF4E /* View */,
+				094A65312B7112D100E6FF4E /* Model */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		094A65312B7112D100E6FF4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				094A65292B7109F800E6FF4E /* MenuOption.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		094A65322B7112DE00E6FF4E /* View */ = {
+			isa = PBXGroup;
+			children = (
 				094A652B2B710A0C00E6FF4E /* SideMenuView.swift */,
 				094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */,
 				094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */,
 			);
-			path = SideMenu;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

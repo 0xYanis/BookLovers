@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExploreView: View {
+    @State private var selectedSideOption: MenuOption = .home
     @State private var showSideMenu = false
     
     var body: some View {
@@ -25,11 +26,14 @@ struct ExploreView: View {
     
     private var exploreScreen: some View {
         ScrollView {
+            // header
             ExploreHeader()
                 .padding()
-            Rectangle()
-                .foregroundStyle(.secondary.opacity(0.4))
-                .frame(maxWidth: .infinity)
+            // tags
+            
+            // most popular now
+            
+            // all books
         }
         .toolbar {
             // 3lines
@@ -41,14 +45,15 @@ struct ExploreView: View {
     
     private var sideMenuScreen: some View {
         SideMenuView(
-            isShowing: $showSideMenu
+            isShowing: $showSideMenu,
+            selectedOption: $selectedSideOption
         )
     }
     
     private var leadingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button(action: leadingItemAction) {
-                Image(systemName: showSideMenu ? "arrow.left" : "line.3.horizontal")
+                Image(systemName: showSideMenu ? "arrow.left" : "list.bullet")
                     .foregroundStyle(showSideMenu ? .gray : .primary)
             }
             .buttonStyle(.plain)
