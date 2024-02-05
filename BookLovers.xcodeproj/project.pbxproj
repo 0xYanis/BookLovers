@@ -14,6 +14,7 @@
 		094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A651E2B70F50900E6FF4E /* ExploreView.swift */; };
 		094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65202B71059200E6FF4E /* ExploreHeader.swift */; };
 		094A65242B71061200E6FF4E /* ExploreSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65232B71061200E6FF4E /* ExploreSideMenu.swift */; };
+		094A65272B71073D00E6FF4E /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65262B71073D00E6FF4E /* View+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		094A651E2B70F50900E6FF4E /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		094A65202B71059200E6FF4E /* ExploreHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHeader.swift; sourceTree = "<group>"; };
 		094A65232B71061200E6FF4E /* ExploreSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSideMenu.swift; sourceTree = "<group>"; };
+		094A65262B71073D00E6FF4E /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				093548792B5EAF0300CC4955 /* Applicaiton */,
+				094A65252B71072600E6FF4E /* Extensions */,
 				0935487B2B5EAF1A00CC4955 /* Core */,
 				0935487A2B5EAF0B00CC4955 /* Resources */,
 			);
@@ -142,6 +145,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		094A65252B71072600E6FF4E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				094A65262B71073D00E6FF4E /* View+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,6 +227,7 @@
 				094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */,
 				094A65242B71061200E6FF4E /* ExploreSideMenu.swift in Sources */,
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
+				094A65272B71073D00E6FF4E /* View+Extension.swift in Sources */,
 				094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
