@@ -11,7 +11,7 @@ import SwiftUI
 struct BookLoversApp: App {
     var body: some Scene {
         WindowGroup {
-            FlowView()
+            MainTabbarView()
         }
     }
 }
