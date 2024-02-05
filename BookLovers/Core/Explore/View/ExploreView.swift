@@ -25,12 +25,21 @@ struct ExploreView: View {
         ScrollView {
             // header
             ExploreHeader()
-                .padding()
-            // tags
+                .padding(.vertical, 8)
+                .padding(.horizontal)
             
-            // most popular now
-            
-            // all books
+            VStack {
+                // tags
+                
+                // most popular now
+                MostPopularItem()
+                    .frame(height: 150)
+                    .padding(.horizontal)
+                // all books
+            }
+            .padding(.top)
+            .frame(maxWidth: .infinity)
+            .background(Color(uiColor: .secondarySystemBackground))
         }
         .toolbar {
             // 3lines
