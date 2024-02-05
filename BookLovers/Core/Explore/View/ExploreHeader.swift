@@ -48,14 +48,13 @@ struct ExploreHeader: View {
                     .stroke(lineWidth: 1.0)
                     .foregroundStyle(.secondary))
         }
-        .onTapGesture {
-            isFocused = false
-        }
     }
 }
 
 struct ExploreHeader_Previews: PreviewProvider {
     static var previews: some View {
-        ExploreHeader()
+        VStack {
+            ExploreHeader()
+        }
     }
 }
