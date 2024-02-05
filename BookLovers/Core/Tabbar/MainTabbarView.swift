@@ -38,7 +38,7 @@ fileprivate enum TabItem: String, Identifiable, CaseIterable {
     @ViewBuilder
     var view: some View {
         switch self {
-        case .explore  : Text("Explore")
+        case .explore  : ExploreView()
         case .favorites: Text("Favorites")
         case .community: Text("Community")
         }

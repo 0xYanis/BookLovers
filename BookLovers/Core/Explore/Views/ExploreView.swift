@@ -8,28 +8,48 @@
 import SwiftUI
 
 struct ExploreView: View {
+    @State private var showSideMenu = false
+    
     var body: some View {
         NavigationStack {
-            ScrollView {
-                ExploreHeader()
-                    .padding()
-                Rectangle()
-                    .foregroundStyle(.secondary.opacity(0.4))
-                    .frame(maxWidth: .infinity)
-            }
-            .toolbar {
-                // 3lines
-                leadingItem
-                // avatar
-                trailingItem
+            ZStack {
+                exploreScreen
+                
+                if showSideMenu {
+                    sideMenuScreen
+                        .toolbar(.hidden, for: .tabBar)
+                }
             }
         }
+    }
+    
+    private var exploreScreen: some View {
+        ScrollView {
+            ExploreHeader()
+                .padding()
+            Rectangle()
+                .foregroundStyle(.secondary.opacity(0.4))
+                .frame(maxWidth: .infinity)
+        }
+        .toolbar {
+            // 3lines
+            leadingItem
+            // avatar
+            trailingItem
+        }
+    }
+    
+    private var sideMenuScreen: some View {
+        SideMenuView(
+            isShowing: $showSideMenu
+        )
     }
     
     private var leadingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button(action: leadingItemAction) {
-                Image(systemName: "line.3.horizontal")
+                Image(systemName: showSideMenu ? "arrow.left" : "line.3.horizontal")
+                    .foregroundStyle(showSideMenu ? .gray : .primary)
             }
             .buttonStyle(.plain)
         }
@@ -48,7 +68,9 @@ struct ExploreView: View {
     }
     
     private func leadingItemAction() {
-        
+        withAnimation(.spring(dampingFraction: 0.95)) {
+            showSideMenu.toggle()
+        }
     }
     
     private func trailingItemAction() {
