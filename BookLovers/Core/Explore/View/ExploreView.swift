@@ -26,11 +26,8 @@ struct ExploreView: View {
             // header
             ExploreHeader()
                 .padding(.vertical, 8)
-                
             
-            VStack {
-                // tags
-                
+            LazyVStack {
                 // most popular now
                 NewParagraphView(title: "Most popular") {
                     TabView {
@@ -41,7 +38,7 @@ struct ExploreView: View {
                         
                     }
                     .frame(height: 150)
-                    .tabViewStyle(.page)
+                    .tabViewStyle(.page(indexDisplayMode: .never))
                 }
                 // all books
                 
@@ -51,8 +48,7 @@ struct ExploreView: View {
             .background(Color(uiColor: .secondarySystemBackground))
             .clipShape(CustomCornersShape(
                 corners: [.topLeft, .topRight],
-                radius: 15)
-            )
+                radius: 15))
         }
         .toolbar {
             leadingItem
