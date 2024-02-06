@@ -8,40 +8,30 @@
 import Foundation
 
 enum MenuOption: String, Identifiable, CaseIterable {
-    case home
-    case dashboard
+    case explore
     case profile
-    case search
-    case notifications
+    case communities
+    case privacyPolicy = "Privacy Policy"
+    case support
+    case aboutUs = "About Us"
     
-    var id: Int {
-        switch self {
-        case .home:
-            return 0
-        case .dashboard:
-            return 1
-        case .profile:
-            return 2
-        case .search:
-            return 3
-        case .notifications:
-            return 4
-        }
-    }
+    var id: String { return rawValue }
     var title: String { rawValue.capitalized }
     
-    var systemImageName: String {
+    var image: String {
         switch self {
-        case .home:
-            return "house"
-        case .dashboard:
-            return "chart.bar"
+        case .explore:
+            return "doc.text.magnifyingglass"
         case .profile:
-            return "person"
-        case .search:
-            return "magnifyingglass"
-        case .notifications:
-            return "bell"
+            return "person.text.rectangle"
+        case .communities:
+            return "person.3.sequence"
+        case .privacyPolicy:
+            return "shield.lefthalf.filled"
+        case .support:
+            return "questionmark.bubble"
+        case .aboutUs:
+            return "books.vertical.fill"
         }
     }
 }

@@ -14,7 +14,7 @@ struct SideMenuItem: View {
     
     var body: some View {
         HStack {
-            Image(systemName: option.systemImageName)
+            Image(systemName: option.image)
                 .imageScale(.small)
             Text(option.title)
                 .font(.subheadline)

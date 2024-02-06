@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExploreView: View {
-    @State private var selectedSideOption: MenuOption = .home
+    @State private var selectedSideOption: MenuOption = .explore
     @State private var showSideMenu = false
     
     var body: some View {
