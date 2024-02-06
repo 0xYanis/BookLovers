@@ -18,10 +18,18 @@ struct ExploreHeader: View {
                 if normalState {
                     Text("Hello, Yanis")
                         .font(.subheadline)
+                        .padding(.horizontal)
                     
                     Text("What are you looking for \ntoday?")
                         .font(.title2)
                         .fontWeight(.semibold)
+                        .padding(.horizontal)
+                    
+                    TagCaruselView(
+                        tags: LiteraryGenre.asArray,
+                        font: .body,
+                        onTap: tagTapped(_:)
+                    )
                 }
             }
             .onChange(of: isFocused) { state in
@@ -47,7 +55,12 @@ struct ExploreHeader: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(lineWidth: 1.0)
                     .foregroundStyle(.secondary))
+            .padding(.horizontal)
         }
+    }
+    
+    private func tagTapped(_ id: Int) {
+        
     }
 }
 

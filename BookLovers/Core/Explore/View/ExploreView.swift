@@ -26,20 +26,22 @@ struct ExploreView: View {
             // header
             ExploreHeader()
                 .padding(.vertical, 8)
-                .padding(.horizontal)
+                
             
             VStack {
                 // tags
-                TagCaruselView(
-                    tags: LiteraryGenre.asArray,
-                    font: .body,
-                    onTap: tagTapped(_:)
-                )
+                
                 // most popular now
                 NewParagraphView(title: "Most popular") {
-                    MostPopularItem()
-                        .frame(height: 150)
-                        .padding(.horizontal)
+                    TabView {
+                        ForEach(0..<3, id: \.self) { item in
+                            MostPopularItem()
+                                .padding(.horizontal)
+                        }
+                        
+                    }
+                    .frame(height: 150)
+                    .tabViewStyle(.page)
                 }
                 // all books
                 
@@ -93,10 +95,6 @@ struct ExploreView: View {
     }
     
     private func trailingItemAction() {
-        
-    }
-    
-    private func tagTapped(_ id: Int) {
         
     }
 }
