@@ -35,24 +35,25 @@ struct ExploreView: View {
                     font: .body,
                     onTap: tagTapped(_:)
                 )
-                
                 // most popular now
                 NewParagraphView(title: "Most popular") {
                     MostPopularItem()
                         .frame(height: 150)
                         .padding(.horizontal)
                 }
-                
                 // all books
+                
             }
             .padding(.top)
             .frame(maxWidth: .infinity)
             .background(Color(uiColor: .secondarySystemBackground))
+            .clipShape(CustomCornersShape(
+                corners: [.topLeft, .topRight],
+                radius: 15)
+            )
         }
         .toolbar {
-            // 3lines
             leadingItem
-            // avatar
             trailingItem
         }
     }
