@@ -29,7 +29,7 @@ struct MostPopularItem: View {
     
     private var description: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Master and Margarita")
+            Text("The Master and Margarita")
                 .font(.headline)
                 .fontWeight(.semibold)
             

@@ -29,7 +29,7 @@ struct ExploreView: View {
             
             LazyVStack {
                 // most popular now
-                NewParagraphView(title: "Most popular") {
+                NewParagraphView(title: "Most Popular") {
                     TabView {
                         ForEach(0..<3, id: \.self) { item in
                             MostPopularItem()
@@ -39,7 +39,13 @@ struct ExploreView: View {
                     }
                     .frame(height: 150)
                     .tabViewStyle(.page(indexDisplayMode: .never))
+                } topItem: {
+                    Button("See all") {
+                        
+                    }
+                    .foregroundStyle(.secondary)
                 }
+
                 // all books
                 
             }

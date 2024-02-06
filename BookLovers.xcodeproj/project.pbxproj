@@ -25,6 +25,7 @@
 		094A65302B710AAB00E6FF4E /* SideMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */; };
 		0950D8E42B723796005D755A /* CustomCornersShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0950D8E32B723796005D755A /* CustomCornersShape.swift */; };
 		0950D8E62B725564005D755A /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0950D8E52B725564005D755A /* TabItem.swift */; };
+		0950D8EC2B7273A9005D755A /* BookPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0950D8EB2B7273A9005D755A /* BookPageView.swift */; };
 		09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
 		09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E22B7177D400D1DA77 /* TagItem.swift */; };
 		09B358E52B717D2300D1DA77 /* TagCaruselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E42B717D2300D1DA77 /* TagCaruselView.swift */; };
@@ -50,6 +51,7 @@
 		094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItem.swift; sourceTree = "<group>"; };
 		0950D8E32B723796005D755A /* CustomCornersShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCornersShape.swift; sourceTree = "<group>"; };
 		0950D8E52B725564005D755A /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		0950D8EB2B7273A9005D755A /* BookPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageView.swift; sourceTree = "<group>"; };
 		09B358E02B71770300D1DA77 /* LiteraryGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteraryGenre.swift; sourceTree = "<group>"; };
 		09B358E22B7177D400D1DA77 /* TagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagItem.swift; sourceTree = "<group>"; };
 		09B358E42B717D2300D1DA77 /* TagCaruselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCaruselView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				094A65192B70EE7700E6FF4E /* Explore */,
 				094A651A2B70EE8000E6FF4E /* Favorites */,
 				094A65182B70EE7100E6FF4E /* Tabbar */,
+				0950D8EB2B7273A9005D755A /* BookPageView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				09441E032B7135AE004A09D0 /* MostPopularItem.swift in Sources */,
 				09B358E52B717D2300D1DA77 /* TagCaruselView.swift in Sources */,
 				0950D8E42B723796005D755A /* CustomCornersShape.swift in Sources */,
+				0950D8EC2B7273A9005D755A /* BookPageView.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */,
 				094A652C2B710A0C00E6FF4E /* SideMenuView.swift in Sources */,

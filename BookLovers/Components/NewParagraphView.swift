@@ -7,24 +7,32 @@
 
 import SwiftUI
 
-struct NewParagraphView<Content: View>: View {
+struct NewParagraphView<Content: View, TopItem: View>: View {
     private let title: String
     private let content: Content
+    private let topItem: TopItem
     
     init(
         title: String,
-        @ViewBuilder content: () -> Content
+        @ViewBuilder content: () -> Content,
+        @ViewBuilder topItem: () -> TopItem
     ) {
         self.title = title
         self.content = content()
+        self.topItem = topItem()
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
-                .font(.headline)
-                .fontWeight(.semibold)
-                .padding(.horizontal)
+            HStack(alignment: .top) {
+                Text(title)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                Spacer()
+                
+                topItem
+            }
+            .padding(.horizontal)
             
             content
                 .padding(.bottom, 10)
