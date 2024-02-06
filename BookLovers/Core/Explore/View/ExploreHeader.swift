@@ -9,8 +9,16 @@ import SwiftUI
 
 struct ExploreHeader: View {
     @State private var searchText = ""
+    @State private var placeholder = "books"
     @State private var normalState = true
     @FocusState private var isFocused: Bool
+    
+    @State private var counter = 0
+    private let timer = Timer.publish(
+        every: 2,
+        on: .main,
+        in: .common
+    ).autoconnect()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -44,7 +52,7 @@ struct ExploreHeader: View {
                         .imageScale(.large)
                         .foregroundStyle(.secondary)
                 }
-                TextField("Search books", text: $searchText)
+                TextField("Search \(placeholder)", text: $searchText)
                     .focused($isFocused)
                     .padding(.horizontal, 3)
                     .padding(.vertical, 7)
@@ -56,6 +64,15 @@ struct ExploreHeader: View {
                     .stroke(lineWidth: 1.0)
                     .foregroundStyle(.secondary))
             .padding(.horizontal)
+        }
+        .onReceive(timer) { _ in
+            if normalState {
+                if counter == LiteraryGenre.asArray.count {
+                    counter = 0
+                }
+                self.placeholder = LiteraryGenre.asArray[counter]
+                counter += 1
+            }
         }
     }
     
