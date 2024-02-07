@@ -27,6 +27,11 @@ struct MenuContainer<Menu: View, Content: View>: View {
             content
             
             if isOpened {
+                Rectangle()
+                    .opacity(0.3)
+                    .ignoresSafeArea()
+                    .onTapGesture { isOpened.toggle() }
+                
                 menu
                     .transition(.move(edge: .leading))
                     .zIndex(1)

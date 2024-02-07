@@ -15,10 +15,6 @@ struct SideMenuView: View {
     var body: some View {
         ZStack {
             if isShowing {
-                // background view (explore view)
-                background
-                
-                // side menu view
                 sideMenu
             }
         }
@@ -27,7 +23,7 @@ struct SideMenuView: View {
     
     private var background: some View {
         Rectangle()
-            .opacity(0.3)
+            .opacity(0.0)
             .ignoresSafeArea()
             .onTapGesture { isShowing.toggle() }
     }

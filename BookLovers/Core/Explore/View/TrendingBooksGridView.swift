@@ -11,9 +11,9 @@ struct TrendingBooksGridView: View {
     private var gridItems: [GridItem]
     private var spacing: CGFloat
     
-    init(columns: Int = 3, spacing: CGFloat = 25) {
+    init(columns: Int = 3, spacing: CGFloat = 40) {
         self.gridItems = Array(
-            repeating: GridItem(.flexible(), spacing: spacing),
+            repeating: GridItem(.flexible(), spacing: spacing * 0.7),
             count: columns)
         self.spacing = spacing
     }
@@ -28,7 +28,7 @@ struct TrendingBooksGridView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Image("book1")
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
+                        .aspectRatio(contentMode: .fit)
                     
                     VStack(alignment: .leading, spacing: 3) {
                         HStack(alignment: .top) {

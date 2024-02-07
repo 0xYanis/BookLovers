@@ -10,36 +10,60 @@ import SwiftUI
 struct SignInView: View {
     let title: String
     let subtitle: String
+    let description: String
+    let buttonText: String
     @Binding var requestSignIn: Bool
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 64) {
+        ZStack(alignment: .bottom) {
+            Color.green.opacity(0.3).ignoresSafeArea()
+            
+            VStack {
                 Spacer()
-                VStack(alignment: .leading, spacing: 32) {
+                
+                Image("reading")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(50)
+                
+                VStack(alignment: .center, spacing: 32) {
                     Text(title)
+                        .font(.title)
                         .fontDesign(.rounded)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
+                    
                     Text(subtitle)
                         .font(.headline)
-                }
-                Button {
-                    requestSignIn.toggle()
-                } label: {
-                    Text("Sign in")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .padding(10)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .fontDesign(.rounded)
+                    
+                    Text(description)
+                        .multilineTextAlignment(.center)
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 30)
+                    
+                    Button(buttonText) {
+                        
+                    }
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(.green)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .padding(.horizontal)
+                    .padding(.bottom)
+                    
+                    Spacer()
                 }
                 .padding(.top, 32)
-                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(.systemBackground))
+                .clipShape(CustomCornersShape(
+                    corners: [.topLeft, .topRight],
+                    radius: 64))
             }
-            .padding()
+            .ignoresSafeArea()
         }
     }
 }
@@ -47,8 +71,10 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView(
-            title: "Favorites",
-            subtitle: "To see, append and edit favorite books \nyou need to sign in.",
+            title: "Your favorites",
+            subtitle: "Anytime",
+            description: "To see, append and edit favorite books you need to sign in.",
+            buttonText: "Get started",
             requestSignIn: .constant(false))
     }
 }

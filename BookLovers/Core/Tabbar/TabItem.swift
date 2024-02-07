@@ -41,7 +41,7 @@ enum TabItem: String, Identifiable, CaseIterable {
         switch self {
         case .explore  : ExploreView()
         case .favorites: FavoritesView()
-        case .community: Text("Community")
+        case .community: CommunityView()
         }
     }
     

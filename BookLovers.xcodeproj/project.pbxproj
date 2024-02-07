@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0901E8512B7385AF007C11A5 /* TrendingBooksGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E8502B7385AF007C11A5 /* TrendingBooksGridView.swift */; };
+		0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E8522B73A8CD007C11A5 /* CommunityView.swift */; };
 		0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */; };
 		093548702B5EAEE100CC4955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0935486F2B5EAEE100CC4955 /* Assets.xcassets */; };
 		093548732B5EAEE100CC4955 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093548722B5EAEE100CC4955 /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		0901E8502B7385AF007C11A5 /* TrendingBooksGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBooksGridView.swift; sourceTree = "<group>"; };
+		0901E8522B73A8CD007C11A5 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		093548682B5EAEDE00CC4955 /* BookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLoversApp.swift; sourceTree = "<group>"; };
 		0935486F2B5EAEE100CC4955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		094A651B2B70EE8800E6FF4E /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				0901E8522B73A8CD007C11A5 /* CommunityView.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				094A652A2B7109F800E6FF4E /* MenuOption.swift in Sources */,
 				0950D8E62B725564005D755A /* TabItem.swift in Sources */,
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
+				0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */,
 				094A65272B71073D00E6FF4E /* View+Extension.swift in Sources */,
 				094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */,
 				09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */,
