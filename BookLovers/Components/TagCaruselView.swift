@@ -29,7 +29,13 @@ struct TagCaruselView: View {
                 }
                 .padding(.horizontal)
             }
-            .shadow(color: .black.opacity(0.1), radius: 9)
+            .shadow(color: .black.opacity(0.1), radius: 4)
         }
+    }
+}
+
+struct TagCaruselView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExploreView()
     }
 }

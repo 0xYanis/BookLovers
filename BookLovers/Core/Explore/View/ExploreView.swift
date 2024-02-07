@@ -35,7 +35,6 @@ struct ExploreView: View {
                             MostPopularItem()
                                 .padding(.horizontal)
                         }
-                        
                     }
                     .frame(height: 150)
                     .tabViewStyle(.page(indexDisplayMode: .never))

@@ -24,7 +24,7 @@ struct TrendingBooksGridView: View {
             alignment: .center,
             spacing: spacing
         ) {
-            ForEach(0..<9, id: \.self) { item in
+            ForEach(0..<6, id: \.self) { item in
                 VStack(alignment: .leading, spacing: 3) {
                     Image("book1")
                         .resizable()

@@ -18,6 +18,9 @@ struct CommunityView: View {
                 description: "To find your community, chat and share book preferences, you must sign in to your account.",
                 buttonText: "Get started",
                 requestSignIn: $requestSignIn)
+            .popover(isPresented: $requestSignIn) {
+                LoginView()
+            }
         }
     }
 }

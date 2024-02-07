@@ -43,7 +43,7 @@ struct SignInView: View {
                         .padding(.horizontal, 30)
                     
                     Button(buttonText) {
-                        
+                        requestSignIn.toggle()
                     }
                     .fontWeight(.semibold)
                     .foregroundStyle(.white)
@@ -62,6 +62,7 @@ struct SignInView: View {
                 .clipShape(CustomCornersShape(
                     corners: [.topLeft, .topRight],
                     radius: 64))
+                .shadow(radius: 15)
             }
             .ignoresSafeArea()
         }
