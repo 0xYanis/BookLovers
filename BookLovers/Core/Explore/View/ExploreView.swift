@@ -40,7 +40,7 @@ struct ExploreView: View {
                     .frame(height: 150)
                     .tabViewStyle(.page(indexDisplayMode: .never))
                 } topItem: {
-                    Button("See all") {
+                    Button("View all") {
                         
                     }
                     .foregroundStyle(.secondary)
@@ -48,6 +48,12 @@ struct ExploreView: View {
 
                 // all books
                 
+                Divider().padding(.horizontal)
+                
+                NewParagraphView(title: "Trending Books") {
+                    TrendingBooksGridView()
+                        .padding(.horizontal)
+                }
             }
             .padding(.top)
             .frame(maxWidth: .infinity)

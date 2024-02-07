@@ -22,10 +22,11 @@ struct SideMenuHeader: View {
                 Text("Yanis Rybkin")
                     .font(.subheadline)
                 
-                Text("test@gmail.com")
+                Text("@perebor")
                     .font(.footnote)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.gray)
             }
+            Spacer()
         }
     }
 }

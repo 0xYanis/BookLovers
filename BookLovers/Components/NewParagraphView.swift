@@ -15,7 +15,7 @@ struct NewParagraphView<Content: View, TopItem: View>: View {
     init(
         title: String,
         @ViewBuilder content: () -> Content,
-        @ViewBuilder topItem: () -> TopItem
+        @ViewBuilder topItem: () -> TopItem = { EmptyView() }
     ) {
         self.title = title
         self.content = content()

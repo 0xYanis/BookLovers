@@ -51,7 +51,7 @@ struct BookPageView: View {
                                 .padding(.vertical, 5)
                                 .padding(.horizontal)
                         }
-                    } topItem: {}
+                    }
                     
                     NewParagraphView(title: "Reception") {
                         VStack {
@@ -60,7 +60,7 @@ struct BookPageView: View {
                                 .padding(.vertical, 5)
                                 .padding(.horizontal)
                         }
-                    } topItem: {}
+                    }
                     
                     NewParagraphView(title: "Awards") {
                         VStack {
@@ -69,7 +69,7 @@ struct BookPageView: View {
                                 .padding(.vertical, 5)
                                 .padding(.horizontal)
                         }
-                    } topItem: {}
+                    } 
                 }
                 .padding(.vertical)
             }
