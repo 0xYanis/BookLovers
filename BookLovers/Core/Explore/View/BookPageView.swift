@@ -74,14 +74,7 @@ struct BookPageView: View {
                 .padding(.vertical)
             }
             
-            Button {
-                isShowing.toggle()
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .font(.title)
-                    .foregroundStyle(.secondary)
-            }
-            .buttonStyle(.plain)
+            XButton(action: { isShowing.toggle() })
             .padding(.horizontal)
         }
     }

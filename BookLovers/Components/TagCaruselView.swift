@@ -12,7 +12,7 @@ struct TagCaruselView: View {
     private let font: Font
     private let onTap: (_ id: Int) -> Void
     
-    init(tags: [String], font: Font, onTap: @escaping (_ id: Int) -> Void) {
+    init(tags: [String], font: Font = .body, onTap: @escaping (_ id: Int) -> Void) {
         self.tags = tags
         self.font = font
         self.onTap = onTap

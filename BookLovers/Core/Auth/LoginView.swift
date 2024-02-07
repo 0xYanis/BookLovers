@@ -43,12 +43,7 @@ struct LoginView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: dismiss.callAsFunction) {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.title2)
-                            .foregroundStyle(.secondary)
-                    }
-                    .buttonStyle(.plain)
+                    XButton(action: dismiss.callAsFunction)
                 }
             }
         }

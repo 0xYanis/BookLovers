@@ -35,7 +35,6 @@ struct ExploreHeader: View {
                     
                     TagCaruselView(
                         tags: LiteraryGenre.asArray,
-                        font: .body,
                         onTap: tagTapped(_:)
                     )
                 }
