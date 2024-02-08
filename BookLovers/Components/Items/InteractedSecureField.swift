@@ -20,10 +20,10 @@ struct InteractedSecureField: View {
     var body: some View {
         HStack(spacing: 4) {
             if isSecure {
-                SecureField("Entry your password", text: $text)
+                SecureField(placeholder, text: $text)
                     .padding(.vertical, 12)
             } else {
-                TextField("Entry your password", text: $text)
+                TextField(placeholder, text: $text)
                     .padding(.vertical, 12)
             }
             

@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct LoginView: View {
+    let isRegistrationView: Bool
     @State private var email = ""
     @State private var password = ""
+    @State private var secondPassword = ""
     @Environment(\.dismiss) private var dismiss
+    
+    init(isRegistrationView: Bool = false) {
+        self.isRegistrationView = isRegistrationView
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
@@ -26,7 +33,13 @@ struct LoginView: View {
                     
                     secureField
                     
-                    signUpLabel
+                    if isRegistrationView {
+                        secondField
+                    }
+                    
+                    if !isRegistrationView {
+                        signUpLabel
+                    }
                     
                     signInButton
                     
@@ -42,7 +55,7 @@ struct LoginView: View {
                 .padding(.horizontal)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     XButton(action: dismiss.callAsFunction)
                 }
             }
@@ -53,6 +66,7 @@ struct LoginView: View {
         Image("reading")
             .resizable()
             .scaledToFit()
+            .frame(width: 150)
     }
     
     private var emailField: some View {
@@ -69,12 +83,18 @@ struct LoginView: View {
         .clipShape(Capsule())
     }
     
+    private var secondField: some View {
+        InteractedSecureField("Confirm your password", text: $secondPassword)
+        .background(Color(.secondarySystemFill))
+        .clipShape(Capsule())
+    }
+    
     private var signUpLabel: some View {
         HStack {
-            Text("Don't have an account?")
+            Text("Already have an account?")
             
-            Button {
-                
+            NavigationLink {
+                RegistrationView()
             } label: {
                 Text("Sign up")
                     .underline()
@@ -84,7 +104,7 @@ struct LoginView: View {
     }
     
     private var signInButton: some View {
-        Button("Sign in") {
+        Button("Sign \(isRegistrationView ? "up" : "in")") {
             
         }
         .foregroundStyle(.white)

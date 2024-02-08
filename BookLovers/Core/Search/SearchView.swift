@@ -42,7 +42,7 @@ struct SearchView: View {
     }
     
     private var leadingItem: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
+        ToolbarItem(placement: .navigationBarTrailing) {
             XButton(action: dismiss.callAsFunction)
         }
     }
