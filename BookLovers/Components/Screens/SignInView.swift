@@ -73,6 +73,9 @@ struct SignInView: View {
             }
             .ignoresSafeArea()
         }
+        .popover(isPresented: $requestSignIn) {
+            LoginView()
+        }
     }
 }
 

@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @State private var requestSignIn = false
     var body: some View {
         NavigationStack {
-            Text("Favorites")
+            SignInView(
+                type: .favorites,
+                requestSignIn: $requestSignIn
+            )
         }
     }
 }

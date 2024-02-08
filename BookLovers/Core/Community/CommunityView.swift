@@ -15,9 +15,6 @@ struct CommunityView: View {
             SignInView(
                 type: .community,
                 requestSignIn: $requestSignIn)
-            .popover(isPresented: $requestSignIn) {
-                LoginView()
-            }
         }
     }
 }

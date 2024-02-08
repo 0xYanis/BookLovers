@@ -24,6 +24,7 @@ struct MainTabbarView: View {
             }
         }
         .toolbar(visibility, for: .tabBar)
+        .tint(.green)
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    let isRegistrationView: Bool
+    private let isRegistrationView: Bool
     @State private var email = ""
     @State private var password = ""
     @State private var secondPassword = ""
@@ -53,11 +53,6 @@ struct LoginView: View {
                 }
                 .padding()
                 .padding(.horizontal)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    XButton(action: dismiss.callAsFunction)
-                }
             }
         }
     }

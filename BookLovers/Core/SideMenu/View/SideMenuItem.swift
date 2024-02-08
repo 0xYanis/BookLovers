@@ -23,7 +23,7 @@ struct SideMenuItem: View {
         .padding(.leading)
         .foregroundStyle(isSelected ? .blue : .primary)
         .frame(width: 216, height: 44)
-        .background(isSelected ? .blue.opacity(0.15) : .clear)
+        .background(isSelected ? Color.accentColor.opacity(0.15) : .clear)
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
     
