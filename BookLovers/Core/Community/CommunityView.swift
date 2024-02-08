@@ -13,10 +13,7 @@ struct CommunityView: View {
     var body: some View {
         NavigationStack {
             SignInView(
-                title: "Your communities",
-                subtitle: "Anytime",
-                description: "To find your community, chat and share book preferences, you must sign in to your account.",
-                buttonText: "Get started",
+                type: .community,
                 requestSignIn: $requestSignIn)
             .popover(isPresented: $requestSignIn) {
                 LoginView()

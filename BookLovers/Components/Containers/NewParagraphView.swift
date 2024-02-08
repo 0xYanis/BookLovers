@@ -23,7 +23,7 @@ struct NewParagraphView<Content: View, TopItem: View>: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        LazyVStack(alignment: .leading) {
             HStack(alignment: .top) {
                 Text(title)
                     .font(.headline)

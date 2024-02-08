@@ -8,40 +8,48 @@
 import SwiftUI
 
 struct SignInView: View {
-    let title: String
-    let subtitle: String
-    let description: String
-    let buttonText: String
+    private let title: String
+    private let subtitle: String
+    private let description: String
+    private let buttonText: String
     @Binding var requestSignIn: Bool
+    
+    init(
+        title: String,
+        subtitle: String,
+        description: String,
+        buttonText: String,
+        requestSignIn: Binding<Bool>
+    ) {
+        self.title = title
+        self.subtitle = subtitle
+        self.description = description
+        self.buttonText = buttonText
+        self._requestSignIn = requestSignIn
+    }
     
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.green.opacity(0.3).ignoresSafeArea()
-            
             VStack {
                 Spacer()
-                
                 Image("reading")
                     .resizable()
                     .scaledToFit()
                     .padding(50)
-                
                 VStack(alignment: .center, spacing: 32) {
                     Text(title)
                         .font(.title)
                         .fontDesign(.rounded)
                         .fontWeight(.semibold)
-                    
                     Text(subtitle)
                         .font(.headline)
                         .fontDesign(.rounded)
-                    
                     Text(description)
                         .multilineTextAlignment(.center)
                         .font(.callout)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 30)
-                    
                     Button(buttonText) {
                         requestSignIn.toggle()
                     }
@@ -53,7 +61,6 @@ struct SignInView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .padding(.horizontal)
                     .padding(.bottom)
-                    
                     Spacer()
                 }
                 .padding(.top, 32)
@@ -66,6 +73,19 @@ struct SignInView: View {
             }
             .ignoresSafeArea()
         }
+    }
+}
+
+extension SignInView {
+    init(
+        type: SignInType,
+        requestSignIn: Binding<Bool>
+    ) {
+        self.title = type.title
+        self.subtitle = type.subtitle
+        self.description = type.description
+        self.buttonText = "Get started"
+        self._requestSignIn = requestSignIn
     }
 }
 
