@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct CommunityView: View {
+    @State private var isLogin = false
     @State private var requestSignIn = false
     
     var body: some View {
         NavigationStack {
-            SignInView(
-                type: .community,
-                requestSignIn: $requestSignIn)
+            if isLogin {
+                CreateCommunityView()
+            } else {
+                SignInView(type: .community, requestSignIn: $requestSignIn)
+            }
         }
     }
 }

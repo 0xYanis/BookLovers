@@ -95,10 +95,7 @@ extension SignInView {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView(
-            title: "Your favorites",
-            subtitle: "Anytime",
-            description: "To see, append and edit favorite books you need to sign in.",
-            buttonText: "Get started",
+            type: .favorites,
             requestSignIn: .constant(false))
     }
 }

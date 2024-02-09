@@ -40,6 +40,7 @@
 		09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
 		09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E22B7177D400D1DA77 /* TagItem.swift */; };
 		09B358E52B717D2300D1DA77 /* TagCaruselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E42B717D2300D1DA77 /* TagCaruselView.swift */; };
+		09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757612B763C16004C849B /* CreateCommunityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		09B358E22B7177D400D1DA77 /* TagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagItem.swift; sourceTree = "<group>"; };
 		09B358E42B717D2300D1DA77 /* TagCaruselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCaruselView.swift; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09F757612B763C16004C849B /* CreateCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				0901E8522B73A8CD007C11A5 /* CommunityView.swift */,
+				09F757612B763C16004C849B /* CreateCommunityView.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				0950D8EC2B7273A9005D755A /* BookPageView.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */,
+				09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */,
 				09736E052B7413E900B50164 /* XButton.swift in Sources */,
 				09736E012B7409BC00B50164 /* SearchView.swift in Sources */,
 				09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */,
