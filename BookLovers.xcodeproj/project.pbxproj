@@ -38,6 +38,8 @@
 		09736E052B7413E900B50164 /* XButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E042B7413E900B50164 /* XButton.swift */; };
 		09736E072B74149700B50164 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E062B74149700B50164 /* ImageButton.swift */; };
 		09995C442B76637300A3DAF0 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09995C432B76637300A3DAF0 /* BigButton.swift */; };
+		09995C462B766E6800A3DAF0 /* WelcomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09995C452B766E6800A3DAF0 /* WelcomeFeature.swift */; };
+		09995C482B76728F00A3DAF0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09995C472B76728F00A3DAF0 /* OnboardingView.swift */; };
 		09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
 		09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E22B7177D400D1DA77 /* TagItem.swift */; };
 		09B358E52B717D2300D1DA77 /* TagCaruselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E42B717D2300D1DA77 /* TagCaruselView.swift */; };
@@ -78,6 +80,8 @@
 		09736E042B7413E900B50164 /* XButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XButton.swift; sourceTree = "<group>"; };
 		09736E062B74149700B50164 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		09995C432B76637300A3DAF0 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
+		09995C452B766E6800A3DAF0 /* WelcomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeFeature.swift; sourceTree = "<group>"; };
+		09995C472B76728F00A3DAF0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		09B358E02B71770300D1DA77 /* LiteraryGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteraryGenre.swift; sourceTree = "<group>"; };
 		09B358E22B7177D400D1DA77 /* TagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagItem.swift; sourceTree = "<group>"; };
 		09B358E42B717D2300D1DA77 /* TagCaruselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCaruselView.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			children = (
 				0901E8592B73C3C7007C11A5 /* LoginView.swift */,
 				094E137D2B74CB9F0052E0D8 /* RegistrationView.swift */,
+				09995C472B76728F00A3DAF0 /* OnboardingView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				09B358E02B71770300D1DA77 /* LiteraryGenre.swift */,
 				09736E022B74109600B50164 /* SortType.swift */,
 				094E137B2B74C7E90052E0D8 /* SignInType.swift */,
+				09995C452B766E6800A3DAF0 /* WelcomeFeature.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -403,10 +409,12 @@
 				0901E8512B7385AF007C11A5 /* TrendingBooksGridView.swift in Sources */,
 				094A652C2B710A0C00E6FF4E /* SideMenuView.swift in Sources */,
 				09441E092B714698004A09D0 /* FavoritesView.swift in Sources */,
+				09995C462B766E6800A3DAF0 /* WelcomeFeature.swift in Sources */,
 				094A65302B710AAB00E6FF4E /* SideMenuItem.swift in Sources */,
 				0901E85C2B73C9C1007C11A5 /* InteractedSecureField.swift in Sources */,
 				094A652E2B710A5B00E6FF4E /* SideMenuHeader.swift in Sources */,
 				094E137C2B74C7E90052E0D8 /* SignInType.swift in Sources */,
+				09995C482B76728F00A3DAF0 /* OnboardingView.swift in Sources */,
 				094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */,
 				094A652A2B7109F800E6FF4E /* MenuOption.swift in Sources */,
 				0950D8E62B725564005D755A /* TabItem.swift in Sources */,

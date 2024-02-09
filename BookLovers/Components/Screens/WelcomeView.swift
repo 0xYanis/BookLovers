@@ -7,16 +7,9 @@
 
 import SwiftUI
 
-struct WelcomeItem: Identifiable {
-    var id = UUID().uuidString
-    let image: String
-    let title: String
-    let subtitle: String
-}
-
 struct WelcomeView: View {
     let title: String
-    let items: [WelcomeItem]
+    let items: [WelcomeFeature]
     let subbuttonTitle: String
     let bigButtonTitle: String
     
@@ -41,9 +34,11 @@ struct WelcomeView: View {
             .padding(.horizontal)
             Spacer()
             VStack(spacing: 30) {
-                Button(action: subbuttonAction) {
-                    Text(subbuttonTitle)
-                        .font(.callout)
+                if subbuttonTitle.isEmpty == false {
+                    Button(action: subbuttonAction) {
+                        Text(subbuttonTitle)
+                            .font(.callout)
+                    }
                 }
                 
                 BigButton(
@@ -58,7 +53,7 @@ struct WelcomeView: View {
 }
 
 fileprivate struct WelcomeItemView: View {
-    let item: WelcomeItem
+    let item: WelcomeFeature
     
     var body: some View {
         HStack {
