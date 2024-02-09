@@ -46,15 +46,10 @@ struct WelcomeView: View {
                         .font(.callout)
                 }
                 
-                Button(action: bigButtonAction) {
-                    Text(bigButtonTitle)
-                        .foregroundStyle(.white)
-                        .fontWeight(.semibold)
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(.green)
-                .clipShape(RoundedRectangle(cornerRadius: 15))
+                BigButton(
+                    title: bigButtonTitle,
+                    action: bigButtonAction
+                )
             }
             Spacer()
         }

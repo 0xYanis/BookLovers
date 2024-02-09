@@ -50,15 +50,9 @@ struct SignInView: View {
                         .font(.callout)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 30)
-                    Button(buttonText) {
+                    BigButton(title: title) {
                         requestSignIn.toggle()
                     }
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(.green)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
                     .padding(.horizontal)
                     .padding(.bottom)
                     Spacer()

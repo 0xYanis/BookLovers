@@ -42,7 +42,7 @@ struct CreateCommunityView: View {
                 .padding(13)
                 .frame(maxWidth: .infinity)
                 .background(Color.green)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .clipShape(RoundedRectangle(cornerRadius: 15))
             }
             .padding()
             .padding(.horizontal)
