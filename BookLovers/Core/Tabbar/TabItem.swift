@@ -46,9 +46,11 @@ enum TabItem: String, Identifiable, CaseIterable {
     }
     
     func uiImage(selected: TabItem) -> UIImage {
-        UIImage(
+        let configuration = UIImage.SymbolConfiguration(scale: .medium)
+        let image = UIImage(
             systemName: selected == self ?
-            filledImage : image
-        ) ?? UIImage()
+            filledImage : image,
+            withConfiguration: configuration) ?? UIImage()
+        return image
     }
 }

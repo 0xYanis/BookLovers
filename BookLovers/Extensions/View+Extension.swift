@@ -25,6 +25,14 @@ extension View {
     }
 }
 
+// MARK: - Tap actions
+
+extension View {
+    func scaleByTap(scale: CGFloat = 0.95) -> some View {
+        modifier(ScaleByTapModifier(scale: scale))
+    }
+}
+
 // MARK: - Screen size
 extension View {
     var screen: CGRect {

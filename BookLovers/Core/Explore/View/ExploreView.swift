@@ -95,6 +95,7 @@ struct ExploreView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 30, height: 30)
+                .scaleByTap(scale: 0.5)
         }
     }
     
