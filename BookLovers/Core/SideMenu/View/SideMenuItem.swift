@@ -21,7 +21,7 @@ struct SideMenuItem: View {
             
             Text(option.title)
                 .font(.callout)
-                .fontWeight(isSelected ? .bold : .medium)
+                .fontWeight(isSelected ? .bold : .regular)
         }
         .foregroundStyle(isSelected ? .white : .primary)
         .padding(.vertical, 12)

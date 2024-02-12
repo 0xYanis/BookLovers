@@ -24,47 +24,46 @@ struct ExploreView: View {
                 SearchView()
             }
         }
+        .refreshable(action: {})
     }
     
     private var exploreScreen: some View {
         ScrollView {
             // header
-            ExploreHeader(showSearchView: $showSearchView)
-                .padding(.vertical, 8)
-            
-            LazyVStack {
-                // most popular now
-                NewParagraphView(title: "Most Popular") {
-                    TabView {
-                        ForEach(0..<3, id: \.self) { item in
-                            MostPopularItem()
-                                .padding(.horizontal)
+            LazyVStack(spacing: 0) {
+                ExploreHeader(showSearchView: $showSearchView)
+                    .padding(.bottom)
+                
+                LazyVStack(spacing: 0) {
+                    // most popular now
+                    NewParagraphView(title: "Most Popular") {
+                        TabView {
+                            ForEach(0..<3, id: \.self) { item in
+                                MostPopularItem()
+                                    .padding(.horizontal)
+                            }
                         }
+                        .frame(height: 150)
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                    } topItem: {
+                        Button("View all", action: {})
+                            .foregroundStyle(.secondary)
                     }
-                    .frame(height: 150)
-                    .tabViewStyle(.page(indexDisplayMode: .never))
-                } topItem: {
-                    Button("View all") {
+                    
+                    // all books
+                    Divider().padding(.horizontal)
+                    NewParagraphView(title: "Trending Books") {
                         
                     }
-                    .foregroundStyle(.secondary)
                 }
-
-                // all books
-                
-                Divider().padding(.horizontal)
-                
-                NewParagraphView(title: "Trending Books") {
-                    //TrendingBooksGridView()
-                        //.padding(.horizontal)
-                }
+                .padding(.top)
+                .frame(maxWidth: .infinity)
+                .background(Color(uiColor: .secondarySystemBackground))
+                .clipShape(CustomCornersShape(
+                    corners: [.topLeft, .topRight],
+                    radius: 15)
+                )
             }
-            .padding(.top)
-            .frame(maxWidth: .infinity)
-            .background(Color(uiColor: .secondarySystemBackground))
-            .clipShape(CustomCornersShape(
-                corners: [.topLeft, .topRight],
-                radius: 15))
         }
         .toolbar {
             leadingItem
@@ -72,6 +71,8 @@ struct ExploreView: View {
             trailingItem
         }
     }
+    
+    // MARK: - UI components
     
     private var menuScreen: some View {
         SideMenuView(
@@ -110,6 +111,8 @@ struct ExploreView: View {
             }
         }
     }
+    
+    // MARK: - Actions
     
     private func leadingItemAction() {
         withAnimation(.spring(dampingFraction: 0.95)) {

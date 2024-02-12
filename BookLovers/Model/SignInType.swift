@@ -32,7 +32,7 @@ enum SignInType {
         case .community:
             return "To find your community, chat and share book preferences, you must sign in to your account."
         case .example:
-            return "The book lovers app is a place where you can make new friends, share your favorite books, and discuss the latest releases."
+            return "The bookly app is a place where you can make new friends, share your favorite books, and discuss the latest releases."
         }
     }
 }

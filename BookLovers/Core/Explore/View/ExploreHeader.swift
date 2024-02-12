@@ -25,6 +25,7 @@ struct ExploreHeader: View {
                 Text("Hello, Yanis")
                     .font(.subheadline)
                     .padding(.horizontal)
+                    .padding(.vertical, 10)
                 
                 Text("What are you looking for \ntoday?")
                     .font(.title2)
@@ -44,6 +45,7 @@ struct ExploreHeader: View {
             .buttonStyle(.plain)
             .padding(.horizontal)
         }
+        .background(Color(.systemBackground))
         .onReceive(timer) { _ in
             if counter == LiteraryGenre.asArray.count {
                 counter = 0
@@ -61,7 +63,7 @@ struct ExploreHeader: View {
 struct ExploreHeader_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            ExploreHeader(showSearchView: .constant(false))
+            ExploreView()
         }
     }
 }

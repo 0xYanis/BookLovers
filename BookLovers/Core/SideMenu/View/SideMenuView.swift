@@ -30,14 +30,14 @@ struct SideMenuView: View {
     }
     
     private var sideMenu: some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 32) {
-                VStack(alignment: .leading) {
-                    // header
-                    SideMenuHeader()
-                        .padding()
-                    
-                    // menu
+                // header
+                SideMenuHeader()
+                    .padding(.horizontal)
+                
+                // menu
+                VStack(alignment: .leading, spacing: 5) {
                     ForEach(MenuOption.allCases) { option in
                         Button {
                             optionTapped(option)
@@ -50,27 +50,18 @@ struct SideMenuView: View {
                         }
                     }
                 }
-                Spacer()
                 
+                // footer
                 VStack(alignment: .leading) {
                     Divider()
                     
-                    Button(action: {}) {
-                        HStack(spacing: 15) {
-                            Image(systemName: "door.left.hand.open")
-                                .font(.body)
-                                .frame(width: 30)
-                            
-                            Text("Log out")
-                                .font(.callout)
-                        }
+                    defaultButton("Log out", image: "door.left.hand.open") {
+                        
                     }
-                    .foregroundStyle(.primary)
-                    
-                    .padding(.horizontal)
+                    .padding()
                 }
             }
-            .padding(.vertical)
+            .frame(maxHeight: .infinity, alignment: .top)
             .frame(width: screen.width * 0.75, alignment: .leading)
             .background(scheme == .light ? .white : Color(UIColor.systemGray6))
             .onSwipe(left: { hideMenu() } )
@@ -92,6 +83,24 @@ struct SideMenuView: View {
                 self.hideMenu()
             }
         }
+    }
+    
+    private func defaultButton(
+        _ title: String,
+        image: String,
+        action: @escaping () -> ()
+    ) -> some View {
+        Button(action: action) {
+            HStack(spacing: 15) {
+                Image(systemName: image)
+                    .font(.body)
+                    .frame(width: 30)
+                
+                Text(title)
+                    .font(.callout)
+            }
+        }
+        .foregroundStyle(.primary)
     }
 }
 

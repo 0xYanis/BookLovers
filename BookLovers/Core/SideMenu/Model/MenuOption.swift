@@ -31,7 +31,7 @@ enum MenuOption: String, Identifiable, CaseIterable {
         case .support:
             return "questionmark.bubble"
         case .aboutUs:
-            return "books.vertical.fill"
+            return "books.vertical"
         }
     }
 }

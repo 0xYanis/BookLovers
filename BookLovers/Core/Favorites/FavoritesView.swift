@@ -23,12 +23,6 @@ struct FavoritesView: View {
     
     var body: some View {
         NavigationStack {
-            //            SignInView(
-            //                type: .favorites,
-            //                requestSignIn: $requestSignIn
-            //            )
-            
-            
             VStack {
                 //header
                 
