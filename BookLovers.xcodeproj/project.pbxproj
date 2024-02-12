@@ -178,12 +178,12 @@
 		0935487B2B5EAF1A00CC4955 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				0901E85D2B73E843007C11A5 /* Search */,
 				0901E8582B73C3B6007C11A5 /* Auth */,
-				094A65282B7109E500E6FF4E /* SideMenu */,
 				094A651B2B70EE8800E6FF4E /* Community */,
 				094A65192B70EE7700E6FF4E /* Explore */,
 				094A651A2B70EE8000E6FF4E /* Favorites */,
+				0901E85D2B73E843007C11A5 /* Search */,
+				094A65282B7109E500E6FF4E /* SideMenu */,
 				094A65182B70EE7100E6FF4E /* Tabbar */,
 			);
 			path = Core;
@@ -192,9 +192,9 @@
 		09441DFF2B71326A004A09D0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				09736E0A2B74167100B50164 /* Screens */,
 				09736E092B74164D00B50164 /* Containers */,
 				09736E082B74163200B50164 /* Items */,
+				09736E0A2B74167100B50164 /* Screens */,
 			);
 			path = Components;
 			sourceTree = "<group>";

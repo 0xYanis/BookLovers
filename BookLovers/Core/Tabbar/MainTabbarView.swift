@@ -16,12 +16,12 @@ struct MainTabbarView: View {
         TabView(selection: $selectedTab) {
             ForEach(TabItem.allCases) { item in
                 item.view
+                    .tag(item)
                     .tabItem {
                         Image(uiImage: item.uiImage(selected: selectedTab))
                         Text(item.name)
                     }
                     .badge(item.badgeNumber)
-                    .tag(item)
             }
         }
         .toolbar(visibility, for: .tabBar)

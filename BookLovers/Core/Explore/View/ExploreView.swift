@@ -10,6 +10,7 @@ import SwiftUI
 struct ExploreView: View {
     @State private var selectedSideOption: MenuOption = .explore
     @State private var showSideMenu = false
+    @State private var showSearchView = false
     
     var body: some View {
         NavigationStack {
@@ -18,13 +19,16 @@ struct ExploreView: View {
             } content: {
                 exploreScreen
             }
+            .fullScreenCover(isPresented: $showSearchView) {
+                SearchView()
+            }
         }
     }
     
     private var exploreScreen: some View {
         ScrollView {
             // header
-            ExploreHeader()
+            ExploreHeader(showSearchView: $showSearchView)
                 .padding(.vertical, 8)
             
             LazyVStack {

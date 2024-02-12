@@ -11,6 +11,7 @@ struct SearchView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var sortType = ""
     @State private var searchText = ""
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         NavigationStack {
@@ -18,7 +19,8 @@ struct SearchView: View {
                 VStack(alignment: .leading, spacing: 30) {
                     titleView
                     
-                    SearchBar(text: $searchText)
+                    SearchBar("Search books", text: $searchText)
+                        .focused($isFocused)
                         .padding(.horizontal)
                     
                     historyView
@@ -38,6 +40,9 @@ struct SearchView: View {
                 }
             }
             .toolbar(content: { leadingItem })
+        }
+        .onAppear {
+            isFocused = true
         }
     }
     
