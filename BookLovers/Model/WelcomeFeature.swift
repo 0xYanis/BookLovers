@@ -5,7 +5,7 @@
 //  Created by Yanis on 09.02.2024.
 //
 
-import Foundation
+import SwiftUI
 
 enum WelcomeMessage: String {
     case first = "Сommunicate"
@@ -16,6 +16,7 @@ enum WelcomeMessage: String {
 struct WelcomeFeature: Identifiable {
     var id = UUID().uuidString
     let image: String
+    let color: Color = Color.randomColor()
     let title: String
     let subtitle: String
     
@@ -34,4 +35,14 @@ struct WelcomeFeature: Identifiable {
         .init(image: "bookmark.square", title: "Book Recommendations", subtitle: "Personalized book recommendations based on user preferences, ratings, and reviews."),
         .init(image: "pencil.and.list.clipboard", title: "Wishlists", subtitle: "The ability to create a wish list, mark books you've already read, organize your book collection, and track your reading progress.")
     ]
+}
+
+
+extension Color {
+    static func randomColor() -> Color {
+        let red = Double.random(in: 0...1)
+        let green = Double.random(in: 0...1)
+        let blue = Double.random(in: 0...1)
+        return Color(red: red, green: green, blue: blue, opacity: 1.0)
+    }
 }

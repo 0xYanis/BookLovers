@@ -25,7 +25,7 @@ struct WelcomeView: View {
                 .fontDesign(.rounded)
                 .padding(.vertical)
             Spacer()
-            VStack(spacing: 32) {
+            VStack(alignment: .leading, spacing: 32) {
                 ForEach(items) { item in
                     WelcomeItemView(item: item)
                 }
@@ -58,9 +58,10 @@ fileprivate struct WelcomeItemView: View {
     var body: some View {
         HStack {
             Image(systemName: item.image)
-                .imageScale(.large)
+                .imageScale(.medium)
                 .font(.title)
-                .foregroundStyle(.green)
+                .foregroundStyle(item.color)
+                .frame(width: 80)
             VStack(alignment: .leading) {
                 Text(item.title)
                     .font(.callout)
@@ -69,5 +70,17 @@ fileprivate struct WelcomeItemView: View {
                     .foregroundStyle(.secondary)
             }
         }
+    }
+}
+
+struct WelcomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        WelcomeView(
+            title: WelcomeMessage.first.rawValue,
+            items: WelcomeFeature.firstScreen,
+            subbuttonTitle: "",
+            bigButtonTitle: "Continue",
+            subbuttonAction: {},
+            bigButtonAction: {})
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTabbarView: View {
     @State private var visibility: Visibility = .automatic
     @State private var selectedTab: TabItem = .explore
+    @State private var showOnboarding: Bool = true
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -25,6 +26,9 @@ struct MainTabbarView: View {
         }
         .toolbar(visibility, for: .tabBar)
         .tint(.green)
+        .popover(isPresented: $showOnboarding) {
+            OnboardingView(isShowing: $showOnboarding)
+        }
     }
 }
 

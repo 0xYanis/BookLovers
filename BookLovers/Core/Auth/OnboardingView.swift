@@ -37,7 +37,7 @@ struct OnboardingView: View {
             bigButtonTitle: "Continue",
             subbuttonAction: {}
         ) {
-            tapAction(of: .first)
+            push(to: .second)
         }
     }
     
@@ -49,23 +49,23 @@ struct OnboardingView: View {
             bigButtonTitle: "Continue",
             subbuttonAction: {}
         ) {
-            tapAction(of: .second)
+            push(to: .third)
         }
     }
     
     private var thirdView: some View {
         WelcomeView(
-            title: WelcomeMessage.second.rawValue,
-            items: WelcomeFeature.secondScreen,
+            title: WelcomeMessage.third.rawValue,
+            items: WelcomeFeature.thirdScreen,
             subbuttonTitle: "",
             bigButtonTitle: "Ready!",
             subbuttonAction: {}
         ) {
-            tapAction(of: .third)
+            dismiss()
         }
     }
     
-    private func tapAction(of screen: WelcomeMessage) {
+    private func push(to screen: WelcomeMessage) {
         path.append(screen)
     }
     
