@@ -10,24 +10,49 @@ import SwiftUI
 struct SideMenuItem: View {
     var option: MenuOption
     @Binding var selectedOption: MenuOption
+    var animation: Namespace.ID
     @Environment(\.colorScheme) private var scheme
     
     var body: some View {
-        HStack {
+        HStack(spacing: 15) {
             Image(systemName: option.image)
-                .imageScale(.small)
+                .font(.body)
+                .frame(width: 30)
+            
             Text(option.title)
-                .font(.subheadline)
-            Spacer()
+                .font(.callout)
+                .fontWeight(isSelected ? .bold : .medium)
         }
-        .padding(.leading)
-        .foregroundStyle(isSelected ? .blue : .primary)
-        .frame(width: 216, height: 44)
-        .background(isSelected ? Color.accentColor.opacity(0.15) : .clear)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .foregroundStyle(isSelected ? .white : .primary)
+        .padding(.vertical, 12)
+        .padding(.horizontal)
+        .frame(maxWidth: screen.width * 0.7, alignment: .leading)
+        .background(background)
     }
     
     private var isSelected: Bool {
         selectedOption == option
+    }
+    
+    private var background: some View {
+        ZStack {
+            if isSelected {
+                Color.green
+                    .opacity(isSelected ? 1 : 0)
+                    .clipShape(CustomCornersShape(
+                        corners: [.topRight, .bottomRight],
+                        radius: 12))
+                    .matchedGeometryEffect(id: "MENUOPTION", in: animation)
+            }
+        }
+    }
+}
+
+struct SideMenuItem_Previews: PreviewProvider {
+    static var previews: some View {
+        SideMenuView(
+            isShowing: .constant(true),
+            selectedOption: .constant(.profile)
+        )
     }
 }

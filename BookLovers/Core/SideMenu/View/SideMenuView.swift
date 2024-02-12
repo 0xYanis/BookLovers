@@ -11,6 +11,7 @@ struct SideMenuView: View {
     @Binding var isShowing: Bool
     @Binding var selectedOption: MenuOption
     @Environment(\.colorScheme) private var scheme
+    @Namespace private var animation
     
     var body: some View {
         ZStack {
@@ -34,6 +35,7 @@ struct SideMenuView: View {
                 VStack(alignment: .leading) {
                     // header
                     SideMenuHeader()
+                        .padding()
                     
                     // menu
                     ForEach(MenuOption.allCases) { option in
@@ -42,15 +44,34 @@ struct SideMenuView: View {
                         } label: {
                             SideMenuItem(
                                 option: option,
-                                selectedOption: $selectedOption
+                                selectedOption: $selectedOption,
+                                animation: animation
                             )
                         }
                     }
                 }
                 Spacer()
+                
+                VStack(alignment: .leading) {
+                    Divider()
+                    
+                    Button(action: {}) {
+                        HStack(spacing: 15) {
+                            Image(systemName: "door.left.hand.open")
+                                .font(.body)
+                                .frame(width: 30)
+                            
+                            Text("Log out")
+                                .font(.callout)
+                        }
+                    }
+                    .foregroundStyle(.primary)
+                    
+                    .padding(.horizontal)
+                }
             }
-            .padding()
-            .frame(width: 270, alignment: .leading)
+            .padding(.vertical)
+            .frame(width: screen.width * 0.75, alignment: .leading)
             .background(scheme == .light ? .white : Color(UIColor.systemGray6))
             .onSwipe(left: { hideMenu() } )
             Spacer()
@@ -65,7 +86,7 @@ struct SideMenuView: View {
     }
     
     private func optionTapped(_ option: MenuOption) {
-        withAnimation(.easeInOut(duration: 0.1)) {
+        withAnimation(.easeInOut(duration: 0.2)) {
             selectedOption = option
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.hideMenu()

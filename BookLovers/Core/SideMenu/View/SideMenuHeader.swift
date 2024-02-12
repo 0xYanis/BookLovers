@@ -14,7 +14,7 @@ struct SideMenuHeader: View {
                 .imageScale(.large)
                 .foregroundColor(.white)
                 .frame(width: 48, height: 48)
-                .background(.blue)
+                .background(.green)
                 .clipShape(Circle())
                 .padding(.vertical)
             

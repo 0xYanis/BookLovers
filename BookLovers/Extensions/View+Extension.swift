@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - Swipes
 extension View {
     func onSwipe(
         up: @escaping (() -> Void) = {},
@@ -21,5 +22,12 @@ extension View {
                 if value.translation.height < 0 { up() }
                 if value.translation.height > 0 { down() }
             }))
+    }
+}
+
+// MARK: - Screen size
+extension View {
+    var screen: CGRect {
+        UIScreen.current?.bounds ?? .null
     }
 }
