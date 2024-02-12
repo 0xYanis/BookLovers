@@ -19,6 +19,7 @@ struct ExploreView: View {
             } content: {
                 exploreScreen
             }
+            .navigationBarTitleDisplayMode(.inline)
             .fullScreenCover(isPresented: $showSearchView) {
                 SearchView()
             }
@@ -54,8 +55,8 @@ struct ExploreView: View {
                 Divider().padding(.horizontal)
                 
                 NewParagraphView(title: "Trending Books") {
-                    TrendingBooksGridView()
-                        .padding(.horizontal)
+                    //TrendingBooksGridView()
+                        //.padding(.horizontal)
                 }
             }
             .padding(.top)
@@ -67,6 +68,7 @@ struct ExploreView: View {
         }
         .toolbar {
             leadingItem
+            centerItem
             trailingItem
         }
     }
@@ -87,13 +89,22 @@ struct ExploreView: View {
         }
     }
     
+    private var centerItem: some ToolbarContent {
+        ToolbarItem(placement: .principal) {
+            Image(showSideMenu ? "" : "logo-small")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 30, height: 30)
+        }
+    }
+    
     private var trailingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: trailingItemAction) {
                 Image("avatar")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 30)
+                    .frame(width: 27)
                     .clipShape(Circle())
             }
         }

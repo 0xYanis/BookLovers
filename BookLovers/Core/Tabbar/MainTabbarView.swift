@@ -10,7 +10,7 @@ import SwiftUI
 struct MainTabbarView: View {
     @State private var visibility: Visibility = .automatic
     @State private var selectedTab: TabItem = .explore
-    @State private var showOnboarding: Bool = true
+    @State private var showOnboarding: Bool = false
     
     var body: some View {
         TabView(selection: $selectedTab) {
