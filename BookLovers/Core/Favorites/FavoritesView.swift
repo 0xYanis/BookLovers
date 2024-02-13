@@ -19,16 +19,22 @@ struct FavoritesView: View {
     @State private var selectedType: FavoriteType = .onReading
     @State private var tabProgress: CGFloat = 0
     @State private var requestSignIn = false
-    @Environment(\.colorScheme) private var scheme
+    @State private var searchText = ""
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         NavigationStack {
-            VStack {
-                //header
-                
-                
-                // picker
-                tabbarTypePicker
+            VStack(spacing: 0) {
+                VStack(spacing: 0) {
+                    //header
+                    searchbar
+                        .padding(.vertical, 10)
+                    // picker
+                    tabbarTypePicker
+                        .padding(.top, 10)
+                    
+                    Divider()
+                }
                 
                 //main view
                 ScrollView {
@@ -42,6 +48,29 @@ struct FavoritesView: View {
         }
     }
     
+    private var searchbar: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(spacing: 5) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.gray)
+                TextField("Search favorites", text: $searchText)
+                    .focused($isFocused)
+                Button {
+                    searchText.removeAll()
+                } label: {
+                    Image(systemName: searchText.isEmpty ? "" : "xmark")
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(.gray)
+            }
+            .padding(.horizontal, 5)
+        }
+        .padding(10)
+        .background(Color(.tertiarySystemGroupedBackground))
+        .clipShape(Capsule())
+        .padding(.horizontal)
+    }
+    
     private var tabbarTypePicker: some View {
         HStack(spacing: 0) {
             ForEach(FavoriteType.allCases) { type in
@@ -50,7 +79,6 @@ struct FavoritesView: View {
                 } label: {
                     HStack(spacing: 10) {
                         Text(type.rawValue)
-                            .fontWeight(.semibold)
                             .font(.callout)
                     }
                     .frame(maxWidth: .infinity)
@@ -65,15 +93,20 @@ struct FavoritesView: View {
             GeometryReader { proxy in
                 let size = proxy.size
                 let capsuleWidth = size.width / CGFloat(FavoriteType.allCases.count)
-                Capsule()
-                    .fill(scheme == .dark ? .green : .white)
-                    .padding(4)
-                    .frame(width: capsuleWidth)
-                    .offset(x: tabProgress * (size.width - capsuleWidth))
+                VStack(spacing: 0) {
+                    Spacer()
+                    Capsule()
+                        .fill(.green)
+                        .padding(4)
+                        .frame(width: capsuleWidth)
+                        .frame(height: 12)
+                        .offset(x: tabProgress * (size.width - capsuleWidth))
+                        .offset(y: 5)
+                }
             }
         }
-        .background(Color.gray.opacity(0.2))
-        .clipShape(Capsule())
+        //.background(Color.gray.opacity(0.2))
+        //.clipShape(Capsule())
         .padding(.horizontal)
     }
     
