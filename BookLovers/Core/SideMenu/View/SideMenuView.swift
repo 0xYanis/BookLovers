@@ -68,6 +68,9 @@ struct SideMenuView: View {
             Spacer()
         }
         .transition(.move(edge: .leading))
+        .onSwipe(left: {
+            isShowing = false
+        })
     }
     
     private func hideMenu() {
