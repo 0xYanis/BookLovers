@@ -64,9 +64,6 @@ struct ExploreView: View {
                     radius: 15)
                 )
             }
-            .onSwipe(right: {
-                showSideMenu = true
-            })
         }
         .toolbar {
             leadingItem

@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Swipes
+
 extension View {
     func onSwipe(
         up: @escaping (() -> Void) = {},
@@ -34,8 +35,19 @@ extension View {
 }
 
 // MARK: - Screen size
+
 extension View {
     var screen: CGRect {
         UIScreen.current?.bounds ?? .null
+    }
+    
+    func scrollPosition(
+        offset: Binding<CGFloat>,
+        in coordinateSpace: String
+    ) -> some View {
+        modifier(ScrollPositionModifier(
+            offset: offset,
+            coordinateSpace: coordinateSpace)
+        )
     }
 }

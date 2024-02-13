@@ -45,6 +45,9 @@
 		09B358E52B717D2300D1DA77 /* TagCaruselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E42B717D2300D1DA77 /* TagCaruselView.swift */; };
 		09D968B32B7A358E00D373A8 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D968B22B7A358E00D373A8 /* UIWindow+Extension.swift */; };
 		09D968B62B7A667700D373A8 /* ScaleByTapModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D968B52B7A667700D373A8 /* ScaleByTapModifier.swift */; };
+		09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */; };
+		09EB28392B7B8A810049F5AA /* ScrollPositionModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB28382B7B8A810049F5AA /* ScrollPositionModifier.swift */; };
+		09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */; };
 		09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757612B763C16004C849B /* CreateCommunityView.swift */; };
 		09F757662B763F55004C849B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757652B763F55004C849B /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +93,9 @@
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09D968B22B7A358E00D373A8 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		09D968B52B7A667700D373A8 /* ScaleByTapModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleByTapModifier.swift; sourceTree = "<group>"; };
+		09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeader.swift; sourceTree = "<group>"; };
+		09EB28382B7B8A810049F5AA /* ScrollPositionModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPositionModifier.swift; sourceTree = "<group>"; };
+		09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteType.swift; sourceTree = "<group>"; };
 		09F757612B763C16004C849B /* CreateCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityView.swift; sourceTree = "<group>"; };
 		09F757652B763F55004C849B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				09441E082B714698004A09D0 /* FavoritesView.swift */,
+				09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */,
+				09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -333,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				09D968B52B7A667700D373A8 /* ScaleByTapModifier.swift */,
+				09EB28382B7B8A810049F5AA /* ScrollPositionModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -425,7 +434,9 @@
 				094A652C2B710A0C00E6FF4E /* SideMenuView.swift in Sources */,
 				09441E092B714698004A09D0 /* FavoritesView.swift in Sources */,
 				09995C462B766E6800A3DAF0 /* WelcomeFeature.swift in Sources */,
+				09EB28392B7B8A810049F5AA /* ScrollPositionModifier.swift in Sources */,
 				094A65302B710AAB00E6FF4E /* SideMenuItem.swift in Sources */,
+				09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */,
 				0901E85C2B73C9C1007C11A5 /* InteractedSecureField.swift in Sources */,
 				094A652E2B710A5B00E6FF4E /* SideMenuHeader.swift in Sources */,
 				094E137C2B74C7E90052E0D8 /* SignInType.swift in Sources */,
@@ -445,6 +456,7 @@
 				09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */,
 				09441E052B713A49004A09D0 /* NewParagraphView.swift in Sources */,
 				09441E072B71433B004A09D0 /* SignInView.swift in Sources */,
+				09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
