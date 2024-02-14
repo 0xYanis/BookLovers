@@ -19,12 +19,12 @@ struct ExploreView: View {
             } content: {
                 exploreScreen
             }
+            .refreshable(action: {})
             .navigationBarTitleDisplayMode(.inline)
             .fullScreenCover(isPresented: $showSearchView) {
                 SearchView()
             }
         }
-        .refreshable(action: {})
     }
     
     private var exploreScreen: some View {

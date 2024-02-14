@@ -52,6 +52,7 @@
 		09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757612B763C16004C849B /* CreateCommunityView.swift */; };
 		09F757662B763F55004C849B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757652B763F55004C849B /* WelcomeView.swift */; };
 		09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */; };
+		09F9AAAE2B7D411900C0FC8D /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9AAAD2B7D411900C0FC8D /* LaunchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		09F757612B763C16004C849B /* CreateCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityView.swift; sourceTree = "<group>"; };
 		09F757652B763F55004C849B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
+		09F9AAAD2B7D411900C0FC8D /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				094A651B2B70EE8800E6FF4E /* Community */,
 				094A65192B70EE7700E6FF4E /* Explore */,
 				094A651A2B70EE8000E6FF4E /* Favorites */,
+				09F9AAAC2B7D40F900C0FC8D /* Launch */,
 				0901E85D2B73E843007C11A5 /* Search */,
 				094A65282B7109E500E6FF4E /* SideMenu */,
 				094A65182B70EE7100E6FF4E /* Tabbar */,
@@ -352,6 +355,14 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		09F9AAAC2B7D40F900C0FC8D /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				09F9AAAD2B7D411900C0FC8D /* LaunchView.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -423,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09D968B32B7A358E00D373A8 /* UIWindow+Extension.swift in Sources */,
+				09F9AAAE2B7D411900C0FC8D /* LaunchView.swift in Sources */,
 				09441E012B7132A9004A09D0 /* MenuContainer.swift in Sources */,
 				09441E032B7135AE004A09D0 /* MostPopularItem.swift in Sources */,
 				09B358E52B717D2300D1DA77 /* TagCaruselView.swift in Sources */,

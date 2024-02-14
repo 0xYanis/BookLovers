@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CommunityView: View {
-    @State private var isLogin = false
+    @State private var isLogin = true
     @State private var requestSignIn = false
     
     var body: some View {

@@ -13,7 +13,7 @@ struct XButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: "xmark.circle.fill")
-                .font(.title)
+                .font(.title2)
                 .foregroundStyle(.secondary)
         }
         .buttonStyle(.plain)
