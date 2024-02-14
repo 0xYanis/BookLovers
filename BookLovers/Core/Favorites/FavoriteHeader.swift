@@ -10,22 +10,30 @@ import SwiftUI
 struct FavoriteHeader: View {
     @Binding var searchText: String
     @Binding var selectedType: FavoriteType
+    @Binding var offset: CGFloat
     
+    @Namespace private var animation
     @State private var tabProgress: CGFloat = 0
     @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(spacing: 0) {
             //header
-            searchbar
-                .padding(.vertical, 10)
+            if isScrolling == false {
+                searchbar
+                    .opacity(isScrolling ? 0 : 1)
+                    .padding(.vertical, 10)
+                    .matchedGeometryEffect(id: "searchfav", in: animation)
+            }
             // picker
             tabbarTypePicker
                 .padding(.top, 10)
             
             Divider()
         }
+        .animation(.spring(response: 0.12), value: isScrolling)
     }
+    
     private var searchbar: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 5) {
@@ -66,6 +74,22 @@ struct FavoriteHeader: View {
                     .contentShape(Capsule())
                 }
                 .buttonStyle(.plain)
+                .background {
+                    ZStack {
+                        if isScrolling == false && selectedType == type {
+                            Capsule()
+                                .fill(.green)
+                                .padding(4)
+                                .matchedGeometryEffect(id: "favcapsule", in: animation)
+                        }
+                    }
+                }
+            }
+        }
+        .background {
+            if isScrolling == false {
+                Capsule()
+                    .fill(Color(.systemGroupedBackground))
             }
         }
         .tabMask(tabProgress)
@@ -75,17 +99,25 @@ struct FavoriteHeader: View {
                 let capsuleWidth = size.width / CGFloat(FavoriteType.allCases.count)
                 VStack(spacing: 0) {
                     Spacer()
-                    Capsule()
-                        .fill(.green)
-                        .padding(4)
-                        .frame(width: capsuleWidth)
-                        .frame(height: 12)
-                        .offset(x: tabProgress * (size.width - capsuleWidth))
-                        .offset(y: 5)
+                    if isScrolling {
+                        Capsule()
+                            .fill(.green)
+                            .padding(4)
+                            .frame(width: capsuleWidth)
+                            .frame(height: 12)
+                            .offset(x: tabProgress * (size.width - capsuleWidth))
+                            .offset(y: 5)
+                            .zIndex(0)
+                    }
                 }
             }
         }
+        .padding(.bottom, isScrolling ? 0 : 15)
         .padding(.horizontal)
+    }
+    
+    private var isScrolling: Bool {
+        abs(offset < 0 ? 0 : offset) > 150
     }
     
     private func tabTapped(_ type: FavoriteType) {

@@ -19,18 +19,23 @@ struct FavoritesView: View {
                 //header
                 FavoriteHeader(
                     searchText: $searchText,
-                    selectedType: $selectedType
+                    selectedType: $selectedType,
+                    offset: $offset
                 )
+                .zIndex(1)
                 
                 //main view
                 ScrollView {
-                    Rectangle()
-                        .fill(.red)
-                        .frame(height: 900)
-                        .padding()
+                    ForEach(0..<15, id: \.self) { _ in
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(.blue.gradient)
+                            .frame(height: 240)
+                            .padding()
+                    }
                         .scrollPosition(offset: $offset, in: "scroll")
                 }
                 .coordinateSpace(name: "scroll")
+                .zIndex(0)
             }
             .navigationBarTitleDisplayMode(.inline)
         }
