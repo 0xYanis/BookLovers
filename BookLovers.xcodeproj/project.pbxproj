@@ -51,6 +51,7 @@
 		09EB283D2B7B9B0A0049F5AA /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB283C2B7B9B0A0049F5AA /* AuthView.swift */; };
 		09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757612B763C16004C849B /* CreateCommunityView.swift */; };
 		09F757662B763F55004C849B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757652B763F55004C849B /* WelcomeView.swift */; };
+		09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		09EB283C2B7B9B0A0049F5AA /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		09F757612B763C16004C849B /* CreateCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityView.swift; sourceTree = "<group>"; };
 		09F757652B763F55004C849B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 				09441E082B714698004A09D0 /* FavoritesView.swift */,
 				09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */,
 				09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */,
+				09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				0901E85A2B73C3C7007C11A5 /* LoginView.swift in Sources */,
 				0950D8EC2B7273A9005D755A /* BookPageView.swift in Sources */,
 				09995C442B76637300A3DAF0 /* BigButton.swift in Sources */,
+				09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */,
 				09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */,

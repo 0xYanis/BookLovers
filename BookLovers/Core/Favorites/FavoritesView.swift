@@ -26,13 +26,14 @@ struct FavoritesView: View {
                 
                 //main view
                 ScrollView {
-                    ForEach(0..<15, id: \.self) { _ in
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(.blue.gradient)
-                            .frame(height: 240)
-                            .padding()
+                    LazyVStack {
+                        ForEach(0..<15, id: \.self) { _ in
+                            FavoriteItem()
+                                .padding(.top)
+                                .padding(.horizontal)
+                        }
                     }
-                        .scrollPosition(offset: $offset, in: "scroll")
+                    .scrollPosition(offset: $offset, in: "scroll")
                 }
                 .coordinateSpace(name: "scroll")
                 .zIndex(0)
