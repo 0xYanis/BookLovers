@@ -43,6 +43,8 @@
 		09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
 		09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E22B7177D400D1DA77 /* TagItem.swift */; };
 		09B358E52B717D2300D1DA77 /* TagCaruselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E42B717D2300D1DA77 /* TagCaruselView.swift */; };
+		09BBB1752B7E297600F946F4 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBB1742B7E297600F946F4 /* ChatsView.swift */; };
+		09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBB1772B7E333700F946F4 /* ChatItemView.swift */; };
 		09D968B32B7A358E00D373A8 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D968B22B7A358E00D373A8 /* UIWindow+Extension.swift */; };
 		09D968B62B7A667700D373A8 /* ScaleByTapModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D968B52B7A667700D373A8 /* ScaleByTapModifier.swift */; };
 		09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */; };
@@ -93,6 +95,8 @@
 		09B358E02B71770300D1DA77 /* LiteraryGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteraryGenre.swift; sourceTree = "<group>"; };
 		09B358E22B7177D400D1DA77 /* TagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagItem.swift; sourceTree = "<group>"; };
 		09B358E42B717D2300D1DA77 /* TagCaruselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCaruselView.swift; sourceTree = "<group>"; };
+		09BBB1742B7E297600F946F4 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
+		09BBB1772B7E333700F946F4 /* ChatItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemView.swift; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09D968B22B7A358E00D373A8 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		09D968B52B7A667700D373A8 /* ScaleByTapModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleByTapModifier.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 			children = (
 				0901E8582B73C3B6007C11A5 /* Auth */,
 				094A651B2B70EE8800E6FF4E /* Community */,
+				09BBB1762B7E297B00F946F4 /* Chat */,
 				094A65192B70EE7700E6FF4E /* Explore */,
 				094A651A2B70EE8000E6FF4E /* Favorites */,
 				09F9AAAC2B7D40F900C0FC8D /* Launch */,
@@ -346,6 +351,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		09BBB1762B7E297B00F946F4 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				09BBB1742B7E297600F946F4 /* ChatsView.swift */,
+				09BBB1772B7E333700F946F4 /* ChatItemView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		09D968B42B7A666300D373A8 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +464,7 @@
 				09736E012B7409BC00B50164 /* SearchView.swift in Sources */,
 				09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */,
 				09EB283D2B7B9B0A0049F5AA /* AuthView.swift in Sources */,
+				09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */,
 				0901E8512B7385AF007C11A5 /* TrendingBooksGridView.swift in Sources */,
 				094A652C2B710A0C00E6FF4E /* SideMenuView.swift in Sources */,
 				09441E092B714698004A09D0 /* FavoritesView.swift in Sources */,
@@ -475,6 +490,7 @@
 				094E137E2B74CB9F0052E0D8 /* RegistrationView.swift in Sources */,
 				09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */,
 				09441E052B713A49004A09D0 /* NewParagraphView.swift in Sources */,
+				09BBB1752B7E297600F946F4 /* ChatsView.swift in Sources */,
 				09441E072B71433B004A09D0 /* SignInView.swift in Sources */,
 				09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */,
 			);
