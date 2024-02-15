@@ -10,14 +10,13 @@ import SwiftUI
 struct FavoriteHeader: View {
     @Binding var searchText: String
     @Binding var selectedType: FavoriteType
-    @Binding var offset: CGFloat
+    @Binding var isScrolling: Bool
     
     @Namespace private var animation
     @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(spacing: 0) {
-            //header
             if isScrolling == false {
                 searchbar
                     .opacity(isScrolling ? 0 : 1)
@@ -27,6 +26,10 @@ struct FavoriteHeader: View {
             // picker
             tabbarTypePicker
                 .padding(.top, 10)
+                .overlay {
+                    Text("\(isScrolling.description)")
+                        .font(.largeTitle)
+                }
             
             Divider()
         }
@@ -82,17 +85,22 @@ struct FavoriteHeader: View {
                                     .padding(4)
                                     .matchedGeometryEffect(id: "favcapsule", in: animation)
                             } else {
-                                Capsule()
-                                    .fill(.green)
-                                    .padding(4)
-                                    .frame(height: 12)
-                                    .matchedGeometryEffect(id: "favcapsule", in: animation)
+                                VStack(spacing: 0) {
+                                    Spacer()
+                                    Capsule()
+                                        .fill(.green)
+                                        .frame(height: 4)
+                                        
+                                        .matchedGeometryEffect(id: "favcapsule", in: animation)
+                                }
                             }
                         }
                     }
                 }
+                .tag(type)
             }
         }
+        .animation(.spring(), value: selectedType)
         .background {
             if isScrolling == false {
                 Capsule()
@@ -103,9 +111,9 @@ struct FavoriteHeader: View {
         .padding(.horizontal)
     }
     
-    private var isScrolling: Bool {
-        abs(offset < 0 ? 0 : offset) > 150
-    }
+//    private var isScrolling: Bool {
+//        abs(offset < 0 ? 0 : offset) > 150
+//    }
     
     private func tabTapped(_ type: FavoriteType) {
         withAnimation(.spring()) {

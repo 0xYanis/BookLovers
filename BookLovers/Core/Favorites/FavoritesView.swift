@@ -11,7 +11,7 @@ struct FavoritesView: View {
     @State private var searchText = ""
     @State private var selectedType: FavoriteType = .onReading
     @State private var requestSignIn = false
-    @State private var offset: CGFloat = 0
+    @State private var isScrolling = false
     
     var body: some View {
         NavigationStack {
@@ -20,15 +20,14 @@ struct FavoritesView: View {
                 FavoriteHeader(
                     searchText: $searchText,
                     selectedType: $selectedType,
-                    offset: $offset
+                    isScrolling: $isScrolling
                 )
                 .zIndex(1)
                 
-                //main view
+                //content
                 TabView(selection: $selectedType) {
                     ForEach(FavoriteType.allCases) { type in
-                        contentView
-                            .tag(type)
+                        contentView.tag(type)
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
@@ -40,15 +39,16 @@ struct FavoritesView: View {
     private var contentView: some View {
         ScrollView {
             LazyVStack {
-                ForEach(0..<15, id: \.self) { _ in
+                ForEach(0..<15, id: \.self) { index in
                     FavoriteItem()
                         .padding(.top)
                         .padding(.horizontal)
+                        .onChange(of: index) { newValue in
+                            // TODO: 
+                        }
                 }
             }
-            .scrollPosition(offset: $offset, in: "scroll")
         }
-        .coordinateSpace(name: "scroll")
         .zIndex(0)
     }
 }
@@ -58,3 +58,4 @@ struct FavoritesView_Previews: PreviewProvider {
         FavoritesView()
     }
 }
+
