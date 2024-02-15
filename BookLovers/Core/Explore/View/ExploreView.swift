@@ -8,24 +8,36 @@
 import SwiftUI
 
 struct ExploreView: View {
+    @StateObject private var coordinator = ExploreCoordinator()
     @State private var selectedSideOption: MenuOption = .explore
     @State private var showSideMenu = false
     @State private var showSearchView = false
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $coordinator.path) {
             MenuContainer(isOpened: $showSideMenu) {
                 menuScreen
             } content: {
                 exploreScreen
+                    .environmentObject(coordinator)
             }
             .refreshable(action: {})
             .navigationBarTitleDisplayMode(.inline)
+            .onChange(of: coordinator.path) { newValue in
+                if newValue.isEmpty {
+                    selectedSideOption = .explore
+                }
+            }
+            .navigationDestination(for: MenuOption.self) { page in
+                coordinator.build(page: page)
+            }
             .fullScreenCover(isPresented: $showSearchView) {
                 SearchView()
             }
         }
     }
+    
+    // MARK: - UI components
     
     private var exploreScreen: some View {
         ScrollView {
@@ -72,8 +84,6 @@ struct ExploreView: View {
         }
     }
     
-    // MARK: - UI components
-    
     private var menuScreen: some View {
         SideMenuView(
             isShowing: $showSideMenu,
@@ -95,7 +105,11 @@ struct ExploreView: View {
     
     private var menuLeadingItems: some View {
         ForEach(MenuOption.allCases) { option in
-            Label(option.title, systemImage: option.image)
+            Button {
+                coordinator.push(page: option)
+            } label: {
+                Label(option.title, systemImage: option.image)
+            }
         }
     }
     

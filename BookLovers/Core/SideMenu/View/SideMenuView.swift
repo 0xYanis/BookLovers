@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SideMenuView: View {
     @Binding var isShowing: Bool
+    @Namespace private var animation
     @Binding var selectedOption: MenuOption
     @Environment(\.colorScheme) private var scheme
-    @Namespace private var animation
+    @EnvironmentObject private var coordinator: ExploreCoordinator
     
     var body: some View {
         ZStack {
@@ -82,9 +83,8 @@ struct SideMenuView: View {
     private func optionTapped(_ option: MenuOption) {
         withAnimation(.easeInOut(duration: 0.2)) {
             selectedOption = option
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.hideMenu()
-            }
+            hideMenu()
+            coordinator.push(page: option)
         }
     }
     
