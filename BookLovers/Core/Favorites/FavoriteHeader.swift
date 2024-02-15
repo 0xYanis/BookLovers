@@ -13,7 +13,6 @@ struct FavoriteHeader: View {
     @Binding var offset: CGFloat
     
     @Namespace private var animation
-    @State private var tabProgress: CGFloat = 0
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -76,11 +75,19 @@ struct FavoriteHeader: View {
                 .buttonStyle(.plain)
                 .background {
                     ZStack {
-                        if isScrolling == false && selectedType == type {
-                            Capsule()
-                                .fill(.green)
-                                .padding(4)
-                                .matchedGeometryEffect(id: "favcapsule", in: animation)
+                        if selectedType == type {
+                            if isScrolling == false {
+                                Capsule()
+                                    .fill(.green)
+                                    .padding(4)
+                                    .matchedGeometryEffect(id: "favcapsule", in: animation)
+                            } else {
+                                Capsule()
+                                    .fill(.green)
+                                    .padding(4)
+                                    .frame(height: 12)
+                                    .matchedGeometryEffect(id: "favcapsule", in: animation)
+                            }
                         }
                     }
                 }
@@ -90,26 +97,6 @@ struct FavoriteHeader: View {
             if isScrolling == false {
                 Capsule()
                     .fill(Color(.systemGroupedBackground))
-            }
-        }
-        .tabMask(tabProgress)
-        .background {
-            GeometryReader { proxy in
-                let size = proxy.size
-                let capsuleWidth = size.width / CGFloat(FavoriteType.allCases.count)
-                VStack(spacing: 0) {
-                    Spacer()
-                    if isScrolling {
-                        Capsule()
-                            .fill(.green)
-                            .padding(4)
-                            .frame(width: capsuleWidth)
-                            .frame(height: 12)
-                            .offset(x: tabProgress * (size.width - capsuleWidth))
-                            .offset(y: 5)
-                            .zIndex(0)
-                    }
-                }
             }
         }
         .padding(.bottom, isScrolling ? 0 : 15)
@@ -123,38 +110,6 @@ struct FavoriteHeader: View {
     private func tabTapped(_ type: FavoriteType) {
         withAnimation(.spring()) {
             selectedType = type
-            switch type {
-            case .onReading:
-                tabProgress = 0
-            case .readingList:
-                tabProgress = 0.5
-            case .archived:
-                tabProgress = 1
-            }
-        }
-    }
-}
-
-// MARK: - Tab mask for text in capsule
-
-extension View {
-    @ViewBuilder
-    func tabMask(_ tabProgress: CGFloat) -> some View {
-        ZStack {
-            self
-                .foregroundStyle(.secondary)
-            
-            self
-                .symbolVariant(.fill)
-                .mask {
-                    GeometryReader { proxy in
-                        let size = proxy.size
-                        let capsuleWidth = size.width / CGFloat(FavoriteType.allCases.count)
-                        Capsule()
-                            .frame(width: capsuleWidth)
-                            .offset(x: tabProgress * (size.width - capsuleWidth))
-                    }
-                }
         }
     }
 }

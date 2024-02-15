@@ -25,21 +25,31 @@ struct FavoritesView: View {
                 .zIndex(1)
                 
                 //main view
-                ScrollView {
-                    LazyVStack {
-                        ForEach(0..<15, id: \.self) { _ in
-                            FavoriteItem()
-                                .padding(.top)
-                                .padding(.horizontal)
-                        }
+                TabView(selection: $selectedType) {
+                    ForEach(FavoriteType.allCases) { type in
+                        contentView
+                            .tag(type)
                     }
-                    .scrollPosition(offset: $offset, in: "scroll")
                 }
-                .coordinateSpace(name: "scroll")
-                .zIndex(0)
+                .tabViewStyle(.page(indexDisplayMode: .never))
             }
             .navigationBarTitleDisplayMode(.inline)
         }
+    }
+    
+    private var contentView: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(0..<15, id: \.self) { _ in
+                    FavoriteItem()
+                        .padding(.top)
+                        .padding(.horizontal)
+                }
+            }
+            .scrollPosition(offset: $offset, in: "scroll")
+        }
+        .coordinateSpace(name: "scroll")
+        .zIndex(0)
     }
 }
 
