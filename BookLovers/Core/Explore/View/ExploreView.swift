@@ -82,11 +82,20 @@ struct ExploreView: View {
     
     private var leadingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
-            Button(action: leadingItemAction) {
+            Menu {
+                if !showSideMenu { menuLeadingItems }
+            } label: {
                 Image(systemName: showSideMenu ? "arrow.left" : "list.bullet")
                     .foregroundStyle(showSideMenu ? .gray : .primary)
+            } primaryAction: {
+                leadingItemAction()
             }
-            .buttonStyle(.plain)
+        }
+    }
+    
+    private var menuLeadingItems: some View {
+        ForEach(MenuOption.allCases) { option in
+            Label(option.title, systemImage: option.image)
         }
     }
     
