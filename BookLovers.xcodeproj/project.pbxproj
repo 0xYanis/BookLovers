@@ -320,7 +320,6 @@
 			children = (
 				09B358E22B7177D400D1DA77 /* TagItem.swift */,
 				09B358E42B717D2300D1DA77 /* TagCaruselView.swift */,
-				0950D8E32B723796005D755A /* CustomCornersShape.swift */,
 				0901E85B2B73C9C1007C11A5 /* InteractedSecureField.swift */,
 				09736E042B7413E900B50164 /* XButton.swift */,
 				09736E062B74149700B50164 /* ImageButton.swift */,
@@ -333,6 +332,7 @@
 		09736E092B74164D00B50164 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				0950D8E32B723796005D755A /* CustomCornersShape.swift */,
 				09441E042B713A49004A09D0 /* NewParagraphView.swift */,
 				09441E002B7132A9004A09D0 /* MenuContainer.swift */,
 				0969C0162B7F6E8E0049F62F /* BubbleShape.swift */,
