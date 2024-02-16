@@ -15,80 +15,24 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            MenuContainer(isOpened: $showSideMenu) {
-                menuScreen
-            } content: {
-                exploreScreen
-                    .environmentObject(coordinator)
-            }
+            MenuContainer(
+                isOpened: $showSideMenu,
+                menu: menuScreen,
+                content: exploreScreen)
+            .environmentObject(coordinator)
             .refreshable(action: {})
             .navigationBarTitleDisplayMode(.inline)
-            .onChange(of: coordinator.path) { newValue in
-                if newValue.isEmpty {
-                    selectedSideOption = .explore
-                }
+            .onChange(of: coordinator.path) {
+                if $0.isEmpty { selectedSideOption = .explore }
             }
-            .navigationDestination(for: MenuOption.self) { page in
-                coordinator.build(page: page)
+            .navigationDestination(for: MenuOption.self) {
+                coordinator.build(page: $0)
             }
-            .fullScreenCover(isPresented: $showSearchView) {
-                SearchView()
-            }
+            .fullScreenCover(isPresented: $showSearchView, content: SearchView.init)
         }
     }
     
     // MARK: - UI components
-    
-    private var exploreScreen: some View {
-        ScrollView {
-            // header
-            LazyVStack(spacing: 0) {
-                ExploreHeader(showSearchView: $showSearchView)
-                    .padding(.bottom)
-                
-                LazyVStack(spacing: 0) {
-                    // most popular now
-                    NewParagraphView(title: "Most Popular") {
-                        TabView {
-                            ForEach(0..<3, id: \.self) { item in
-                                MostPopularItem()
-                                    .padding(.horizontal)
-                            }
-                        }
-                        .frame(height: 150)
-                        .tabViewStyle(.page(indexDisplayMode: .never))
-                    } topItem: {
-                        Button("View all", action: {})
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                    // all books
-                    Divider().padding(.horizontal)
-                    NewParagraphView(title: "Trending Books") {
-                        
-                    }
-                }
-                .padding(.top)
-                .frame(maxWidth: .infinity)
-                .background(Color(uiColor: .secondarySystemBackground))
-                .clipShape(CustomCornersShape(
-                    corners: [.topLeft, .topRight],
-                    radius: 15)
-                )
-            }
-        }
-        .toolbar {
-            leadingItem
-            centerItem
-            trailingItem
-        }
-    }
-    
-    private var menuScreen: some View {
-        SideMenuView(
-            isShowing: $showSideMenu,
-            selectedOption: $selectedSideOption)
-    }
     
     private var leadingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
@@ -133,6 +77,57 @@ struct ExploreView: View {
                     .clipShape(Circle())
             }
         }
+    }
+    
+    private func exploreScreen() -> some View {
+        ScrollView {
+            // header
+            LazyVStack(spacing: 0) {
+                ExploreHeader(showSearchView: $showSearchView)
+                    .padding(.bottom)
+                
+                LazyVStack(spacing: 0) {
+                    // most popular now
+                    NewParagraphView(title: "Most Popular") {
+                        TabView {
+                            ForEach(0..<3, id: \.self) { item in
+                                MostPopularItem()
+                                    .padding(.horizontal)
+                            }
+                        }
+                        .frame(height: 150)
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                    } topItem: {
+                        Button("View all", action: {})
+                            .foregroundStyle(.secondary)
+                    }
+                    
+                    // all books
+                    Divider().padding(.horizontal)
+                    NewParagraphView(title: "Trending Books") {
+                        
+                    }
+                }
+                .padding(.top)
+                .frame(maxWidth: .infinity)
+                .background(Color(uiColor: .secondarySystemBackground))
+                .clipShape(CustomCornersShape(
+                    corners: [.topLeft, .topRight],
+                    radius: 15)
+                )
+            }
+        }
+        .toolbar {
+            leadingItem
+            centerItem
+            trailingItem
+        }
+    }
+    
+    private func menuScreen() -> some View {
+        SideMenuView(
+            isShowing: $showSideMenu,
+            selectedOption: $selectedSideOption)
     }
     
     // MARK: - Actions
