@@ -21,15 +21,14 @@ struct SearchView: View {
                     
                     SearchBar("Search books", text: $searchText)
                         .focused($isFocused)
+                        .onSubmit(isSearching)
                         .padding(.horizontal)
                     
                     historyView
                     
                     NewParagraphView(title: "Discover") {
                         VStack {
-                            TagCaruselView(tags: LiteraryGenre.asArray) { id in
-                                
-                            }
+                            TagCaruselView(tags: LiteraryGenre.asArray, onTap: sortByTag)
                             MostPopularItem()
                                 .frame(height: 150)
                                 .padding()
@@ -97,6 +96,14 @@ struct SearchView: View {
     }
     
     private func setSortType(_ type: SortType) {
+        
+    }
+    
+    private func isSearching() {
+        
+    }
+    
+    private func sortByTag(_ id: Int) {
         
     }
 }

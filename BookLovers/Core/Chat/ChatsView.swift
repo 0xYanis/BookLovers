@@ -15,24 +15,11 @@ struct ChatsView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 Section {
-                    ScrollView {
-                        contentView
-                    }
+                    ScrollView(content: contentView)
                 } header: {
                     headerView
                 }
             }
-        }
-    }
-    
-    private var contentView: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(0..<30, id: \.self) { chat in
-                    ChatItemView()
-                }
-            }
-            .padding()
         }
     }
     
@@ -93,6 +80,22 @@ struct ChatsView: View {
         .background(Color(.systemBackground))
         .clipShape(Capsule())
         .padding(.horizontal)
+    }
+    
+    private func contentView() -> some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(0..<30, id: \.self) { chat in
+                    ChatItemView(
+                        avatar: "avatar",
+                        name: "Yanis",
+                        message: "Hello world!",
+                        time: Date(),
+                        isRead: true)
+                }
+            }
+            .padding()
+        }
     }
 }
 
