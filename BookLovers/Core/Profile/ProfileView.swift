@@ -21,6 +21,7 @@ struct ProfileView: View {
     @State private var progress: CGFloat = 0
     
     @Namespace private var headerSnap
+    @Environment(\.dismiss) private var dismiss
     
     private let minHeight: CGFloat = 100
     private let maxHeight: CGFloat = 350
@@ -59,7 +60,7 @@ struct ProfileView: View {
     private var leadingButton: some View {
         if currentSnapPos == .extended {
             Button(action: {
-                
+                dismiss.callAsFunction()
             }, label: {
                 Image(systemName: "chevron.left")
             })
@@ -69,7 +70,7 @@ struct ProfileView: View {
             .clipShape(Circle())
         } else {
             Button(action: {
-                
+                dismiss.callAsFunction()
             }, label: {
                 Image(systemName: "chevron.left")
             })
@@ -82,7 +83,7 @@ struct ProfileView: View {
     private var trailingButton: some View {
         if currentSnapPos == .extended {
             Button("Change") {
-                
+                changeButton()
             }
             .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
             .padding(5)
@@ -90,7 +91,7 @@ struct ProfileView: View {
             .clipShape(Capsule())
         } else {
             Button("Change") {
-                
+                changeButton()
             }
             .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
             .padding(5)
@@ -110,6 +111,10 @@ struct ProfileView: View {
         .height(min: minHeight, max: maxHeight)
         .hideScrollIndicators()
         .ignoresSafeArea()
+    }
+    
+    private func changeButton() {
+        
     }
 }
 

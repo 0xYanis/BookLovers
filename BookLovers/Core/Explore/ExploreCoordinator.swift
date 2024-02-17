@@ -32,7 +32,7 @@ final class ExploreCoordinator: ObservableObject {
         case .profile:
             ProfileView()
         case .communities:
-            Text("")
+            CreateCommunityView()
         case .privacyPolicy:
             Text("")
         case .support:

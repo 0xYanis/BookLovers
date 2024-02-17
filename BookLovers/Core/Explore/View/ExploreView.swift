@@ -139,7 +139,7 @@ struct ExploreView: View {
     }
     
     private func trailingItemAction() {
-        
+        coordinator.push(page: .profile)
     }
 }
 
