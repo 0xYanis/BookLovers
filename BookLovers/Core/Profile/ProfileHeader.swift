@@ -22,11 +22,12 @@ struct ProfileHeader: View {
     private var hideStateView: some View {
         ZStack(alignment: .bottom) {
             Rectangle().fill(.gray.opacity(0.15))
-            Text("0xYanis")
-                .font(.title2)
-                .fontWeight(.semibold)
-                .matchedGeometryEffect(id: "nickname", in: headerSnap)
-                .padding(.bottom, 10)
+            VStack {
+                Text("0xYanis")
+                    .fontWeight(.semibold)
+                    .matchedGeometryEffect(id: "nickname", in: headerSnap)
+                    .padding(.bottom, 10)
+            }
         }
     }
     

@@ -27,6 +27,14 @@ struct ProfileView: View {
     
     var body: some View {
         scalingHeaderScrollView
+            .overlay(alignment: .top) {
+                HStack {
+                    leadingButton
+                    Spacer()
+                    trailingButton
+                }
+                .padding(.horizontal)
+            }
             .toolbar(.hidden, for: .navigationBar)
             .toolbar(.hidden, for: .tabBar)
             .onChange(of: progress) { newValue in
@@ -45,6 +53,48 @@ struct ProfileView: View {
                     }
                 }
             }
+    }
+    
+    @ViewBuilder
+    private var leadingButton: some View {
+        if currentSnapPos == .extended {
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "chevron.left")
+            })
+            .matchedGeometryEffect(id: "leadingButt", in: headerSnap)
+            .padding(5)
+            .background(Material.ultraThickMaterial)
+            .clipShape(Circle())
+        } else {
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "chevron.left")
+            })
+            .matchedGeometryEffect(id: "leadingButt", in: headerSnap)
+            .padding(5)
+        }
+    }
+    
+    @ViewBuilder
+    private var trailingButton: some View {
+        if currentSnapPos == .extended {
+            Button("Change") {
+                
+            }
+            .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
+            .padding(5)
+            .background(Material.ultraThickMaterial)
+            .clipShape(Capsule())
+        } else {
+            Button("Change") {
+                
+            }
+            .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
+            .padding(5)
+        }
     }
     
     private var scalingHeaderScrollView: some View {
