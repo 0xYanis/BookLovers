@@ -22,7 +22,7 @@ struct MainTabbarView: View {
                         Image(uiImage: item.uiImage(selected: selectedTab))
                         Text(item.name)
                     }
-                    .badge(item == .explore ? userStore.messageCount : 0)
+                    .badge(item == .community ? userStore.messageCount : 0)
             }
         }
         .toolbar(visibility, for: .tabBar)
