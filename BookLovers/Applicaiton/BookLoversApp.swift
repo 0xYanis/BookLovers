@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BookLoversApp: App {
+    @StateObject private var userStore = UserStore()
+    
     var body: some Scene {
         WindowGroup {
             LaunchView()
+                .environmentObject(userStore)
         }
     }
 }

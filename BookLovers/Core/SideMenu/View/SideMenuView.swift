@@ -11,9 +11,10 @@ struct SideMenuView: View {
     @Binding var isShowing: Bool
     @Namespace private var animation
     @Binding var selectedOption: MenuOption
+    
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var coordinator: ExploreCoordinator
-    
+    @EnvironmentObject private var userStore: UserStore
     var body: some View {
         ZStack {
             if isShowing {
@@ -57,7 +58,8 @@ struct SideMenuView: View {
                     Divider()
                     
                     defaultButton("Log out", image: "door.left.hand.open") {
-                        
+                        userStore.setStatus(isAuthenticated: false)
+                        coordinator.popToRoot()
                     }
                     .padding()
                 }

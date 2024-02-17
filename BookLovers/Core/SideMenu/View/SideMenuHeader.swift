@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SideMenuHeader: View {
+    @EnvironmentObject private var userStore: UserStore
+    
     var body: some View {
         HStack {
-            Image(systemName: "person.circle.fill")
+            Image(uiImage: userStore.uiImage)
                 .imageScale(.large)
                 .foregroundColor(.white)
                 .frame(width: 48, height: 48)
@@ -19,10 +21,10 @@ struct SideMenuHeader: View {
                 .padding(.vertical)
             
             VStack(alignment: .leading, spacing: 6) {
-                Text("Yanis Rybkin")
+                Text(userStore.username)
                     .font(.subheadline)
                 
-                Text("@perebor")
+                Text("@\(userStore.username)")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }

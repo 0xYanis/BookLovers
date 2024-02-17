@@ -28,14 +28,6 @@ enum TabItem: String, Identifiable, CaseIterable {
         return "\(image).fill"
     }
     
-    var badgeNumber: Int {
-        switch self {
-        case .explore  : return 0
-        case .favorites: return 0
-        case .community: return 4
-        }
-    }
-    
     @ViewBuilder
     var view: some View {
         switch self {

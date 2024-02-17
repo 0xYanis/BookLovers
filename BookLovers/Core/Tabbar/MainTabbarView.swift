@@ -11,6 +11,7 @@ struct MainTabbarView: View {
     @State private var visibility: Visibility = .automatic
     @State private var selectedTab: TabItem = .explore
     @State private var showOnboarding: Bool = false
+    @EnvironmentObject private var userStore: UserStore
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -21,7 +22,7 @@ struct MainTabbarView: View {
                         Image(uiImage: item.uiImage(selected: selectedTab))
                         Text(item.name)
                     }
-                    .badge(item.badgeNumber)
+                    .badge(item == .explore ? userStore.messageCount : 0)
             }
         }
         .toolbar(visibility, for: .tabBar)
@@ -35,5 +36,6 @@ struct MainTabbarView: View {
 struct MainTabbarView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabbarView()
+            .environmentObject(UserStore())
     }
 }

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct CommunityView: View {
-    @State private var isLogin = true
+    @EnvironmentObject private var userStore: UserStore
     @State private var requestSignIn = false
     
     var body: some View {
         NavigationStack {
-            if isLogin {
+            if userStore.isAuthenticated {
                 CreateCommunityView()
             } else {
                 SignInView(type: .community, requestSignIn: $requestSignIn)

@@ -11,6 +11,8 @@ struct ProfileHeader: View {
     @Binding var currentSnapPos: SnapPosition
     var headerSnap: Namespace.ID
     
+    @EnvironmentObject private var userStore: UserStore
+    
     var body: some View {
         switch currentSnapPos {
         case .hide    : hideStateView
@@ -23,7 +25,7 @@ struct ProfileHeader: View {
         ZStack(alignment: .bottom) {
             Rectangle().fill(.gray.opacity(0.15))
             VStack {
-                Text("0xYanis")
+                Text(userStore.username)
                     .fontWeight(.semibold)
                     .matchedGeometryEffect(id: "nickname", in: headerSnap)
                     .padding(.bottom, 10)
@@ -35,7 +37,7 @@ struct ProfileHeader: View {
         ZStack(alignment: .bottom) {
             Rectangle().fill(.gray.opacity(0.15))
             VStack {
-                Image("avatar")
+                Image(uiImage: userStore.uiImage)
                     .resizable()
                     .scaledToFit()
                     .matchedGeometryEffect(id: "avatar", in: headerSnap)
@@ -43,7 +45,7 @@ struct ProfileHeader: View {
                     .clipShape(Circle())
                 
                 
-                Text("0xYanis")
+                Text(userStore.username)
                     .font(.title)
                     .fontWeight(.semibold)
                     .matchedGeometryEffect(id: "nickname", in: headerSnap)
@@ -54,13 +56,13 @@ struct ProfileHeader: View {
     
     private var extendedStateView: some View {
         ZStack {
-            Image("avatar")
+            Image(uiImage: userStore.uiImage)
                 .resizable()
                 .matchedGeometryEffect(id: "avatar", in: headerSnap)
                 .scaledToFill()
                 .frame(width: screen.width)
                 .overlay(alignment: .bottomLeading) {
-                    Text("0xYanis")
+                    Text(userStore.username)
                         .underline()
                         .font(.title)
                         .fontWeight(.semibold)
@@ -76,5 +78,6 @@ struct ProfileHeader: View {
 struct ProfileHeader_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+            .environmentObject(UserStore())
     }
 }

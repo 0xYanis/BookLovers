@@ -13,6 +13,8 @@ struct ExploreView: View {
     @State private var showSideMenu = false
     @State private var showSearchView = false
     
+    @EnvironmentObject private var userStore: UserStore
+    
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             MenuContainer(
@@ -70,11 +72,18 @@ struct ExploreView: View {
     private var trailingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: trailingItemAction) {
-                Image("avatar")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 27)
-                    .clipShape(Circle())
+                if userStore.isAuthenticated {
+                    Image(uiImage: userStore.uiImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 27)
+                        .clipShape(Circle())
+                } else {
+                    Image(uiImage: userStore.uiImage)
+                        .padding(7)
+                        .background(Color(.systemBackground))
+                        .clipShape(Circle())
+                }
             }
         }
     }
