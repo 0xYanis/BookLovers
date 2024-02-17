@@ -26,8 +26,19 @@ final class ExploreCoordinator: ObservableObject {
     
     @ViewBuilder
     func build(page: MenuOption) -> some View {
-        Text(page.title)
-            .tag(page)
-            .navigationTitle(page.title)
+        switch page {
+        case .explore:
+            Text("")
+        case .profile:
+            ProfileView()
+        case .communities:
+            Text("")
+        case .privacyPolicy:
+            Text("")
+        case .support:
+            Text("")
+        case .aboutUs:
+            Text("")
+        }
     }
 }

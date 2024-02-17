@@ -27,6 +27,8 @@ struct ProfileView: View {
     
     var body: some View {
         scalingHeaderScrollView
+            .toolbar(.hidden, for: .navigationBar)
+            .toolbar(.hidden, for: .tabBar)
             .onChange(of: progress) { newValue in
                 withAnimation(.spring(response: 0.2)) {
                     if newValue >= 0.75 {
@@ -49,7 +51,7 @@ struct ProfileView: View {
         ScalingHeaderScrollView {
             ProfileHeader(currentSnapPos: $currentSnapPos, headerSnap: headerSnap)
         } content: {
-            
+            ProfileContent()
         }
         .scrollOffset($scrollOffset)
         .collapseProgress($progress)
