@@ -12,8 +12,8 @@ struct SideMenuHeader: View {
     
     var body: some View {
         HStack {
-            Image(uiImage: userStore.uiImage)
-                .imageScale(.large)
+            userStore.image
+                .resizable()
                 .foregroundColor(.white)
                 .frame(width: 48, height: 48)
                 .background(.green)

@@ -72,18 +72,11 @@ struct ExploreView: View {
     private var trailingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: trailingItemAction) {
-                if userStore.isAuthenticated {
-                    Image(uiImage: userStore.uiImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 27)
-                        .clipShape(Circle())
-                } else {
-                    Image(uiImage: userStore.uiImage)
-                        .padding(7)
-                        .background(Color(.systemBackground))
-                        .clipShape(Circle())
-                }
+                userStore.image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 27, height: 27)
+                    .clipShape(Circle())
             }
         }
     }

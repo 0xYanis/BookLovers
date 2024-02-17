@@ -197,7 +197,6 @@
 				09A165742B80FD30008C0AB3 /* Managers */,
 				09B358DF2B7176E400D1DA77 /* Models */,
 				0935487A2B5EAF0B00CC4955 /* Resources */,
-				09A165772B8120BD008C0AB3 /* UserStore.swift */,
 			);
 			path = BookLovers;
 			sourceTree = "<group>";
@@ -214,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */,
+				09A165772B8120BD008C0AB3 /* UserStore.swift */,
 			);
 			path = Applicaiton;
 			sourceTree = "<group>";

@@ -37,11 +37,11 @@ struct ProfileHeader: View {
         ZStack(alignment: .bottom) {
             Rectangle().fill(.gray.opacity(0.15))
             VStack {
-                Image(uiImage: userStore.uiImage)
+                userStore.image
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .matchedGeometryEffect(id: "avatar", in: headerSnap)
-                    .frame(width: 130)
+                    .frame(width: 130, height: 130)
                     .clipShape(Circle())
                 
                 
@@ -56,11 +56,11 @@ struct ProfileHeader: View {
     
     private var extendedStateView: some View {
         ZStack {
-            Image(uiImage: userStore.uiImage)
+            userStore.image
                 .resizable()
                 .matchedGeometryEffect(id: "avatar", in: headerSnap)
                 .scaledToFill()
-                .frame(width: screen.width)
+                .frame(width: screen.width, height: screen.height/2.5)
                 .overlay(alignment: .bottomLeading) {
                     Text(userStore.username)
                         .underline()

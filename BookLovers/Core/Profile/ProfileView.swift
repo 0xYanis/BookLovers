@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ScalingHeaderScrollView
+import PhotosUI
 
 enum SnapPosition {
     case hide
@@ -19,6 +20,8 @@ struct ProfileView: View {
     @State private var currentSnapPos: SnapPosition = .normal
     @State private var scrollOffset: CGFloat = 0
     @State private var progress: CGFloat = 0
+    @State private var showPicker = false
+    @State private var selection: PhotosPickerItem?
     
     @Namespace private var headerSnap
     @Environment(\.dismiss) private var dismiss
@@ -55,6 +58,14 @@ struct ProfileView: View {
                     }
                 }
             }
+            .onChange(of: selection) { selected in
+                Task {
+                    if let data = try? await selected?.loadTransferable(type: Data.self),
+                    let image = UIImage(data: data) {
+                        userStore.setImage(Image(uiImage: image))
+                    }
+                }
+            }
     }
     
     @ViewBuilder
@@ -69,6 +80,7 @@ struct ProfileView: View {
             .padding(5)
             .background(Material.ultraThickMaterial)
             .clipShape(Circle())
+            .shadow(radius: 10)
         } else {
             Button(action: {
                 dismiss.callAsFunction()
@@ -83,17 +95,14 @@ struct ProfileView: View {
     @ViewBuilder
     private var trailingButton: some View {
         if currentSnapPos == .extended {
-            Button("Change") {
-                changeButton()
-            }
+            PhotosPicker("Change", selection: $selection, matching: .images)
             .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
             .padding(5)
             .background(Material.ultraThickMaterial)
             .clipShape(Capsule())
+            .shadow(radius: 10)
         } else {
-            Button("Change") {
-                changeButton()
-            }
+            PhotosPicker("Change", selection: $selection, matching: .images)
             .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
             .padding(5)
         }
