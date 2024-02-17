@@ -42,6 +42,9 @@
 		09995C442B76637300A3DAF0 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09995C432B76637300A3DAF0 /* BigButton.swift */; };
 		09995C462B766E6800A3DAF0 /* WelcomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09995C452B766E6800A3DAF0 /* WelcomeFeature.swift */; };
 		09995C482B76728F00A3DAF0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09995C472B76728F00A3DAF0 /* OnboardingView.swift */; };
+		09A165662B80A64E008C0AB3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165652B80A64E008C0AB3 /* ProfileView.swift */; };
+		09A165692B80A79A008C0AB3 /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 09A165682B80A79A008C0AB3 /* ScalingHeaderScrollView */; };
+		09A1656F2B80BC5F008C0AB3 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A1656E2B80BC5F008C0AB3 /* ProfileHeader.swift */; };
 		09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
 		09B358E32B7177D400D1DA77 /* TagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E22B7177D400D1DA77 /* TagItem.swift */; };
 		09B358E52B717D2300D1DA77 /* TagCaruselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E42B717D2300D1DA77 /* TagCaruselView.swift */; };
@@ -59,6 +62,18 @@
 		09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */; };
 		09F9AAAE2B7D411900C0FC8D /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9AAAD2B7D411900C0FC8D /* LaunchView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		09A1656C2B80ABCA008C0AB3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0901E8502B7385AF007C11A5 /* TrendingBooksGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBooksGridView.swift; sourceTree = "<group>"; };
@@ -97,6 +112,8 @@
 		09995C432B76637300A3DAF0 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		09995C452B766E6800A3DAF0 /* WelcomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeFeature.swift; sourceTree = "<group>"; };
 		09995C472B76728F00A3DAF0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		09A165652B80A64E008C0AB3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		09A1656E2B80BC5F008C0AB3 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		09B358E02B71770300D1DA77 /* LiteraryGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteraryGenre.swift; sourceTree = "<group>"; };
 		09B358E22B7177D400D1DA77 /* TagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagItem.swift; sourceTree = "<group>"; };
 		09B358E42B717D2300D1DA77 /* TagCaruselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCaruselView.swift; sourceTree = "<group>"; };
@@ -121,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A165692B80A79A008C0AB3 /* ScalingHeaderScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +229,7 @@
 				094A65192B70EE7700E6FF4E /* Explore */,
 				094A651A2B70EE8000E6FF4E /* Favorites */,
 				09F9AAAC2B7D40F900C0FC8D /* Launch */,
+				09A1656D2B80BC4A008C0AB3 /* Profile */,
 				0901E85D2B73E843007C11A5 /* Search */,
 				094A65282B7109E500E6FF4E /* SideMenu */,
 				094A65182B70EE7100E6FF4E /* Tabbar */,
@@ -349,6 +368,15 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		09A1656D2B80BC4A008C0AB3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				09A165652B80A64E008C0AB3 /* ProfileView.swift */,
+				09A1656E2B80BC5F008C0AB3 /* ProfileHeader.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		09B358DF2B7176E400D1DA77 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,12 +424,17 @@
 				093548642B5EAEDE00CC4955 /* Sources */,
 				093548652B5EAEDE00CC4955 /* Frameworks */,
 				093548662B5EAEDE00CC4955 /* Resources */,
+				09A1656C2B80ABCA008C0AB3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				09A1656B2B80AB9C008C0AB3 /* PBXTargetDependency */,
 			);
 			name = BookLovers;
+			packageProductDependencies = (
+				09A165682B80A79A008C0AB3 /* ScalingHeaderScrollView */,
+			);
 			productName = BookLovers;
 			productReference = 093548682B5EAEDE00CC4955 /* BookLovers.app */;
 			productType = "com.apple.product-type.application";
@@ -430,6 +463,9 @@
 				Base,
 			);
 			mainGroup = 0935485F2B5EAEDE00CC4955;
+			packageReferences = (
+				09A165672B80A79A008C0AB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
+			);
 			productRefGroup = 093548692B5EAEDE00CC4955 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -488,6 +524,7 @@
 				094E137C2B74C7E90052E0D8 /* SignInType.swift in Sources */,
 				09995C482B76728F00A3DAF0 /* OnboardingView.swift in Sources */,
 				094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */,
+				09A165662B80A64E008C0AB3 /* ProfileView.swift in Sources */,
 				09D968B62B7A667700D373A8 /* ScaleByTapModifier.swift in Sources */,
 				094A652A2B7109F800E6FF4E /* MenuOption.swift in Sources */,
 				0950D8E62B725564005D755A /* TabItem.swift in Sources */,
@@ -499,6 +536,7 @@
 				09736E072B74149700B50164 /* ImageButton.swift in Sources */,
 				09F757662B763F55004C849B /* WelcomeView.swift in Sources */,
 				094E137E2B74CB9F0052E0D8 /* RegistrationView.swift in Sources */,
+				09A1656F2B80BC5F008C0AB3 /* ProfileHeader.swift in Sources */,
 				09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */,
 				09441E052B713A49004A09D0 /* NewParagraphView.swift in Sources */,
 				09BBB1752B7E297600F946F4 /* ChatsView.swift in Sources */,
@@ -509,6 +547,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		09A1656B2B80AB9C008C0AB3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 09A1656A2B80AB9C008C0AB3 /* ScalingHeaderScrollView */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		093548742B5EAEE100CC4955 /* Debug */ = {
@@ -705,6 +750,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		09A165672B80A79A008C0AB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ScalingHeaderScrollView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		09A165682B80A79A008C0AB3 /* ScalingHeaderScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09A165672B80A79A008C0AB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
+			productName = ScalingHeaderScrollView;
+		};
+		09A1656A2B80AB9C008C0AB3 /* ScalingHeaderScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09A165672B80A79A008C0AB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
+			productName = ScalingHeaderScrollView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 093548602B5EAEDE00CC4955 /* Project object */;
 }
