@@ -61,15 +61,17 @@ struct ProfileEditorView: View {
                     }
                 }
                 
-                Section {
-                    Button("Remove account", action: deleteAccountAciton)
-                        .disabled( !userStore.isAuthenticated )
-                        .frame(maxWidth: .infinity, alignment: .center)
-                } footer: {
-                    Text("You can easily delete your account and all data associated with it.")
+                if userStore.isAuthenticated {
+                    Section {
+                        Button("Remove account", action: deleteAccountAciton)
+                            .disabled( !userStore.isAuthenticated )
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    } footer: {
+                        Text("You can easily delete your account and all data associated with it.")
+                    }
+                    .tint(.white)
+                    .listRowBackground(Color.red.opacity(userStore.isAuthenticated ? 1.0 : 0.5))
                 }
-                .tint(.white)
-                .listRowBackground(Color.red.opacity(userStore.isAuthenticated ? 1.0 : 0.5))
             }
         }
         .sheet(isPresented: $showSignIn) {
