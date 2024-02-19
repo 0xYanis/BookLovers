@@ -20,10 +20,9 @@ struct ProfileView: View {
     @State private var currentSnapPos: SnapPosition = .normal
     @State private var scrollOffset: CGFloat = 0
     @State private var progress: CGFloat = 0
-    @State private var showPicker = false
-    @State private var selection: PhotosPickerItem?
     
     @Namespace private var headerSnap
+    @Environment(\.editMode) private var editMode
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userStore: UserStore
     
@@ -31,41 +30,39 @@ struct ProfileView: View {
     private let maxHeight: CGFloat = 350
     
     var body: some View {
-        scalingHeaderScrollView
-            .overlay(alignment: .top) {
-                HStack {
-                    leadingButton
-                    Spacer()
-                    trailingButton
-                }
-                .padding(.horizontal)
+        ZStack {
+            if editMode?.wrappedValue == .active {
+                ProfileEditorView()
+            } else {
+                scalingHeaderScrollView
             }
-            .toolbar(.hidden, for: .navigationBar)
-            .toolbar(.hidden, for: .tabBar)
-            .onChange(of: progress) { newValue in
-                withAnimation(.spring(response: 0.2)) {
-                    if newValue >= 0.75 {
-                        currentSnapPos = .hide
-                    } else if newValue <= 0.75 {
-                        currentSnapPos = .normal
-                    }
-                }
+        }
+        .overlay(alignment: .top) {
+            HStack {
+                leadingButton
+                Spacer()
+                trailingButton
             }
-            .onChange(of: scrollOffset) { newValue in
-                withAnimation(.spring(response: 0.2)) {
-                    if scrollOffset < -1 && scrollOffset < -100 {
-                        currentSnapPos = .extended
-                    }
+            .padding(.horizontal)
+        }
+        .toolbar(.hidden, for: .navigationBar)
+        .toolbar(.hidden, for: .tabBar)
+        .onChange(of: progress) { newValue in
+            withAnimation(.spring(response: 0.2)) {
+                if newValue >= 0.75 {
+                    currentSnapPos = .hide
+                } else if newValue <= 0.75 {
+                    currentSnapPos = .normal
                 }
             }
-            .onChange(of: selection) { selected in
-                Task {
-                    if let data = try? await selected?.loadTransferable(type: Data.self),
-                    let image = UIImage(data: data) {
-                        userStore.setImage(Image(uiImage: image))
-                    }
+        }
+        .onChange(of: scrollOffset) { newValue in
+            withAnimation(.spring(response: 0.2)) {
+                if scrollOffset < -1 && scrollOffset < -100 {
+                    currentSnapPos = .extended
                 }
             }
+        }
     }
     
     @ViewBuilder
@@ -95,16 +92,16 @@ struct ProfileView: View {
     @ViewBuilder
     private var trailingButton: some View {
         if currentSnapPos == .extended {
-            PhotosPicker("Change", selection: $selection, matching: .images)
-            .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
-            .padding(5)
-            .background(Material.ultraThickMaterial)
-            .clipShape(Capsule())
-            .shadow(radius: 10)
+            EditButton()
+                .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
+                .padding(5)
+                .background(Material.ultraThickMaterial)
+                .clipShape(Capsule())
+                .shadow(radius: 10)
         } else {
-            PhotosPicker("Change", selection: $selection, matching: .images)
-            .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
-            .padding(5)
+            EditButton()
+                .matchedGeometryEffect(id: "trailingButt", in: headerSnap)
+                .padding(5)
         }
     }
     
@@ -122,14 +119,11 @@ struct ProfileView: View {
         .hideScrollIndicators()
         .ignoresSafeArea()
     }
-    
-    private func changeButton() {
-        
-    }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+            .environmentObject(UserStore())
     }
 }

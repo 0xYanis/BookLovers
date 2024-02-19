@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 final class UserStore: ObservableObject {
+    @Published var username = "Anonymous #\(String.randomNum)"
+    @Published var userStatus = ""
     @Published private(set) var isAuthenticated = false
-    @Published private(set) var username = "Anonymous #\(String.randomNum)"
     @Published private(set) var image: Image
     @Published private(set) var email: String = ""
     @Published private(set) var messageCount = 0
@@ -21,10 +22,6 @@ final class UserStore: ObservableObject {
     
     func setStatus(isAuthenticated: Bool) {
         self.isAuthenticated = isAuthenticated
-    }
-    
-    func setName(username: String) {
-        self.username = username
     }
     
     func setImage(_ image: Image) {

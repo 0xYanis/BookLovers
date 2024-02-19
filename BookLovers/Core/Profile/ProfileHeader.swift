@@ -27,7 +27,6 @@ struct ProfileHeader: View {
             VStack {
                 Text(userStore.username)
                     .fontWeight(.semibold)
-                    .matchedGeometryEffect(id: "nickname", in: headerSnap)
                     .padding(.bottom, 10)
             }
         }
@@ -43,12 +42,12 @@ struct ProfileHeader: View {
                     .matchedGeometryEffect(id: "avatar", in: headerSnap)
                     .frame(width: 130, height: 130)
                     .clipShape(Circle())
+                    .clipped()
                 
                 
                 Text(userStore.username)
                     .font(.title)
                     .fontWeight(.semibold)
-                    .matchedGeometryEffect(id: "nickname", in: headerSnap)
                     .padding(.bottom, 30)
             }
         }
@@ -61,13 +60,13 @@ struct ProfileHeader: View {
                 .matchedGeometryEffect(id: "avatar", in: headerSnap)
                 .scaledToFill()
                 .frame(width: screen.width, height: screen.height/2.5)
+                .clipped()
                 .overlay(alignment: .bottomLeading) {
                     Text(userStore.username)
                         .underline()
                         .font(.title)
                         .fontWeight(.semibold)
                         .foregroundStyle(.white)
-                        .matchedGeometryEffect(id: "nickname", in: headerSnap)
                         .padding(.bottom, 60)
                         .padding(.leading)
                 }
