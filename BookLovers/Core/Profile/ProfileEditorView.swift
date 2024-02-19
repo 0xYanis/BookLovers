@@ -58,6 +58,7 @@ struct ProfileEditorView: View {
                 Section {
                     Button(action: { showCleanAll.toggle() }) {
                         Label("Remove all user data", systemImage: "trash")
+                            .foregroundStyle(.red)
                     }
                 }
                 

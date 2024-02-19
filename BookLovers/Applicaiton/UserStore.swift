@@ -13,10 +13,11 @@ final class UserStore: ObservableObject {
     @Published var userStatus = ""
     @Published var userFavoriteGenre: LiteraryGenre = .actionAdventure
     
-    @Published private(set) var isAuthenticated = false
-    @Published private(set) var image: Image
     @Published private(set) var email: String = ""
     @Published private(set) var messageCount = 0
+    @Published private(set) var isAuthenticated = false
+    @Published private(set) var image: Image
+    @Published private(set) var isDefaultImage = true
     
     init() {
         self.image = Image(systemName: "person.fill")
@@ -27,6 +28,7 @@ final class UserStore: ObservableObject {
     }
     
     func setImage(_ image: Image) {
+        isDefaultImage = false
         self.image = image
     }
     
@@ -48,6 +50,7 @@ final class UserStore: ObservableObject {
         username = "Anonymous #\(String.randomNum)"
         userStatus.removeAll()
         image = Image(systemName: "person.fill")
+        isDefaultImage = true
         email.removeAll()
         messageCount = 0
     }

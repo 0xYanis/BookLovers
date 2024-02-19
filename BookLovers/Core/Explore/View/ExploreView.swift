@@ -72,11 +72,17 @@ struct ExploreView: View {
     private var trailingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: trailingItemAction) {
-                userStore.image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 27, height: 27)
-                    .clipShape(Circle())
+                if userStore.isDefaultImage {
+                    userStore.image
+                        .clipShape(Circle())
+                } else {
+                    userStore.image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 27, height: 27)
+                        .clipShape(Circle())
+                }
+                    
             }
         }
     }
