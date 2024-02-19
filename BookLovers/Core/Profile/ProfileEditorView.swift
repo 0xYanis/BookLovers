@@ -11,11 +11,12 @@ import PhotosUI
 struct ProfileEditorView: View {
     @State private var selection: PhotosPickerItem?
     @State private var showSignIn = false
+    @State private var showCleanAll = false
     @EnvironmentObject private var userStore: UserStore
     
     var body: some View {
-        VStack(spacing: 0) {
-            List {
+        VStack {
+            Form {
                 Section(
                     content: {
                         HStack {
@@ -31,6 +32,12 @@ struct ProfileEditorView: View {
                 
                 Section {
                     TextField("Status", text: $userStore.userStatus)
+                    Picker("Favorite genre", selection: $userStore.userFavoriteGenre) {
+                        ForEach(LiteraryGenre.allCases) { genre in
+                            Text(genre.title).tag(genre)
+                        }
+                    }
+                    .pickerStyle(.navigationLink)
                 } footer: {
                     Text("Tell the world about yourself in a nutshell.")
                 }
@@ -39,7 +46,7 @@ struct ProfileEditorView: View {
                     if userStore.isAuthenticated {
                         Label("Change email address", systemImage: "mail")
                     } else {
-                        Button("Sign in", action: showSignInAction)
+                        Button("Sign in", action: { showSignIn.toggle() })
                             .frame(maxWidth: .infinity, alignment: .center)
                             .tint(.white)
                     }
@@ -47,6 +54,12 @@ struct ProfileEditorView: View {
                     Text("Account")
                 }
                 .listRowBackground(userStore.isAuthenticated ? .none : Color.green)
+                
+                Section {
+                    Button(action: { showCleanAll.toggle() }) {
+                        Label("Remove all user data", systemImage: "trash")
+                    }
+                }
                 
                 Section {
                     Button("Remove account", action: deleteAccountAciton)
@@ -61,6 +74,10 @@ struct ProfileEditorView: View {
         }
         .sheet(isPresented: $showSignIn) {
             LoginView(isRegistrationView: false)
+        }
+        .sheet(isPresented: $showCleanAll) {
+            CleanAllView()
+                .presentationDetents([.fraction(0.3)])
         }
         .onChange(of: selection) { selected in
             Task {
@@ -92,10 +109,6 @@ struct ProfileEditorView: View {
     
     private func nameFooter() -> some View {
         Text("Here you can enter your name and change your photo.")
-    }
-    
-    private func showSignInAction() {
-        showSignIn.toggle()
     }
     
     private func deleteAccountAciton() {

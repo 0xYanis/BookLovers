@@ -11,6 +11,8 @@ import SwiftUI
 final class UserStore: ObservableObject {
     @Published var username = "Anonymous #\(String.randomNum)"
     @Published var userStatus = ""
+    @Published var userFavoriteGenre: LiteraryGenre = .actionAdventure
+    
     @Published private(set) var isAuthenticated = false
     @Published private(set) var image: Image
     @Published private(set) var email: String = ""
@@ -41,15 +43,17 @@ final class UserStore: ObservableObject {
             self.messageCount -= 1
         }
     }
+    
+    func clearUserData() {
+        username = "Anonymous #\(String.randomNum)"
+        userStatus.removeAll()
+        image = Image(systemName: "person.fill")
+        email.removeAll()
+        messageCount = 0
+    }
 }
 
 // MARK: - Helpers
-
-private extension UIImage {
-    static var defaultAvatar: UIImage {
-        UIImage(systemName: "person.fill") ?? UIImage()
-    }
-}
 
 private extension String {
     static var randomNum: String {
