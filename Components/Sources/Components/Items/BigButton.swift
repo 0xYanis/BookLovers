@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct BigButton: View {
+public struct BigButton: View {
     private let title: String
     private let cornerRadius: CGFloat
     private let color: Color
     private let action: () -> Void
     
-    init(
+    public init(
         title: String,
         cornerRadius: CGFloat = 15,
         color: Color = .green,
@@ -25,7 +25,7 @@ struct BigButton: View {
         self.action = action
     }
     
-    var body: some View {
+    public var body: some View {
         Button(action: action) { Text(title) }
         .foregroundStyle(.white)
         .fontWeight(.semibold)

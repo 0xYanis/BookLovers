@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-struct BubbleShape: Shape {
-    var myMessage: Bool
+public struct BubbleShape: Shape {
+    private var myMessage: Bool
     
-    func path(in rect: CGRect) -> Path {
+    public init(myMessage: Bool) {
+        self.myMessage = myMessage
+    }
+    
+    public func path(in rect: CGRect) -> Path {
         let width = rect.width
         let height = rect.height
         

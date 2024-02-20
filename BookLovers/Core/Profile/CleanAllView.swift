@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct CleanAllView: View {
     @EnvironmentObject private var userStore: UserStore

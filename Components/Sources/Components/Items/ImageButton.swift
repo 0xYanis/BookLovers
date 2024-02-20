@@ -7,11 +7,16 @@
 
 import SwiftUI
 
-struct ImageButton: View {
-    var systemImage: String
-    let action: () -> Void
+public struct ImageButton: View {
+    private var systemImage: String
+    private let action: () -> Void
     
-    var body: some View {
+    public init(systemImage: String, action: @escaping () -> Void) {
+        self.systemImage = systemImage
+        self.action = action
+    }
+    
+    public var body: some View {
         Button(action: action) {
             Image(systemName: systemImage)
                 .font(.title2)

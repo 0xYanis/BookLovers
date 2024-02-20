@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct OnboardingView: View {
     @Binding var isShowing: Bool

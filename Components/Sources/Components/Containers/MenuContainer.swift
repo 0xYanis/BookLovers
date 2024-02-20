@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MenuContainer<Menu: View, Content: View>: View {
+public struct MenuContainer<Menu: View, Content: View>: View {
     @Binding private var isOpened: Bool
     private let menu: Menu
     private let content: Content
     
-    init(
+    public init(
         isOpened: Binding<Bool>,
         @ViewBuilder menu:  () -> Menu,
         @ViewBuilder content: () -> Content
@@ -22,7 +22,7 @@ struct MenuContainer<Menu: View, Content: View>: View {
         self.content = content()
     }
     
-    var body: some View {
+    public var body: some View {
         ZStack(alignment: .leading) {
             content
             

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct ChatsView: View {
     @State private var searchText = ""

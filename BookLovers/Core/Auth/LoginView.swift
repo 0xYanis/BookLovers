@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct LoginView: View {
     private let isRegistrationView: Bool

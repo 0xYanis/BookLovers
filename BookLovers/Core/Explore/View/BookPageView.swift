@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct BookPageView: View {
     @Binding var isShowing: Bool

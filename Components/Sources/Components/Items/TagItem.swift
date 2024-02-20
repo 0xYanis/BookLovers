@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct TagItem: View {
+public struct TagItem: View {
     private let title: String
     private let font: Font
     
     @Environment(\.colorScheme) private var scheme
     
-    init(
+    public init(
         title: String,
         font: Font
     ) {
@@ -21,7 +21,7 @@ struct TagItem: View {
         self.font = font
     }
     
-    var body: some View {
+    public var body: some View {
         Text(title)
             .font(font)
             .padding(.horizontal, 6)
@@ -32,11 +32,5 @@ struct TagItem: View {
     
     private var isDark: Bool {
         scheme == .dark
-    }
-}
-
-struct TagItem_Previews: PreviewProvider {
-    static var previews: some View {
-        TagItem(title: "Non Fiction", font: .body)
     }
 }

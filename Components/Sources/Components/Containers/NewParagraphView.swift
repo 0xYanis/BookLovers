@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct NewParagraphView<Content: View, TopItem: View>: View {
+public struct NewParagraphView<Content: View, TopItem: View>: View {
     private let title: String
     private let content: Content
     private let topItem: TopItem
     
-    init(
+    public init(
         title: String,
         @ViewBuilder content: () -> Content,
         @ViewBuilder topItem: () -> TopItem = { EmptyView() }
@@ -22,7 +22,7 @@ struct NewParagraphView<Content: View, TopItem: View>: View {
         self.topItem = topItem()
     }
     
-    var body: some View {
+    public var body: some View {
         LazyVStack(alignment: .leading) {
             HStack(alignment: .top) {
                 Text(title)

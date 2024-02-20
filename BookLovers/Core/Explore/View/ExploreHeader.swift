@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct ExploreHeader: View {
     @Binding var showSearchView: Bool

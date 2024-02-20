@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-struct XButton: View {
-    let action: () -> Void
+public struct XButton: View {
+    private let action: () -> Void
     
-    var body: some View {
+    public init(action: @escaping () -> Void) {
+        self.action = action
+    }
+    
+    public var body: some View {
         Button(action: action) {
             Image(systemName: "xmark.circle.fill")
                 .font(.title2)

@@ -7,18 +7,22 @@
 
 import SwiftUI
 
-struct TagCaruselView: View {
+public struct TagCaruselView: View {
     private let tags: [String]
     private let font: Font
     private let onTap: (_ id: Int) -> Void
     
-    init(tags: [String], font: Font = .body, onTap: @escaping (_ id: Int) -> Void) {
+    public init(
+        tags: [String],
+        font: Font = .body,
+        onTap: @escaping (_ id: Int) -> Void
+    ) {
         self.tags = tags
         self.font = font
         self.onTap = onTap
     }
     
-    var body: some View {
+    public var body: some View {
         HStack {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
@@ -31,11 +35,5 @@ struct TagCaruselView: View {
             }
             .shadow(color: .black.opacity(0.1), radius: 4)
         }
-    }
-}
-
-struct TagCaruselView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExploreView()
     }
 }

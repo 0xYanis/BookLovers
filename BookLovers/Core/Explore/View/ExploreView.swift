@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct ExploreView: View {
     @StateObject private var coordinator = ExploreCoordinator()

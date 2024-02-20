@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ScaleByTapModifier: ViewModifier {
+public struct ScaleByTapModifier: ViewModifier {
     let scale: CGFloat
     @State private var state = false
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .scaleEffect(state ? scale : 1.0)
             .gesture(

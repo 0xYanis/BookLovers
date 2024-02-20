@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct BubbleItem: View {
+public struct BubbleItem: View {
     let message: String?
     let image: String?
     let myMessage: Bool
+    let screen: CGSize
     
-    var body: some View {
+    public var body: some View {
         if message == nil && image == nil {
             Color.clear
         } else {
@@ -56,10 +57,4 @@ struct BubbleItem: View {
             .padding([.horizontal, .top], 2)
     }
     
-}
-
-struct BubbleItem_Previews: PreviewProvider {
-    static var previews: some View {
-        BubbleItem(message: "Look! My favorite book!", image: "book1", myMessage: true)
-    }
 }
