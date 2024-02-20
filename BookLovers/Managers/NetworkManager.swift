@@ -26,7 +26,6 @@ public class NetworkManager: ObservableObject {
     
     @Published public var isMonitoring = false
     @Published public var status: NetworkStatus = .disconnected
-    @Published private var pathStatus = NWPath.Status.requiresConnection
     @Published public var isConnected = false
     
     // MARK: - Public properties
@@ -41,7 +40,7 @@ public class NetworkManager: ObservableObject {
     // MARK: - Private properties
     
     private var monitor: NWPathMonitor?
-    
+    private var pathStatus = NWPath.Status.requiresConnection
     private var isStatusSatisfied: Bool {
         guard let monitor = monitor else { return false }
         return monitor.currentPath.status == .satisfied
