@@ -13,43 +13,41 @@ struct ProfileContent: View {
     @Environment(\.colorScheme) private var scheme
     
     var body: some View {
-        ZStack {
-            Color.gray.opacity(0.15).ignoresSafeArea()
-            
-            VStack(spacing: 20) {
-                VStack {
-                    HStack(spacing: 12) {
-                        Image(systemName: "photo")
-                            .imageScale(.large)
-                        PhotosPickerView("Change photo")
-                    }
-                    .foregroundStyle(.green)
+        VStack(spacing: 20) {
+            VStack {
+                HStack(spacing: 12) {
+                    Image(systemName: "photo")
+                        .imageScale(.large)
+                    PhotosPickerView("Change photo")
                 }
-                .padding(10)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(isDark ? .tertiarySystemBackground : .white))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                
-                VStack(spacing: 0) {
-                    if userStore.isAuthenticated {
-                        label(text: "Email", image: "mail", color: .blue, divider: true)
-                        label(text: "Password", image: "lock", color: .purple)
-                    } else {
-                        BigButton(title: "Sign in") { showSignIn.toggle() }
-                    }
-                }
-                .background(Color(isDark ? .tertiarySystemBackground : .white))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                
-                VStack(spacing: 0) {
-                    label(text: "Status", image: "text.bubble", color: .pink, divider: true)
-                    label(text: "Favorite genre", image: "book", color: .green)
-                }
-                .background(Color(isDark ? .tertiarySystemBackground : .white))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .foregroundStyle(.green)
             }
-            .padding()
+            .padding(10)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            VStack(spacing: 0) {
+                if userStore.isAuthenticated {
+                    label(text: "Email", image: "mail", color: .blue, divider: true)
+                    label(text: "Password", image: "lock", color: .purple)
+                } else {
+                    BigButton(title: "Sign in") { showSignIn.toggle() }
+                }
+            }
+            .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
+            .clipShape(userStore.isAuthenticated ?
+                       RoundedRectangle(cornerRadius: 10) :
+                        RoundedRectangle(cornerRadius: 25))
+            
+            VStack(spacing: 0) {
+                label(text: "Status", image: "text.bubble", color: .pink, divider: true)
+                label(text: "Favorite genre", image: "book", color: .green)
+            }
+            .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
         }
+        .padding()
         .sheet(isPresented: $showSignIn) { LoginView() }
     }
     

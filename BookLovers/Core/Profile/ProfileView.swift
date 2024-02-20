@@ -40,7 +40,12 @@ struct ProfileView: View {
         .overlay(alignment: .top) {
             HStack {
                 leadingButton
-                Spacer()
+                if currentSnapPos == .hide {
+                    centerItem
+                        .frame(maxWidth: .infinity)
+                } else {
+                    Spacer()
+                }
                 trailingButton
             }
             .padding(.horizontal)
@@ -62,6 +67,22 @@ struct ProfileView: View {
                     currentSnapPos = .extended
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private var currentBackground: some View {
+        if currentSnapPos == .hide {
+            Color.clear
+        } else {
+            Color.gray.opacity(0.15)
+        }
+    }
+    
+    @ViewBuilder
+    private var centerItem: some View {
+        if currentSnapPos == .hide {
+            Text(userStore.username)
         }
     }
     

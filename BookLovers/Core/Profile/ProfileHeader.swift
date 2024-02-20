@@ -24,11 +24,6 @@ struct ProfileHeader: View {
     private var hideStateView: some View {
         ZStack(alignment: .bottom) {
             Rectangle().fill(.gray.opacity(0.15))
-            VStack {
-                Text(userStore.username)
-                    .fontWeight(.semibold)
-                    .padding(.bottom, 10)
-            }
         }
     }
     
