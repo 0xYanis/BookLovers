@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct AuthView: View {
     @State private var showSignUp = false

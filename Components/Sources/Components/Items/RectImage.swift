@@ -8,9 +8,15 @@
 import SwiftUI
 
 public struct RectImage: View {
-    let systemImage: String
-    let color: Color
-    let screen: CGSize
+    private let systemImage: String
+    private let color: Color
+    private let screen: CGRect
+    
+    public init(systemImage: String, color: Color, screen: CGRect) {
+        self.systemImage = systemImage
+        self.color = color
+        self.screen = screen
+    }
     
     public var body: some View {
         Image(systemName: systemImage)

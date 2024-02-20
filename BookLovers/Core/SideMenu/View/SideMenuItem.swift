@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct SideMenuItem: View {
     var option: MenuOption

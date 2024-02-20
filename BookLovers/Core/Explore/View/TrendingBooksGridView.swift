@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct TrendingBooksGridView: View {
     private var gridItems: [GridItem]

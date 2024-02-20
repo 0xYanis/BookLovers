@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct ProfileContent: View {
     @State private var showSignIn = false
@@ -64,7 +65,7 @@ struct ProfileContent: View {
         VStack(spacing: 0) {
             HStack(spacing: 12) {
                 if let color = color {
-                    RectImage(systemImage: image, color: color)
+                    RectImage(systemImage: image, color: color, screen: screen)
                 } else {
                     Image(systemName: image)
                         .padding(5)

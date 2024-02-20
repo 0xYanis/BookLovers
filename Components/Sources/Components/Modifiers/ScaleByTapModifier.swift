@@ -8,8 +8,12 @@
 import SwiftUI
 
 public struct ScaleByTapModifier: ViewModifier {
-    let scale: CGFloat
     @State private var state = false
+    private let scale: CGFloat
+    
+    public init(scale: CGFloat) {
+        self.scale = scale
+    }
     
     public func body(content: Content) -> some View {
         content

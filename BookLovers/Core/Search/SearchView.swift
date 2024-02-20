@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct SearchView: View {
     @Environment(\.dismiss) private var dismiss

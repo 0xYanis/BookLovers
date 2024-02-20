@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct WelcomeView: View {
     let title: String

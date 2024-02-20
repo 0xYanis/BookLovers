@@ -20,7 +20,7 @@ public enum NetworkType: String {
     case other
 }
 
-public class NetworkManager: ObservableObject {
+public final class NetworkManager: ObservableObject {
     
     // MARK: - Publishers
     
@@ -90,7 +90,7 @@ public class NetworkManager: ObservableObject {
     
     // MARK: - Private methods
     
-    private func getNetworkType(interFaceType: NWInterface.InterfaceType?)->NetworkType{
+    private func getNetworkType(interFaceType: NWInterface.InterfaceType?) -> NetworkType {
         switch interFaceType {
         case .wifi:
             return .wifi
