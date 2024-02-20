@@ -12,6 +12,7 @@
 		0901E85A2B73C3C7007C11A5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E8592B73C3C7007C11A5 /* LoginView.swift */; };
 		0901E85C2B73C9C1007C11A5 /* InteractedSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E85B2B73C9C1007C11A5 /* InteractedSecureField.swift */; };
 		0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E85E2B73E855007C11A5 /* SearchBar.swift */; };
+		0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905C5292B84FAB7002342E9 /* PhotosPickerView.swift */; };
 		0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */; };
 		093548702B5EAEE100CC4955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0935486F2B5EAEE100CC4955 /* Assets.xcassets */; };
 		093548732B5EAEE100CC4955 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093548722B5EAEE100CC4955 /* Preview Assets.xcassets */; };
@@ -87,6 +88,7 @@
 		0901E8592B73C3C7007C11A5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0901E85B2B73C9C1007C11A5 /* InteractedSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractedSecureField.swift; sourceTree = "<group>"; };
 		0901E85E2B73E855007C11A5 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		0905C5292B84FAB7002342E9 /* PhotosPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPickerView.swift; sourceTree = "<group>"; };
 		093548682B5EAEDE00CC4955 /* BookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLoversApp.swift; sourceTree = "<group>"; };
 		0935486F2B5EAEE100CC4955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				09441E062B71433B004A09D0 /* SignInView.swift */,
 				09F757652B763F55004C849B /* WelcomeView.swift */,
 				099E9A0D2B83E1BF009CE7B0 /* CleanAllView.swift */,
+				0905C5292B84FAB7002342E9 /* PhotosPickerView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				09D968B62B7A667700D373A8 /* ScaleByTapModifier.swift in Sources */,
 				094A652A2B7109F800E6FF4E /* MenuOption.swift in Sources */,
 				0950D8E62B725564005D755A /* TabItem.swift in Sources */,
+				0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */,
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
 				0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */,
 				094A65272B71073D00E6FF4E /* View+Extension.swift in Sources */,

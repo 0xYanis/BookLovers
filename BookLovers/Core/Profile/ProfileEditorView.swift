@@ -6,10 +6,8 @@
 //
 
 import SwiftUI
-import PhotosUI
 
 struct ProfileEditorView: View {
-    @State private var selection: PhotosPickerItem?
     @State private var showSignIn = false
     @State private var showCleanAll = false
     @EnvironmentObject private var userStore: UserStore
@@ -82,14 +80,6 @@ struct ProfileEditorView: View {
             CleanAllView()
                 .presentationDetents([.fraction(0.3)])
         }
-        .onChange(of: selection) { selected in
-            Task {
-                if let data = try? await selected?.loadTransferable(type: Data.self),
-                   let image = UIImage(data: data) {
-                    userStore.setImage(Image(uiImage: image))
-                }
-            }
-        }
     }
     
     private func imageHeader() -> some View {
@@ -103,7 +93,7 @@ struct ProfileEditorView: View {
                     .clipShape(Circle())
                     .clipped()
                 
-                PhotosPicker("Change avatar", selection: $selection)
+                PhotosPickerView("Change photo")
             }
             .padding(.vertical)
         }

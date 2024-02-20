@@ -15,6 +15,7 @@ struct RectImage: View {
         Image(systemName: systemImage)
             .foregroundStyle(.white)
             .padding(5)
+            .frame(width: screen.width*0.075, height: screen.width*0.075)
             .background(color)
             .clipShape(RoundedRectangle(cornerRadius: 7))
     }
@@ -22,6 +23,6 @@ struct RectImage: View {
 
 struct RectImage_Previews: PreviewProvider {
     static var previews: some View {
-        RectImage(systemImage: "globe", color: .blue)
+        RectImage(systemImage: "mail", color: .blue)
     }
 }
