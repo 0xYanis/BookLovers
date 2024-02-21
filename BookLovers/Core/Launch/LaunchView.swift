@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LaunchView: View {
     @State private var isLaunched = true
-    @State private var opacity: CGFloat = 1.0
     @State private var imageWidth: CGFloat = 300
     @State private var isTop = false
     @State private var isFinished = false
@@ -18,46 +17,17 @@ struct LaunchView: View {
         ZStack {
             if isLaunched {
                 backgroundView
-                
-                launchLogo
-                .opacity(opacity)
+                launchLogo.opacity(isFinished ? 0.0 : 1.0)
             }
-            
-            MainTabbarView()
-                .opacity(isFinished ? 1.0 : 0.0)
-            
+            MainTabbarView().opacity(isFinished ? 1.0 : 0.0)
         }
         .onAppear {
             Task { @MainActor in
-                // increase
-                withAnimation(.spring(response: 2)) {
-                    imageWidth = 330
-                }
-                
-                // fast decrease
-                try await Task.sleep(for: .seconds(2))
-                withAnimation(.spring(response: 1)) {
-                    imageWidth = 30
-                }
-                
-                // going top
-                try await Task.sleep(for: .seconds(0.3))
-                withAnimation(.spring(response: 1)) {
-                    isTop = true
-                }
-                
-                // stopping
-                try await Task.sleep(for: .seconds(1.5))
-                withAnimation(.spring(response: 1)) {
-                    opacity = 0.0
-                    isFinished = true
-                }
-                
-                // showing main view
-                try await Task.sleep(for: .seconds(1))
-                withAnimation(.spring(response: 1)) {
-                    isLaunched = false
-                }
+                await animationPart(response: 2) { imageWidth = 330 } // increase
+                await animationPart(sleep: 2, response: 1) { imageWidth = 30 } // fast decrease
+                await animationPart(sleep: 0.3, response: 1) { isTop = true } // going top
+                await animationPart(sleep: 1.5, response: 1) { isFinished = true } // stopping
+                await animationPart(sleep: 1, response: 1) { isLaunched = false } // showing main view
             }
         }
     }
@@ -72,9 +42,7 @@ struct LaunchView: View {
             }
             .padding(.horizontal)
             
-            if isTop {
-                Spacer()
-            }
+            if isTop { Spacer() }
         }
     }
     
@@ -85,6 +53,19 @@ struct LaunchView: View {
             endPoint: .bottomTrailing)
         .background(Material.ultraThin)
         .ignoresSafeArea()
+    }
+    
+    private func animationPart(
+        sleep: Double = 0.0,
+        response: Double,
+        action: () -> ()
+    ) async {
+        if sleep != 0.0 {
+            try? await Task.sleep(for: .seconds(sleep))
+        }
+        withAnimation(.spring(response: response)) {
+            action()
+        }
     }
 }
 
