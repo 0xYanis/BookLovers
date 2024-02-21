@@ -13,17 +13,34 @@ struct ExploreView: View {
     @State private var selectedSideOption: MenuOption = .explore
     @State private var showSideMenu = false
     @State private var showSearchView = false
-    
+    @State private var splitVisibility: NavigationSplitViewVisibility = .doubleColumn
     @EnvironmentObject private var userStore: UserStore
     
     var body: some View {
-        NavigationStack(path: $coordinator.path) {
-            MenuContainer(
-                isOpened: $showSideMenu,
-                menu: menuScreen,
-                content: exploreScreen)
+        if UIDevice.isiPhone {
+            NavigationStack(path: $coordinator.path) {
+                MenuContainer(
+                    isOpened: $showSideMenu,
+                    menu: menuScreen,
+                    content: exploreScreen)
+                .environmentObject(coordinator)
+                .navigationBarTitleDisplayMode(.inline)
+                .onChange(of: coordinator.path) {
+                    if $0.isEmpty { selectedSideOption = .explore }
+                }
+                .navigationDestination(for: MenuOption.self) {
+                    coordinator.build(page: $0)
+                }
+                .fullScreenCover(isPresented: $showSearchView, content: SearchView.init)
+            }
+        } else {
+            NavigationSplitView(columnVisibility: $splitVisibility) {
+                SideMenuView(isShowing: .constant(true), selectedOption: $selectedSideOption)
+            } detail: {
+                currentView(selected: selectedSideOption)
+            }
+            .navigationSplitViewStyle(.balanced)
             .environmentObject(coordinator)
-            .refreshable(action: {})
             .navigationBarTitleDisplayMode(.inline)
             .onChange(of: coordinator.path) {
                 if $0.isEmpty { selectedSideOption = .explore }
@@ -39,13 +56,15 @@ struct ExploreView: View {
     
     private var leadingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
-            Menu {
-                if !showSideMenu { menuLeadingItems }
-            } label: {
-                Image(systemName: showSideMenu ? "arrow.left" : "list.bullet")
-                    .foregroundStyle(showSideMenu ? .gray : .primary)
-            } primaryAction: {
-                leadingItemAction()
+            if UIDevice.isiPhone {
+                Menu {
+                    if !showSideMenu { menuLeadingItems }
+                } label: {
+                    Image(systemName: showSideMenu ? "arrow.left" : "list.bullet")
+                        .foregroundStyle(showSideMenu ? .gray : .primary)
+                } primaryAction: {
+                    leadingItemAction()
+                }
             }
         }
     }
@@ -149,6 +168,24 @@ struct ExploreView: View {
     
     private func trailingItemAction() {
         coordinator.push(page: .profile)
+    }
+    
+    @ViewBuilder
+    private func currentView(selected: MenuOption) -> some View {
+        switch selected {
+        case .explore:
+            exploreScreen()
+        case .profile:
+            ProfileView()
+        case .communities:
+            Text(selected.title)
+        case .privacyPolicy:
+            Text(selected.title)
+        case .support:
+            Text(selected.title)
+        case .aboutUs:
+            Text(selected.title)
+        }
     }
 }
 

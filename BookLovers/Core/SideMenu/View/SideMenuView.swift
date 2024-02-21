@@ -15,54 +15,31 @@ struct SideMenuView: View {
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var coordinator: ExploreCoordinator
     @EnvironmentObject private var userStore: UserStore
-    var body: some View {
-        ZStack {
-            if isShowing {
-                sideMenu
-            }
-        }
-        .animation(.spring(dampingFraction: 0.95), value: isShowing)
-    }
     
-    private var background: some View {
-        Rectangle()
-            .opacity(0.0)
-            .ignoresSafeArea()
-            .onTapGesture { isShowing.toggle() }
+    var body: some View {
+        if UIDevice.isiPhone {
+            ZStack {
+                if isShowing {
+                    sideMenu
+                }
+            }
+            .animation(.spring(dampingFraction: 0.95), value: isShowing)
+        } else {
+            VStack(alignment: .leading, spacing: 32) {
+                menuHeader
+                menuList
+                menuFooter
+            }
+            .frame(maxHeight: .infinity, alignment: .top)
+        }
     }
     
     private var sideMenu: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 32) {
-                // header
-                SideMenuHeader()
-                    .padding(.horizontal)
-                
-                // menu
-                VStack(alignment: .leading, spacing: 5) {
-                    ForEach(MenuOption.allCases) { option in
-                        Button {
-                            optionTapped(option)
-                        } label: {
-                            SideMenuItem(
-                                option: option,
-                                selectedOption: $selectedOption,
-                                animation: animation
-                            )
-                        }
-                    }
-                }
-                
-                // footer
-                VStack(alignment: .leading) {
-                    Divider()
-                    
-                    defaultButton("Log out", image: "door.left.hand.open") {
-                        userStore.setStatus(isAuthenticated: false)
-                        coordinator.popToRoot()
-                    }
-                    .padding()
-                }
+                menuHeader
+                menuList
+                menuFooter
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .frame(width: screen.width * 0.75, alignment: .leading)
@@ -74,6 +51,40 @@ struct SideMenuView: View {
         .onSwipe(left: {
             isShowing = false
         })
+    }
+    
+    private var menuHeader: some View {
+        SideMenuHeader()
+            .padding(.horizontal)
+    }
+    
+    private var menuList: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            ForEach(MenuOption.allCases) { option in
+                Button {
+                    optionTapped(option)
+                } label: {
+                    SideMenuItem(
+                        option: option,
+                        selectedOption: $selectedOption,
+                        animation: animation
+                    )
+                }
+            }
+        }
+        .padding(.trailing)
+    }
+    
+    private var menuFooter: some View {
+        VStack(alignment: .leading) {
+            Divider()
+            
+            defaultButton("Log out", image: "door.left.hand.open") {
+                userStore.setStatus(isAuthenticated: false)
+                coordinator.popToRoot()
+            }
+            .padding()
+        }
     }
     
     private func hideMenu() {

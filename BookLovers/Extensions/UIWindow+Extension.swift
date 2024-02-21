@@ -25,3 +25,9 @@ extension UIScreen {
         UIWindow.current?.screen
     }
 }
+
+extension UIDevice {
+    static var isiPhone: Bool {
+        self.current.userInterfaceIdiom == .phone
+    }
+}
