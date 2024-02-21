@@ -68,7 +68,7 @@ struct SignInView: View {
             }
             .ignoresSafeArea()
         }
-        .popover(isPresented: $requestSignIn) {
+        .sheet(isPresented: $requestSignIn) {
             LoginView()
         }
     }

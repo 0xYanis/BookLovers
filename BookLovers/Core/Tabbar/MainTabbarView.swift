@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct MainTabbarView: View {
-    @State private var visibility: Visibility = .automatic
     @State private var selectedTab: TabItem = .explore
-    @State private var showOnboarding: Bool = false
     @EnvironmentObject private var userStore: UserStore
     
     var body: some View {
@@ -29,11 +27,7 @@ struct MainTabbarView: View {
                     .badge(item == .community ? userStore.messageCount : 0)
             }
         }
-        .toolbar(visibility, for: .tabBar)
         .tint(.green)
-        .popover(isPresented: $showOnboarding) {
-            OnboardingView(isShowing: $showOnboarding)
-        }
     }
 }
 

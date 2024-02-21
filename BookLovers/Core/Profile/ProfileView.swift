@@ -20,6 +20,7 @@ struct ProfileView: View {
     @State private var currentSnapPos: SnapPosition = .normal
     @State private var scrollOffset: CGFloat = 0
     @State private var progress: CGFloat = 0
+    @State private var showEditorForiPad = false
     
     @Namespace private var headerSnap
     @Environment(\.editMode) private var editMode
@@ -31,7 +32,7 @@ struct ProfileView: View {
     
     var body: some View {
         ZStack {
-            if editMode?.wrappedValue == .active {
+            if editMode?.wrappedValue == .active || showEditorForiPad {
                 ProfileEditorView()
             } else {
                 scalingHeaderScrollView
@@ -39,18 +40,24 @@ struct ProfileView: View {
         }
         .overlay(alignment: .top) {
             HStack {
-                leadingButton
-                if currentSnapPos == .hide {
-                    centerItem
-                        .frame(maxWidth: .infinity)
+                if UIDevice.isiPhone {
+                    leadingButton
+                    if currentSnapPos == .hide {
+                        centerItem.frame(maxWidth: .infinity)
+                    } else { Spacer() }
+                    trailingButton
                 } else {
-                    Spacer()
+                    Button(showEditorForiPad ? "Done" : "Edit") {
+                        withAnimation {
+                            showEditorForiPad.toggle()
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                trailingButton
             }
             .padding(.horizontal)
         }
-        .toolbar(.hidden, for: .navigationBar)
+        .toolbar(UIDevice.isiPhone ? .visible : .hidden, for: .navigationBar)
         .toolbar(UIDevice.isiPhone ? .visible : .hidden, for: .tabBar)
         .onChange(of: progress) { newValue in
             if UIDevice.isiPhone {
@@ -138,7 +145,7 @@ struct ProfileView: View {
         }
         .scrollOffset($scrollOffset)
         .collapseProgress($progress)
-        .headerSnappingPositions(snapPositions: snapPositions)
+        .headerSnappingPositions(snapPositions: UIDevice.isiPhone ? snapPositions : [])
         .allowsHeaderCollapse()
         .height(min: minHeight, max: maxHeight)
         .hideScrollIndicators()
