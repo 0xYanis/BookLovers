@@ -10,30 +10,18 @@ import SwiftUI
 struct FavoriteHeader: View {
     @Binding var searchText: String
     @Binding var selectedType: FavoriteType
-    @Binding var isScrolling: Bool
     
     @Namespace private var animation
     @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(spacing: 0) {
-            if isScrolling == false {
-                searchbar
-                    .opacity(isScrolling ? 0 : 1)
-                    .padding(.vertical, 10)
-                    .matchedGeometryEffect(id: "searchfav", in: animation)
-            }
-            // picker
-            tabbarTypePicker
-                .padding(.top, 10)
-                .overlay {
-                    Text("\(isScrolling.description)")
-                        .font(.largeTitle)
-                }
-            
+            searchbar
+                .padding(.vertical, 10)
+                .matchedGeometryEffect(id: "searchfav", in: animation)
+            tabbarTypePicker.padding(.top, 10)
             Divider()
         }
-        .animation(.spring(response: 0.12), value: isScrolling)
     }
     
     private var searchbar: some View {
@@ -79,20 +67,13 @@ struct FavoriteHeader: View {
                 .background {
                     ZStack {
                         if selectedType == type {
-                            if isScrolling == false {
+                            VStack(spacing: 0) {
+                                Spacer()
                                 Capsule()
                                     .fill(.green)
-                                    .padding(4)
+                                    .frame(height: 4)
+                                    
                                     .matchedGeometryEffect(id: "favcapsule", in: animation)
-                            } else {
-                                VStack(spacing: 0) {
-                                    Spacer()
-                                    Capsule()
-                                        .fill(.green)
-                                        .frame(height: 4)
-                                        
-                                        .matchedGeometryEffect(id: "favcapsule", in: animation)
-                                }
                             }
                         }
                     }
@@ -101,13 +82,6 @@ struct FavoriteHeader: View {
             }
         }
         .animation(.spring(), value: selectedType)
-        .background {
-            if isScrolling == false {
-                Capsule()
-                    .fill(Color(.systemGroupedBackground))
-            }
-        }
-        .padding(.bottom, isScrolling ? 0 : 15)
         .padding(.horizontal)
     }
     

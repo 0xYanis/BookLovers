@@ -16,18 +16,16 @@ struct FavoritesView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                //header
-                FavoriteHeader(
-                    searchText: $searchText,
-                    selectedType: $selectedType,
-                    isScrolling: $isScrolling
-                )
+                FavoriteHeader(searchText: $searchText, selectedType: $selectedType)
                 .zIndex(1)
                 
-                //content
                 TabView(selection: $selectedType) {
                     ForEach(FavoriteType.allCases) { type in
-                        contentView.tag(type)
+                        if UIDevice.isiPhone {
+                            contentView.tag(type)
+                        } else {
+                            contentPadView.tag(type)
+                        }
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
@@ -36,15 +34,28 @@ struct FavoritesView: View {
         }
     }
     
+    private var contentPadView: some View {
+        ScrollView {
+            LazyVGrid(columns: Array(repeating: GridItem(), count: 2)) {
+                ForEach(0..<6, id: \.self) { index in
+                    FavoriteItem()
+                        .onChange(of: index) { newValue in
+                            // TODO:
+                        }
+                }
+            }
+            .padding()
+        }
+    }
+    
     private var contentView: some View {
         ScrollView {
             LazyVStack {
                 ForEach(0..<15, id: \.self) { index in
                     FavoriteItem()
-                        .padding(.top)
-                        .padding(.horizontal)
+                        .padding()
                         .onChange(of: index) { newValue in
-                            // TODO: 
+                            // TODO:
                         }
                 }
             }
