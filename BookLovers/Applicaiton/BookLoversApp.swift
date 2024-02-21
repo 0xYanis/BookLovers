@@ -13,8 +13,11 @@ struct BookLoversApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LaunchView()
-                .environmentObject(userStore)
+            #if os(macOS)
+            HomeView()
+            #else
+            LaunchView().environmentObject(userStore)
+            #endif
         }
     }
 }

@@ -50,15 +50,16 @@ struct FavoritesView: View {
     
     private var contentView: some View {
         ScrollView {
-            LazyVStack {
+            LazyVStack(spacing: 15) {
                 ForEach(0..<15, id: \.self) { index in
                     FavoriteItem()
-                        .padding()
+                        .padding(.horizontal)
                         .onChange(of: index) { newValue in
                             // TODO:
                         }
                 }
             }
+            .padding(.vertical)
         }
         .zIndex(0)
     }

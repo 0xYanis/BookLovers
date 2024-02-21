@@ -51,6 +51,15 @@
 		09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */; };
 		09EB283D2B7B9B0A0049F5AA /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB283C2B7B9B0A0049F5AA /* AuthView.swift */; };
 		09F170C02B7EAC9400CEF3CA /* ExploreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F170BF2B7EAC9400CEF3CA /* ExploreCoordinator.swift */; };
+		09F7462E2B869CA300DEBB49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F7462D2B869CA300DEBB49 /* Assets.xcassets */; };
+		09F746312B869CA300DEBB49 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F746302B869CA300DEBB49 /* Preview Assets.xcassets */; };
+		09F746362B869D5C00DEBB49 /* BookLoversApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */; };
+		09F746372B869D7200DEBB49 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165772B8120BD008C0AB3 /* UserStore.swift */; };
+		09F7463B2B869DAA00DEBB49 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7463A2B869DAA00DEBB49 /* HomeView.swift */; };
+		09F7463C2B869DD100DEBB49 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
+		09F7463D2B869DD100DEBB49 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E022B74109600B50164 /* SortType.swift */; };
+		09F7463E2B869DD100DEBB49 /* SignInType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094E137B2B74C7E90052E0D8 /* SignInType.swift */; };
+		09F7463F2B869DD100DEBB49 /* WelcomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09995C452B766E6800A3DAF0 /* WelcomeFeature.swift */; };
 		09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757612B763C16004C849B /* CreateCommunityView.swift */; };
 		09F757662B763F55004C849B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757652B763F55004C849B /* WelcomeView.swift */; };
 		09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */; };
@@ -115,6 +124,11 @@
 		09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteType.swift; sourceTree = "<group>"; };
 		09EB283C2B7B9B0A0049F5AA /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		09F170BF2B7EAC9400CEF3CA /* ExploreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCoordinator.swift; sourceTree = "<group>"; };
+		09F746272B869CA000DEBB49 /* MacBookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09F7462D2B869CA300DEBB49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		09F746302B869CA300DEBB49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		09F746322B869CA300DEBB49 /* MacBookLovers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacBookLovers.entitlements; sourceTree = "<group>"; };
+		09F7463A2B869DAA00DEBB49 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		09F757612B763C16004C849B /* CreateCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityView.swift; sourceTree = "<group>"; };
 		09F757652B763F55004C849B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
@@ -129,6 +143,13 @@
 				0997103D2B8631F900630A16 /* Managers in Frameworks */,
 				0905C52E2B852AF9002342E9 /* Components in Frameworks */,
 				09A165692B80A79A008C0AB3 /* ScalingHeaderScrollView in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09F746242B869CA000DEBB49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +190,7 @@
 				0935486A2B5EAEDE00CC4955 /* BookLovers */,
 				0905C52B2B852730002342E9 /* Components */,
 				0997103B2B86315800630A16 /* Managers */,
+				09F746282B869CA000DEBB49 /* MacBookLovers */,
 				093548692B5EAEDE00CC4955 /* Products */,
 				0905C52C2B852AED002342E9 /* Frameworks */,
 			);
@@ -178,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				093548682B5EAEDE00CC4955 /* BookLovers.app */,
+				09F746272B869CA000DEBB49 /* MacBookLovers.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -357,6 +380,41 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		09F746282B869CA000DEBB49 /* MacBookLovers */ = {
+			isa = PBXGroup;
+			children = (
+				09F746382B869D8900DEBB49 /* Core */,
+				09F746392B869D8E00DEBB49 /* Resources */,
+				09F746322B869CA300DEBB49 /* MacBookLovers.entitlements */,
+			);
+			path = MacBookLovers;
+			sourceTree = "<group>";
+		};
+		09F7462F2B869CA300DEBB49 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				09F746302B869CA300DEBB49 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		09F746382B869D8900DEBB49 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				09F7463A2B869DAA00DEBB49 /* HomeView.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		09F746392B869D8E00DEBB49 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				09F7462D2B869CA300DEBB49 /* Assets.xcassets */,
+				09F7462F2B869CA300DEBB49 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		09F9AAAC2B7D40F900C0FC8D /* Launch */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +451,23 @@
 			productReference = 093548682B5EAEDE00CC4955 /* BookLovers.app */;
 			productType = "com.apple.product-type.application";
 		};
+		09F746262B869CA000DEBB49 /* MacBookLovers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09F746352B869CA300DEBB49 /* Build configuration list for PBXNativeTarget "MacBookLovers" */;
+			buildPhases = (
+				09F746232B869CA000DEBB49 /* Sources */,
+				09F746242B869CA000DEBB49 /* Frameworks */,
+				09F746252B869CA000DEBB49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacBookLovers;
+			productName = MacBookLovers;
+			productReference = 09F746272B869CA000DEBB49 /* MacBookLovers.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -404,6 +479,9 @@
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					093548672B5EAEDE00CC4955 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					09F746262B869CA000DEBB49 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
@@ -425,6 +503,7 @@
 			projectRoot = "";
 			targets = (
 				093548672B5EAEDE00CC4955 /* BookLovers */,
+				09F746262B869CA000DEBB49 /* MacBookLovers */,
 			);
 		};
 /* End PBXProject section */
@@ -436,6 +515,15 @@
 			files = (
 				093548732B5EAEE100CC4955 /* Preview Assets.xcassets in Resources */,
 				093548702B5EAEE100CC4955 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09F746252B869CA000DEBB49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09F746312B869CA300DEBB49 /* Preview Assets.xcassets in Resources */,
+				09F7462E2B869CA300DEBB49 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +577,20 @@
 				09BBB1752B7E297600F946F4 /* ChatsView.swift in Sources */,
 				09441E072B71433B004A09D0 /* SignInView.swift in Sources */,
 				09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09F746232B869CA000DEBB49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09F7463B2B869DAA00DEBB49 /* HomeView.swift in Sources */,
+				09F746372B869D7200DEBB49 /* UserStore.swift in Sources */,
+				09F7463F2B869DD100DEBB49 /* WelcomeFeature.swift in Sources */,
+				09F746362B869D5C00DEBB49 /* BookLoversApp.swift in Sources */,
+				09F7463D2B869DD100DEBB49 /* SortType.swift in Sources */,
+				09F7463C2B869DD100DEBB49 /* LiteraryGenre.swift in Sources */,
+				09F7463E2B869DD100DEBB49 /* SignInType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +776,64 @@
 			};
 			name = Release;
 		};
+		09F746332B869CA300DEBB49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacBookLovers/MacBookLovers.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MacBookLovers/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = 2B85PH5M9P;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = YanRybkin.MacBookLovers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		09F746342B869CA300DEBB49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacBookLovers/MacBookLovers.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MacBookLovers/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = 2B85PH5M9P;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = YanRybkin.MacBookLovers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -691,6 +851,15 @@
 			buildConfigurations = (
 				093548772B5EAEE100CC4955 /* Debug */,
 				093548782B5EAEE100CC4955 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09F746352B869CA300DEBB49 /* Build configuration list for PBXNativeTarget "MacBookLovers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09F746332B869CA300DEBB49 /* Debug */,
+				09F746342B869CA300DEBB49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
