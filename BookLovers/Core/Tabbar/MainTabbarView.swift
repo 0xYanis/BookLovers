@@ -19,7 +19,11 @@ struct MainTabbarView: View {
                 item.view
                     .tag(item)
                     .tabItem {
-                        Image(uiImage: item.uiImage(selected: selectedTab))
+                        if UIDevice.isiPhone {
+                            Image(uiImage: item.uiImage(selected: selectedTab))
+                        } else {
+                            Image(systemName: item.image)
+                        }
                         Text(item.name)
                     }
                     .badge(item == .community ? userStore.messageCount : 0)

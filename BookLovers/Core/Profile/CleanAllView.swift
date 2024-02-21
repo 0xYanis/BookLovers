@@ -25,6 +25,7 @@ struct CleanAllView: View {
                 .padding(32)
             Spacer()
             BigButton(title: "Confirm", action: userStore.clearUserData)
+                .padding()
         }
         .padding(.horizontal)
         .overlay(alignment: .topTrailing) {

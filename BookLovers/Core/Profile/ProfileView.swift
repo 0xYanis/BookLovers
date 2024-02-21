@@ -51,20 +51,24 @@ struct ProfileView: View {
             .padding(.horizontal)
         }
         .toolbar(.hidden, for: .navigationBar)
-        .toolbar(.hidden, for: .tabBar)
+        .toolbar(UIDevice.isiPhone ? .visible : .hidden, for: .tabBar)
         .onChange(of: progress) { newValue in
-            withAnimation(.spring(response: 0.2)) {
-                if newValue >= 0.75 {
-                    currentSnapPos = .hide
-                } else if newValue <= 0.75 {
-                    currentSnapPos = .normal
+            if UIDevice.isiPhone {
+                withAnimation(.spring(response: 0.2)) {
+                    if newValue >= 0.75 {
+                        currentSnapPos = .hide
+                    } else if newValue <= 0.75 {
+                        currentSnapPos = .normal
+                    }
                 }
             }
         }
         .onChange(of: scrollOffset) { newValue in
-            withAnimation(.spring(response: 0.2)) {
-                if scrollOffset < -1 && scrollOffset < -100 {
-                    currentSnapPos = .extended
+            if UIDevice.isiPhone {
+                withAnimation(.spring(response: 0.2)) {
+                    if scrollOffset < -1 && scrollOffset < -100 {
+                        currentSnapPos = .extended
+                    }
                 }
             }
         }
@@ -128,9 +132,9 @@ struct ProfileView: View {
     
     private var scalingHeaderScrollView: some View {
         ScalingHeaderScrollView {
-            ProfileHeader(currentSnapPos: $currentSnapPos, headerSnap: headerSnap)
+            ProfileHeader(currentSnapPos: UIDevice.isiPhone ? $currentSnapPos : .constant(.normal), headerSnap: headerSnap)
         } content: {
-            ProfileContent()
+            ProfileContent().padding()
         }
         .scrollOffset($scrollOffset)
         .collapseProgress($progress)

@@ -96,8 +96,10 @@ struct SideMenuView: View {
     private func optionTapped(_ option: MenuOption) {
         withAnimation(.easeInOut(duration: 0.2)) {
             selectedOption = option
-            hideMenu()
-            coordinator.push(page: option)
+            if UIDevice.isiPhone {
+                hideMenu()
+                coordinator.push(page: option)
+            }
         }
     }
     
@@ -123,5 +125,6 @@ struct SideMenuView: View {
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
         SideMenuView(isShowing: .constant(true), selectedOption: .constant(.explore))
+            .environmentObject(UserStore())
     }
 }

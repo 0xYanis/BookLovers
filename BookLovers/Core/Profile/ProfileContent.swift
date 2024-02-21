@@ -9,7 +9,6 @@ import SwiftUI
 import Components
 
 struct ProfileContent: View {
-    @State private var showSignIn = false
     @EnvironmentObject private var userStore: UserStore
     @Environment(\.colorScheme) private var scheme
     
@@ -32,8 +31,6 @@ struct ProfileContent: View {
                 if userStore.isAuthenticated {
                     label(text: "Email", image: "mail", color: .blue, divider: true)
                     label(text: "Password", image: "lock", color: .purple)
-                } else {
-                    BigButton(title: "Sign in") { showSignIn.toggle() }
                 }
             }
             .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
@@ -48,8 +45,6 @@ struct ProfileContent: View {
             .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .padding()
-        .sheet(isPresented: $showSignIn) { LoginView() }
     }
     
     private var isDark: Bool {
@@ -65,7 +60,11 @@ struct ProfileContent: View {
         VStack(spacing: 0) {
             HStack(spacing: 12) {
                 if let color = color {
-                    RectImage(systemImage: image, color: color, screen: screen)
+                    RectImage(
+                        systemImage: image,
+                        color: color,
+                        width: UIDevice.isiPhone ? screen.width : screen.width/2
+                    )
                 } else {
                     Image(systemName: image)
                         .padding(5)
