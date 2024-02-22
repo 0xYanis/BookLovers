@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-
+#if os(macOS)
+#else
 public struct CustomCornersShape: Shape {
     private var corners: UIRectCorner
     private var radius: CGFloat
@@ -25,3 +26,5 @@ public struct CustomCornersShape: Shape {
         return Path(path.cgPath)
     }
 }
+#endif
+

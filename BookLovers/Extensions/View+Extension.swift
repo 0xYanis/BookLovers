@@ -39,7 +39,11 @@ extension View {
 
 extension View {
     var screen: CGRect {
+        #if os(macOS)
+        NSScreen.main?.visibleFrame ?? .null
+        #else
         UIScreen.current?.bounds ?? .null
+        #endif
     }
     
     func scrollPosition(

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#if os(iOS)
 public struct MenuContainer<Menu: View, Content: View>: View {
     @Binding private var isOpened: Bool
     private let menu: Menu
@@ -41,3 +42,4 @@ public struct MenuContainer<Menu: View, Content: View>: View {
         .animation(.spring(), value: isOpened)
     }
 }
+#endif

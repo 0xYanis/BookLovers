@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-
+#if os(macOS)
+#else
 public struct BubbleItem: View {
     let message: String?
     let image: String?
@@ -58,3 +59,4 @@ public struct BubbleItem: View {
     }
     
 }
+#endif

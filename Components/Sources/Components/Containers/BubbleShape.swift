@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+#if os(macOS)
+#else
 public struct BubbleShape: Shape {
     private var myMessage: Bool
     
@@ -49,3 +51,4 @@ public struct BubbleShape: Shape {
         return Path(path.cgPath)
     }
 }
+#endif

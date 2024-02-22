@@ -13,6 +13,12 @@
 		0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E85E2B73E855007C11A5 /* SearchBar.swift */; };
 		0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905C5292B84FAB7002342E9 /* PhotosPickerView.swift */; };
 		0905C52E2B852AF9002342E9 /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 0905C52D2B852AF9002342E9 /* Components */; };
+		0921FA752B8783F700EE083C /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65292B7109F800E6FF4E /* MenuOption.swift */; };
+		0921FA762B8784C800EE083C /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652B2B710A0C00E6FF4E /* SideMenuView.swift */; };
+		0921FA772B87863A00EE083C /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */; };
+		0921FA782B87865300EE083C /* SideMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */; };
+		0921FA7A2B87867C00EE083C /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 0921FA792B87867C00EE083C /* Components */; };
+		0921FA7B2B8788C100EE083C /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65262B71073D00E6FF4E /* View+Extension.swift */; };
 		0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */; };
 		093548702B5EAEE100CC4955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0935486F2B5EAEE100CC4955 /* Assets.xcassets */; };
 		093548732B5EAEE100CC4955 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093548722B5EAEE100CC4955 /* Preview Assets.xcassets */; };
@@ -150,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0921FA7A2B87867C00EE083C /* Components in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +471,9 @@
 			dependencies = (
 			);
 			name = MacBookLovers;
+			packageProductDependencies = (
+				0921FA792B87867C00EE083C /* Components */,
+			);
 			productName = MacBookLovers;
 			productReference = 09F746272B869CA000DEBB49 /* MacBookLovers.app */;
 			productType = "com.apple.product-type.application";
@@ -585,11 +595,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				09F7463B2B869DAA00DEBB49 /* HomeView.swift in Sources */,
+				0921FA752B8783F700EE083C /* MenuOption.swift in Sources */,
+				0921FA772B87863A00EE083C /* SideMenuHeader.swift in Sources */,
 				09F746372B869D7200DEBB49 /* UserStore.swift in Sources */,
 				09F7463F2B869DD100DEBB49 /* WelcomeFeature.swift in Sources */,
 				09F746362B869D5C00DEBB49 /* BookLoversApp.swift in Sources */,
 				09F7463D2B869DD100DEBB49 /* SortType.swift in Sources */,
+				0921FA762B8784C800EE083C /* SideMenuView.swift in Sources */,
+				0921FA782B87865300EE083C /* SideMenuItem.swift in Sources */,
 				09F7463C2B869DD100DEBB49 /* LiteraryGenre.swift in Sources */,
+				0921FA7B2B8788C100EE083C /* View+Extension.swift in Sources */,
 				09F7463E2B869DD100DEBB49 /* SignInType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -795,7 +810,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.7;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = YanRybkin.MacBookLovers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -824,7 +839,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.7;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = YanRybkin.MacBookLovers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -879,6 +894,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		0905C52D2B852AF9002342E9 /* Components */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Components;
+		};
+		0921FA792B87867C00EE083C /* Components */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Components;
 		};

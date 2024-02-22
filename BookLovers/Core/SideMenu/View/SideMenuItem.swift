@@ -38,12 +38,19 @@ struct SideMenuItem: View {
     private var background: some View {
         ZStack {
             if isSelected {
+                #if os(macOS)
+                Color.green
+                    .opacity(isSelected ? 1 : 0)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .matchedGeometryEffect(id: "MENUOPTION", in: animation)
+                #else
                 Color.green
                     .opacity(isSelected ? 1 : 0)
                     .clipShape(CustomCornersShape(
                         corners: [.topRight, .bottomRight],
                         radius: 12))
                     .matchedGeometryEffect(id: "MENUOPTION", in: animation)
+                #endif
             }
         }
     }

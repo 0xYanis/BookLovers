@@ -13,27 +13,28 @@ struct SideMenuView: View {
     @Binding var selectedOption: MenuOption
     
     @Environment(\.colorScheme) private var scheme
-    @EnvironmentObject private var coordinator: ExploreCoordinator
     @EnvironmentObject private var userStore: UserStore
-    
+#if os(iOS)
+    @EnvironmentObject private var coordinator: ExploreCoordinator
+#endif
     var body: some View {
-        if UIDevice.isiPhone {
-            ZStack {
-                if isShowing {
-                    sideMenu
-                }
+#if os(iOS)
+        ZStack {
+            if isShowing {
+                sideMenu
             }
-            .animation(.spring(dampingFraction: 0.95), value: isShowing)
-        } else {
-            VStack(alignment: .leading, spacing: 32) {
-                menuHeader
-                menuList
-                menuFooter
-            }
-            .frame(maxHeight: .infinity, alignment: .top)
         }
+        .animation(.spring(dampingFraction: 0.95), value: isShowing)
+#else
+        VStack(alignment: .leading, spacing: 32) {
+            menuHeader
+            menuList
+            menuFooter
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+#endif
     }
-    
+#if os(iOS)
     private var sideMenu: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 32) {
@@ -52,7 +53,7 @@ struct SideMenuView: View {
             isShowing = false
         })
     }
-    
+#endif
     private var menuHeader: some View {
         SideMenuHeader()
             .padding(.horizontal)
@@ -81,7 +82,9 @@ struct SideMenuView: View {
             
             defaultButton("Log out", image: "door.left.hand.open") {
                 userStore.setStatus(isAuthenticated: false)
+#if os(iOS)
                 coordinator.popToRoot()
+#endif
             }
             .padding()
         }
@@ -96,10 +99,10 @@ struct SideMenuView: View {
     private func optionTapped(_ option: MenuOption) {
         withAnimation(.easeInOut(duration: 0.2)) {
             selectedOption = option
-            if UIDevice.isiPhone {
-                hideMenu()
-                coordinator.push(page: option)
-            }
+#if os(iOS)
+            hideMenu()
+            coordinator.push(page: option)
+#endif
         }
     }
     

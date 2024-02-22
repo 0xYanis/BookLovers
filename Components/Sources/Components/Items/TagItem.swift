@@ -22,12 +22,21 @@ public struct TagItem: View {
     }
     
     public var body: some View {
+        #if os(macOS)
+        Text(title)
+            .font(font)
+            .padding(.horizontal, 6)
+            .padding(6)
+            .background(scheme == .dark ? .black : .white)
+            .clipShape(RoundedRectangle(cornerRadius: 6))
+        #else
         Text(title)
             .font(font)
             .padding(.horizontal, 6)
             .padding(6)
             .background(Color(uiColor: isDark ? .tertiarySystemBackground : .white))
             .clipShape(RoundedRectangle(cornerRadius: 6))
+        #endif
     }
     
     private var isDark: Bool {
