@@ -39,11 +39,11 @@ extension View {
 
 extension View {
     var screen: CGRect {
-        #if os(macOS)
+#if os(macOS)
         NSScreen.main?.visibleFrame ?? .null
-        #else
+#else
         UIScreen.current?.bounds ?? .null
-        #endif
+#endif
     }
     
     func scrollPosition(
@@ -54,5 +54,9 @@ extension View {
             offset: offset,
             coordinateSpace: coordinateSpace)
         )
+    }
+    
+    func saveSize(in size: Binding<CGSize>) -> some View {
+        modifier(SizeCalculator(size: size))
     }
 }

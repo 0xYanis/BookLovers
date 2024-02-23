@@ -12,10 +12,12 @@ struct FavoriteHeader: View {
     @Binding var selectedType: FavoriteType
     @Namespace private var animation
     @FocusState private var isFocused: Bool
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
     
     var body: some View {
         VStack(spacing: 0) {
             searchbar
+                .padding(.top, safeAreaInsets.top)
                 .padding(.vertical, 10)
                 .matchedGeometryEffect(id: "searchfav", in: animation)
             tabbarTypePicker.padding(.top, 10)
@@ -72,7 +74,6 @@ struct FavoriteHeader: View {
                                 Capsule()
                                     .fill(.green)
                                     .frame(height: 4)
-                                    
                                     .matchedGeometryEffect(id: "favcapsule", in: animation)
                             }
                         }
@@ -84,10 +85,6 @@ struct FavoriteHeader: View {
         .animation(.spring(), value: selectedType)
         .padding(.horizontal)
     }
-    
-//    private var isScrolling: Bool {
-//        abs(offset < 0 ? 0 : offset) > 150
-//    }
     
     private func tabTapped(_ type: FavoriteType) {
         withAnimation(.spring()) {

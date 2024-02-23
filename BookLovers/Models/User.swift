@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct User {
+struct User: Identifiable {
+    var id = UUID()
     var avatar: Image
     let email: String
     var username: String

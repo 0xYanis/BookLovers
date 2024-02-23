@@ -6,30 +6,41 @@
 //
 
 import SwiftUI
+import ScalingHeaderScrollView
 
 struct FavoritesView: View {
     @State private var searchText = ""
     @State private var selectedType: FavoriteType = .onReading
     @State private var requestSignIn = false
-    
+    @State private var headerSize = CGSize()
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                FavoriteHeader(searchText: $searchText, selectedType: $selectedType)
-                .zIndex(1)
-                
-                TabView(selection: $selectedType) {
-                    ForEach(FavoriteType.allCases) { type in
-                        if UIDevice.isiPhone {
-                            contentView.tag(type)
-                        } else {
-                            contentPadView.tag(type)
+            ZStack {
+                ScalingHeaderScrollView {
+                    ZStack {
+                        FavoriteHeader(
+                            searchText: $searchText,
+                            selectedType: $selectedType
+                        )
+                        .saveSize(in: $headerSize)
+                    }
+                    .background(Material.ultraThinMaterial)
+                } content: {
+                    TabView(selection: $selectedType) {
+                        ForEach(FavoriteType.allCases) { type in
+                            if UIDevice.isiPhone {
+                                contentView.tag(type)
+                            } else {
+                                contentPadView.tag(type)
+                            }
                         }
                     }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .zIndex(0)
+                .height(min: headerSize.height, max: headerSize.height)
+                .allowsHeaderCollapse()
             }
+            .ignoresSafeArea()
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -39,6 +50,7 @@ struct FavoritesView: View {
             LazyVGrid(columns: Array(repeating: GridItem(), count: 2)) {
                 ForEach(0..<6, id: \.self) { index in
                     FavoriteItem()
+                        .tag(index)
                         .onChange(of: index) { newValue in
                             // TODO:
                         }
@@ -53,6 +65,7 @@ struct FavoritesView: View {
             LazyVStack(spacing: 15) {
                 ForEach(0..<15, id: \.self) { index in
                     FavoriteItem()
+                        .tag(index)
                         .padding(.horizontal)
                         .onChange(of: index) { newValue in
                             // TODO:
@@ -70,4 +83,3 @@ struct FavoritesView_Previews: PreviewProvider {
         FavoritesView()
     }
 }
-
