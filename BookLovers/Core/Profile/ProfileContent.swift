@@ -28,13 +28,13 @@ struct ProfileContent: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             
             VStack(spacing: 0) {
-                if userStore.isAuthenticated {
+                if userStore.user.isAuthenticated {
                     label(text: "Email", image: "mail", color: .blue, divider: true)
                     label(text: "Password", image: "lock", color: .purple)
                 }
             }
             .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
-            .clipShape(userStore.isAuthenticated ?
+            .clipShape(userStore.user.isAuthenticated ?
                        RoundedRectangle(cornerRadius: 10) :
                         RoundedRectangle(cornerRadius: 25))
             

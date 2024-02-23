@@ -12,7 +12,7 @@ struct SideMenuHeader: View {
     
     var body: some View {
         HStack {
-            userStore.image
+            userStore.user.avatar
                 .resizable()
                 .foregroundColor(.white)
                 .frame(width: 48, height: 48)
@@ -22,10 +22,10 @@ struct SideMenuHeader: View {
                 .padding(.vertical)
             
             VStack(alignment: .leading, spacing: 6) {
-                Text(userStore.username)
+                Text(userStore.user.username)
                     .font(.subheadline)
                 
-                Text("@\(userStore.username)")
+                Text("@\(userStore.user.username)")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }

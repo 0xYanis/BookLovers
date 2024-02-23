@@ -93,11 +93,11 @@ struct ExploreView: View {
     private var trailingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: trailingItemAction) {
-                if userStore.isDefaultImage {
-                    userStore.image
+                if userStore.user.isDefaultImage {
+                    userStore.user.avatar
                         .clipShape(Circle())
                 } else {
-                    userStore.image
+                    userStore.user.avatar
                         .resizable()
                         .scaledToFill()
                         .frame(width: 27, height: 27)

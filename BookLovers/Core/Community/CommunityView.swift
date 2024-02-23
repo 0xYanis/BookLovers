@@ -13,7 +13,7 @@ struct CommunityView: View {
     
     var body: some View {
         NavigationStack {
-            if userStore.isAuthenticated {
+            if userStore.user.isAuthenticated {
                 CreateCommunityView()
             } else {
                 SignInView(type: .community, requestSignIn: $requestSignIn)
@@ -24,6 +24,6 @@ struct CommunityView: View {
 
 struct CommunityView_Previews: PreviewProvider {
     static var previews: some View {
-        CommunityView()
+        CommunityView().environmentObject(UserStore())
     }
 }

@@ -20,7 +20,7 @@ struct ProfileEditorView: View {
                         HStack {
                             Text("Name")
                             Divider()
-                            TextField("\(userStore.username)", text: $userStore.username)
+                            TextField("\(userStore.user.username)", text: $userStore.user.username)
                         }
                     },
                     header: imageHeader,
@@ -29,8 +29,8 @@ struct ProfileEditorView: View {
                 .headerProminence(.increased)
                 
                 Section {
-                    TextField("Status", text: $userStore.userStatus)
-                    Picker("Favorite genre", selection: $userStore.userFavoriteGenre) {
+                    TextField("Status", text: $userStore.user.status)
+                    Picker("Favorite genre", selection: $userStore.user.favoriteGenre) {
                         ForEach(LiteraryGenre.allCases) { genre in
                             Text(genre.title).tag(genre)
                         }
@@ -41,7 +41,7 @@ struct ProfileEditorView: View {
                 }
                 
                 Section {
-                    if userStore.isAuthenticated {
+                    if userStore.user.isAuthenticated {
                         Label("Change email address", systemImage: "mail")
                     } else {
                         Button("Sign in", action: { showSignIn.toggle() })
@@ -51,7 +51,7 @@ struct ProfileEditorView: View {
                 } header: {
                     Text("Account")
                 }
-                .listRowBackground(userStore.isAuthenticated ? .none : Color.green)
+                .listRowBackground(userStore.user.isAuthenticated ? .none : Color.green)
                 
                 Section {
                     Button(action: { showCleanAll.toggle() }) {
@@ -60,16 +60,16 @@ struct ProfileEditorView: View {
                     }
                 }
                 
-                if userStore.isAuthenticated {
+                if userStore.user.isAuthenticated {
                     Section {
                         Button("Remove account", action: deleteAccountAciton)
-                            .disabled( !userStore.isAuthenticated )
+                            .disabled( !userStore.user.isAuthenticated )
                             .frame(maxWidth: .infinity, alignment: .center)
                     } footer: {
                         Text("You can easily delete your account and all data associated with it.")
                     }
                     .tint(.white)
-                    .listRowBackground(Color.red.opacity(userStore.isAuthenticated ? 1.0 : 0.5))
+                    .listRowBackground(Color.red.opacity(userStore.user.isAuthenticated ? 1.0 : 0.5))
                 }
             }
         }
@@ -86,7 +86,7 @@ struct ProfileEditorView: View {
         ZStack(alignment: .center) {
             Color.clear
             VStack(spacing: 25) {
-                userStore.image
+                userStore.user.avatar
                     .resizable()
                     .scaledToFill()
                     .frame(width: 130, height: 130)
@@ -111,7 +111,6 @@ struct ProfileEditorView: View {
 
 struct ProfileEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileEditorView()
-            .environmentObject(UserStore())
+        ProfileEditorView().environmentObject(UserStore())
     }
 }

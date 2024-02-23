@@ -24,7 +24,7 @@ struct MainTabbarView: View {
                         }
                         Text(item.name)
                     }
-                    .badge(item == .community ? userStore.messageCount : 0)
+                    .badge(item == .community ? userStore.user.messages : 0)
             }
         }
         .tint(.green)

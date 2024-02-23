@@ -57,8 +57,8 @@ struct ProfileView: View {
             }
             .padding(.horizontal)
         }
-        .toolbar(UIDevice.isiPhone ? .visible : .hidden, for: .navigationBar)
-        .toolbar(UIDevice.isiPhone ? .visible : .hidden, for: .tabBar)
+        .toolbar(.hidden, for: .navigationBar)
+        .toolbar(.hidden, for: .tabBar)
         .onChange(of: progress) { newValue in
             if UIDevice.isiPhone {
                 withAnimation(.spring(response: 0.2)) {
@@ -93,7 +93,7 @@ struct ProfileView: View {
     @ViewBuilder
     private var centerItem: some View {
         if currentSnapPos == .hide {
-            Text(userStore.username)
+            Text(userStore.user.username)
         }
     }
     

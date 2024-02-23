@@ -31,7 +31,7 @@ struct ProfileHeader: View {
         ZStack(alignment: .bottom) {
             Rectangle().fill(.gray.opacity(0.15))
             VStack {
-                userStore.image
+                userStore.user.avatar
                     .resizable()
                     .scaledToFill()
                     .matchedGeometryEffect(id: "avatar", in: headerSnap)
@@ -40,7 +40,7 @@ struct ProfileHeader: View {
                     .clipped()
                 
                 
-                Text(userStore.username)
+                Text(userStore.user.username)
                     .font(.title)
                     .fontWeight(.semibold)
                     .padding(.bottom, 30)
@@ -50,14 +50,14 @@ struct ProfileHeader: View {
     
     private var extendedStateView: some View {
         ZStack {
-            userStore.image
+            userStore.user.avatar
                 .resizable()
                 .matchedGeometryEffect(id: "avatar", in: headerSnap)
                 .scaledToFill()
                 .frame(width: screen.width, height: screen.height/2.5)
                 .clipped()
                 .overlay(alignment: .bottomLeading) {
-                    Text(userStore.username)
+                    Text(userStore.user.username)
                         .underline()
                         .font(.title)
                         .fontWeight(.semibold)
