@@ -33,9 +33,9 @@ struct FavoriteItem: View {
             .padding(.trailing)
         }
         .frame(height: screen.height / 7)
-        .background(Color(uiColor: .systemBackground))
+        .background(Color(uiColor: .secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
-        .shadow(color: .black.opacity(0.1), radius: 10)
+        //.shadow(color: .black.opacity(0.1), radius: 10)
     }
     
     private var image: some View {

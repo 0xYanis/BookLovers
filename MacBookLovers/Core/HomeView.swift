@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-#warning("разработка невозможна, отсутствует требуемая версия macOS.")
+
 struct HomeView: View {
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
     @State private var selectedOption: MenuOption = .explore
+    
+    // TODO: разработка невозможна, отсутствует требуемая версия macOS.
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {

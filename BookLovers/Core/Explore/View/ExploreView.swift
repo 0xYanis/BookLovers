@@ -32,6 +32,7 @@ struct ExploreView: View {
                     coordinator.build(page: $0)
                 }
                 .fullScreenCover(isPresented: $showSearchView, content: SearchView.init)
+                .toolbarBackground(Material.ultraThickMaterial)
             }
         } else {
             NavigationSplitView(columnVisibility: $splitVisibility) {

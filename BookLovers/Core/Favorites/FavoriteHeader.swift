@@ -10,7 +10,6 @@ import SwiftUI
 struct FavoriteHeader: View {
     @Binding var searchText: String
     @Binding var selectedType: FavoriteType
-    
     @Namespace private var animation
     @FocusState private var isFocused: Bool
     
@@ -22,6 +21,7 @@ struct FavoriteHeader: View {
             tabbarTypePicker.padding(.top, 10)
             Divider()
         }
+        .background(Material.ultraThinMaterial)
     }
     
     private var searchbar: some View {
@@ -42,7 +42,7 @@ struct FavoriteHeader: View {
             .padding(.horizontal, 5)
         }
         .padding(10)
-        .background(Color(.tertiarySystemGroupedBackground))
+        .background(Color(.systemBackground))
         .clipShape(Capsule())
         .padding(.horizontal)
     }

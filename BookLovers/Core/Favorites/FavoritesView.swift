@@ -11,7 +11,6 @@ struct FavoritesView: View {
     @State private var searchText = ""
     @State private var selectedType: FavoriteType = .onReading
     @State private var requestSignIn = false
-    @State private var isScrolling = false
     
     var body: some View {
         NavigationStack {
@@ -29,6 +28,7 @@ struct FavoritesView: View {
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
+                .zIndex(0)
             }
             .navigationBarTitleDisplayMode(.inline)
         }

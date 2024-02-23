@@ -16,7 +16,7 @@ struct MostPopularItem: View {
             description
             .padding(5)
         }
-        .background(Color(uiColor: .systemBackground))
+        .background(Color(uiColor: .secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .shadow(color: .black.opacity(0.1), radius: 10)
     }
@@ -49,7 +49,7 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
 
 """
             )
-            .lineLimit(3)
+            .lineLimit(5)
             .font(.caption2)
             .foregroundStyle(.secondary)
         }
