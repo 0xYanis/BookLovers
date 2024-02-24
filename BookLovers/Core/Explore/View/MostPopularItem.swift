@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MostPopularItem: View {
+    let background: Color
     
     var body: some View {
         HStack(alignment: .top) {
@@ -16,7 +17,7 @@ struct MostPopularItem: View {
             description
             .padding(5)
         }
-        .background(Color(uiColor: .secondarySystemBackground))
+        .background(background)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .shadow(color: .black.opacity(0.1), radius: 10)
     }
@@ -72,6 +73,6 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
 
 struct MostPopularItem_Previews: PreviewProvider {
     static var previews: some View {
-        MostPopularItem()
+        MostPopularItem(background: .white)
     }
 }

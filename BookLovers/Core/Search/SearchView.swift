@@ -30,7 +30,7 @@ struct SearchView: View {
                     NewParagraphView(title: "Discover") {
                         VStack {
                             TagCaruselView(tags: LiteraryGenre.asArray, onTap: sortByTag)
-                            MostPopularItem()
+                            MostPopularItem(background: Color(.tertiarySystemBackground))
                                 .frame(height: 150)
                                 .padding()
                         }

@@ -24,16 +24,21 @@ public struct TagCaruselView: View {
     
     public var body: some View {
         HStack {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(0..<tags.count, id: \.self) { i in
-                        TagItem(title: tags[i], font: font)
-                            .onTapGesture { onTap(i) }
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(0..<tags.count, id: \.self) { i in
+                            TagItem(title: tags[i], font: font)
+                                .onTapGesture {
+                                    withAnimation { proxy.scrollTo(i, anchor: .center) }
+                                    onTap(i)
+                                }
+                        }
                     }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+                .shadow(color: .black.opacity(0.1), radius: 4)
             }
-            .shadow(color: .black.opacity(0.1), radius: 4)
         }
     }
 }

@@ -74,6 +74,7 @@ struct FavoritesView: View {
                         // TODO:
                     }
             }
+            Spacer().frame(height: 120)
         }
         .padding(.vertical)
     }
