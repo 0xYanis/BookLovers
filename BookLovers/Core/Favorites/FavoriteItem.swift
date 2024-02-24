@@ -32,7 +32,7 @@ struct FavoriteItem: View {
             }
             .padding(.trailing)
         }
-        .frame(height: screen.height / 7)
+        .frame(height: 130)
         .background(Color(uiColor: .secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
