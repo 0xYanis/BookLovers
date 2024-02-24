@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import Components
+import WelcomeSheet
 
 struct LaunchView: View {
     @State private var isLaunched = true
     @State private var imageWidth: CGFloat = 300
     @State private var isTop = false
     @State private var isFinished = false
+    @StateObject private var viewModel = LaunchViewModel()
+    @Environment(\.colorScheme) private var scheme
     
     var body: some View {
         ZStack {
@@ -19,7 +23,12 @@ struct LaunchView: View {
                 backgroundView
                 launchLogo.opacity(isFinished ? 0.0 : 1.0)
             }
-            MainTabbarView().opacity(isFinished ? 1.0 : 0.0)
+            MainTabbarView()
+                .opacity(isFinished ? 1.0 : 0.0)
+                .welcomeSheet(
+                    isPresented: $viewModel.showWelcomeSheet,
+                    preferredColorScheme: scheme,
+                    pages: viewModel.pages)
         }
         .onAppear {
             Task { @MainActor in
@@ -27,7 +36,10 @@ struct LaunchView: View {
                 await animationPart(sleep: 2, response: 1) { imageWidth = 30 } // fast decrease
                 await animationPart(sleep: 0.3, response: 1) { isTop = true } // going top
                 await animationPart(sleep: 1.5, response: 1) { isFinished = true } // stopping
-                await animationPart(sleep: 1, response: 1) { isLaunched = false } // showing main view
+                await animationPart(sleep: 1, response: 1) {
+                    isLaunched = false
+                    viewModel.checkOnboarding()
+                } // showing main view
             }
         }
     }
