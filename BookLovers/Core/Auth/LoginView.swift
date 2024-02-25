@@ -21,34 +21,37 @@ struct LoginView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
+            ZStack {
+                booklyGradient
+                    .opacity(0.2)
+                    .ignoresSafeArea()
+                
+                
                 VStack(alignment: .center, spacing: 25) {
-                    Text("BookLovers")
-                        .font(.title3)
-                        .fontWeight(.black)
-                        .fontDesign(.rounded)
-                    
-                    logoImage
-                    
+                    HStack(alignment: .center, spacing: 0) {
+                        Image("logo-small")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 60, height: 60)
+                            .opacity(0.95)
+                        Text("Bookly")
+                            .font(.largeTitle)
+                            .fontWeight(.black)
+                            .fontDesign(.rounded)
+                            .foregroundStyle(.linearGradient(
+                                colors: [.purple, .green],
+                                startPoint: .bottomLeading,
+                                endPoint: .topTrailing))
+                    }
+                    .padding(.bottom, 64)
                     emailField
-                    
                     secureField
-                    
-                    if isRegistrationView {
-                        secondField
-                    }
-                    
-                    if !isRegistrationView {
-                        signUpLabel
-                    }
-                    
-                    signInButton
-                    
+                    if isRegistrationView { secondField }
                     Divider()
-                    
+                    if !isRegistrationView { signUpLabel }
+                    signInButton
                     HStack {
                         //appleIdButton
-                        
                         Spacer()
                     }
                 }
@@ -75,14 +78,14 @@ struct LoginView: View {
     
     private var secureField: some View {
         InteractedSecureField("Entry your password", text: $password)
-        .background(Color(.secondarySystemFill))
-        .clipShape(Capsule())
+            .background(Color(.secondarySystemFill))
+            .clipShape(Capsule())
     }
     
     private var secondField: some View {
         InteractedSecureField("Confirm your password", text: $secondPassword)
-        .background(Color(.secondarySystemFill))
-        .clipShape(Capsule())
+            .background(Color(.secondarySystemFill))
+            .clipShape(Capsule())
     }
     
     private var signUpLabel: some View {
@@ -127,5 +130,15 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+    }
+}
+
+extension View {
+    var booklyGradient: LinearGradient {
+        LinearGradient(
+            colors: [.purple, .green],
+            startPoint: .bottomLeading,
+            endPoint: .topTrailing
+        )
     }
 }
