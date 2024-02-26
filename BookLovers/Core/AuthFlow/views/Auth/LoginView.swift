@@ -10,13 +10,13 @@ import Components
 
 struct LoginView: View {
     private let isRegistrationView: Bool
-    @State private var email = ""
-    @State private var password = ""
-    @State private var secondPassword = ""
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var userStore: UserStore
+    @ObservedObject private var viewModel: AuthViewModel
     
-    init(isRegistrationView: Bool = false) {
+    init(isRegistrationView: Bool = false, viewModel: AuthViewModel) {
         self.isRegistrationView = isRegistrationView
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -26,8 +26,8 @@ struct LoginView: View {
                     .opacity(0.2)
                     .ignoresSafeArea()
                 
-                
                 VStack(alignment: .center, spacing: 25) {
+                    Text(viewModel.canLogin.description)
                     HStack(alignment: .center, spacing: 0) {
                         Image("logo-small")
                             .resizable()
@@ -69,21 +69,24 @@ struct LoginView: View {
     }
     
     private var emailField: some View {
-        TextField("Entry your email", text: $email)
+        TextField("Entry your email", text: $viewModel.email)
             .padding(.horizontal)
             .padding(.vertical, 12)
             .background(Color(.secondarySystemFill))
             .clipShape(Capsule())
+            .overlay {
+                
+            }
     }
     
     private var secureField: some View {
-        InteractedSecureField("Entry your password", text: $password)
+        InteractedSecureField("Entry your password", text: $viewModel.password)
             .background(Color(.secondarySystemFill))
             .clipShape(Capsule())
     }
     
     private var secondField: some View {
-        InteractedSecureField("Confirm your password", text: $secondPassword)
+        InteractedSecureField("Confirm your password", text: $viewModel.secondPassword)
             .background(Color(.secondarySystemFill))
             .clipShape(Capsule())
     }
@@ -104,13 +107,16 @@ struct LoginView: View {
     
     private var signInButton: some View {
         Button("Sign \(isRegistrationView ? "up" : "in")") {
-            
+            userStore.setStatus(isAuthenticated: true)
+            viewModel.signIn()
         }
         .foregroundStyle(.white)
         .frame(maxWidth: .infinity)
         .padding(.vertical, 12)
         .background(Color.green)
         .clipShape(Capsule())
+        .disabled(viewModel.canLogin == false)
+        .opacity(viewModel.canLogin ? 1.0 : 0.5)
     }
     
     private var appleIdButton: some View {
@@ -129,7 +135,8 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(viewModel: AuthViewModel(isLogin: true))
+            .environmentObject(UserStore())
     }
 }
 

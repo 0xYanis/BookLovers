@@ -10,7 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     var body: some View {
         VStack {
-            LoginView(isRegistrationView: true)
+            LoginView(isRegistrationView: true, viewModel: AuthViewModel(isLogin: false))
         }
     }
 }
