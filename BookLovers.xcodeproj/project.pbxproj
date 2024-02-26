@@ -253,18 +253,50 @@
 		0935487B2B5EAF1A00CC4955 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				0901E8582B73C3B6007C11A5 /* Auth */,
-				094A651B2B70EE8800E6FF4E /* Community */,
-				09BBB1762B7E297B00F946F4 /* Chat */,
-				094A65192B70EE7700E6FF4E /* Explore */,
-				094A651A2B70EE8000E6FF4E /* Favorites */,
-				09F9AAAC2B7D40F900C0FC8D /* Launch */,
-				09A1656D2B80BC4A008C0AB3 /* Profile */,
-				0901E85D2B73E843007C11A5 /* Search */,
-				094A65282B7109E500E6FF4E /* SideMenu */,
+				093C1EC02B8CF0080085C22F /* AuthFlow */,
+				093C1EC32B8CF0750085C22F /* CommunityFlow */,
+				093C1EC12B8CF0280085C22F /* ExploreFlow */,
+				093C1EC22B8CF05F0085C22F /* FavoritesFlow */,
 				094A65182B70EE7100E6FF4E /* Tabbar */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		093C1EC02B8CF0080085C22F /* AuthFlow */ = {
+			isa = PBXGroup;
+			children = (
+				09F9AAAC2B7D40F900C0FC8D /* Launch */,
+				0901E8582B73C3B6007C11A5 /* Auth */,
+			);
+			path = AuthFlow;
+			sourceTree = "<group>";
+		};
+		093C1EC12B8CF0280085C22F /* ExploreFlow */ = {
+			isa = PBXGroup;
+			children = (
+				09A1656D2B80BC4A008C0AB3 /* Profile */,
+				094A65192B70EE7700E6FF4E /* Explore */,
+				0901E85D2B73E843007C11A5 /* Search */,
+				094A65282B7109E500E6FF4E /* SideMenu */,
+			);
+			path = ExploreFlow;
+			sourceTree = "<group>";
+		};
+		093C1EC22B8CF05F0085C22F /* FavoritesFlow */ = {
+			isa = PBXGroup;
+			children = (
+				094A651A2B70EE8000E6FF4E /* Favorites */,
+			);
+			path = FavoritesFlow;
+			sourceTree = "<group>";
+		};
+		093C1EC32B8CF0750085C22F /* CommunityFlow */ = {
+			isa = PBXGroup;
+			children = (
+				09BBB1762B7E297B00F946F4 /* Chat */,
+				094A651B2B70EE8800E6FF4E /* Community */,
+			);
+			path = CommunityFlow;
 			sourceTree = "<group>";
 		};
 		094A65182B70EE7100E6FF4E /* Tabbar */ = {
