@@ -26,7 +26,46 @@ enum LiteraryGenre: String, CaseIterable, Identifiable {
     case thriller
     case western
     
+    static var asArray: [String] { LiteraryGenre.allCases.map { $0.title } }
+    
     var id: String { rawValue }
     var title: String { rawValue.capitalized }
-    static var asArray: [String] { LiteraryGenre.allCases.map { $0.title } }
+    var image: String {
+        switch self {
+        case .actionAdventure:
+            return "mountain.2"
+        case .biography:
+            return "person.icloud"
+        case .childrenLiterature:
+            return "heart.circle.fill"
+        case .comedy:
+            return "theatermasks"
+        case .crimeFiction:
+            return "touchid"
+        case .drama:
+            return "heart.slash"
+        case .epic:
+            return "figure.baseball"
+        case .fantasy:
+            return "sun.dust"
+        case .historicalFiction:
+            return "hourglass"
+        case .horror:
+            return "18.square"
+        case .literaryFiction:
+            return "book"
+        case .mystery:
+            return "bonjour"
+        case .nonFiction:
+            return "tree"
+        case .romance:
+            return "heart"
+        case .scienceFiction:
+            return "atom"
+        case .thriller:
+            return "bolt"
+        case .western:
+            return "figure.equestrian.sports"
+        }
+    }
 }
