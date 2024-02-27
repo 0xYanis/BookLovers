@@ -9,9 +9,8 @@ import SwiftUI
 import Components
 
 struct SearchView: View {
+    @ObservedObject var viewModel: ExploreViewModel
     @Environment(\.dismiss) private var dismiss
-    @State private var sortType = ""
-    @State private var searchText = ""
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -20,9 +19,8 @@ struct SearchView: View {
                 VStack(alignment: .leading, spacing: 30) {
                     titleView
                     
-                    SearchBar("Search books", text: $searchText)
+                    SearchBar("Search books", text: $viewModel.searchText)
                         .focused($isFocused)
-                        .onSubmit(isSearching)
                         .padding(.horizontal)
                     
                     historyView
@@ -97,20 +95,16 @@ struct SearchView: View {
     }
     
     private func setSortType(_ type: SortType) {
-        
+        viewModel.sortSearchResults(by: type)
     }
-    
-    private func isSearching() {
-        
-    }
-    
+
     private func sortByTag(_ id: Int) {
-        
+        viewModel.sortSearchResults(by: id)
     }
 }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(viewModel: .init())
     }
 }
