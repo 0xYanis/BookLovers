@@ -38,7 +38,7 @@ final class ExploreCoordinator: ObservableObject {
         case .support:
             Text("")
         case .aboutUs:
-            Text("")
+            AboutUsView()
         }
     }
 }

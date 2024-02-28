@@ -14,6 +14,7 @@
 		0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905C5292B84FAB7002342E9 /* PhotosPickerView.swift */; };
 		0905C52E2B852AF9002342E9 /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 0905C52D2B852AF9002342E9 /* Components */; };
 		090F78162B8F621D00625729 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F78152B8F621D00625729 /* SearchViewModel.swift */; };
+		090F78182B8F789500625729 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F78172B8F789500625729 /* AboutUsView.swift */; };
 		0921FA752B8783F700EE083C /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65292B7109F800E6FF4E /* MenuOption.swift */; };
 		0921FA762B8784C800EE083C /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652B2B710A0C00E6FF4E /* SideMenuView.swift */; };
 		0921FA772B87863A00EE083C /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */; };
@@ -94,6 +95,7 @@
 		0905C5292B84FAB7002342E9 /* PhotosPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPickerView.swift; sourceTree = "<group>"; };
 		0905C52B2B852730002342E9 /* Components */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Components; sourceTree = "<group>"; };
 		090F78152B8F621D00625729 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		090F78172B8F789500625729 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		093548682B5EAEDE00CC4955 /* BookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLoversApp.swift; sourceTree = "<group>"; };
 		0935486F2B5EAEE100CC4955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -192,6 +194,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		090F78192B8F7D6700625729 /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				090F78172B8F789500625729 /* AboutUsView.swift */,
+			);
+			path = AboutUs;
 			sourceTree = "<group>";
 		};
 		0935485F2B5EAEDE00CC4955 = {
@@ -322,6 +332,7 @@
 		093C1ECD2B8E6AAC0085C22F /* views */ = {
 			isa = PBXGroup;
 			children = (
+				090F78192B8F7D6700625729 /* AboutUs */,
 				09A1656D2B80BC4A008C0AB3 /* Profile */,
 				094A65192B70EE7700E6FF4E /* Explore */,
 				0901E85D2B73E843007C11A5 /* Search */,
@@ -631,6 +642,7 @@
 				09EB283D2B7B9B0A0049F5AA /* AuthView.swift in Sources */,
 				09F170C02B7EAC9400CEF3CA /* ExploreCoordinator.swift in Sources */,
 				09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */,
+				090F78182B8F789500625729 /* AboutUsView.swift in Sources */,
 				0901E8512B7385AF007C11A5 /* TrendingBooksGridView.swift in Sources */,
 				094A652C2B710A0C00E6FF4E /* SideMenuView.swift in Sources */,
 				09441E092B714698004A09D0 /* FavoritesView.swift in Sources */,
