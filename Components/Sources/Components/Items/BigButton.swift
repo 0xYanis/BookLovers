@@ -15,7 +15,7 @@ public struct BigButton: View {
     
     public init(
         title: String,
-        cornerRadius: CGFloat = 15,
+        cornerRadius: CGFloat = 12,
         color: Color = .green,
         action: @escaping () -> Void
     ) {
@@ -29,7 +29,7 @@ public struct BigButton: View {
         Button(action: action) { Text(title) }
         .foregroundStyle(.white)
         .fontWeight(.semibold)
-        .padding()
+        .padding(.vertical, 12)
         .frame(maxWidth: .infinity)
         .background(color)
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
