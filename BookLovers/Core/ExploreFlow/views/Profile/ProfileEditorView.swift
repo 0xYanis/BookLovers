@@ -74,7 +74,7 @@ struct ProfileEditorView: View {
             }
         }
         .sheet(isPresented: $showSignIn) {
-            LoginView(isRegistrationView: false)
+            LoginView(viewModel: AuthViewModel(isLogin: true))
         }
         .sheet(isPresented: $showCleanAll) {
             CleanAllView()

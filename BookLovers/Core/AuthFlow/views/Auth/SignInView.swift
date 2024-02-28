@@ -69,7 +69,7 @@ struct SignInView: View {
             .ignoresSafeArea()
         }
         .sheet(isPresented: $requestSignIn) {
-            LoginView()
+            LoginView(viewModel: AuthViewModel(isLogin: true))
         }
     }
 }

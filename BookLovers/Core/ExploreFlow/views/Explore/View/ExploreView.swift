@@ -10,7 +10,6 @@ import Components
 
 struct ExploreView: View {
     @StateObject private var coordinator = ExploreCoordinator()
-    @StateObject private var viewModel = ExploreViewModel()
     
     @State private var selectedSideOption: MenuOption = .explore
     @State private var showSideMenu = false
@@ -33,7 +32,7 @@ struct ExploreView: View {
                 .navigationDestination(for: MenuOption.self) {
                     coordinator.build(page: $0)
                 }
-                .fullScreenCover(isPresented: $showSearchView) { SearchView(viewModel: viewModel) }
+                .fullScreenCover(isPresented: $showSearchView) { SearchView() }
                 .toolbarBackground(Material.ultraThickMaterial)
             }
         } else {
@@ -51,7 +50,7 @@ struct ExploreView: View {
             .navigationDestination(for: MenuOption.self) {
                 coordinator.build(page: $0)
             }
-            .fullScreenCover(isPresented: $showSearchView) { SearchView(viewModel: viewModel) }
+            .fullScreenCover(isPresented: $showSearchView) { SearchView() }
         }
     }
     

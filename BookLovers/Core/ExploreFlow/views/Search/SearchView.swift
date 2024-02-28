@@ -9,7 +9,7 @@ import SwiftUI
 import Components
 
 struct SearchView: View {
-    @ObservedObject var viewModel: ExploreViewModel
+    @StateObject private var viewModel = SearchViewModel()
     @Environment(\.dismiss) private var dismiss
     @FocusState private var isFocused: Bool
     
@@ -105,6 +105,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(viewModel: .init())
+        SearchView()
     }
 }

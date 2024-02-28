@@ -26,7 +26,7 @@ struct AuthView: View {
             
             // sign in
             if showSignIn {
-                LoginView()
+                LoginView(viewModel: AuthViewModel(isLogin: true))
             }
         }
         .overlay(alignment: .topTrailing) {
