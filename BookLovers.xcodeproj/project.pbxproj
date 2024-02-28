@@ -15,6 +15,8 @@
 		0905C52E2B852AF9002342E9 /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 0905C52D2B852AF9002342E9 /* Components */; };
 		090F78162B8F621D00625729 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F78152B8F621D00625729 /* SearchViewModel.swift */; };
 		090F78182B8F789500625729 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F78172B8F789500625729 /* AboutUsView.swift */; };
+		090F781C2B8F9C0B00625729 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F781B2B8F9C0B00625729 /* AlertView.swift */; };
+		090F781E2B8FE26700625729 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F781D2B8FE26700625729 /* View+Extension.swift */; };
 		0921FA752B8783F700EE083C /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65292B7109F800E6FF4E /* MenuOption.swift */; };
 		0921FA762B8784C800EE083C /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652B2B710A0C00E6FF4E /* SideMenuView.swift */; };
 		0921FA772B87863A00EE083C /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */; };
@@ -96,6 +98,8 @@
 		0905C52B2B852730002342E9 /* Components */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Components; sourceTree = "<group>"; };
 		090F78152B8F621D00625729 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		090F78172B8F789500625729 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		090F781B2B8F9C0B00625729 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		090F781D2B8FE26700625729 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		093548682B5EAEDE00CC4955 /* BookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLoversApp.swift; sourceTree = "<group>"; };
 		0935486F2B5EAEE100CC4955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,6 +208,15 @@
 			path = AboutUs;
 			sourceTree = "<group>";
 		};
+		090F781A2B8F9BF300625729 /* AlertKit */ = {
+			isa = PBXGroup;
+			children = (
+				090F781B2B8F9C0B00625729 /* AlertView.swift */,
+				090F781D2B8FE26700625729 /* View+Extension.swift */,
+			);
+			path = AlertKit;
+			sourceTree = "<group>";
+		};
 		0935485F2B5EAEDE00CC4955 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +241,7 @@
 		0935486A2B5EAEDE00CC4955 /* BookLovers */ = {
 			isa = PBXGroup;
 			children = (
+				090F781A2B8F9BF300625729 /* AlertKit */,
 				093548792B5EAF0300CC4955 /* Applicaiton */,
 				0935487B2B5EAF1A00CC4955 /* Core */,
 				094A65252B71072600E6FF4E /* Extensions */,
@@ -650,6 +664,7 @@
 				09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */,
 				09A165712B80C9B5008C0AB3 /* ProfileContent.swift in Sources */,
 				090F78162B8F621D00625729 /* SearchViewModel.swift in Sources */,
+				090F781E2B8FE26700625729 /* View+Extension.swift in Sources */,
 				094A652E2B710A5B00E6FF4E /* SideMenuHeader.swift in Sources */,
 				094E137C2B74C7E90052E0D8 /* SignInType.swift in Sources */,
 				094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */,
@@ -667,6 +682,7 @@
 				094E137E2B74CB9F0052E0D8 /* RegistrationView.swift in Sources */,
 				09A1656F2B80BC5F008C0AB3 /* ProfileHeader.swift in Sources */,
 				09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */,
+				090F781C2B8F9C0B00625729 /* AlertView.swift in Sources */,
 				093C1EC52B8CF0C20085C22F /* AuthViewModel.swift in Sources */,
 				09BBB1752B7E297600F946F4 /* ChatsView.swift in Sources */,
 				09441E072B71433B004A09D0 /* SignInView.swift in Sources */,

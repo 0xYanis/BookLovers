@@ -34,7 +34,6 @@ public struct MenuContainer<Menu: View, Content: View>: View {
                     .onTapGesture { isOpened.toggle() }
                 
                 menu
-                    .transition(.move(edge: .leading))
                     .zIndex(1)
                     .toolbar(.hidden, for: .tabBar)
             }
