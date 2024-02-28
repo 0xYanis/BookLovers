@@ -1,5 +1,5 @@
 //
-//  AlertItem.swift
+//  AlertToastItem.swift
 //  BookLovers
 //
 //  Created by Yanis on 29.02.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AlertItem<Content, Figure, Background>: View where Content : View, Figure : Shape, Background : ShapeStyle {
+struct AlertToastItem<Content, Figure, Background>: View where Content : View, Figure : Shape, Background : ShapeStyle {
     @Binding private var isPresented: Bool
     @State private var timer: Timer?
     @State private var offset = CGSize()
@@ -94,25 +94,6 @@ struct AlertItem<Content, Figure, Background>: View where Content : View, Figure
             isPresented = false
             timer?.invalidate()
             offset = .zero
-        }
-    }
-}
-
-struct AlertItem_Previews: PreviewProvider {
-    static var previews: some View {
-        AlertItem(
-            isPresented: .constant(true),
-            shape: Capsule(),
-            background: .red) {
-            VStack {
-                HStack {
-                    Image(systemName: "antenna.radiowaves.left.and.right.slash")
-                    Text("No Internet connection")
-                }
-                .font(.callout)
-                .fontWeight(.semibold)
-                .foregroundStyle(.secondary)
-            }
         }
     }
 }

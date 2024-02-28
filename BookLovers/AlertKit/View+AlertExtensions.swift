@@ -8,11 +8,20 @@
 import SwiftUI
 
 extension View {
-    func alertToast(isPresented: SwiftUI.Binding<Bool>) -> some View {
+    func alertToast<Content>(
+        isPresented: SwiftUI.Binding<Bool>,
+        @ViewBuilder content: @escaping () -> Content
+    ) -> some View where Content : View {
         ZStack {
             self
-//            AlertView(isPresented: isPresented)
-                .animation(.easeIn(duration: 0.2), value: isPresented.wrappedValue)
+            
+            AlertToastItem(
+                isPresented: isPresented,
+                shape: RoundedRectangle(cornerRadius: 12),
+                background: Color(.secondarySystemBackground),
+                content: content
+            )
+            .animation(.easeIn(duration: 0.2), value: isPresented.wrappedValue)
         }
     }
 }
