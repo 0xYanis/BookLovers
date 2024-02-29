@@ -14,7 +14,7 @@ struct AlertTestView: View {
         Button("show") {
             show.toggle()
         }
-        .alertToast(isPresented: $show)
+        .alertToast(isPresented: $show, systemImage: "globe", message: "Hello world!")
     }
 }
 
