@@ -59,4 +59,28 @@ public extension View {
                 .animation(.easeIn(duration: 0.2), value: isPresented.wrappedValue)
         }
     }
+    
+    func alertToastProgress(
+        isPresented: SwiftUI.Binding<Bool>,
+        message: String? = nil
+    ) -> some View {
+        ZStack {
+            self
+            
+            AlertToastItem(
+                isPresented: isPresented,
+                shape: RoundedRectangle(cornerRadius: 12),
+                background: Color(.secondarySystemBackground)) {
+                    HStack {
+                        ProgressView()
+                        if let text = message {
+                            Text(text).padding(.leading, 2)
+                        }
+                    }
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                }
+                .animation(.easeIn(duration: 0.2), value: isPresented.wrappedValue)
+        }
+    }
 }
