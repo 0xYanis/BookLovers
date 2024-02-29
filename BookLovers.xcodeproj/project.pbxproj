@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090180E12B90B24000820CAB /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 090180E02B90B24000820CAB /* AlertKit */; };
 		0901E8512B7385AF007C11A5 /* TrendingBooksGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E8502B7385AF007C11A5 /* TrendingBooksGridView.swift */; };
 		0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E8522B73A8CD007C11A5 /* CommunityView.swift */; };
 		0901E85A2B73C3C7007C11A5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901E8592B73C3C7007C11A5 /* LoginView.swift */; };
@@ -15,7 +16,6 @@
 		0905C52E2B852AF9002342E9 /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 0905C52D2B852AF9002342E9 /* Components */; };
 		090F78162B8F621D00625729 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F78152B8F621D00625729 /* SearchViewModel.swift */; };
 		090F78182B8F789500625729 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F78172B8F789500625729 /* AboutUsView.swift */; };
-		090F78242B9086F500625729 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 090F78232B9086F500625729 /* AlertKit */; };
 		0921FA752B8783F700EE083C /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65292B7109F800E6FF4E /* MenuOption.swift */; };
 		0921FA762B8784C800EE083C /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652B2B710A0C00E6FF4E /* SideMenuView.swift */; };
 		0921FA772B87863A00EE083C /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */; };
@@ -97,7 +97,6 @@
 		0905C52B2B852730002342E9 /* Components */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Components; sourceTree = "<group>"; };
 		090F78152B8F621D00625729 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		090F78172B8F789500625729 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
-		090F78222B90863400625729 /* AlertKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AlertKit; sourceTree = "<group>"; };
 		093548682B5EAEDE00CC4955 /* BookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLoversApp.swift; sourceTree = "<group>"; };
 		0935486F2B5EAEE100CC4955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,7 +154,7 @@
 			files = (
 				0997103D2B8631F900630A16 /* Managers in Frameworks */,
 				0945AF3D2B89FF4E00A4623A /* WelcomeSheet in Frameworks */,
-				090F78242B9086F500625729 /* AlertKit in Frameworks */,
+				090180E12B90B24000820CAB /* AlertKit in Frameworks */,
 				0905C52E2B852AF9002342E9 /* Components in Frameworks */,
 				09A165692B80A79A008C0AB3 /* ScalingHeaderScrollView in Frameworks */,
 			);
@@ -211,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				0935486A2B5EAEDE00CC4955 /* BookLovers */,
-				090F78222B90863400625729 /* AlertKit */,
 				0905C52B2B852730002342E9 /* Components */,
 				0997103B2B86315800630A16 /* Managers */,
 				09F746282B869CA000DEBB49 /* MacBookLovers */,
@@ -538,7 +536,7 @@
 				0905C52D2B852AF9002342E9 /* Components */,
 				0997103C2B8631F900630A16 /* Managers */,
 				0945AF3C2B89FF4E00A4623A /* WelcomeSheet */,
-				090F78232B9086F500625729 /* AlertKit */,
+				090180E02B90B24000820CAB /* AlertKit */,
 			);
 			productName = BookLovers;
 			productReference = 093548682B5EAEDE00CC4955 /* BookLovers.app */;
@@ -594,6 +592,7 @@
 			packageReferences = (
 				09A165672B80A79A008C0AB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
 				0945AF3B2B89FF4E00A4623A /* XCRemoteSwiftPackageReference "Welcome-Sheet" */,
+				090180DF2B90B24000820CAB /* XCRemoteSwiftPackageReference "AlertKit" */,
 			);
 			productRefGroup = 093548692B5EAEDE00CC4955 /* Products */;
 			projectDirPath = "";
@@ -975,6 +974,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		090180DF2B90B24000820CAB /* XCRemoteSwiftPackageReference "AlertKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xYanis/AlertKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		0945AF3B2B89FF4E00A4623A /* XCRemoteSwiftPackageReference "Welcome-Sheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MAJKFL/Welcome-Sheet";
@@ -994,13 +1001,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		090180E02B90B24000820CAB /* AlertKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 090180DF2B90B24000820CAB /* XCRemoteSwiftPackageReference "AlertKit" */;
+			productName = AlertKit;
+		};
 		0905C52D2B852AF9002342E9 /* Components */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Components;
-		};
-		090F78232B9086F500625729 /* AlertKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AlertKit;
 		};
 		0921FA792B87867C00EE083C /* Components */ = {
 			isa = XCSwiftPackageProductDependency;
