@@ -49,11 +49,11 @@ struct SideMenuView: View {
             .offset(x: offset.width < 0 ? offset.width : 0)
             Spacer()
         }
-        .transition(.move(edge: .leading))
         .gesture(DragGesture()
             .onChanged(onChanged(_:))
             .onEnded(onEnded(_:))
         )
+        .transition(.move(edge: .leading))
     }
 #endif
     private var menuHeader: some View {
