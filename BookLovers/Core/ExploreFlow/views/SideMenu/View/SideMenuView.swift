@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SideMenuView: View {
     @Binding var isShowing: Bool
-    @Namespace private var animation
     @Binding var selectedOption: MenuOption
     
+    @State private var offset = CGSize()
+    @Namespace private var animation
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var userStore: UserStore
 #if os(iOS)
@@ -45,13 +46,14 @@ struct SideMenuView: View {
             .frame(maxHeight: .infinity, alignment: .top)
             .frame(width: screen.width * 0.75, alignment: .leading)
             .background(scheme == .light ? .white : Color(UIColor.systemGray6))
-            .onSwipe(left: { hideMenu() } )
+            .offset(x: offset.width < 0 ? offset.width : 0)
             Spacer()
         }
         .transition(.move(edge: .leading))
-        .onSwipe(left: {
-            isShowing = false
-        })
+        .gesture(DragGesture()
+            .onChanged(onChanged(_:))
+            .onEnded(onEnded(_:))
+        )
     }
 #endif
     private var menuHeader: some View {
@@ -90,9 +92,30 @@ struct SideMenuView: View {
         }
     }
     
+    private func onChanged(_ gesture: DragGesture.Value) {
+        if offset.width <= 0 {
+            withAnimation(.interactiveSpring(response: 0.2, dampingFraction: 0.9)) {
+                offset = gesture.translation
+            }
+        }
+    }
+    
+    private func onEnded(_ gesture: DragGesture.Value) {
+        if offset.width >= -50 {
+            withAnimation(.interactiveSpring(response: 0.2, dampingFraction: 0.9)) {
+                offset = .zero
+            }
+        }
+        
+        if offset.width < -50 {
+            hideMenu()
+        }
+    }
+    
     private func hideMenu() {
         withAnimation(.spring(dampingFraction: 0.95)) {
             isShowing = false
+            offset = .zero
         }
     }
     
@@ -127,7 +150,7 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(isShowing: .constant(true), selectedOption: .constant(.explore))
+        ExploreView()
             .environmentObject(UserStore())
     }
 }
