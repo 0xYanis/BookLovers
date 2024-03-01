@@ -45,7 +45,7 @@ struct SideMenuView: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .frame(width: screen.width * 0.75, alignment: .leading)
-            .background(scheme == .light ? .white : Color(UIColor.systemGray6))
+            .background(Material.bar)
             .offset(x: offset.width < 0 ? offset.width : 0)
             Spacer()
         }
