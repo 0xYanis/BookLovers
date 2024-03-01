@@ -89,6 +89,19 @@ struct SideMenuView: View {
 #endif
             }
             .padding()
+            
+            VStack(alignment: .leading, spacing: 7) {
+                Text("Appearence mode".uppercased())
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                Picker("Appearence mode", selection: $userStore.settings.colorScheme) {
+                    ForEach(Mode.allCases) { mode in
+                        Text(mode.title).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            .padding([.top, .horizontal])
         }
     }
     

@@ -16,8 +16,21 @@ struct BookLoversApp: App {
             #if os(macOS)
             HomeView()
             #else
-            LaunchView(animated: true).environmentObject(userStore)
+            LaunchView(animated: userStore.settings.showLaunch)
+                .preferredColorScheme(colorScheme)
+                .environmentObject(userStore)
             #endif
+        }
+    }
+    
+    private var colorScheme: ColorScheme? {
+        switch userStore.settings.colorScheme {
+        case .system:
+            return .none
+        case .light:
+            return .light
+        case .dark:
+            return .dark
         }
     }
 }
