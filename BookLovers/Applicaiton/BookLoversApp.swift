@@ -16,7 +16,7 @@ struct BookLoversApp: App {
             #if os(macOS)
             HomeView()
             #else
-            LaunchView().environmentObject(userStore)
+            LaunchView(animated: true).environmentObject(userStore)
             #endif
         }
     }

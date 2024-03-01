@@ -10,6 +10,7 @@ import Components
 import WelcomeSheet
 
 struct LaunchView: View {
+    private let animated: Bool
     @State private var isLaunched = true
     @State private var imageWidth: CGFloat = 300
     @State private var isTop = false
@@ -17,29 +18,39 @@ struct LaunchView: View {
     @StateObject private var viewModel = LaunchViewModel()
     @Environment(\.colorScheme) private var scheme
     
+    init(animated: Bool) {
+        self.animated = animated
+    }
+    
     var body: some View {
         ZStack {
-            if isLaunched {
-                backgroundView
-                launchLogo.opacity(isFinished ? 0.0 : 1.0)
+            if animated {
+                if isLaunched {
+                    backgroundView
+                    launchLogo.opacity(isFinished ? 0.0 : 1.0)
+                }
+                MainTabbarView()
+                    .opacity(isFinished ? 1.0 : 0.0)
+                    .welcomeSheet(
+                        isPresented: $viewModel.showWelcomeSheet,
+                        preferredColorScheme: scheme,
+                        pages: viewModel.pages)
+            } else {
+                MainTabbarView()
             }
-            MainTabbarView()
-                .opacity(isFinished ? 1.0 : 0.0)
-                .welcomeSheet(
-                    isPresented: $viewModel.showWelcomeSheet,
-                    preferredColorScheme: scheme,
-                    pages: viewModel.pages)
         }
         .onAppear {
-            Task { @MainActor in
-                await animationPart(response: 2) { imageWidth = 330 } // increase
-                await animationPart(sleep: 2, response: 1) { imageWidth = 30 } // fast decrease
-                await animationPart(sleep: 0.3, response: 1) { isTop = true } // going top
-                await animationPart(sleep: 1.5, response: 1) { isFinished = true } // stopping
-                await animationPart(sleep: 1, response: 1) {
-                    isLaunched = false
-                    viewModel.checkOnboarding()
-                } // showing main view
+            if animated {
+                Task { @MainActor in
+                    await animationPart(response: 2) { imageWidth = 330 } // increase
+                    await animationPart(sleep: 2, response: 1) { imageWidth = 30 } // fast decrease
+                    await animationPart(sleep: 0.3, response: 1) { isTop = true } // going top
+                    await animationPart(sleep: 1.5, response: 1) { isFinished = true } // stopping
+                    await animationPart(sleep: 1, response: 1) {
+                        isLaunched = false
+                        viewModel.checkOnboarding()
+                    } // showing main view
+                }
             }
         }
     }
@@ -83,7 +94,7 @@ struct LaunchView: View {
 
 struct LaunchView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchView()
+        LaunchView(animated: false)
             .environmentObject(UserStore())
     }
 }
