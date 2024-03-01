@@ -100,6 +100,9 @@ struct SideMenuView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                .onChange(of: userStore.settings.colorScheme) { newValue in
+                    userStore.setAppearance(mode: newValue)
+                }
             }
             .padding([.top, .horizontal])
         }
