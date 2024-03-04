@@ -70,11 +70,10 @@ public final class NetworkManager: ObservableObject {
         let queue = DispatchQueue(label: "NetworkStatus_Monitor")
         monitor?.start(queue: queue)
         monitor?.pathUpdateHandler = { path in
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 if self.pathStatus != path.status {
                     self.pathStatus = path.status
-                    self.status = self.pathStatus == .satisfied ? .connected : .disconnected
-                    self.isConnected = self.status == .connected ? true : false
+                    self.isConnected = (self.pathStatus == .satisfied)
                 }
             }
         }

@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import Managers
+import AlertKit
 
 struct MainTabbarView: View {
+    @StateObject private var network = NetworkManager()
+    @State private var showNetworkAlert = false
     @State private var selectedTab: TabItem = .explore
     @EnvironmentObject private var userStore: UserStore
     
@@ -15,19 +19,28 @@ struct MainTabbarView: View {
         TabView(selection: $selectedTab) {
             ForEach(TabItem.allCases) { item in
                 item.view
+                    .alertToast(
+                        isPresented: $showNetworkAlert,
+                        systemImage: "wifi.slash",
+                        text: "No internet connection",
+                        haptic: .warning
+                    )
                     .tag(item)
                     .tabItem {
-                        if UIDevice.isiPhone {
-                            Image(uiImage: item.uiImage(selected: selectedTab))
-                        } else {
-                            Image(systemName: item.image)
-                        }
+#if os(iOS)
+                        Image(uiImage: item.uiImage(selected: selectedTab))
+#else
+                        Image(systemName: item.image)
+#endif
                         Text(item.name)
                     }
                     .badge(item == .community ? userStore.user.messages : 0)
             }
         }
         .tint(.green)
+        .onChange(of: network.isConnected) { newValue in
+            showNetworkAlert = (newValue == false)
+        }
     }
 }
 
