@@ -15,8 +15,11 @@ struct LaunchView: View {
     @State private var imageWidth: CGFloat = 300
     @State private var isTop = false
     @State private var isFinished = false
+    @State private var showOnboarding = false
+    
     @StateObject private var viewModel = LaunchViewModel()
     @Environment(\.colorScheme) private var scheme
+    @EnvironmentObject private var userStore: UserStore
     
     init(animated: Bool) {
         self.animated = animated
@@ -32,7 +35,7 @@ struct LaunchView: View {
                 MainTabbarView()
                     .opacity(isFinished ? 1.0 : 0.0)
                     .welcomeSheet(
-                        isPresented: $viewModel.showWelcomeSheet,
+                        isPresented: $showOnboarding,
                         preferredColorScheme: scheme,
                         pages: viewModel.pages)
             } else {
@@ -48,7 +51,7 @@ struct LaunchView: View {
                     await animationPart(sleep: 1.5, response: 1) { isFinished = true } // stopping
                     await animationPart(sleep: 1, response: 1) {
                         isLaunched = false
-                        viewModel.checkOnboarding()
+                        self.showOnboarding = userStore.showOnboarding
                     } // showing main view
                 }
             }

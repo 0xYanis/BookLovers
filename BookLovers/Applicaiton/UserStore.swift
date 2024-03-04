@@ -12,6 +12,7 @@ final class UserStore: ObservableObject {
     @Published var user: User = .anonymous
     
     @AppStorage("Launch") var showLaunch: Bool = false
+    @AppStorage("Onboarding") var showOnboarding: Bool = true
     @AppStorage("ColorScheme") var colorScheme: Mode = .system
     
     // MARK: - User data
