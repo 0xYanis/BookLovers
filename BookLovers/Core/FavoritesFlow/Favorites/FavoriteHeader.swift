@@ -33,13 +33,15 @@ struct FavoriteHeader: View {
                     .foregroundStyle(.gray)
                 TextField("Search favorites", text: $searchText)
                     .focused($isFocused)
-                Button {
-                    searchText.removeAll()
-                } label: {
-                    Image(systemName: searchText.isEmpty ? "" : "xmark")
+                if searchText.isEmpty == false {
+                    Button {
+                        searchText.removeAll()
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.gray)
                 }
-                .buttonStyle(.plain)
-                .foregroundStyle(.gray)
             }
             .padding(.horizontal, 5)
         }

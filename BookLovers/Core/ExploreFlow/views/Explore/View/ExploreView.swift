@@ -18,30 +18,12 @@ struct ExploreView: View {
     @EnvironmentObject private var userStore: UserStore
     
     var body: some View {
-        if UIDevice.isiPhone {
-            NavigationStack(path: $coordinator.path) {
-                MenuContainer(
-                    isOpened: $showSideMenu,
-                    menu: menuScreen,
-                    content: exploreScreen)
-                .environmentObject(coordinator)
-                .navigationBarTitleDisplayMode(.inline)
-                .onChange(of: coordinator.path) {
-                    if $0.isEmpty { selectedSideOption = .explore }
-                }
-                .navigationDestination(for: MenuOption.self) {
-                    coordinator.build(page: $0)
-                }
-                .fullScreenCover(isPresented: $showSearchView) { SearchView() }
-                .toolbarBackground(Material.ultraThickMaterial)
-            }
-        } else {
-            NavigationSplitView(columnVisibility: $splitVisibility) {
-                SideMenuView(isShowing: .constant(true), selectedOption: $selectedSideOption)
-            } detail: {
-                currentView(selected: selectedSideOption)
-            }
-            .navigationSplitViewStyle(.balanced)
+#if os(iOS)
+        NavigationStack(path: $coordinator.path) {
+            MenuContainer(
+                isOpened: $showSideMenu,
+                menu: menuScreen,
+                content: exploreScreen)
             .environmentObject(coordinator)
             .navigationBarTitleDisplayMode(.inline)
             .onChange(of: coordinator.path) {
@@ -51,7 +33,25 @@ struct ExploreView: View {
                 coordinator.build(page: $0)
             }
             .fullScreenCover(isPresented: $showSearchView) { SearchView() }
+            .toolbarBackground(Material.ultraThickMaterial)
         }
+#else
+        NavigationSplitView(columnVisibility: $splitVisibility) {
+            SideMenuView(isShowing: .constant(true), selectedOption: $selectedSideOption)
+        } detail: {
+            currentView(selected: selectedSideOption)
+        }
+        .navigationSplitViewStyle(.balanced)
+        .environmentObject(coordinator)
+        .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: coordinator.path) {
+            if $0.isEmpty { selectedSideOption = .explore }
+        }
+        .navigationDestination(for: MenuOption.self) {
+            coordinator.build(page: $0)
+        }
+        .fullScreenCover(isPresented: $showSearchView) { SearchView() }
+#endif
     }
     
     // MARK: - UI components
@@ -83,11 +83,15 @@ struct ExploreView: View {
     
     private var centerItem: some ToolbarContent {
         ToolbarItem(placement: .principal) {
-            Image(showSideMenu ? "" : "logo-small")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 30, height: 30)
-                .scaleByTap(scale: 0.5)
+            if showSideMenu == false {
+                Image("logo-small")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 30, height: 30)
+                    .scaleByTap(scale: 0.5)
+                    .transition(.opacity)
+                    .animation(.easeIn, value: showSideMenu)
+            }
         }
     }
     
@@ -104,7 +108,7 @@ struct ExploreView: View {
                         .frame(width: 27, height: 27)
                         .clipShape(Circle())
                 }
-                    
+                
             }
         }
     }
