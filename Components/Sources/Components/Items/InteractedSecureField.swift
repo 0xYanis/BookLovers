@@ -33,7 +33,7 @@ public struct InteractedSecureField: View {
                 }
             } label: {
                 Image(systemName: isSecure ? "eye.slash" : "eye")
-                    .imageScale(.medium)
+                    .frame(width: 22, height: 22)
             }
             .buttonStyle(.plain)
         }

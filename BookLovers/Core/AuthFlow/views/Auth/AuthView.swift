@@ -21,7 +21,7 @@ struct AuthView: View {
             
             // sign up
             if showSignUp {
-                RegistrationView()
+                
             }
             
             // sign in

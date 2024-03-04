@@ -11,8 +11,10 @@ import Components
 struct LoginView: View {
     private let isRegistrationView: Bool
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var userStore: UserStore
     @ObservedObject private var viewModel: AuthViewModel
+    
+    @State private var isSecure = true
+    @State private var loginType: LoginType = .login
     
     init(isRegistrationView: Bool = false, viewModel: AuthViewModel) {
         self.isRegistrationView = isRegistrationView
@@ -22,114 +24,89 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                booklyGradient
-                    .opacity(0.2)
-                    .ignoresSafeArea()
-                
-                VStack(alignment: .center, spacing: 25) {
-                    Text(viewModel.canLogin.description)
-                    HStack(alignment: .center, spacing: 0) {
-                        Image("logo-small")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 60, height: 60)
-                            .opacity(0.95)
-                        Text("Bookly")
-                            .font(.largeTitle)
-                            .fontWeight(.black)
-                            .fontDesign(.rounded)
-                            .foregroundStyle(.linearGradient(
-                                colors: [.purple, .green],
-                                startPoint: .bottomLeading,
-                                endPoint: .topTrailing))
+                booklyGradient.opacity(0.2).ignoresSafeArea()
+                ScrollView {
+                    VStack(alignment: .trailing, spacing: 15) {
+                        LoginPicker(loginType: $loginType).padding(.bottom)
+                        Section {
+                            AuthTextField(
+                                image: "person.fill",
+                                placeholder: "Entry email",
+                                text: $viewModel.email)
+                            AuthTextField(
+                                image: "lock.open.fill",
+                                placeholder: "Entry password",
+                                text: $viewModel.password,
+                                isSecure: isSecure)
+                            .overlay(alignment: .trailing) {
+                                Button {
+                                    isSecure.toggle()
+                                } label: {
+                                    Image(systemName: isSecure ? "eye.slash" : "eye")
+                                }
+                                .buttonStyle(.plain)
+                                .padding(.trailing, 12)
+                            }
+                            
+                            if loginType == .signup {
+                                AuthTextField(
+                                    image: "lock.open.fill",
+                                    placeholder: "Confirm password",
+                                    text: $viewModel.secondPassword,
+                                    isSecure: isSecure)
+                                .transition(.move(edge: .leading).combined(with: .opacity))
+                            }
+                        } header: {
+                            Text("")
+                                .font(.caption)
+                                .foregroundStyle(.red)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+
+                        
+                        Button {
+                            
+                        } label: {
+                            Text(loginType == .login ? "Sign In!" : "Sign Up!")
+                                .foregroundStyle(.white)
+                                .padding(12)
+                                .background(.primary)
+                                .clipShape(Capsule())
+                        }
+                        .padding(.top)
                     }
-                    .padding(.bottom, 64)
-                    emailField
-                    secureField
-                    if isRegistrationView { secondField }
-                    Divider()
-                    if !isRegistrationView { signUpLabel }
-                    signInButton
-                    HStack {
-                        //appleIdButton
-                        Spacer()
+                    .animation(.spring(), value: loginType)
+                    .padding()
+                }
+                .listStyle(.plain)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        XButton(action: dismiss.callAsFunction)
                     }
                 }
-                .padding()
-                .padding(.horizontal)
+            }
+            .navigationTitle("Welcome Back!")
+        }
+    }
+}
+
+enum LoginType: String, CaseIterable, Identifiable {
+    case login
+    case signup = "Sign up"
+    
+    var id: Self { self }
+}
+
+fileprivate struct LoginPicker: View {
+    @Binding var loginType: LoginType
+    
+    var body: some View {
+        Picker("Login type", selection: $loginType) {
+            ForEach(LoginType.allCases) { type in
+                Text(type.rawValue.capitalized).tag(type)
             }
         }
-    }
-    
-    private var logoImage: some View {
-        Image("reading")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 150)
-    }
-    
-    private var emailField: some View {
-        TextField("Entry your email", text: $viewModel.email)
-            .padding(.horizontal)
-            .padding(.vertical, 12)
-            .background(Color(.secondarySystemFill))
-            .clipShape(Capsule())
-            .overlay {
-                
-            }
-    }
-    
-    private var secureField: some View {
-        InteractedSecureField("Entry your password", text: $viewModel.password)
-            .background(Color(.secondarySystemFill))
-            .clipShape(Capsule())
-    }
-    
-    private var secondField: some View {
-        InteractedSecureField("Confirm your password", text: $viewModel.secondPassword)
-            .background(Color(.secondarySystemFill))
-            .clipShape(Capsule())
-    }
-    
-    private var signUpLabel: some View {
-        HStack {
-            Text("Already have an account?")
-            
-            NavigationLink {
-                RegistrationView()
-            } label: {
-                Text("Sign up")
-                    .underline()
-            }
-        }
-        .font(.subheadline)
-    }
-    
-    private var signInButton: some View {
-        Button("Sign \(isRegistrationView ? "up" : "in")") {
-            userStore.setStatus(isAuthenticated: true)
-            viewModel.signIn()
-        }
-        .foregroundStyle(.white)
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 12)
-        .background(Color.green)
-        .clipShape(Capsule())
-        .disabled(viewModel.canLogin == false)
-        .opacity(viewModel.canLogin ? 1.0 : 0.5)
-    }
-    
-    private var appleIdButton: some View {
-        Button {
-            
-        } label: {
-            Image(systemName: "apple.logo")
-            Text("Apple ID")
-        }
-        .foregroundStyle(.white)
-        .padding(12)
-        .background(Color.black)
-        .clipShape(Capsule())
+        .pickerStyle(.segmented)
     }
 }
 
@@ -140,7 +117,7 @@ struct LoginView_Previews: PreviewProvider {
     }
 }
 
-extension View {
+private extension View {
     var booklyGradient: LinearGradient {
         LinearGradient(
             colors: [.purple, .green],
