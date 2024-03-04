@@ -94,15 +94,12 @@ struct SideMenuView: View {
                 Text("Appearence mode".uppercased())
                     .font(.footnote)
                     .foregroundStyle(.secondary)
-                Picker("Appearence mode", selection: $userStore.settings.colorScheme) {
+                Picker("Appearence mode", selection: $userStore.colorScheme) {
                     ForEach(Mode.allCases) { mode in
                         Text(mode.title).tag(mode)
                     }
                 }
                 .pickerStyle(.segmented)
-                .onChange(of: userStore.settings.colorScheme) { newValue in
-                    userStore.setAppearance(mode: newValue)
-                }
             }
             .padding([.top, .horizontal])
         }

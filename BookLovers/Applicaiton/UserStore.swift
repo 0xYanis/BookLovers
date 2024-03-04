@@ -10,11 +10,9 @@ import SwiftUI
 
 final class UserStore: ObservableObject {
     @Published var user: User = .anonymous
-    @Published var settings = Settings()
     
-    init() {
-        initialize()
-    }
+    @AppStorage("Launch") var showLaunch: Bool = false
+    @AppStorage("ColorScheme") var colorScheme: Mode = .system
     
     // MARK: - User data
     
@@ -35,50 +33,5 @@ final class UserStore: ObservableObject {
     
     func clearUserData() {
         user = .anonymous
-    }
-    
-    // MARK: - App data
-    
-    func setAppearance(mode: Mode) {
-        UserDefaults.standard.set(
-            mode.title,
-            forKey: Keys.appearance.rawValue
-        )
-    }
-    
-    func setLaunch(show: Bool) {
-        UserDefaults.standard.set(
-            show,
-            forKey: Keys.launch.rawValue
-        )
-    }
-}
-
-// MARK: - Private methods
-
-private extension UserStore {
-    enum Keys: String {
-        case appearance, launch
-    }
-    
-    func initialize() {
-        getAppearance()
-        getLaunchAnimation()
-    }
-    
-    func getAppearance() {
-        guard
-            let str = UserDefaults.standard.string(
-                forKey: Keys.appearance.rawValue),
-            let mode = Mode(rawValue: str.lowercased())
-        else { return }
-        settings.colorScheme = mode
-    }
-    
-    func getLaunchAnimation() {
-        let state = UserDefaults.standard.bool(
-            forKey: Keys.launch.rawValue
-        )
-        settings.showLaunch = state
     }
 }

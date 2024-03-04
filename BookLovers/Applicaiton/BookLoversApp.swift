@@ -16,7 +16,7 @@ struct BookLoversApp: App {
             #if os(macOS)
             HomeView()
             #else
-            LaunchView(animated: userStore.settings.showLaunch)
+            LaunchView(animated: userStore.showLaunch)
                 .preferredColorScheme(colorScheme)
                 .environmentObject(userStore)
             #endif
@@ -24,7 +24,7 @@ struct BookLoversApp: App {
     }
     
     private var colorScheme: ColorScheme? {
-        switch userStore.settings.colorScheme {
+        switch userStore.colorScheme {
         case .system:
             return .none
         case .light:
