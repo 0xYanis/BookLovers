@@ -9,8 +9,6 @@ import Foundation
 import WelcomeSheet
 
 class LaunchViewModel: ObservableObject {
-    @Published var showWelcomeSheet = false
-    
     private(set) var pages: [WelcomeSheetPage] = [
         WelcomeSheetPage(title: "Bookly: Your literary world", rows: [
             WelcomeSheetPageRow(
@@ -27,10 +25,4 @@ class LaunchViewModel: ObservableObject {
                 content: "Find new friends and literary like-minded people to inspire each other to read and discuss books.")
         ])
     ]
-    
-    func checkOnboarding() {
-        if UserDefaults.standard.bool(forKey: "SeenOnboarding") { return }
-        showWelcomeSheet = true
-        UserDefaults.standard.set(showWelcomeSheet, forKey: "SeenOnboarding")
-    }
 }
