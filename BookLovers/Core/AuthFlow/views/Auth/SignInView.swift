@@ -70,6 +70,7 @@ struct SignInView: View {
         }
         .sheet(isPresented: $requestSignIn) {
             LoginView(viewModel: AuthViewModel(isLogin: true))
+                .presentationDetents([.medium, .large])
         }
     }
 }

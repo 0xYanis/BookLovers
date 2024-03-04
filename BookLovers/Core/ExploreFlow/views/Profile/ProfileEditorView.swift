@@ -75,6 +75,7 @@ struct ProfileEditorView: View {
         }
         .sheet(isPresented: $showSignIn) {
             LoginView(viewModel: AuthViewModel(isLogin: true))
+                .presentationDetents([.medium, .large])
         }
         .sheet(isPresented: $showCleanAll) {
             CleanAllView()
