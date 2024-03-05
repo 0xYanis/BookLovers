@@ -9,15 +9,11 @@ import SwiftUI
 import Components
 
 struct LoginView: View {
-    private let isRegistrationView: Bool
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var viewModel: AuthViewModel
-    
     @State private var isSecure = true
-    @State private var loginType: LoginType = .login
     
-    init(isRegistrationView: Bool = false, viewModel: AuthViewModel) {
-        self.isRegistrationView = isRegistrationView
+    init(viewModel: AuthViewModel) {
         self.viewModel = viewModel
     }
     
@@ -26,18 +22,16 @@ struct LoginView: View {
             ZStack {
                 booklyGradient.opacity(0.2).ignoresSafeArea()
                 ScrollView {
+                    Text("👋 Welcome Back!")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
                     VStack(alignment: .trailing, spacing: 15) {
-                        LoginPicker(loginType: $loginType).padding(.bottom)
+                        LoginPicker(loginType: $viewModel.loginType)
                         Section {
-                            AuthTextField(
-                                image: "person.fill",
-                                placeholder: "Entry email",
-                                text: $viewModel.email)
-                            AuthTextField(
-                                image: "lock.open.fill",
-                                placeholder: "Entry password",
-                                text: $viewModel.password,
-                                isSecure: isSecure)
+                            AuthTextField(.email, text: $viewModel.email)
+                            AuthTextField(.password, text: $viewModel.password, isSecure: isSecure)
                             .overlay(alignment: .trailing) {
                                 Button {
                                     isSecure.toggle()
@@ -48,34 +42,30 @@ struct LoginView: View {
                                 .padding(.trailing, 12)
                             }
                             
-                            if loginType == .signup {
-                                AuthTextField(
-                                    image: "lock.open.fill",
-                                    placeholder: "Confirm password",
-                                    text: $viewModel.secondPassword,
-                                    isSecure: isSecure)
+                            if viewModel.loginType == .signup {
+                                AuthTextField(.confirmation, text: $viewModel.secondPassword, isSecure: isSecure)
                                 .transition(.move(edge: .leading).combined(with: .opacity))
                             }
                         } header: {
-                            Text("")
+                            Text(viewModel.errorMessage)
                                 .font(.caption)
                                 .foregroundStyle(.red)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
-
                         
-                        Button {
-                            
-                        } label: {
-                            Text(loginType == .login ? "Sign In!" : "Sign Up!")
+                        Button(action: viewModel.signIn) {
+                            Text(viewModel.loginType == .login ? "Sign In!" : "Sign Up!")
                                 .foregroundStyle(.white)
                                 .padding(12)
-                                .background(.primary)
+                                .background(.green)
                                 .clipShape(Capsule())
                         }
+                        .buttonStyle(.plain)
+                        .disabled(!viewModel.canLogin)
                         .padding(.top)
                     }
-                    .animation(.spring(), value: loginType)
+                    .animation(.spring(), value: viewModel.errorMessage)
+                    .animation(.spring(), value: viewModel.loginType)
                     .padding()
                 }
                 .listStyle(.plain)
@@ -85,7 +75,6 @@ struct LoginView: View {
                     }
                 }
             }
-            .navigationTitle("Welcome Back!")
         }
     }
 }
@@ -112,7 +101,7 @@ fileprivate struct LoginPicker: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(viewModel: AuthViewModel(isLogin: true))
+        LoginView(viewModel: AuthViewModel())
             .environmentObject(UserStore())
     }
 }

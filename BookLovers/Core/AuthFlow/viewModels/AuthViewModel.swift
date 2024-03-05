@@ -12,21 +12,20 @@ final class AuthViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var secondPassword = ""
+    @Published var loginType: LoginType = .login
     
+    @Published private(set) var errorMessage = ""
     @Published private(set) var canLogin = false
-    @Published private(set) var isValidEmail = false
-    @Published private(set) var isValidPassword = false
-    @Published private(set) var isValidSecondPassword = false
+    
+    @Published private var emailIsValid = false
+    @Published private var passwordIsValid = false
+    @Published private var confirmationIsValid = false
     
     private var cancellables: Set<AnyCancellable> = []
-    private var isLogin: Bool
     
-    init(isLogin: Bool) {
-        self.isLogin = isLogin
-        emailObserve()
-        passwordObserve()
-        confirmationObserve()
-        checkAll()
+    init() {
+        observation()
+        checkLogin()
     }
     
     deinit {
@@ -34,49 +33,66 @@ final class AuthViewModel: ObservableObject {
     }
     
     func signIn() {
-        
+        guard canLogin else { return }
+        print(#function)
+    }
+}
+
+// MARK: - Private methods
+
+private extension AuthViewModel {
+    enum ValidMessage: String {
+        case email = "Mail must contain @ and '.' (dot) and not contain spaces"
+        case password = "The password must have at least 6 characters and not contain spaces"
+        case confirmation = "Passwords must match"
     }
     
-    // MARK: - Private methods
-    
-    private func checkAll() {
-        $isValidEmail
-            .combineLatest($isValidPassword, $isValidSecondPassword)
-            .map {
-                return self.isLogin ? ($0 && $1) : ($0 && $1 && $2)
-            }
-            .sink { [weak self] value in
-                self?.canLogin = value
-            }
-            .store(in: &cancellables)
-    }
-    
-    private func emailObserve() {
+    func observation() {
         $email
+            .debounce(for: 1.5, scheduler: RunLoop.main)
             .map { $0.contains("@") && $0.contains(".") && $0.notContains(" ") }
             .sink { [weak self] isValid in
-                self?.isValidEmail = isValid
+                guard self?.email.isEmpty == false else { self?.errorMessage.removeAll(); return }
+                if !isValid { self?.errorMessage = ValidMessage.email.rawValue }
+                else { self?.errorMessage.removeAll() }
+                self?.emailIsValid = isValid
+            }
+            .store(in: &cancellables)
+        
+        $password
+            .debounce(for: 1.5, scheduler: RunLoop.main)
+            .map { $0.notContains(" ") && $0.count >= 6 }
+            .sink { [weak self] isValid in
+                guard self?.password.isEmpty == false else { self?.errorMessage.removeAll(); return }
+                if !isValid { self?.errorMessage = ValidMessage.password.rawValue }
+                else { self?.errorMessage.removeAll() }
+                self?.passwordIsValid = isValid
+            }
+            .store(in: &cancellables)
+        
+        $secondPassword
+            .debounce(for: 1.5, scheduler: RunLoop.main)
+            .map { [weak self] in $0 == self?.password }
+            .sink { [weak self] isValid in
+                guard self?.secondPassword.isEmpty == false else { self?.errorMessage.removeAll(); return }
+                if !isValid { self?.errorMessage = ValidMessage.confirmation.rawValue }
+                else { self?.errorMessage.removeAll() }
+                self?.confirmationIsValid = isValid
             }
             .store(in: &cancellables)
     }
     
-    private func passwordObserve() {
-        $password
-            .map { $0.count > 6 && $0.notContains(" ") }
-            .sink { [weak self] isValid in
-                self?.isValidPassword = isValid
+    func checkLogin() {
+        $loginType
+            .combineLatest($emailIsValid, $passwordIsValid, $confirmationIsValid)
+            .map { type, email, password, confirmation in
+                if type == .login {
+                    return email && password
+                } else {
+                    return email && password && confirmation
+                }
             }
-            .store(in: &cancellables)
-    }
-    
-    private func confirmationObserve() {
-        $password
-            .combineLatest($secondPassword)
-            .map { $0 == $1 }
-            .sink { [weak self] isValid in
-                self?.isValidSecondPassword = isValid
-            }
-            .store(in: &cancellables)
+            .assign(to: &$canLogin)
     }
 }
 

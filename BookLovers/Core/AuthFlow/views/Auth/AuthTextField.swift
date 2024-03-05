@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct AuthTextField: View {
-    let image: String
-    let placeholder: String
-    @Binding var text: String
-    let isSecure: Bool
+    private let image: String
+    private let placeholder: String
+    @Binding private var text: String
+    private let isSecure: Bool
     
-    init(image: String, placeholder: String, text: Binding<String>, isSecure: Bool = false) {
+    init(
+        image: String,
+        placeholder: String,
+        text: Binding<String>,
+        isSecure: Bool = false
+    ) {
         self.image = image
         self.placeholder = placeholder
         self._text = text
@@ -35,5 +40,24 @@ struct AuthTextField: View {
         .background(Color(.systemBackground))
         .clipShape(Capsule())
         .animation(.easeIn(duration: 0.1), value: isSecure)
+    }
+}
+
+// MARK: - Second init with FieldType parameter
+
+extension AuthTextField {
+    enum FieldType {
+        case email, password, confirmation
+    }
+    
+    init(_ type: FieldType, text: Binding<String>, isSecure: Bool = false) {
+        switch type {
+        case .email:
+            self.init(image: "person.fill", placeholder: "Entry email", text: text)
+        case .password:
+            self.init(image: "lock.open.fill", placeholder: "Entry password", text: text, isSecure: isSecure)
+        case .confirmation:
+            self.init(image: "lock.open.fill", placeholder: "Confirm password", text: text, isSecure: isSecure)
+        }
     }
 }
