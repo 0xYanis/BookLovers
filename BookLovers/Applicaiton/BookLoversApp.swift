@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct BookLoversApp: App {
-    @StateObject private var userStore = UserStore()
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    var delegate
+    
+    @StateObject
+    var userStore = UserStore()
     
     var body: some Scene {
         WindowGroup {
@@ -32,5 +37,15 @@ struct BookLoversApp: App {
         case .dark:
             return .dark
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) -> Bool {
+        FirebaseApp.configure()
+        return true
     }
 }

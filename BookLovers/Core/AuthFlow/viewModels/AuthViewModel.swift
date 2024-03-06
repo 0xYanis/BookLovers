@@ -7,11 +7,20 @@
 
 import Foundation
 import Combine
+import FirebaseAuth
+
+enum LoginType: String, CaseIterable, Identifiable {
+    case login
+    case signup = "Sign up"
+    
+    var id: Self { self }
+}
 
 final class AuthViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var secondPassword = ""
+    @Published var showVerification = false
     @Published var loginType: LoginType = .login
     
     @Published private(set) var errorMessage = ""
@@ -21,11 +30,12 @@ final class AuthViewModel: ObservableObject {
     @Published private var passwordIsValid = false
     @Published private var confirmationIsValid = false
     
+    private let auth = Auth.auth()
     private var cancellables: Set<AnyCancellable> = []
     
     init() {
         observation()
-        checkLogin()
+        authObservation()
     }
     
     deinit {
@@ -34,11 +44,64 @@ final class AuthViewModel: ObservableObject {
     
     func signIn() {
         guard canLogin else { return }
-        print(#function)
+        Task {
+            do {
+                if loginType == .login {
+                    try await verifyLogin()
+                } else {
+                    try await verifySignUp()
+                }
+            } catch {
+                await presentError(error)
+            }
+        }
+    }
+    
+    func checkLogin() {
+        if let user = auth.currentUser {
+            user.reload()
+            if user.isEmailVerified {
+                // success
+                print("SUCCESS")
+                showVerification = false
+            }
+        }
+    }
+    
+    func cancelLogin() {
+        showVerification = false
+        if let user = auth.currentUser {
+            user.delete()
+        }
+    }
+    
+    // MARK: - Private methods
+    
+    @MainActor
+    private func presentError(_ error: Error) async {
+        guard errorMessage.isEmpty else { return }
+        errorMessage = error.localizedDescription
+    }
+    
+    private func verifyLogin() async throws {
+        let result = try await auth.signIn(withEmail: email, password: password)
+        if result.user.isEmailVerified {
+            // SUCCESS
+            print("SUCCESS")
+        } else {
+            try await result.user.sendEmailVerification()
+            showVerification.toggle()
+        }
+    }
+    
+    private func verifySignUp() async throws {
+        let result = try await auth.createUser(withEmail: email, password: password)
+        try await result.user.sendEmailVerification()
+        await MainActor.run { showVerification.toggle() }
     }
 }
 
-// MARK: - Private methods
+// MARK: - Private combine pipelines (validation logic)
 
 private extension AuthViewModel {
     enum ValidMessage: String {
@@ -82,7 +145,7 @@ private extension AuthViewModel {
             .store(in: &cancellables)
     }
     
-    func checkLogin() {
+    func authObservation() {
         $loginType
             .combineLatest($emailIsValid, $passwordIsValid, $confirmationIsValid)
             .map { type, email, password, confirmation in

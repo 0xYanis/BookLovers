@@ -12,16 +12,12 @@ struct LoginView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = AuthViewModel()
     @State private var isSecure = true
-    @State private var showVerification = false
     
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 15) {
                     Text("👋 Welcome Back!")
-                        .onTapGesture {
-                            showVerification.toggle()
-                        }
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -75,18 +71,13 @@ struct LoginView: View {
                     XButton(action: dismiss.callAsFunction)
                 }
             }
-            .sheet(isPresented: $showVerification) {
-                
+            .sheet(isPresented: $viewModel.showVerification) {
+                EmailVerificationView(cancel: viewModel.cancelLogin, onReceive: viewModel.checkLogin)
+                    .presentationDetents([.height(350)])
+                // round corners
             }
-        }
+        } 
     }
-}
-
-enum LoginType: String, CaseIterable, Identifiable {
-    case login
-    case signup = "Sign up"
-    
-    var id: Self { self }
 }
 
 fileprivate struct LoginPicker: View {
@@ -102,12 +93,6 @@ fileprivate struct LoginPicker: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView().environmentObject(UserStore())
-    }
-}
-
 private extension View {
     var booklyGradient: LinearGradient {
         LinearGradient(
@@ -115,5 +100,11 @@ private extension View {
             startPoint: .bottomLeading,
             endPoint: .topTrailing
         )
+    }
+}
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView().environmentObject(UserStore())
     }
 }
