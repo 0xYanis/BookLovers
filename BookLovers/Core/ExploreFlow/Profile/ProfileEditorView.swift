@@ -31,12 +31,12 @@ struct ProfileEditorView: View {
                 
                 Section {
                     TextField("Status", text: $userStore.user.status)
-                    Picker("Favorite genre", selection: $userStore.user.favoriteGenre) {
-                        ForEach(LiteraryGenre.allCases) { genre in
-                            Text(genre.title).tag(genre)
-                        }
-                    }
-                    .pickerStyle(.wheel)
+//                    Picker("Favorite genre:", selection: $userStore.user.favoriteGenre) {
+//                        ForEach(LiteraryGenre.allCases) { genre in
+//                            Text(genre.title).tag(genre)
+//                        }
+//                    }
+//                    .pickerStyle(.menu)
                 } footer: {
                     Text("Tell the world about yourself in a nutshell.")
                 }

@@ -14,8 +14,19 @@ struct Avatar: View {
         KFImage
             .url(url)
             .resizable()
-            .placeholder { Image(systemName: "person.fill") }
+            .placeholder(placeholder)
             .loadDiskFileSynchronously()
             .cacheMemoryOnly()
+    }
+    
+    private func placeholder() -> some View {
+        Image(systemName: "person.fill")
+            .resizable()
+    }
+}
+
+struct Avatar_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileEditorView().environmentObject(UserStore())
     }
 }

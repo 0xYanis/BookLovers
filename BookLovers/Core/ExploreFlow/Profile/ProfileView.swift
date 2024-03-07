@@ -62,9 +62,9 @@ struct ProfileView: View {
         .onChange(of: progress) { newValue in
             if UIDevice.isiPhone {
                 withAnimation(.spring(response: 0.2)) {
-                    if newValue >= 0.75 {
+                    if newValue >= 0.4 {
                         currentSnapPos = .hide
-                    } else if newValue <= 0.75 {
+                    } else if newValue <= 0.4 {
                         currentSnapPos = .normal
                     }
                 }
@@ -94,6 +94,9 @@ struct ProfileView: View {
     private var centerItem: some View {
         if currentSnapPos == .hide {
             Text(userStore.user.username)
+                .transition(.opacity)
+                .animation(.easeInOut(duration: 0.3), value: currentSnapPos)
+                .frame(maxWidth: .infinity)
         }
     }
     
@@ -139,7 +142,7 @@ struct ProfileView: View {
     
     private var scalingHeaderScrollView: some View {
         ScalingHeaderScrollView {
-            ProfileHeader(currentSnapPos: UIDevice.isiPhone ? $currentSnapPos : .constant(.normal), headerSnap: headerSnap)
+            ProfileHeader(currentSnapPos: UIDevice.isiPhone ? $currentSnapPos : .constant(.normal), progress: $progress, headerSnap: headerSnap)
         } content: {
             ProfileContent().padding()
         }

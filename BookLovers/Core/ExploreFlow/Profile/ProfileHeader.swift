@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileHeader: View {
     @Binding var currentSnapPos: SnapPosition
+    @Binding var progress: CGFloat
     var headerSnap: Namespace.ID
     
     @EnvironmentObject private var userStore: UserStore
@@ -36,12 +37,18 @@ struct ProfileHeader: View {
                     .matchedGeometryEffect(id: "avatar", in: headerSnap)
                     .frame(width: 130, height: 130)
                     .clipShape(Circle())
-                    .clipped()
+                    .opacity(1 - progress)
+                    .scaleEffect(1 - progress)
+                    .offset(y: -progress * 130)
                 
                 
                 Text(userStore.user.username)
                     .font(.title)
                     .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .opacity(1 - progress)
+                    .scaleEffect(1 - progress)
+                    .offset(y: -progress * 200)
                     .padding(.bottom, 30)
             }
         }
