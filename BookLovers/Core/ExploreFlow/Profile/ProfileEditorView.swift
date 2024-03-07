@@ -36,7 +36,7 @@ struct ProfileEditorView: View {
                             Text(genre.title).tag(genre)
                         }
                     }
-                    .pickerStyle(.navigationLink)
+                    .pickerStyle(.wheel)
                 } footer: {
                     Text("Tell the world about yourself in a nutshell.")
                 }

@@ -60,7 +60,8 @@ struct SideMenuItem_Previews: PreviewProvider {
     static var previews: some View {
         SideMenuView(
             isShowing: .constant(true),
-            selectedOption: .constant(.profile)
+            selectedOption: .constant(.profile),
+            navigationPath: .constant(.init())
         )
     }
 }

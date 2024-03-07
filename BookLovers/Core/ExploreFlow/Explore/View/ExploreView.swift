@@ -9,33 +9,23 @@ import SwiftUI
 import Components
 
 struct ExploreView: View {
-    @StateObject private var coordinator = ExploreCoordinator()
-    
     @State private var selectedSideOption: MenuOption = .explore
     @State private var showSideMenu = false
     @State private var showSearchView = false
     @State private var splitVisibility: NavigationSplitViewVisibility = .doubleColumn
+    @State private var path = NavigationPath()
     @EnvironmentObject private var userStore: UserStore
     
     var body: some View {
-#if os(iOS)
-        NavigationStack(path: $coordinator.path) {
-            MenuContainer(
-                isOpened: $showSideMenu,
-                menu: menuScreen,
-                content: exploreScreen)
-            .environmentObject(coordinator)
-            .navigationBarTitleDisplayMode(.inline)
-            .onChange(of: coordinator.path) {
-                if $0.isEmpty { selectedSideOption = .explore }
-            }
-            .navigationDestination(for: MenuOption.self) {
-                coordinator.build(page: $0)
-            }
-            .fullScreenCover(isPresented: $showSearchView) { SearchView() }
-            .toolbarBackground(Material.ultraThickMaterial)
+        #if os(iOS)
+        NavigationStack(path: $path) {
+            MenuContainer(isOpened: $showSideMenu, menu: menuScreen, content: exploreScreen)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationDestination(for: MenuOption.self, destination: currentView(selected:))
+                .fullScreenCover(isPresented: $showSearchView, content: SearchView.init)
+                .toolbarBackground(Material.ultraThickMaterial)
         }
-#else
+        #else
         NavigationSplitView(columnVisibility: $splitVisibility) {
             SideMenuView(isShowing: .constant(true), selectedOption: $selectedSideOption)
         } detail: {
@@ -44,14 +34,9 @@ struct ExploreView: View {
         .navigationSplitViewStyle(.balanced)
         .environmentObject(coordinator)
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: coordinator.path) {
-            if $0.isEmpty { selectedSideOption = .explore }
-        }
-        .navigationDestination(for: MenuOption.self) {
-            coordinator.build(page: $0)
-        }
-        .fullScreenCover(isPresented: $showSearchView) { SearchView() }
-#endif
+        .navigationDestination(for: MenuOption.self, destination: currentView(selected:))
+        .fullScreenCover(isPresented: $showSearchView, content: SearchView.init)
+        #endif
     }
     
     // MARK: - UI components
@@ -74,7 +59,7 @@ struct ExploreView: View {
     private var menuLeadingItems: some View {
         ForEach(MenuOption.allCases) { option in
             Button {
-                coordinator.push(page: option)
+                path.append(option)
             } label: {
                 Label(option.title, systemImage: option.image)
             }
@@ -149,12 +134,17 @@ struct ExploreView: View {
             centerItem
             trailingItem
         }
+        .onDisappear {
+            selectedSideOption = .explore
+        }
     }
     
     private func menuScreen() -> some View {
         SideMenuView(
             isShowing: $showSideMenu,
-            selectedOption: $selectedSideOption)
+            selectedOption: $selectedSideOption,
+            navigationPath: $path
+        )
     }
     
     // MARK: - Actions
@@ -166,7 +156,7 @@ struct ExploreView: View {
     }
     
     private func trailingItemAction() {
-        coordinator.push(page: .profile)
+        path.append(MenuOption.profile)
     }
     
     @ViewBuilder

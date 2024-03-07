@@ -10,14 +10,13 @@ import SwiftUI
 struct SideMenuView: View {
     @Binding var isShowing: Bool
     @Binding var selectedOption: MenuOption
+    @Binding var navigationPath: NavigationPath
     
     @State private var offset = CGSize()
     @Namespace private var animation
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var userStore: UserStore
-    #if os(iOS)
-    @EnvironmentObject private var coordinator: ExploreCoordinator
-    #endif
+    
     var body: some View {
     #if os(iOS)
         ZStack {
@@ -84,9 +83,6 @@ struct SideMenuView: View {
             
             defaultButton("Log out", image: "door.left.hand.open") {
                 userStore.setStatus(isAuthenticated: false)
-                #if os(iOS)
-                coordinator.popToRoot()
-                #endif
             }
             .padding()
             
@@ -137,7 +133,7 @@ struct SideMenuView: View {
             selectedOption = option
             #if os(iOS)
             hideMenu()
-            coordinator.push(page: option)
+            navigationPath.append(option)
             #endif
         }
     }
