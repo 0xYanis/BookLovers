@@ -22,9 +22,10 @@ struct SideMenuView: View {
         ZStack {
             if isShowing {
                 sideMenu
+                    .transition(.move(edge: .leading))
             }
         }
-        .animation(.spring(dampingFraction: 0.95), value: isShowing)
+        .animation(.spring(response: 0.3, dampingFraction: 0.9), value: isShowing)
     #else
         VStack(alignment: .leading, spacing: 32) {
             menuHeader
@@ -52,7 +53,6 @@ struct SideMenuView: View {
             .onChanged(onChanged(_:))
             .onEnded(onEnded(_:))
         )
-        .transition(.move(edge: .leading))
     }
     #endif
     private var menuHeader: some View {
@@ -129,7 +129,7 @@ struct SideMenuView: View {
     }
     
     private func optionTapped(_ option: MenuOption) {
-        withAnimation(.easeInOut(duration: 0.2)) {
+        withAnimation(.easeIn(duration: 0.3)) {
             selectedOption = option
             #if os(iOS)
             hideMenu()

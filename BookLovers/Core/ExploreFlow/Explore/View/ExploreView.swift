@@ -150,9 +150,7 @@ struct ExploreView: View {
     // MARK: - Actions
     
     private func leadingItemAction() {
-        withAnimation(.spring(dampingFraction: 0.95)) {
-            showSideMenu.toggle()
-        }
+        showSideMenu.toggle()
     }
     
     private func trailingItemAction() {
