@@ -8,6 +8,7 @@
 import Foundation
 import WelcomeSheet
 
+@MainActor
 class LaunchViewModel: ObservableObject {
     private(set) var pages: [WelcomeSheetPage] = [
         WelcomeSheetPage(title: "Bookly: Your literary world", rows: [

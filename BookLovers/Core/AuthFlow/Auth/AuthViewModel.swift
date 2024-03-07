@@ -9,7 +9,9 @@ import Foundation
 import Combine
 import FirebaseAuth
 
+@MainActor
 final class AuthViewModel: ObservableObject {
+    @Published var resetEmail = ""
     @Published var email = ""
     @Published var password = ""
     @Published var secondPassword = ""
@@ -65,6 +67,20 @@ final class AuthViewModel: ObservableObject {
         showVerification = false
         if let user = auth.currentUser {
             user.delete()
+        }
+    }
+    
+    func sendResetLink() {
+        Task {
+            do {
+                try await auth.sendPasswordReset(withEmail: resetEmail)
+                await MainActor.run {
+                    email = resetEmail
+                    resetEmail.removeAll()
+                }
+            } catch {
+                await presentError(error)
+            }
         }
     }
     

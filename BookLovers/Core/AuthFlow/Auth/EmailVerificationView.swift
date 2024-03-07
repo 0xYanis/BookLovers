@@ -29,11 +29,15 @@ struct EmailVerificationView: View {
         }
         .padding(.bottom)
         .overlay(alignment: .topTrailing) {
-            Button("Cancel", action: viewModel.cancelLogin).padding()
+            Button("Cancel", action: cancel).padding()
         }
         .onReceive(Timer.publish(every: 2, on: .main, in: .default).autoconnect()) { _ in
             viewModel.checkLogin()
         }
+    }
+    
+    private func cancel() {
+        viewModel.cancelLogin()
     }
 }
 

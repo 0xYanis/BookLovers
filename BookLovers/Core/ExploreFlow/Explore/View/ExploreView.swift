@@ -150,7 +150,7 @@ struct ExploreView: View {
     // MARK: - Actions
     
     private func leadingItemAction() {
-        showSideMenu.toggle()
+        withAnimation { showSideMenu.toggle() }
     }
     
     private func trailingItemAction() {
@@ -165,13 +165,13 @@ struct ExploreView: View {
         case .profile:
             ProfileView()
         case .communities:
-            Text(selected.title)
+            CommunityListView()
         case .privacyPolicy:
             Text(selected.title)
         case .support:
             Text(selected.title)
         case .aboutUs:
-            Text(selected.title)
+            AboutUsView()
         }
     }
 }

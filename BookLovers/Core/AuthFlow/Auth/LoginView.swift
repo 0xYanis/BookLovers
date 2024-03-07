@@ -13,6 +13,7 @@ struct LoginView: View {
     @StateObject private var viewModel = AuthViewModel()
     @EnvironmentObject private var userStore: UserStore
     @State private var isSecure = true
+    @State private var showResetView = false
     
     var body: some View {
         NavigationStack {
@@ -49,7 +50,10 @@ struct LoginView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         
-                        Button(action: viewModel.signButtonTapped) {
+                        Button("Forgot password?", action: forgotTapped)
+                            .font(.callout)
+                        
+                        Button(action: signInAction) {
                             Text(viewModel.loginType == .login ? "Sign In!" : "Sign Up!")
                                 .foregroundStyle(.white)
                                 .padding(12)
@@ -58,7 +62,6 @@ struct LoginView: View {
                         }
                         .buttonStyle(.plain)
                         .disabled(!viewModel.canLogin)
-                        .padding(.top)
                     }
                     .animation(.spring(), value: viewModel.errorMessage)
                     .animation(.spring(), value: viewModel.loginType)
@@ -74,15 +77,29 @@ struct LoginView: View {
             }
             .sheet(isPresented: $viewModel.showVerification) {
                 EmailVerificationView(viewModel: viewModel)
+                    .presentationDragIndicator(.hidden)
                     .presentationDetents([.height(350)])
                     .interactiveDismissDisabled()
                 // round corners
+            }
+            .sheet(isPresented: $showResetView) {
+                ResetPasswordView(viewModel: viewModel)
+                    .presentationDragIndicator(.hidden)
+                    .presentationDetents([.height(250)])
             }
         }
         .onChange(of: viewModel.successLogin) { newValue in
             if newValue == true { dismiss.callAsFunction() }
             userStore.setStatus(isAuthenticated: newValue)
         }
+    }
+    
+    private func signInAction() {
+        viewModel.signButtonTapped()
+    }
+    
+    private func forgotTapped() {
+        showResetView = true
     }
 }
 
