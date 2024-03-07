@@ -18,6 +18,7 @@ final class AuthViewModel: ObservableObject {
     
     @Published private(set) var errorMessage = ""
     @Published private(set) var canLogin = false
+    @Published private(set) var successLogin = false
     
     @Published private var emailIsValid = false
     @Published private var passwordIsValid = false
@@ -54,8 +55,7 @@ final class AuthViewModel: ObservableObject {
         if let user = auth.currentUser {
             user.reload()
             if user.isEmailVerified {
-                // success
-                print("SUCCESS")
+                successLogin = true
                 showVerification = false
             }
         }
@@ -79,8 +79,7 @@ final class AuthViewModel: ObservableObject {
     private func verifyLogin() async throws {
         let result = try await auth.signIn(withEmail: email, password: password)
         if result.user.isEmailVerified {
-            // SUCCESS
-            print("SUCCESS")
+            successLogin = true
         } else {
             try await result.user.sendEmailVerification()
             showVerification.toggle()
@@ -90,7 +89,7 @@ final class AuthViewModel: ObservableObject {
     private func verifySignUp() async throws {
         let result = try await auth.createUser(withEmail: email, password: password)
         try await result.user.sendEmailVerification()
-        await MainActor.run { showVerification.toggle() }
+        await MainActor.run { successLogin = true; showVerification.toggle() }
     }
 }
 

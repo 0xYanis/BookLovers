@@ -11,6 +11,7 @@ import Components
 struct LoginView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = AuthViewModel()
+    @EnvironmentObject private var userStore: UserStore
     @State private var isSecure = true
     
     var body: some View {
@@ -76,7 +77,10 @@ struct LoginView: View {
                     .presentationDetents([.height(350)])
                 // round corners
             }
-        } 
+        }
+        .onChange(of: viewModel.successLogin) { newValue in
+            userStore.setStatus(isAuthenticated: newValue)
+        }
     }
 }
 

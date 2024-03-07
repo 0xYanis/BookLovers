@@ -31,8 +31,7 @@ struct ProfileHeader: View {
         ZStack(alignment: .bottom) {
             Rectangle().fill(.gray.opacity(0.15))
             VStack {
-                userStore.user.avatar
-                    .resizable()
+                Avatar(url: userStore.user.avatar)
                     .scaledToFill()
                     .matchedGeometryEffect(id: "avatar", in: headerSnap)
                     .frame(width: 130, height: 130)
@@ -50,8 +49,7 @@ struct ProfileHeader: View {
     
     private var extendedStateView: some View {
         ZStack {
-            userStore.user.avatar
-                .resizable()
+            Avatar(url: userStore.user.avatar)
                 .matchedGeometryEffect(id: "avatar", in: headerSnap)
                 .scaledToFill()
                 .frame(width: screen.width, height: screen.height/2.5)

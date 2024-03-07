@@ -10,24 +10,22 @@ import SwiftUI
 
 struct User: Identifiable {
     var id = UUID()
-    var avatar: Image
+    var avatar: URL?
     let email: String
     var username: String
     var status: String
     var messages: Int
     var favoriteGenre: LiteraryGenre
     var isAuthenticated: Bool
-    var isDefaultImage: Bool
     
     static let anonymous: User = User(
-        avatar: Image(systemName: "person.fill"),
+        avatar: nil,
         email: "",
         username: "Anonymous#\(String.randomNum)",
         status: "Hello, Bookly!",
         messages: 0,
         favoriteGenre: LiteraryGenre.allCases.randomElement() ?? .actionAdventure,
-        isAuthenticated: false,
-        isDefaultImage: true
+        isAuthenticated: false
     )
 }
 

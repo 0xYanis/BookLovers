@@ -87,8 +87,7 @@ struct ProfileEditorView: View {
         ZStack(alignment: .center) {
             Color.clear
             VStack(spacing: 25) {
-                userStore.user.avatar
-                    .resizable()
+                Avatar(url: userStore.user.avatar)
                     .scaledToFill()
                     .frame(width: 130, height: 130)
                     .clipShape(Circle())

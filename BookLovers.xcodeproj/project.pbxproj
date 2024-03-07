@@ -64,6 +64,9 @@
 		09DFDE652B98D16F005821D7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 09DFDE642B98D16F005821D7 /* Lottie */; };
 		09DFDE692B98DD73005821D7 /* verification.json in Resources */ = {isa = PBXBuildFile; fileRef = 09DFDE682B98DD73005821D7 /* verification.json */; };
 		09DFDE6D2B99A746005821D7 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE6C2B99A746005821D7 /* LoginType.swift */; };
+		09DFDE712B99B4F5005821D7 /* UserConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE702B99B4F5005821D7 /* UserConfigurator.swift */; };
+		09DFDE742B99BF5E005821D7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 09DFDE732B99BF5E005821D7 /* Kingfisher */; };
+		09DFDE762B99C478005821D7 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE752B99C478005821D7 /* Avatar.swift */; };
 		09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */; };
 		09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */; };
 		09F170C02B7EAC9400CEF3CA /* ExploreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F170BF2B7EAC9400CEF3CA /* ExploreCoordinator.swift */; };
@@ -143,6 +146,8 @@
 		09DFDE612B98CD40005821D7 /* EmailVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationView.swift; sourceTree = "<group>"; };
 		09DFDE682B98DD73005821D7 /* verification.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verification.json; sourceTree = "<group>"; };
 		09DFDE6C2B99A746005821D7 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
+		09DFDE702B99B4F5005821D7 /* UserConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurator.swift; sourceTree = "<group>"; };
+		09DFDE752B99C478005821D7 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeader.swift; sourceTree = "<group>"; };
 		09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteType.swift; sourceTree = "<group>"; };
 		09F170BF2B7EAC9400CEF3CA /* ExploreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCoordinator.swift; sourceTree = "<group>"; };
@@ -166,6 +171,7 @@
 				09DFDE652B98D16F005821D7 /* Lottie in Frameworks */,
 				09DFDE5E2B98C2F2005821D7 /* FirebaseAuth in Frameworks */,
 				0945AF3D2B89FF4E00A4623A /* WelcomeSheet in Frameworks */,
+				09DFDE742B99BF5E005821D7 /* Kingfisher in Frameworks */,
 				090180E12B90B24000820CAB /* AlertKit in Frameworks */,
 				0905C52E2B852AF9002342E9 /* Components in Frameworks */,
 				09A165692B80A79A008C0AB3 /* ScalingHeaderScrollView in Frameworks */,
@@ -266,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */,
-				09A165772B8120BD008C0AB3 /* UserStore.swift */,
 			);
 			path = Applicaiton;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 		0935487B2B5EAF1A00CC4955 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				09BBC54B2B99D05B006B5284 /* User */,
 				093C1EC02B8CF0080085C22F /* AuthFlow */,
 				093C1EC32B8CF0750085C22F /* CommunityFlow */,
 				093C1EC12B8CF0280085C22F /* ExploreFlow */,
@@ -453,6 +459,16 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		09BBC54B2B99D05B006B5284 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				09A165772B8120BD008C0AB3 /* UserStore.swift */,
+				09DFDE702B99B4F5005821D7 /* UserConfigurator.swift */,
+				09DFDE752B99C478005821D7 /* Avatar.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		09F746282B869CA000DEBB49 /* MacBookLovers */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +539,7 @@
 				090180E02B90B24000820CAB /* AlertKit */,
 				09DFDE5D2B98C2F2005821D7 /* FirebaseAuth */,
 				09DFDE642B98D16F005821D7 /* Lottie */,
+				09DFDE732B99BF5E005821D7 /* Kingfisher */,
 			);
 			productName = BookLovers;
 			productReference = 093548682B5EAEDE00CC4955 /* BookLovers.app */;
@@ -581,6 +598,7 @@
 				090180DF2B90B24000820CAB /* XCRemoteSwiftPackageReference "AlertKit" */,
 				09DFDE5C2B98C2F2005821D7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				09DFDE632B98D16F005821D7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				09DFDE722B99BF5D005821D7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 093548692B5EAEDE00CC4955 /* Products */;
 			projectDirPath = "";
@@ -656,8 +674,10 @@
 				0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */,
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
 				0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */,
+				09DFDE712B99B4F5005821D7 /* UserConfigurator.swift in Sources */,
 				09F8A6712B8919E2002C3AC7 /* User.swift in Sources */,
 				094A65272B71073D00E6FF4E /* View+Extension.swift in Sources */,
+				09DFDE762B99C478005821D7 /* Avatar.swift in Sources */,
 				09736E032B74109600B50164 /* SortType.swift in Sources */,
 				09A165782B8120BE008C0AB3 /* UserStore.swift in Sources */,
 				094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */,
@@ -1006,6 +1026,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		09DFDE722B99BF5D005821D7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1050,6 +1078,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 09DFDE632B98D16F005821D7 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		09DFDE732B99BF5E005821D7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09DFDE722B99BF5D005821D7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

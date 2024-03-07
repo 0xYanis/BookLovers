@@ -11,7 +11,9 @@ let package = Package(
             name: "Components",
             targets: ["Components"]),
     ],
-    dependencies: [],
+    dependencies: [
+        
+    ],
     targets: [
         .target(
             name: "Components",
