@@ -9,13 +9,6 @@ import Foundation
 import Combine
 import FirebaseAuth
 
-enum LoginType: String, CaseIterable, Identifiable {
-    case login
-    case signup = "Sign up"
-    
-    var id: Self { self }
-}
-
 final class AuthViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""

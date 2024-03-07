@@ -27,11 +27,11 @@ struct MainTabbarView: View {
                     )
                     .tag(item)
                     .tabItem {
-#if os(iOS)
+                        #if os(iOS)
                         Image(uiImage: item.uiImage(selected: selectedTab))
-#else
+                        #else
                         Image(systemName: item.image)
-#endif
+                        #endif
                         Text(item.name)
                     }
                     .badge(item == .community ? userStore.user.messages : 0)
