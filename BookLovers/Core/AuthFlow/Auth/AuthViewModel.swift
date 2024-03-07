@@ -36,8 +36,7 @@ final class AuthViewModel: ObservableObject {
         cancellables.removeAll()
     }
     
-    func signIn() {
-        guard canLogin else { return }
+    func signButtonTapped() {
         Task {
             do {
                 if loginType == .login {
@@ -56,8 +55,8 @@ final class AuthViewModel: ObservableObject {
         if let user = auth.currentUser {
             user.reload()
             if user.isEmailVerified {
-                successLogin = true
                 showVerification = false
+                successLogin = true
             }
         }
     }

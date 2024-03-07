@@ -48,11 +48,7 @@ final class UserStore: ObservableObject {
     
     func clearUserData() {
         user = .anonymous
-        do {
-            try logout()
-        } catch {
-            print(error.localizedDescription)
-        }
+        logout()
     }
     
     func deleteAccount() {
@@ -83,15 +79,17 @@ private extension UserStore {
     func changeName(_ name: String) {
         let request = auth.currentUser?.createProfileChangeRequest()
         request?.displayName = name
+        Task { try await request?.commitChanges() }
     }
     
     func changeAvatar(_ photoUrl: URL) {
         let request = auth.currentUser?.createProfileChangeRequest()
         request?.photoURL = photoUrl
+        Task { try await request?.commitChanges() }
     }
     
-    func logout() throws {
-        try auth.signOut()
+    func logout() {
+        try? auth.signOut()
     }
 }
 

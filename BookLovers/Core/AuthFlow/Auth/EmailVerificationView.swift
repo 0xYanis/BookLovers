@@ -9,8 +9,7 @@ import SwiftUI
 import Lottie
 
 struct EmailVerificationView: View {
-    var cancel: () -> ()
-    var onReceive: () -> ()
+    @ObservedObject var viewModel: AuthViewModel
     
     var body: some View {
         VStack(spacing: 6) {
@@ -30,11 +29,10 @@ struct EmailVerificationView: View {
         }
         .padding(.bottom)
         .overlay(alignment: .topTrailing) {
-            Button("Cancel", action: cancel).padding()
+            Button("Cancel", action: viewModel.cancelLogin).padding()
         }
         .onReceive(Timer.publish(every: 2, on: .main, in: .default).autoconnect()) { _ in
-            onReceive()
-            print("RECIEVE")
+            viewModel.checkLogin()
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileEditorView: View {
     @State private var showSignIn = false
     @State private var showCleanAll = false
-    @State private var username = ""
+    @State private var showDeleteAlert = false
     
     @EnvironmentObject private var userStore: UserStore
     var body: some View {
@@ -21,12 +21,7 @@ struct ProfileEditorView: View {
                         HStack {
                             Text("Name")
                             Divider()
-                            TextField("\(userStore.user.username)", text: $username)
-                                .onSubmit {
-                                    if !username.isEmpty {
-                                        userStore.setName(username)
-                                    }
-                                }
+                            TextField("\(userStore.user.username)", text: $userStore.user.username)
                         }
                     },
                     header: imageHeader,
@@ -68,7 +63,7 @@ struct ProfileEditorView: View {
                 
                 if userStore.user.isAuthenticated {
                     Section {
-                        Button("Remove account", action: deleteAccountAciton)
+                        Button("Remove account", action: { showDeleteAlert.toggle() })
                             .frame(maxWidth: .infinity, alignment: .center)
                     } footer: {
                         Text("You can easily delete your account and all data associated with it.")
@@ -82,10 +77,16 @@ struct ProfileEditorView: View {
             LoginView()
                 .presentationDetents([.medium, .large])
         }
-//        .sheet(isPresented: $showCleanAll) {
-//            CleanAllView()
-//                .presentationDetents([.fraction(0.3)])
-//        }
+        .alert(isPresented: $showDeleteAlert) {
+            Alert(
+                title: Text("Account deleting"),
+                message: Text("All personal data will be deleted"),
+                primaryButton: .destructive(Text("Delete"), action: userStore.deleteAccount),
+                secondaryButton: .cancel())
+        }
+        .onDisappear {
+            userStore.setName(userStore.user.username)
+        }
     }
     
     private func imageHeader() -> some View {

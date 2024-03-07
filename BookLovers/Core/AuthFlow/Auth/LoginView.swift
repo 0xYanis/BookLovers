@@ -49,7 +49,7 @@ struct LoginView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         
-                        Button(action: viewModel.signIn) {
+                        Button(action: viewModel.signButtonTapped) {
                             Text(viewModel.loginType == .login ? "Sign In!" : "Sign Up!")
                                 .foregroundStyle(.white)
                                 .padding(12)
@@ -73,13 +73,14 @@ struct LoginView: View {
                 }
             }
             .sheet(isPresented: $viewModel.showVerification) {
-                EmailVerificationView(cancel: viewModel.cancelLogin, onReceive: viewModel.checkLogin)
+                EmailVerificationView(viewModel: viewModel)
                     .presentationDetents([.height(350)])
                     .interactiveDismissDisabled()
                 // round corners
             }
         }
         .onChange(of: viewModel.successLogin) { newValue in
+            if newValue == true { dismiss.callAsFunction() }
             userStore.setStatus(isAuthenticated: newValue)
         }
     }
