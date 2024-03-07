@@ -24,7 +24,7 @@ struct SideMenuHeader: View {
                 Text(userStore.user.email.isEmpty ? userStore.user.username : userStore.user.email)
                     .font(.subheadline)
                 
-                Text("@\(userStore.user.username)")
+                Text("@\(userStore.user.username.replacingOccurrences(of: " ", with: ""))")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }

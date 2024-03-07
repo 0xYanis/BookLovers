@@ -12,7 +12,7 @@ struct User: Identifiable {
     var id = UUID()
     var avatar: URL?
     let email: String
-    var username: String
+    @MaxLengthString var username: String
     var status: String
     var messages: Int
     var favoriteGenre: LiteraryGenre
@@ -34,5 +34,21 @@ struct User: Identifiable {
 private extension String {
     static var randomNum: String {
         String(Int.random(in: 111...999))
+    }
+}
+
+@propertyWrapper
+struct MaxLengthString {
+    private var value: String = ""
+    
+    var wrappedValue: String {
+        get { return value }
+        set { if newValue.count <= 22 { value = newValue } }
+    }
+    
+    init(wrappedValue: String) {
+        if wrappedValue.count <= 22 {
+            self.value = wrappedValue
+        }
     }
 }
