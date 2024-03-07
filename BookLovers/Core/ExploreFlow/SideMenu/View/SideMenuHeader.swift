@@ -21,7 +21,7 @@ struct SideMenuHeader: View {
                 .padding(.vertical)
             
             VStack(alignment: .leading, spacing: 6) {
-                Text(userStore.user.username)
+                Text(userStore.user.email.isEmpty ? userStore.user.username : userStore.user.email)
                     .font(.subheadline)
                 
                 Text("@\(userStore.user.username)")

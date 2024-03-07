@@ -12,12 +12,10 @@ struct CommunityView: View {
     @State private var requestSignIn = false
     
     var body: some View {
-        NavigationStack {
-            if userStore.user.isAuthenticated {
-                CreateCommunityView()
-            } else {
-                SignInView(type: .community, requestSignIn: $requestSignIn)
-            }
+        if userStore.user.isAuthenticated {
+            CommunityListView()
+        } else {
+            SignInView(type: .community, requestSignIn: $requestSignIn)
         }
     }
 }

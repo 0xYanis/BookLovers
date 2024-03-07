@@ -75,6 +75,7 @@ struct LoginView: View {
             .sheet(isPresented: $viewModel.showVerification) {
                 EmailVerificationView(cancel: viewModel.cancelLogin, onReceive: viewModel.checkLogin)
                     .presentationDetents([.height(350)])
+                    .interactiveDismissDisabled()
                 // round corners
             }
         }

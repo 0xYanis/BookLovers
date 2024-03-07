@@ -15,27 +15,27 @@ struct SideMenuView: View {
     @Namespace private var animation
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var userStore: UserStore
-#if os(iOS)
+    #if os(iOS)
     @EnvironmentObject private var coordinator: ExploreCoordinator
-#endif
+    #endif
     var body: some View {
-#if os(iOS)
+    #if os(iOS)
         ZStack {
             if isShowing {
                 sideMenu
             }
         }
         .animation(.spring(dampingFraction: 0.95), value: isShowing)
-#else
+    #else
         VStack(alignment: .leading, spacing: 32) {
             menuHeader
             menuList
             menuFooter
         }
         .frame(maxHeight: .infinity, alignment: .top)
-#endif
+    #endif
     }
-#if os(iOS)
+    #if os(iOS)
     private var sideMenu: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 32) {
@@ -55,7 +55,7 @@ struct SideMenuView: View {
         )
         .transition(.move(edge: .leading))
     }
-#endif
+    #endif
     private var menuHeader: some View {
         SideMenuHeader()
             .padding(.horizontal)
@@ -84,9 +84,9 @@ struct SideMenuView: View {
             
             defaultButton("Log out", image: "door.left.hand.open") {
                 userStore.setStatus(isAuthenticated: false)
-#if os(iOS)
+                #if os(iOS)
                 coordinator.popToRoot()
-#endif
+                #endif
             }
             .padding()
             
@@ -135,10 +135,10 @@ struct SideMenuView: View {
     private func optionTapped(_ option: MenuOption) {
         withAnimation(.easeInOut(duration: 0.2)) {
             selectedOption = option
-#if os(iOS)
+            #if os(iOS)
             hideMenu()
             coordinator.push(page: option)
-#endif
+            #endif
         }
     }
     

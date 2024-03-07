@@ -43,6 +43,7 @@ final class AuthViewModel: ObservableObject {
                 if loginType == .login {
                     try await verifyLogin()
                 } else {
+                    await MainActor.run { showVerification = true }
                     try await verifySignUp()
                 }
             } catch {
@@ -79,17 +80,13 @@ final class AuthViewModel: ObservableObject {
     private func verifyLogin() async throws {
         let result = try await auth.signIn(withEmail: email, password: password)
         if result.user.isEmailVerified {
-            successLogin = true
-        } else {
-            try await result.user.sendEmailVerification()
-            showVerification.toggle()
+            await MainActor.run { successLogin = true }
         }
     }
     
     private func verifySignUp() async throws {
         let result = try await auth.createUser(withEmail: email, password: password)
         try await result.user.sendEmailVerification()
-        await MainActor.run { successLogin = true; showVerification.toggle() }
     }
 }
 
@@ -154,5 +151,12 @@ private extension AuthViewModel {
 extension String {
     func notContains<T>(_ other: T) -> Bool where T : StringProtocol {
         !self.contains(other)
+    }
+    
+    func emailToName() -> String {
+        if let atIndex = self.firstIndex(of: "@") {
+            return String(self[..<atIndex])
+        }
+        return self
     }
 }

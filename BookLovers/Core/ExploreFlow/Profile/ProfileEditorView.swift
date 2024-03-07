@@ -10,8 +10,9 @@ import SwiftUI
 struct ProfileEditorView: View {
     @State private var showSignIn = false
     @State private var showCleanAll = false
-    @EnvironmentObject private var userStore: UserStore
+    @State private var username = ""
     
+    @EnvironmentObject private var userStore: UserStore
     var body: some View {
         VStack {
             Form {
@@ -20,7 +21,12 @@ struct ProfileEditorView: View {
                         HStack {
                             Text("Name")
                             Divider()
-                            TextField("\(userStore.user.username)", text: $userStore.user.username)
+                            TextField("\(userStore.user.username)", text: $username)
+                                .onSubmit {
+                                    if !username.isEmpty {
+                                        userStore.setName(username)
+                                    }
+                                }
                         }
                     },
                     header: imageHeader,
@@ -63,7 +69,6 @@ struct ProfileEditorView: View {
                 if userStore.user.isAuthenticated {
                     Section {
                         Button("Remove account", action: deleteAccountAciton)
-                            .disabled( !userStore.user.isAuthenticated )
                             .frame(maxWidth: .infinity, alignment: .center)
                     } footer: {
                         Text("You can easily delete your account and all data associated with it.")
@@ -77,10 +82,10 @@ struct ProfileEditorView: View {
             LoginView()
                 .presentationDetents([.medium, .large])
         }
-        .sheet(isPresented: $showCleanAll) {
-            CleanAllView()
-                .presentationDetents([.fraction(0.3)])
-        }
+//        .sheet(isPresented: $showCleanAll) {
+//            CleanAllView()
+//                .presentationDetents([.fraction(0.3)])
+//        }
     }
     
     private func imageHeader() -> some View {
@@ -105,7 +110,7 @@ struct ProfileEditorView: View {
     }
     
     private func deleteAccountAciton() {
-        
+        userStore.deleteAccount()
     }
 }
 

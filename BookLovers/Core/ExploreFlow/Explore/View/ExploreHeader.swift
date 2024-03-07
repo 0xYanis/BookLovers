@@ -9,6 +9,7 @@ import SwiftUI
 import Components
 
 struct ExploreHeader: View {
+    @EnvironmentObject private var userStore: UserStore
     @Binding var showSearchView: Bool
     
     @State private var searchText = ""
@@ -23,7 +24,7 @@ struct ExploreHeader: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             VStack(alignment: .leading,  spacing: 15) {
-                Text("Hello, Yanis")
+                Text("Hello, \(userStore.user.username.isEmpty ? userStore.user.username : userStore.user.username.capitalized)")
                     .font(.subheadline)
                     .padding(.horizontal)
                     .padding(.vertical, 10)

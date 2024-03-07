@@ -64,7 +64,6 @@
 		09DFDE652B98D16F005821D7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 09DFDE642B98D16F005821D7 /* Lottie */; };
 		09DFDE692B98DD73005821D7 /* verification.json in Resources */ = {isa = PBXBuildFile; fileRef = 09DFDE682B98DD73005821D7 /* verification.json */; };
 		09DFDE6D2B99A746005821D7 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE6C2B99A746005821D7 /* LoginType.swift */; };
-		09DFDE712B99B4F5005821D7 /* UserConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE702B99B4F5005821D7 /* UserConfigurator.swift */; };
 		09DFDE742B99BF5E005821D7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 09DFDE732B99BF5E005821D7 /* Kingfisher */; };
 		09DFDE762B99C478005821D7 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE752B99C478005821D7 /* Avatar.swift */; };
 		09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */; };
@@ -78,7 +77,7 @@
 		09F7463C2B869DD100DEBB49 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
 		09F7463D2B869DD100DEBB49 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E022B74109600B50164 /* SortType.swift */; };
 		09F7463E2B869DD100DEBB49 /* SignInType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094E137B2B74C7E90052E0D8 /* SignInType.swift */; };
-		09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757612B763C16004C849B /* CreateCommunityView.swift */; };
+		09F757622B763C16004C849B /* CommunityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F757612B763C16004C849B /* CommunityListView.swift */; };
 		09F8A6712B8919E2002C3AC7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8A6702B8919E2002C3AC7 /* User.swift */; };
 		09F8A6722B8919E2002C3AC7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8A6702B8919E2002C3AC7 /* User.swift */; };
 		09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */; };
@@ -146,7 +145,6 @@
 		09DFDE612B98CD40005821D7 /* EmailVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationView.swift; sourceTree = "<group>"; };
 		09DFDE682B98DD73005821D7 /* verification.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verification.json; sourceTree = "<group>"; };
 		09DFDE6C2B99A746005821D7 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
-		09DFDE702B99B4F5005821D7 /* UserConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurator.swift; sourceTree = "<group>"; };
 		09DFDE752B99C478005821D7 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeader.swift; sourceTree = "<group>"; };
 		09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteType.swift; sourceTree = "<group>"; };
@@ -156,7 +154,7 @@
 		09F746302B869CA300DEBB49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09F746322B869CA300DEBB49 /* MacBookLovers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacBookLovers.entitlements; sourceTree = "<group>"; };
 		09F7463A2B869DAA00DEBB49 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		09F757612B763C16004C849B /* CreateCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityView.swift; sourceTree = "<group>"; };
+		09F757612B763C16004C849B /* CommunityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityListView.swift; sourceTree = "<group>"; };
 		09F8A6702B8919E2002C3AC7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		09F9AAAD2B7D411900C0FC8D /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -372,7 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				0901E8522B73A8CD007C11A5 /* CommunityView.swift */,
-				09F757612B763C16004C849B /* CreateCommunityView.swift */,
+				09F757612B763C16004C849B /* CommunityListView.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -463,7 +461,6 @@
 			isa = PBXGroup;
 			children = (
 				09A165772B8120BD008C0AB3 /* UserStore.swift */,
-				09DFDE702B99B4F5005821D7 /* UserConfigurator.swift */,
 				09DFDE752B99C478005821D7 /* Avatar.swift */,
 			);
 			path = User;
@@ -651,7 +648,7 @@
 				099BBF832B925EE400A7B2A4 /* Settings.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */,
-				09F757622B763C16004C849B /* CreateCommunityView.swift in Sources */,
+				09F757622B763C16004C849B /* CommunityListView.swift in Sources */,
 				099E9A0A2B83BBFA009CE7B0 /* ProfileEditorView.swift in Sources */,
 				09736E012B7409BC00B50164 /* SearchView.swift in Sources */,
 				099A2D192B96303B00557DC5 /* AuthTextField.swift in Sources */,
@@ -674,7 +671,6 @@
 				0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */,
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
 				0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */,
-				09DFDE712B99B4F5005821D7 /* UserConfigurator.swift in Sources */,
 				09F8A6712B8919E2002C3AC7 /* User.swift in Sources */,
 				094A65272B71073D00E6FF4E /* View+Extension.swift in Sources */,
 				09DFDE762B99C478005821D7 /* Avatar.swift in Sources */,
