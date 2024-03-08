@@ -26,82 +26,84 @@ final class AuthViewModel: ObservableObject {
     @Published private var passwordIsValid = false
     @Published private var confirmationIsValid = false
     
-    private let auth = Auth.auth()
+    private var auth: AuthWorkerProtocol
     private var cancellables: Set<AnyCancellable> = []
     
-    init() {
+    init(auth: AuthWorkerProtocol = AuthWorker()) {
+        self.auth = auth
         observation()
         authObservation()
     }
     
-    deinit {
-        cancellables.removeAll()
-    }
+    deinit { cancellables.removeAll() }
     
     func signButtonTapped() {
-        Task {
-            do {
-                if loginType == .login {
-                    try await verifyLogin()
-                } else {
-                    await MainActor.run { showVerification = true }
-                    try await verifySignUp()
-                }
-            } catch {
-                await presentError(error)
-            }
+        switch loginType {
+        case .login:
+            verifyLogin()
+        case .signup:
+            showVerification = true
+            verifySignUp()
         }
     }
     
     func checkLogin() {
-        if let user = auth.currentUser {
-            user.reload()
-            if user.isEmailVerified {
-                showVerification = false
-                successLogin = true
-            }
+        if auth.isEmailVerified {
+            showVerification = false
+            successLogin = true
         }
     }
     
     func cancelLogin() {
-        showVerification = false
-        if let user = auth.currentUser {
-            user.delete()
-        }
+        auth.deleteUser()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] completion in
+                if case let .failure(error) = completion { self?.presentError(error) }
+            } receiveValue: { [weak self] _ in self?.showVerification = false }
+            .store(in: &cancellables)
     }
     
     func sendResetLink() {
-        Task {
-            do {
-                try await auth.sendPasswordReset(withEmail: resetEmail)
-                await MainActor.run {
-                    email = resetEmail
-                    resetEmail.removeAll()
-                }
-            } catch {
-                await presentError(error)
+        auth.sendResetLink(resetEmail)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] completion in
+                if case let .failure(error) = completion { self?.presentError(error) }
+            } receiveValue: { [weak self] _ in
+                self?.email = self?.resetEmail ?? ""
+                self?.resetEmail.removeAll()
             }
-        }
+            .store(in: &cancellables)
     }
     
     // MARK: - Private methods
     
-    @MainActor
-    private func presentError(_ error: Error) async {
+    private func presentError(_ error: Error) {
         guard errorMessage.isEmpty else { return }
         errorMessage = error.localizedDescription
     }
     
-    private func verifyLogin() async throws {
-        let result = try await auth.signIn(withEmail: email, password: password)
-        if result.user.isEmailVerified {
-            await MainActor.run { successLogin = true }
-        }
+    private func verifyLogin() {
+        auth.signin(email, password)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] completion in
+                if case let .failure(error) = completion { self?.presentError(error) }
+            } receiveValue: { [weak self] user in
+                if user.isEmailVerified {
+                    self?.successLogin = true
+                }
+            }
+            .store(in: &cancellables)
     }
     
-    private func verifySignUp() async throws {
-        let result = try await auth.createUser(withEmail: email, password: password)
-        try await result.user.sendEmailVerification()
+    private func verifySignUp() {
+        auth.signUp(email, password)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] completion in
+                if case let .failure(error) = completion { self?.presentError(error) }
+            } receiveValue: { user in
+                user.sendEmailVerification()
+            }
+            .store(in: &cancellables)
     }
 }
 

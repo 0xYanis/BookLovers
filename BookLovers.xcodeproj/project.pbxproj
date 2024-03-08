@@ -42,6 +42,7 @@
 		0950D8E62B725564005D755A /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0950D8E52B725564005D755A /* TabItem.swift */; };
 		095FEB9E2B9A35A7006EE20F /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095FEB9D2B9A35A7006EE20F /* ResetPasswordView.swift */; };
 		095FEBA02B9A5AFE006EE20F /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095FEB9F2B9A5AFE006EE20F /* BottomSheet.swift */; };
+		096D47522B9BAB9100B2D84D /* AuthWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D47512B9BAB9100B2D84D /* AuthWorker.swift */; };
 		09736E012B7409BC00B50164 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E002B7409BC00B50164 /* SearchView.swift */; };
 		09736E032B74109600B50164 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E022B74109600B50164 /* SortType.swift */; };
 		0997103D2B8631F900630A16 /* Managers in Frameworks */ = {isa = PBXBuildFile; productRef = 0997103C2B8631F900630A16 /* Managers */; };
@@ -123,6 +124,7 @@
 		0950D8E52B725564005D755A /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		095FEB9D2B9A35A7006EE20F /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		095FEB9F2B9A5AFE006EE20F /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		096D47512B9BAB9100B2D84D /* AuthWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorker.swift; sourceTree = "<group>"; };
 		09736E002B7409BC00B50164 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		09736E022B74109600B50164 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		0997103B2B86315800630A16 /* Managers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Managers; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				09DFDE612B98CD40005821D7 /* EmailVerificationView.swift */,
 				09DFDE6C2B99A746005821D7 /* LoginType.swift */,
 				095FEB9D2B9A35A7006EE20F /* ResetPasswordView.swift */,
+				096D47512B9BAB9100B2D84D /* AuthWorker.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				090F78182B8F789500625729 /* AboutUsView.swift in Sources */,
 				094A652C2B710A0C00E6FF4E /* SideMenuView.swift in Sources */,
 				09441E092B714698004A09D0 /* FavoritesView.swift in Sources */,
+				096D47522B9BAB9100B2D84D /* AuthWorker.swift in Sources */,
 				094A65302B710AAB00E6FF4E /* SideMenuItem.swift in Sources */,
 				09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */,
 				09A165712B80C9B5008C0AB3 /* ProfileContent.swift in Sources */,
