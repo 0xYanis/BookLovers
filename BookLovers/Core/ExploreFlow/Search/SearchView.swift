@@ -17,7 +17,7 @@ struct SearchView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 30) {
-                    titleView
+                    //titleView
                     
                     SearchBar("Search books", text: $viewModel.searchText)
                         .focused($isFocused)
@@ -36,15 +36,24 @@ struct SearchView: View {
                         trailingParagraphItem
                     }
                 }
+                .overlay {
+                    Button("change") {
+                        withAnimation(.spring()) {
+                            viewModel.isSearching.toggle()
+                        }
+                    }
+                }
             }
-            .toolbar(content: leadingItem)
+            .toolbar(content: trailingButton)
+            .navigationTitle("Search")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
             isFocused = true
         }
     }
     
-    private func leadingItem() -> some ToolbarContent {
+    private func trailingButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             XButton(action: dismiss.callAsFunction)
         }
@@ -57,22 +66,25 @@ struct SearchView: View {
             .padding(.horizontal)
     }
     
+    @ViewBuilder
     private var historyView: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            ForEach(0..<3, id: \.self) { item in
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .padding(.horizontal)
-                        .foregroundStyle(.secondary)
-                    Text("The Witcher")
-                    Spacer()
-                    Image(systemName: "clock.arrow.circlepath")
+        if viewModel.isSearching == false {
+            VStack(alignment: .leading, spacing: 15) {
+                ForEach(0..<3, id: \.self) { item in
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .padding(.horizontal)
+                            .foregroundStyle(.secondary)
+                        Text("The Witcher")
+                        Spacer()
+                        Image(systemName: "clock.arrow.circlepath")
+                    }
+                    .font(.callout)
+                    Divider()
                 }
-                .font(.callout)
-                Divider()
             }
+            .padding()
         }
-        .padding()
     }
     
     private var trailingParagraphItem: some View {

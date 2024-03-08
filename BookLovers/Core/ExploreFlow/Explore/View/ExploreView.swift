@@ -123,10 +123,7 @@ struct ExploreView: View {
                 .padding(.top)
                 .frame(maxWidth: .infinity)
                 .background(Color(uiColor: .secondarySystemBackground))
-                .clipShape(CustomCornersShape(
-                    corners: [.topLeft, .topRight],
-                    radius: 15)
-                )
+                .clipShape(CustomCornersShape(corners: [.topLeft, .topRight], radius: 25))
             }
         }
         .toolbar {

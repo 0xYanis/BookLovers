@@ -9,6 +9,7 @@ import Foundation
 
 @MainActor
 final class SearchViewModel: ObservableObject {
+    @Published var isSearching = false
     @Published var searchText = ""
     
     func sortSearchResults(by type: SortType) {

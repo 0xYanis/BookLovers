@@ -37,8 +37,7 @@ struct SearchBar: View {
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 4)
-        .background(RoundedRectangle(cornerRadius: 10)
-            .stroke(lineWidth: 1.0)
-            .foregroundStyle(.secondary))
+        .background(Color(.secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

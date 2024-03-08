@@ -27,8 +27,8 @@ final class UserStore: ObservableObject {
     }
     
     func setAvatar(_ photoUrl: URL) {
-        user.avatar = photoUrl
         changeAvatar(photoUrl)
+        user.avatar = photoUrl
     }
     
     func setStatus(isAuthenticated: Bool) {
@@ -83,9 +83,7 @@ private extension UserStore {
     }
     
     func changeAvatar(_ photoUrl: URL) {
-        let request = auth.currentUser?.createProfileChangeRequest()
-        request?.photoURL = photoUrl
-        Task { try await request?.commitChanges() }
+        
     }
     
     func logout() {
