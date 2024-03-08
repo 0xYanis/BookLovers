@@ -12,6 +12,11 @@ struct CommunityView: View {
     @State private var requestSignIn = false
     
     var body: some View {
+        currentView
+    }
+    
+    @ViewBuilder
+    private var currentView: some View {
         if userStore.user.isAuthenticated {
             CommunityListView()
         } else {

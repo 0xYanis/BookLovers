@@ -7,7 +7,6 @@
 
 import SwiftUI
 import ScalingHeaderScrollView
-import PhotosUI
 
 enum SnapPosition {
     case hide
@@ -40,20 +39,20 @@ struct ProfileView: View {
         }
         .overlay(alignment: .top) {
             HStack {
-                if UIDevice.isiPhone {
-                    leadingButton
-                    if currentSnapPos == .hide {
-                        centerItem.frame(maxWidth: .infinity)
-                    } else { Spacer() }
-                    trailingButton
-                } else {
-                    Button(showEditorForiPad ? "Done" : "Edit") {
-                        withAnimation {
-                            showEditorForiPad.toggle()
-                        }
+                #if os(iOS)
+                leadingButton
+                if currentSnapPos == .hide {
+                    centerItem.frame(maxWidth: .infinity)
+                } else { Spacer() }
+                trailingButton
+                #else
+                Button(showEditorForiPad ? "Done" : "Edit") {
+                    withAnimation {
+                        showEditorForiPad.toggle()
                     }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
                 }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                #endif
             }
             .padding(.horizontal)
         }

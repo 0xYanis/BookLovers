@@ -11,28 +11,40 @@ import Components
 struct AboutUsView: View {
     var body: some View {
         ScrollView {
-            ForEach(AboutUs.allCases) { part in
-                NewParagraphView(title: part.title) {
-                    customText(part.text)
-                }
-            }
-            Text("The Bookly Team")
-                .fontWeight(.semibold)
-            
-            if let destination = AboutUs.link {
-                Link(destination: destination) {
-                    Label("Show website", systemImage: "rectangle.portrait.and.arrow.right")
-                        .foregroundStyle(.white)
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-                .background(Color.green)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding()
-            }
+            allParagraphs
+            footerTitleLabel
+            linkToGithub
         }
         .navigationTitle("About Us")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private var allParagraphs: some View {
+        ForEach(AboutUs.allCases) { part in
+            NewParagraphView(title: part.title) {
+                customText(part.text)
+            }
+        }
+    }
+    
+    private var footerTitleLabel: some View {
+        Text("The Bookly Team")
+            .fontWeight(.semibold)
+    }
+    
+    @ViewBuilder
+    private var linkToGithub: some View {
+        if let destination = AboutUs.link {
+            Link(destination: destination) {
+                Label("Show website", systemImage: "rectangle.portrait.and.arrow.right")
+                    .foregroundStyle(.white)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .background(Color.green)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding()
+        }
     }
     
     private func customText(_ text: String) -> some View {

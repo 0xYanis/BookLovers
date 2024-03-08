@@ -85,7 +85,7 @@ struct ExploreView: View {
             Button(action: trailingItemAction) {
                 Avatar(url: userStore.user.avatar)
                     .scaledToFill()
-                    .frame(width: 27, height: 27)
+                    .frame(width: 22, height: 22)
                     .clipShape(Circle())   
             }
         }

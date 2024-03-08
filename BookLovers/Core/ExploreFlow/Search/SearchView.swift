@@ -37,14 +37,14 @@ struct SearchView: View {
                     }
                 }
             }
-            .toolbar(content: { leadingItem })
+            .toolbar(content: leadingItem)
         }
         .onAppear {
             isFocused = true
         }
     }
     
-    private var leadingItem: some ToolbarContent {
+    private func leadingItem() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             XButton(action: dismiss.callAsFunction)
         }
@@ -53,8 +53,7 @@ struct SearchView: View {
     private var titleView: some View {
         Text("Search")
             .font(.largeTitle)
-            .fontDesign(.rounded)
-            .fontWeight(.semibold)
+            .fontWeight(.bold)
             .padding(.horizontal)
     }
     

@@ -13,9 +13,7 @@ struct MostPopularItem: View {
     var body: some View {
         HStack(alignment: .top) {
             image
-            
-            description
-            .padding(5)
+            description.padding(5)
         }
         .background(background)
         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -63,7 +61,6 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
                     .imageScale(.small)
                     .foregroundStyle(.yellow)
             }
-            
             Text("4.9")
                 .font(.callout)
                 .foregroundStyle(.secondary)

@@ -31,6 +31,7 @@ struct EmailVerificationView: View {
         .overlay(alignment: .topTrailing) {
             Button("Cancel", action: cancel).padding()
         }
+        .background(booklyGradient.opacity(0.3))
         .onReceive(Timer.publish(every: 2, on: .main, in: .default).autoconnect()) { _ in
             viewModel.checkLogin()
         }

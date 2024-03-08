@@ -24,28 +24,17 @@ struct ExploreHeader: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             VStack(alignment: .leading,  spacing: 15) {
-                Text("Hello, \(userStore.user.username.isEmpty ? userStore.user.username : userStore.user.username.capitalized)")
-                    .font(.subheadline)
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                
-                Text("What are you looking for \ntoday?")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .padding(.horizontal)
-                
+                helloLabel
+                messageLabel
                 TagCaruselView(
                     tags: LiteraryGenre.asArray,
                     onTap: tagTapped(_:)
                 )
             }
-            
             SearchBar("Search \(placeholder)", text: $searchText, isActive: false)
-                .onTapGesture {
-                    showSearchView.toggle()
-                }
-            .buttonStyle(.plain)
-            .padding(.horizontal)
+                .onTapGesture { showSearchView.toggle() }
+                .buttonStyle(.plain)
+                .padding(.horizontal)
         }
         .background(Color(.systemBackground))
         .onReceive(timer) { _ in
@@ -55,6 +44,20 @@ struct ExploreHeader: View {
             self.placeholder = LiteraryGenre.asArray[counter]
             counter += 1
         }
+    }
+    
+    private var helloLabel: some View {
+        Text("Hello, \(userStore.user.username.isEmpty ? userStore.user.username : userStore.user.username.capitalized)")
+            .font(.subheadline)
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+    }
+    
+    private var messageLabel: some View {
+        Text("What are you looking for \ntoday?")
+            .font(.title2)
+            .fontWeight(.semibold)
+            .padding(.horizontal)
     }
     
     private func tagTapped(_ id: Int) {

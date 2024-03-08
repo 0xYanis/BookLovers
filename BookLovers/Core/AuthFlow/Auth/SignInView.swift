@@ -34,37 +34,8 @@ struct SignInView: View {
             Color.green.opacity(0.3).ignoresSafeArea()
             VStack {
                 Spacer()
-                Image("reading")
-                    .resizable()
-                    .scaledToFit()
-                    .padding(50)
-                VStack(alignment: .center, spacing: 32) {
-                    Text(title)
-                        .font(.title)
-                        .fontDesign(.rounded)
-                        .fontWeight(.semibold)
-                    Text(subtitle)
-                        .font(.headline)
-                        .fontDesign(.rounded)
-                    Text(description)
-                        .multilineTextAlignment(.center)
-                        .font(.callout)
-                        .foregroundStyle(.secondary)
-                        .padding(.horizontal, 30)
-                    BigButton(title: title) {
-                        requestSignIn.toggle()
-                    }
-                    .padding(.horizontal)
-                    .padding(.bottom)
-                    Spacer()
-                }
-                .padding(.top, 32)
-                .frame(maxWidth: .infinity)
-                .background(Color(.systemBackground))
-                .clipShape(CustomCornersShape(
-                    corners: [.topLeft, .topRight],
-                    radius: 64))
-                .shadow(radius: 15)
+                headerView
+                contentView
             }
             .ignoresSafeArea()
         }
@@ -72,6 +43,43 @@ struct SignInView: View {
             LoginView()
                 .presentationDetents([.medium, .large])
         }
+    }
+    
+    private var headerView: some View {
+        Image("reading")
+            .resizable()
+            .scaledToFit()
+            .padding(50)
+    }
+    
+    private var contentView: some View {
+        VStack(alignment: .center, spacing: 32) {
+            Text(title)
+                .font(.title)
+                .fontDesign(.rounded)
+                .fontWeight(.semibold)
+            Text(subtitle)
+                .font(.headline)
+                .fontDesign(.rounded)
+            Text(description)
+                .multilineTextAlignment(.center)
+                .font(.callout)
+                .foregroundStyle(.secondary)
+                .padding(.horizontal, 30)
+            BigButton(title: title) {
+                requestSignIn.toggle()
+            }
+            .padding(.horizontal)
+            .padding(.bottom)
+            Spacer()
+        }
+        .padding(.top, 32)
+        .frame(maxWidth: .infinity)
+        .background(Color(.systemBackground))
+        .clipShape(CustomCornersShape(
+            corners: [.topLeft, .topRight],
+            radius: 64))
+        .shadow(radius: 15)
     }
 }
 

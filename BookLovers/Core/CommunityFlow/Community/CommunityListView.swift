@@ -24,31 +24,12 @@ struct CommunityListView: View {
     private var createCommunityView: some View {
         VStack(spacing: 60) {
             Spacer()
-            
-            Text("👨‍👩‍👧‍👦")
-                .font(.largeTitle)
-                .padding()
-                .background(Color.green.opacity(0.7))
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-            
+            communityEmoji
             VStack(spacing: 15) {
-                Text("Create your community")
-                    .fontWeight(.semibold)
-                    .fontDesign(.rounded)
-                    .font(.title2)
-                
-                Text("Invite friends and chat with like-minded people")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
+                titleLabel
+                subtitleLabel
             }
-            Button {
-                if userStore.user.isAuthenticated {
-                    
-                } else {
-                    showLogin.toggle()
-                }
-            } label: {
+            Button(action: createCommunity) {
                 Image(systemName: "plus")
                 Text("New community")
             }
@@ -62,6 +43,36 @@ struct CommunityListView: View {
         }
         .padding()
         .padding(.horizontal)
+    }
+    
+    private var communityEmoji: some View {
+        Text("👨‍👩‍👧‍👦")
+            .font(.largeTitle)
+            .padding()
+            .background(Color.green.opacity(0.7))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+    
+    private var titleLabel: some View {
+        Text("Create your community")
+            .fontWeight(.semibold)
+            .fontDesign(.rounded)
+            .font(.title2)
+    }
+    
+    private var subtitleLabel: some View {
+        Text("Invite friends and chat with like-minded people")
+            .font(.callout)
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
+    }
+    
+    private func createCommunity() {
+        if userStore.user.isAuthenticated {
+            // create community
+        } else {
+            showLogin.toggle()
+        }
     }
 }
 
