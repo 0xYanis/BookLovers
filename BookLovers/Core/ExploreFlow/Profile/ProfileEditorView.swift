@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertKit
 
 struct ProfileEditorView: View {
     @State private var showSignIn = false
@@ -56,7 +57,7 @@ struct ProfileEditorView: View {
                 
                 Section {
                     Button(action: { showCleanAll.toggle() }) {
-                        Label("Remove all user data", systemImage: "trash")
+                        Label("Clean all user data", systemImage: "trash")
                             .foregroundStyle(.red)
                     }
                 }
@@ -73,6 +74,29 @@ struct ProfileEditorView: View {
                 }
             }
         }
+        .alertBar(
+            isPresented: $showCleanAll,
+            timeInterval: 10,
+            shape: RoundedRectangle(cornerRadius: 15),
+            background: Material.ultraThinMaterial) {
+                HStack {
+                    Button("Clean", action: { userStore.clearUserData() })
+                        .foregroundStyle(.white)
+                        .padding(12)
+                        .background(.red)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                    Text("All data will be cleaned")
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity)
+                    Button("Cancel", action: { showCleanAll = false })
+                        .foregroundStyle(.white)
+                        .padding(12)
+                        .background(.secondary)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .shadow(color: .black.opacity(0.12), radius: 20)
         .sheet(isPresented: $showSignIn) {
             LoginView()
                 .presentationDetents([.medium, .large])
