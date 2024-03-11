@@ -68,10 +68,7 @@ final class AuthViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 if case let .failure(error) = completion { self?.presentError(error) }
-            } receiveValue: { [weak self] _ in
-                self?.email = self?.resetEmail ?? ""
-                self?.resetEmail.removeAll()
-            }
+            } receiveValue: {_ in}
             .store(in: &cancellables)
     }
     
