@@ -38,10 +38,12 @@ struct SideMenuView: View {
     #if os(iOS)
     private var sideMenu: some View {
         HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: 32) {
+            VStack(alignment: .leading, spacing: 0) {
                 menuHeader
-                menuList
-                menuFooter
+                ScrollView {
+                    menuList
+                    menuFooter
+                }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .frame(width: screen.width * 0.75, alignment: .leading)
@@ -56,12 +58,17 @@ struct SideMenuView: View {
     }
     #endif
     private var menuHeader: some View {
-        SideMenuHeader()
-            .padding(.horizontal)
+        VStack(spacing: 0) {
+            SideMenuHeader().padding(.horizontal)
+            Divider()
+        }
+            
     }
     
     private var menuList: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 7) {
+            headerText("General").padding([.top, .leading])
+            
             ForEach(MenuOption.allCases) { option in
                 Button {
                     optionTapped(option)
@@ -80,16 +87,16 @@ struct SideMenuView: View {
     private var menuFooter: some View {
         VStack(alignment: .leading) {
             Divider()
-            
-            defaultButton("Log out", image: "door.left.hand.open") {
-                userStore.setStatus(isAuthenticated: false)
+            VStack(alignment: .leading, spacing: 7) {
+                headerText("Account")
+                defaultButton("Log out", image: "door.left.hand.open") {
+                    userStore.setStatus(isAuthenticated: false)
+                }
             }
             .padding()
             
             VStack(alignment: .leading, spacing: 7) {
-                Text("Appearence mode".uppercased())
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
+                headerText("Appearence mode")
                 Picker("Appearence mode", selection: $userStore.colorScheme) {
                     ForEach(Mode.allCases) { mode in
                         Text(mode.title).tag(mode)
@@ -99,6 +106,12 @@ struct SideMenuView: View {
             }
             .padding([.top, .horizontal])
         }
+    }
+    
+    private func headerText(_ text: String) -> some View {
+        Text(text.uppercased())
+            .font(.footnote)
+            .foregroundStyle(.secondary)
     }
     
     private func onChanged(_ gesture: DragGesture.Value) {
@@ -159,7 +172,7 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        ExploreView()
+        SideMenuView(isShowing: .constant(true), selectedOption: .constant(.explore), navigationPath: .constant(.init()))
             .environmentObject(UserStore())
     }
 }
