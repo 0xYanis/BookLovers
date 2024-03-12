@@ -59,7 +59,7 @@ struct ExploreView: View {
     private var menuLeadingItems: some View {
         ForEach(MenuOption.allCases) { option in
             Button {
-                path.append(option)
+                if option != selectedSideOption { path.append(option) }
             } label: {
                 Label(option.title, systemImage: option.image)
             }
@@ -131,7 +131,7 @@ struct ExploreView: View {
             centerItem
             trailingItem
         }
-        .onDisappear {
+        .onAppear {
             selectedSideOption = .explore
         }
     }
