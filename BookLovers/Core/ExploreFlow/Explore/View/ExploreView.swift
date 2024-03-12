@@ -147,7 +147,7 @@ struct ExploreView: View {
     // MARK: - Actions
     
     private func leadingItemAction() {
-        withAnimation { showSideMenu.toggle() }
+        showSideMenu.toggle()
     }
     
     private func trailingItemAction() {

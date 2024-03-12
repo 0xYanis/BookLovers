@@ -22,10 +22,9 @@ struct SideMenuView: View {
         ZStack {
             if isShowing {
                 sideMenu
-                    .transition(.move(edge: .leading))
+                    .transition(.move(edge: .leading).combined(with: .opacity))
             }
         }
-        .animation(.spring(response: 0.3, dampingFraction: 0.9), value: isShowing)
     #else
         VStack(alignment: .leading, spacing: 32) {
             menuHeader
@@ -108,6 +107,7 @@ struct SideMenuView: View {
         }
     }
     
+    @ViewBuilder
     private func headerText(_ text: String) -> some View {
         Text(text.uppercased())
             .font(.footnote)
