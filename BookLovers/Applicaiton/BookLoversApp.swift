@@ -24,6 +24,7 @@ struct BookLoversApp: App {
             LaunchView(animated: userStore.showLaunch)
                 .preferredColorScheme(colorScheme)
                 .environmentObject(userStore)
+                .tint(.green)
             #endif
         }
     }

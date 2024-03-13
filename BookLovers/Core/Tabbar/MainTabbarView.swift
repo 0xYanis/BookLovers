@@ -17,18 +17,13 @@ struct MainTabbarView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            ForEach(TabItem.allCases) { item in
-                tabView(item: item)
-            }
+            ForEach(TabItem.allCases, content: tabView(_:))
         }
-        .tint(.green)
-        .onChange(of: network.isConnected) { newValue in
-            showNetworkAlert = (newValue == false)
-        }
+        .onChange(of: network.isConnected, perform: showAlert(_:))
     }
     
     @ViewBuilder
-    private func tabView(item: TabItem) -> some View {
+    private func tabView(_ item: TabItem) -> some View {
         item.view
             .alertToast(
                 isPresented: $showNetworkAlert,
@@ -46,6 +41,10 @@ struct MainTabbarView: View {
                 Text(item.name)
             }
             .badge(item == .community ? userStore.user.messages : 0)
+    }
+    
+    private func showAlert(_ state: Bool) {
+        showNetworkAlert = (state == false)
     }
 }
 
