@@ -10,9 +10,9 @@ import Managers
 import AlertKit
 
 struct MainTabbarView: View {
-    @StateObject private var network = NetworkManager()
     @State private var showNetworkAlert = false
     @State private var selectedTab: TabItem = .explore
+    @StateObject private var network = NetworkManager()
     @EnvironmentObject private var userStore: UserStore
     
     var body: some View {

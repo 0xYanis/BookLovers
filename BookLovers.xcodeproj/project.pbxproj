@@ -54,6 +54,7 @@
 		09A165712B80C9B5008C0AB3 /* ProfileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165702B80C9B5008C0AB3 /* ProfileContent.swift */; };
 		09A165782B8120BE008C0AB3 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165772B8120BD008C0AB3 /* UserStore.swift */; };
 		09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
+		09B50EFE2BA32EE900B619D8 /* HideBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B50EFD2BA32EE900B619D8 /* HideBarScrollView.swift */; };
 		09BBB1752B7E297600F946F4 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBB1742B7E297600F946F4 /* ChatsView.swift */; };
 		09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBB1772B7E333700F946F4 /* ChatItemView.swift */; };
 		09D968B32B7A358E00D373A8 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D968B22B7A358E00D373A8 /* UIWindow+Extension.swift */; };
@@ -134,6 +135,7 @@
 		09A165702B80C9B5008C0AB3 /* ProfileContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContent.swift; sourceTree = "<group>"; };
 		09A165772B8120BD008C0AB3 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		09B358E02B71770300D1DA77 /* LiteraryGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteraryGenre.swift; sourceTree = "<group>"; };
+		09B50EFD2BA32EE900B619D8 /* HideBarScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBarScrollView.swift; sourceTree = "<group>"; };
 		09BBB1742B7E297600F946F4 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
 		09BBB1772B7E333700F946F4 /* ChatItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemView.swift; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		0934331B2B9C9D6200F978B3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				09B50EFD2BA32EE900B619D8 /* HideBarScrollView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				09DFDE6D2B99A746005821D7 /* LoginType.swift in Sources */,
 				09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */,
 				0945AF3F2B8A082C00A4623A /* LaunchViewModel.swift in Sources */,
+				09B50EFE2BA32EE900B619D8 /* HideBarScrollView.swift in Sources */,
 				099BBF832B925EE400A7B2A4 /* Settings.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */,

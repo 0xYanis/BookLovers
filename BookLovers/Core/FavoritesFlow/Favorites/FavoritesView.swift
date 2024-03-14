@@ -12,33 +12,26 @@ struct FavoritesView: View {
     @State private var searchText = ""
     @State private var selectedType: FavoriteType = .onReading
     @State private var requestSignIn = false
-    @State private var showSearchbar = true
-    @State private var headerSize = CGSize()
+    @State private var barState: Visibility = .visible
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                ScalingHeaderScrollView {
-                    FavoriteHeader(
-                        searchText: $searchText,
-                        selectedType: $selectedType
-                    )
-                    .saveSize(in: $headerSize)
-                } content: {
-                    TabView(selection: $selectedType) {
-                        ForEach(FavoriteType.allCases) { type in
-                            currentContentView.tag(type)
+            HideBarScrollView(showIndicator: false, barState: $barState) {
+                LazyVStack(pinnedViews: .sectionHeaders) {
+                    Section(content: {
+                        TabView(selection: $selectedType) {
+                            ForEach(FavoriteType.allCases) { type in
+                                currentContentView.tag(type)
+                            }
                         }
-                    }
-                    .tabViewStyle(.page(indexDisplayMode: .never))
-                    .frame(height: 130 * 10 + headerSize.height) // 130 = height , 10 = items count
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                        .frame(height: 130 * 10) // 130 = height , 10 = items count
+                    }, header: sectionHeader)
                 }
-                .height(min: headerSize.height, max: headerSize.height)
-                .hideScrollIndicators()
-                .allowsHeaderCollapse()
             }
-            .ignoresSafeArea()
-            .navigationBarTitleDisplayMode(.inline)
+            .edgesIgnoringSafeArea(.top)
+            .toolbar(barState, for: .tabBar)
+            .animation(.easeIn(duration: 0.2), value: barState)
         }
     }
     
@@ -52,7 +45,7 @@ struct FavoritesView: View {
     }
     
     private var contentGridView: some View {
-        LazyVGrid(columns: Array(repeating: GridItem(), count: 2)) {
+        LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
             ForEach(0..<10, id: \.self) { index in
                 FavoriteItem()
                     .tag(index)
@@ -78,28 +71,19 @@ struct FavoritesView: View {
         }
         .padding(.vertical)
     }
+    
+    @ViewBuilder
+    private func sectionHeader() -> some View {
+        FavoriteHeader(
+            searchText: $searchText,
+            selectedType: $selectedType,
+            barState: $barState
+        )
+    }
 }
 
 struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
         FavoritesView()
-    }
-}
-
-struct ScrollViewPagingModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .onAppear {
-                UIScrollView.appearance().isPagingEnabled = true
-            }
-            .onDisappear {
-                UIScrollView.appearance().isPagingEnabled = false
-            }
-    }
-}
-
-extension ScrollView {
-    func enablePagging() -> some View {
-        modifier(ScrollViewPagingModifier())
     }
 }

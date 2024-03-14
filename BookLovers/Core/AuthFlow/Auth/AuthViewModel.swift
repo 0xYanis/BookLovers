@@ -104,7 +104,7 @@ final class AuthViewModel: ObservableObject {
     }
 }
 
-// MARK: - Private combine pipelines (validation logic)
+// MARK: - Private validation logic
 
 private extension AuthViewModel {
     enum ValidMessage: String {

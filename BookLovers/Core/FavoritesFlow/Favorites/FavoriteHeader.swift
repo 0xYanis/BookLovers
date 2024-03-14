@@ -10,19 +10,21 @@ import SwiftUI
 struct FavoriteHeader: View {
     @Binding var searchText: String
     @Binding var selectedType: FavoriteType
+    @Binding var barState: Visibility
     @Namespace private var animation
     @FocusState private var isFocused: Bool
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     
     var body: some View {
         VStack(spacing: 0) {
-            searchbar
-                .padding(.top, safeAreaInsets.top)
-                .padding(.vertical, 10)
-                .matchedGeometryEffect(id: "searchfav", in: animation)
+            if barState == .visible {
+                searchbar
+                    .padding(.vertical, 10)
+            }
             tabbarTypePicker.padding(.top, 10)
             Divider()
         }
+        .padding(.top, safeAreaInsets.top)
         .background(Material.ultraThinMaterial)
     }
     
@@ -48,6 +50,7 @@ struct FavoriteHeader: View {
         .padding(10)
         .background(Color(.systemBackground))
         .clipShape(Capsule())
+        .transition(.move(edge: .top).combined(with: .opacity))
         .padding(.horizontal)
     }
     
