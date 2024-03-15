@@ -143,12 +143,12 @@ struct SideMenuView: View {
     
     private func optionTapped(_ option: MenuOption) {
         if selectedOption != option {
-            withAnimation(.easeIn(duration: 0.3)) {
+            #if os(iOS)
+            navigationPath.append(option)
+            hideMenu()
+            #endif
+            withAnimation(.easeIn(duration: 0.2)) {
                 selectedOption = option
-                #if os(iOS)
-                hideMenu()
-                navigationPath.append(option)
-                #endif
             }
         }
     }

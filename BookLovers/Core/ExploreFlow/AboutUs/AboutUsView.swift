@@ -10,19 +10,25 @@ import Components
 
 struct AboutUsView: View {
     var body: some View {
-        ScrollView {
+        List {
             allParagraphs
-            footerTitleLabel
-            linkToGithub
+            Section {
+                footerTitleLabel
+                linkToGithub
+            }
+            .listRowSeparator(.hidden)
+            .listRowBackground(Color.clear)
         }
+        .toolbar(.hidden, for: .tabBar)
         .navigationTitle("About Us")
         .navigationBarTitleDisplayMode(.inline)
     }
     
     private var allParagraphs: some View {
         ForEach(AboutUs.allCases) { part in
-            NewParagraphView(title: part.title) {
-                customText(part.text)
+            Section {
+                Text(part.title).font(.headline)
+                Text(part.text).font(.callout)
             }
         }
     }
@@ -30,6 +36,7 @@ struct AboutUsView: View {
     private var footerTitleLabel: some View {
         Text("The Bookly Team")
             .fontWeight(.semibold)
+            .frame(maxWidth: .infinity)
     }
     
     @ViewBuilder
@@ -45,13 +52,6 @@ struct AboutUsView: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .padding()
         }
-    }
-    
-    private func customText(_ text: String) -> some View {
-        Text(text)
-            .font(.callout)
-            .padding(.top, 7)
-            .padding([.horizontal, .bottom])
     }
 }
 
