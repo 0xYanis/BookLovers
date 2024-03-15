@@ -44,7 +44,7 @@ struct ChatItemView: View {
             Spacer()
             Text(message)
                 .font(.footnote)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.gray)
                 .lineLimit(2)
         }
     }
@@ -56,7 +56,7 @@ struct ChatItemView: View {
                     .imageScale(.small)
                     .foregroundStyle(isRead ? .green : .gray)
                 Text(time.formatted(date: .omitted, time: .shortened))
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.gray)
             }
         }
     }

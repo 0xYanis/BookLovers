@@ -74,7 +74,7 @@ struct SearchView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .padding(.horizontal)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.gray)
                         Text("The Witcher")
                         Spacer()
                         Image(systemName: "clock.arrow.circlepath")

@@ -50,7 +50,7 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
             )
             .lineLimit(5)
             .font(.caption2)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(.gray)
         }
     }
     
@@ -63,7 +63,7 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
             }
             Text("4.9")
                 .font(.callout)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.gray)
         }
     }
 }

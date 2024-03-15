@@ -63,7 +63,7 @@ struct CommunityListView: View {
     private var subtitleLabel: some View {
         Text("Invite friends and chat with like-minded people")
             .font(.callout)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(.gray)
             .multilineTextAlignment(.center)
     }
     

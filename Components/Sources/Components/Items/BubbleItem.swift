@@ -29,7 +29,7 @@ public struct BubbleItem: View {
             }
             .overlay(alignment: .bottomTrailing) {
                 Text("11:35")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.gray)
                     .font(.footnote)
                     .offset(y: 13)
                     .padding(.horizontal, 10)

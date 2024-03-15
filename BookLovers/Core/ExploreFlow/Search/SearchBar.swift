@@ -22,14 +22,14 @@ struct SearchBar: View {
         HStack(spacing: 0) {
             Image(systemName: "magnifyingglass")
                 .imageScale(.large)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.gray)
             if isActive {
                 TextField(placeholder, text: $text)
                     .padding(.horizontal, 3)
                     .padding(.vertical, 7)
             } else {
                 Text(placeholder)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 3)
                     .padding(.vertical, 7)

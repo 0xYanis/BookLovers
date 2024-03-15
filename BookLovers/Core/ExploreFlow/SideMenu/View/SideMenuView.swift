@@ -111,7 +111,7 @@ struct SideMenuView: View {
     private func headerText(_ text: String) -> some View {
         Text(text.uppercased())
             .font(.footnote)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(.gray)
     }
     
     private func onChanged(_ gesture: DragGesture.Value) {

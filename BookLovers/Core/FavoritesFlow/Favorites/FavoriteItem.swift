@@ -66,7 +66,7 @@ struct FavoriteItem: View {
     private func secondaryLabel(text: String) -> some View {
         Text(text)
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(.gray)
     }
 }
 

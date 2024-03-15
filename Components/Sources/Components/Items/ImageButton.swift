@@ -20,7 +20,7 @@ public struct ImageButton: View {
         Button(action: action) {
             Image(systemName: systemImage)
                 .font(.title2)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.gray)
         }
         .buttonStyle(.plain)
     }

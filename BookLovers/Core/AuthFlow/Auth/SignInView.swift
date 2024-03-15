@@ -64,7 +64,7 @@ struct SignInView: View {
             Text(description)
                 .multilineTextAlignment(.center)
                 .font(.callout)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.gray)
                 .padding(.horizontal, 30)
             BigButton(title: title) {
                 requestSignIn.toggle()

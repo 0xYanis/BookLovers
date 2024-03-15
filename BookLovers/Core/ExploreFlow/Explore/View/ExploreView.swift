@@ -111,7 +111,7 @@ struct ExploreView: View {
                         .tabViewStyle(.page(indexDisplayMode: .never))
                     } topItem: {
                         Button("View all", action: {})
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.gray)
                     }
                     
                     // all books

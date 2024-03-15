@@ -18,7 +18,7 @@ public struct XButton: View {
         Button(action: action) {
             Image(systemName: "xmark.circle.fill")
                 .font(.title2)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.gray)
         }
         .buttonStyle(.plain)
     }
