@@ -25,7 +25,7 @@ public struct MenuContainer<Menu: View, Content: View>: View {
     
     public var body: some View {
         ZStack(alignment: .leading) {
-            content
+            content.blur(radius: isOpened ? 3 : 0)
             
             if isOpened {
                 Rectangle()
