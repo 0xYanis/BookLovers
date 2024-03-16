@@ -26,8 +26,8 @@ struct PhotosPickerView: View {
     }
     
     private func changePhoto(_ selected: PhotosPickerItem?) async {
-        if let _ = try? await selected?.loadTransferable(type: Data.self) {
-            userStore.setImage(imageUrl: nil)
+        if let imageData = try? await selected?.loadTransferable(type: Data.self) {
+            userStore.setAvatar(imageData)
         }
     }
 }

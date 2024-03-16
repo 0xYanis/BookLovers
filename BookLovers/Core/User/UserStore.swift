@@ -15,30 +15,39 @@ final class UserStore: ObservableObject {
     @AppStorage("ColorScheme") var colorScheme: Mode = .system
     
     @Published var user: User = .anonymous
-    private let auth = Auth.auth()
     
-    init() { self.user = getCurrentUser() }
+    private let userWorker: UserWorkerProtocol
+    
+    init(userWorker: UserWorkerProtocol = UserWorker()) {
+        self.userWorker = userWorker
+        self.user = userWorker.currentUser
+    }
     
     // MARK: - User data
     
     func setName(_ name: String) {
+        userWorker.changeName(name)
         user.username = name
-        changeName(name)
     }
     
-    func setAvatar(_ photoUrl: URL) {
-        changeAvatar(photoUrl)
-        user.avatar = photoUrl
+    func setAvatar(_ data: Data) {
+        Task {
+            let url = await userWorker.changeAvatar(data)
+            await MainActor.run { user.avatar = url }
+        }
+    }
+    
+    func loadAvatar() {
+        Task {
+            let url = await userWorker.getAvatarUrl()
+            await MainActor.run { user.avatar = url }
+        }
     }
     
     func setStatus(isAuthenticated: Bool) {
         self.user.isAuthenticated = isAuthenticated
         if isAuthenticated == false { clearUserData(); return }
-        self.user = getCurrentUser()
-    }
-    
-    func setImage(imageUrl: URL?) {
-        user.avatar = imageUrl
+        self.user = userWorker.currentUser
     }
     
     func updateBadge(count: Int) {
@@ -47,51 +56,17 @@ final class UserStore: ObservableObject {
     }
     
     func clearUserData() {
+        userWorker.logout()
         user = .anonymous
-        logout()
     }
     
     func deleteAccount() {
         user = .anonymous
-        if let user = auth.currentUser {
-            Task {
-                try? await user.delete()
-            }
-        }
+        userWorker.delete()
     }
 }
 
-// MARK: - Private methods
-
-private extension UserStore {
-    func getCurrentUser() -> User {
-        guard let user = auth.currentUser
-        else { return .anonymous }
-        let displayName = (user.displayName != nil) ? user.displayName : user.email?.emailToName()
-        return User(
-            avatar: user.photoURL,
-            email: user.email,
-            username: displayName,
-            isAuthenticated: !user.isAnonymous
-        )
-    }
-    
-    func changeName(_ name: String) {
-        let request = auth.currentUser?.createProfileChangeRequest()
-        request?.displayName = name
-        Task { try await request?.commitChanges() }
-    }
-    
-    func changeAvatar(_ photoUrl: URL) {
-        
-    }
-    
-    func logout() {
-        try? auth.signOut()
-    }
-}
-
-// MARK: - Init for firebase user
+// MARK: - Init (Firebase.User to User)
 
 extension User {
     init(
