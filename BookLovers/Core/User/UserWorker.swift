@@ -5,8 +5,6 @@
 //  Created by Yanis on 16.03.2024.
 //
 
-import Foundation
-import Combine
 import FirebaseAuth
 import FirebaseStorage
 
@@ -50,13 +48,6 @@ class UserWorker: UserWorkerProtocol {
         setAuthImageUrl(url); return url
     }
     
-    private func setAuthImageUrl(_ url: URL?) {
-        guard let user = auth.currentUser else { return }
-        let request = user.createProfileChangeRequest()
-        request.photoURL = url
-        request.commitChanges()
-    }
-    
     func changeName(_ name: String) {
         guard let user = auth.currentUser else { return }
         let request = user.createProfileChangeRequest()
@@ -74,5 +65,12 @@ class UserWorker: UserWorkerProtocol {
     
     private func path(userId: String) -> StorageReference {
         return storage.reference().child("avatars").child(userId)
+    }
+    
+    private func setAuthImageUrl(_ url: URL?) {
+        guard let user = auth.currentUser else { return }
+        let request = user.createProfileChangeRequest()
+        request.photoURL = url
+        request.commitChanges()
     }
 }

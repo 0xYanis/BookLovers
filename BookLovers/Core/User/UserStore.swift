@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import FirebaseAuth
 
 final class UserStore: ObservableObject {
     @AppStorage("Launch") var showLaunch: Bool = false
