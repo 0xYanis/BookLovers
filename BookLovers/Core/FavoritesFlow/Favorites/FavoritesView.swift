@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ScalingHeaderScrollView
+import Components
 
 struct FavoritesView: View {
     @State private var searchText = ""

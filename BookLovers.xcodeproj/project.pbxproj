@@ -49,6 +49,7 @@
 		09736E032B74109600B50164 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E022B74109600B50164 /* SortType.swift */; };
 		0992AFE12BA9C52B0033AAEC /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFDF2BA9C5290033AAEC /* WebRepository.swift */; };
 		0992AFE22BA9C52B0033AAEC /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFE02BA9C52B0033AAEC /* APICall.swift */; };
+		0992AFE52BA9C6B10033AAEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFE42BA9C6B10033AAEC /* AppDelegate.swift */; };
 		0997103D2B8631F900630A16 /* Managers in Frameworks */ = {isa = PBXBuildFile; productRef = 0997103C2B8631F900630A16 /* Managers */; };
 		099A2D192B96303B00557DC5 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A2D182B96303B00557DC5 /* AuthTextField.swift */; };
 		099BBF832B925EE400A7B2A4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099BBF822B925EE400A7B2A4 /* Settings.swift */; };
@@ -59,7 +60,6 @@
 		09A165712B80C9B5008C0AB3 /* ProfileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165702B80C9B5008C0AB3 /* ProfileContent.swift */; };
 		09A165782B8120BE008C0AB3 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165772B8120BD008C0AB3 /* UserStore.swift */; };
 		09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B358E02B71770300D1DA77 /* LiteraryGenre.swift */; };
-		09B50EFE2BA32EE900B619D8 /* HideBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B50EFD2BA32EE900B619D8 /* HideBarScrollView.swift */; };
 		09BBB1752B7E297600F946F4 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBB1742B7E297600F946F4 /* ChatsView.swift */; };
 		09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBB1772B7E333700F946F4 /* ChatItemView.swift */; };
 		09D968B32B7A358E00D373A8 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D968B22B7A358E00D373A8 /* UIWindow+Extension.swift */; };
@@ -133,6 +133,7 @@
 		09736E022B74109600B50164 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		0992AFDF2BA9C5290033AAEC /* WebRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		0992AFE02BA9C52B0033AAEC /* APICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
+		0992AFE42BA9C6B10033AAEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0997103B2B86315800630A16 /* Managers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Managers; sourceTree = "<group>"; };
 		099A2D182B96303B00557DC5 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		099BBF822B925EE400A7B2A4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		09A165702B80C9B5008C0AB3 /* ProfileContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContent.swift; sourceTree = "<group>"; };
 		09A165772B8120BD008C0AB3 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		09B358E02B71770300D1DA77 /* LiteraryGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteraryGenre.swift; sourceTree = "<group>"; };
-		09B50EFD2BA32EE900B619D8 /* HideBarScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBarScrollView.swift; sourceTree = "<group>"; };
 		09BBB1742B7E297600F946F4 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
 		09BBB1772B7E333700F946F4 /* ChatItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemView.swift; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -233,14 +233,6 @@
 			path = AboutUs;
 			sourceTree = "<group>";
 		};
-		0934331B2B9C9D6200F978B3 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				09B50EFD2BA32EE900B619D8 /* HideBarScrollView.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		0935485F2B5EAEDE00CC4955 = {
 			isa = PBXGroup;
 			children = (
@@ -268,8 +260,8 @@
 				093548792B5EAF0300CC4955 /* Applicaiton */,
 				0935487B2B5EAF1A00CC4955 /* Core */,
 				094A65252B71072600E6FF4E /* Extensions */,
-				0934331B2B9C9D6200F978B3 /* Helpers */,
 				09B358DF2B7176E400D1DA77 /* Models */,
+				0992AFE32BA9C6150033AAEC /* Repositories */,
 				0935487A2B5EAF0B00CC4955 /* Resources */,
 				0992AFDE2BA9C5160033AAEC /* Utilites */,
 			);
@@ -287,6 +279,7 @@
 		093548792B5EAF0300CC4955 /* Applicaiton */ = {
 			isa = PBXGroup;
 			children = (
+				0992AFE42BA9C6B10033AAEC /* AppDelegate.swift */,
 				0935486B2B5EAEDE00CC4955 /* BookLoversApp.swift */,
 			);
 			path = Applicaiton;
@@ -445,6 +438,13 @@
 				0992AFDF2BA9C5290033AAEC /* WebRepository.swift */,
 			);
 			path = Utilites;
+			sourceTree = "<group>";
+		};
+		0992AFE32BA9C6150033AAEC /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		09A1656D2B80BC4A008C0AB3 /* Profile */ = {
@@ -670,7 +670,6 @@
 				09DFDE6D2B99A746005821D7 /* LoginType.swift in Sources */,
 				09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */,
 				0945AF3F2B8A082C00A4623A /* LaunchViewModel.swift in Sources */,
-				09B50EFE2BA32EE900B619D8 /* HideBarScrollView.swift in Sources */,
 				099BBF832B925EE400A7B2A4 /* Settings.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */,
@@ -699,6 +698,7 @@
 				09F8A6712B8919E2002C3AC7 /* User.swift in Sources */,
 				091CC09E2BA5A35D00A077A4 /* UserWorker.swift in Sources */,
 				094A65272B71073D00E6FF4E /* View+Extension.swift in Sources */,
+				0992AFE52BA9C6B10033AAEC /* AppDelegate.swift in Sources */,
 				09DFDE762B99C478005821D7 /* Avatar.swift in Sources */,
 				09736E032B74109600B50164 /* SortType.swift in Sources */,
 				09A165782B8120BE008C0AB3 /* UserStore.swift in Sources */,

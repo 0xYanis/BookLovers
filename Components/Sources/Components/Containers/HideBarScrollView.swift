@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct HideBarScrollView<Content>: View where Content : View {
+public struct HideBarScrollView<Content>: View where Content : View {
     private var axis: Axis.Set
     private var showIndicator: Bool
     @Binding private var barState: Visibility
-    var content: Content
+    private var content: Content
     
-    init(
+    public init(
         axis: Axis.Set = .vertical,
         showIndicator: Bool = true,
         barState: Binding<Visibility>,
@@ -25,7 +25,7 @@ struct HideBarScrollView<Content>: View where Content : View {
         self.content = content()
     }
     
-    var body: some View {
+    public var body: some View {
         ScrollView(axis, showsIndicators: showIndicator, content: {content})
             .background(PanGestureView(onChange: handleState(_:)))
     }
