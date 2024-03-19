@@ -16,8 +16,8 @@ struct LaunchView: View {
     @State private var isTop = false
     @State private var isFinished = false
     @State private var showOnboarding = false
+    @State private var pages = WelcomePages.pages
     
-    @StateObject private var viewModel = LaunchViewModel()
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var userStore: UserStore
     
@@ -37,7 +37,7 @@ struct LaunchView: View {
                     .welcomeSheet(
                         isPresented: $showOnboarding,
                         preferredColorScheme: scheme,
-                        pages: viewModel.pages)
+                        pages: pages)
             } else {
                 MainTabbarView()
             }

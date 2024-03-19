@@ -32,7 +32,7 @@
 		09441E072B71433B004A09D0 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09441E062B71433B004A09D0 /* SignInView.swift */; };
 		09441E092B714698004A09D0 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09441E082B714698004A09D0 /* FavoritesView.swift */; };
 		0945AF3D2B89FF4E00A4623A /* WelcomeSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 0945AF3C2B89FF4E00A4623A /* WelcomeSheet */; };
-		0945AF3F2B8A082C00A4623A /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945AF3E2B8A082C00A4623A /* LaunchViewModel.swift */; };
+		0945AF3F2B8A082C00A4623A /* WelcomePages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945AF3E2B8A082C00A4623A /* WelcomePages.swift */; };
 		094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A651C2B70EEE800E6FF4E /* MainTabbarView.swift */; };
 		094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A651E2B70F50900E6FF4E /* ExploreView.swift */; };
 		094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A65202B71059200E6FF4E /* ExploreHeader.swift */; };
@@ -116,7 +116,7 @@
 		09441E022B7135AE004A09D0 /* MostPopularItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPopularItem.swift; sourceTree = "<group>"; };
 		09441E062B71433B004A09D0 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		09441E082B714698004A09D0 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
-		0945AF3E2B8A082C00A4623A /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
+		0945AF3E2B8A082C00A4623A /* WelcomePages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePages.swift; sourceTree = "<group>"; };
 		094A651C2B70EEE800E6FF4E /* MainTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarView.swift; sourceTree = "<group>"; };
 		094A651E2B70F50900E6FF4E /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		094A65202B71059200E6FF4E /* ExploreHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHeader.swift; sourceTree = "<group>"; };
@@ -528,7 +528,7 @@
 		09F9AAAC2B7D40F900C0FC8D /* Launch */ = {
 			isa = PBXGroup;
 			children = (
-				0945AF3E2B8A082C00A4623A /* LaunchViewModel.swift */,
+				0945AF3E2B8A082C00A4623A /* WelcomePages.swift */,
 				09F9AAAD2B7D411900C0FC8D /* LaunchView.swift */,
 			);
 			path = Launch;
@@ -669,7 +669,7 @@
 				0992AFE12BA9C52B0033AAEC /* WebRepository.swift in Sources */,
 				09DFDE6D2B99A746005821D7 /* LoginType.swift in Sources */,
 				09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */,
-				0945AF3F2B8A082C00A4623A /* LaunchViewModel.swift in Sources */,
+				0945AF3F2B8A082C00A4623A /* WelcomePages.swift in Sources */,
 				099BBF832B925EE400A7B2A4 /* Settings.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */,

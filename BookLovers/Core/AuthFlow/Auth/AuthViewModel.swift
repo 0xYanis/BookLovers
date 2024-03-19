@@ -29,7 +29,7 @@ final class AuthViewModel: ObservableObject {
     private var auth: AuthWorkerProtocol
     private var cancellables: Set<AnyCancellable> = []
     
-    init(auth: AuthWorkerProtocol = AuthWorker()) {
+    init(auth: AuthWorkerProtocol) {
         self.auth = auth
         observation()
         authObservation()

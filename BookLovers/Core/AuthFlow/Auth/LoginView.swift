@@ -10,7 +10,7 @@ import Components
 
 struct LoginView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var viewModel = AuthViewModel()
+    @StateObject private var viewModel = AuthViewModel(auth: AuthWorker())
     @EnvironmentObject private var userStore: UserStore
     @State private var isSecure = true
     @State private var showResetView = false

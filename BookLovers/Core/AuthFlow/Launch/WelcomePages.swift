@@ -1,5 +1,5 @@
 //
-//  LaunchViewModel.swift
+//  WelcomePages.swift
 //  BookLovers
 //
 //  Created by Yanis on 24.02.2024.
@@ -8,9 +8,8 @@
 import Foundation
 import WelcomeSheet
 
-@MainActor
-class LaunchViewModel: ObservableObject {
-    private(set) var pages: [WelcomeSheetPage] = [
+struct WelcomePages {
+    static var pages: [WelcomeSheetPage] = [
         WelcomeSheetPage(title: "Bookly: Your literary world", rows: [
             WelcomeSheetPageRow(
                 imageSystemName: "globe.americas",
