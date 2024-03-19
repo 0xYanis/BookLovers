@@ -47,6 +47,8 @@
 		096D47522B9BAB9100B2D84D /* AuthWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D47512B9BAB9100B2D84D /* AuthWorker.swift */; };
 		09736E012B7409BC00B50164 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E002B7409BC00B50164 /* SearchView.swift */; };
 		09736E032B74109600B50164 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E022B74109600B50164 /* SortType.swift */; };
+		0992AFE12BA9C52B0033AAEC /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFDF2BA9C5290033AAEC /* WebRepository.swift */; };
+		0992AFE22BA9C52B0033AAEC /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFE02BA9C52B0033AAEC /* APICall.swift */; };
 		0997103D2B8631F900630A16 /* Managers in Frameworks */ = {isa = PBXBuildFile; productRef = 0997103C2B8631F900630A16 /* Managers */; };
 		099A2D192B96303B00557DC5 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A2D182B96303B00557DC5 /* AuthTextField.swift */; };
 		099BBF832B925EE400A7B2A4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099BBF822B925EE400A7B2A4 /* Settings.swift */; };
@@ -129,6 +131,8 @@
 		096D47512B9BAB9100B2D84D /* AuthWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorker.swift; sourceTree = "<group>"; };
 		09736E002B7409BC00B50164 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		09736E022B74109600B50164 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
+		0992AFDF2BA9C5290033AAEC /* WebRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
+		0992AFE02BA9C52B0033AAEC /* APICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		0997103B2B86315800630A16 /* Managers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Managers; sourceTree = "<group>"; };
 		099A2D182B96303B00557DC5 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		099BBF822B925EE400A7B2A4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				0934331B2B9C9D6200F978B3 /* Helpers */,
 				09B358DF2B7176E400D1DA77 /* Models */,
 				0935487A2B5EAF0B00CC4955 /* Resources */,
+				0992AFDE2BA9C5160033AAEC /* Utilites */,
 			);
 			path = BookLovers;
 			sourceTree = "<group>";
@@ -431,6 +436,15 @@
 				094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0992AFDE2BA9C5160033AAEC /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				0992AFE02BA9C52B0033AAEC /* APICall.swift */,
+				0992AFDF2BA9C5290033AAEC /* WebRepository.swift */,
+			);
+			path = Utilites;
 			sourceTree = "<group>";
 		};
 		09A1656D2B80BC4A008C0AB3 /* Profile */ = {
@@ -652,6 +666,7 @@
 				09F9AAAE2B7D411900C0FC8D /* LaunchView.swift in Sources */,
 				09441E032B7135AE004A09D0 /* MostPopularItem.swift in Sources */,
 				0901E85A2B73C3C7007C11A5 /* LoginView.swift in Sources */,
+				0992AFE12BA9C52B0033AAEC /* WebRepository.swift in Sources */,
 				09DFDE6D2B99A746005821D7 /* LoginType.swift in Sources */,
 				09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */,
 				0945AF3F2B8A082C00A4623A /* LaunchViewModel.swift in Sources */,
@@ -687,6 +702,7 @@
 				09DFDE762B99C478005821D7 /* Avatar.swift in Sources */,
 				09736E032B74109600B50164 /* SortType.swift in Sources */,
 				09A165782B8120BE008C0AB3 /* UserStore.swift in Sources */,
+				0992AFE22BA9C52B0033AAEC /* APICall.swift in Sources */,
 				094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */,
 				09A1656F2B80BC5F008C0AB3 /* ProfileHeader.swift in Sources */,
 				09B358E12B71770300D1DA77 /* LiteraryGenre.swift in Sources */,
