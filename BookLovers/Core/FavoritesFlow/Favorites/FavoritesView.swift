@@ -13,72 +13,50 @@ struct FavoritesView: View {
     @State private var selectedType: FavoriteType = .onReading
     @State private var requestSignIn = false
     @State private var barState: Visibility = .visible
-    
+    @Namespace var animation
     var body: some View {
         NavigationStack {
-            HideBarScrollView(showIndicator: false, barState: $barState) {
-                LazyVStack(pinnedViews: .sectionHeaders) {
-                    Section(content: {
-                        TabView(selection: $selectedType) {
-                            ForEach(FavoriteType.allCases) { type in
-                                currentContentView.tag(type)
-                            }
-                        }
-                        .tabViewStyle(.page(indexDisplayMode: .never))
-                        .frame(height: 130 * 10) // 130 = height , 10 = items count
-                    }, header: sectionHeader)
-                }
+            VStack(spacing: 0) {
+                FavoriteHeader(
+                    searchText: $searchText,
+                    selectedType: $selectedType,
+                    barState: $barState)
+                HideBarScrollView(
+                    barState: $barState,
+                    content: currentContentView
+                )
             }
             .edgesIgnoringSafeArea(.top)
             .toolbar(barState, for: .tabBar)
-            .animation(.easeIn(duration: 0.2), value: barState)
+            .animation(.easeIn(duration: 0.15), value: barState)
         }
     }
     
-    @ViewBuilder
-    private var currentContentView: some View {
-        if UIDevice.isiPhone {
-            contentView
-        } else {
-            contentGridView
-        }
-    }
-    
-    private var contentGridView: some View {
+    // iPad & Mac
+    private var gridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
             ForEach(0..<10, id: \.self) { index in
-                FavoriteItem()
-                    .tag(index)
-                    .onChange(of: index) { newValue in
-                        // TODO:
-                    }
+                FavoriteItem().tag(index)
             }
         }
         .padding()
     }
     
-    private var contentView: some View {
+    // iPhone
+    private var stackView: some View {
         LazyVStack(spacing: 15) {
             ForEach(0..<10, id: \.self) { index in
-                FavoriteItem()
-                    .tag(index)
+                FavoriteItem().tag(index)
                     .padding(.horizontal)
-                    .onChange(of: index) { newValue in
-                        // TODO:
-                    }
             }
-            Spacer().frame(height: 120)
         }
         .padding(.vertical)
     }
     
     @ViewBuilder
-    private func sectionHeader() -> some View {
-        FavoriteHeader(
-            searchText: $searchText,
-            selectedType: $selectedType,
-            barState: $barState
-        )
+    private func currentContentView() -> some View {
+        if UIDevice.isiPhone { stackView }
+        else { gridView }
     }
 }
 
