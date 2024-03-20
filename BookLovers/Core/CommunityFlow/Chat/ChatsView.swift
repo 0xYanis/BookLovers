@@ -13,13 +13,11 @@ struct ChatsView: View {
     @FocusState private var isFocused: Bool
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                Section {
-                    ScrollView(content: contentView)
-                } header: {
-                    headerView
-                }
+        VStack(spacing: 0) {
+            Section {
+                ScrollView(content: contentView)
+            } header: {
+                headerView
             }
         }
     }

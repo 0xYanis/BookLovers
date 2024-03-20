@@ -18,6 +18,7 @@ struct EmptyFavoritesView: View {
                 .scaledToFit()
                 .foregroundStyle(.gray)
                 .frame(width: 52, height: 52)
+                .padding()
             VStack(spacing: 12) {
                 Text("Add books to favorites")
                     .font(.title)
@@ -27,12 +28,16 @@ struct EmptyFavoritesView: View {
                     .foregroundStyle(.gray)
                     .padding(.horizontal, 32)
             }
+            .padding()
         }
         .frame(maxHeight: .infinity)
         .overlay(alignment: .bottom) {
-            BigButton(title: "Explore books", action: exploreTapped)
+            BigButton(
+                title: "Explore books",
+                action: exploreTapped
+            )
+            .padding(.bottom, 64)
         }
-        .padding()
     }
     
     private func exploreTapped() {

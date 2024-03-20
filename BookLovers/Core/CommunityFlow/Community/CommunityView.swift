@@ -12,7 +12,9 @@ struct CommunityView: View {
     @State private var requestSignIn = false
     
     var body: some View {
-        currentView
+        NavigationStack {
+            currentView
+        }
     }
     
     @ViewBuilder

@@ -12,12 +12,14 @@ struct CommunityListView: View {
     @State private var showLogin = false
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                createCommunityView
-            }
-            .navigationTitle("Communities")
-            .sheet(isPresented: $showLogin, content: LoginView.init)
+        ScrollView {
+            createCommunityView
+        }
+        .navigationTitle("Communities")
+        .sheet(isPresented: $showLogin) {
+            LoginView()
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.hidden)
         }
     }
     
