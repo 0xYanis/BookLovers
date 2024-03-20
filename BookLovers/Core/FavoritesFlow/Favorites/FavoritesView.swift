@@ -22,10 +22,14 @@ struct FavoritesView: View {
                     searchText: $searchText,
                     selectedType: $selectedType,
                     barState: $barState)
-                HideBarScrollView(
-                    barState: $barState,
-                    content: currentContentView
-                )
+                if viewModel.books.isEmpty {
+                    EmptyFavoritesView()
+                } else {
+                    HideBarScrollView(
+                        barState: $barState,
+                        content: currentContentView
+                    )
+                }
             }
             .edgesIgnoringSafeArea(.top)
             .toolbar(barState, for: .tabBar)
@@ -56,18 +60,8 @@ struct FavoritesView: View {
     
     @ViewBuilder
     private func currentContentView() -> some View {
-        if viewModel.books.isEmpty {
-            EmptyFavoritesView()
-        } else {
-            if UIDevice.isiPhone { stackView }
-            else { gridView }
-        }
-    }
-}
-
-struct EmptyFavoritesView: View {
-    var body: some View {
-        Text("EmptyFavoritesView")
+        if UIDevice.isiPhone { stackView }
+        else { gridView }
     }
 }
 

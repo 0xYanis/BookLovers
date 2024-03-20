@@ -49,6 +49,7 @@
 		09736E032B74109600B50164 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E022B74109600B50164 /* SortType.swift */; };
 		09879DE22BAB5D3A005377A0 /* FavoriteBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE12BAB5D3A005377A0 /* FavoriteBook.swift */; };
 		09879DE42BAB61DF005377A0 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE32BAB61DF005377A0 /* FavoriteViewModel.swift */; };
+		09879DE62BAB6D1A005377A0 /* EmptyFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE52BAB6D1A005377A0 /* EmptyFavoritesView.swift */; };
 		0992AFE12BA9C52B0033AAEC /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFDF2BA9C5290033AAEC /* WebRepository.swift */; };
 		0992AFE22BA9C52B0033AAEC /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFE02BA9C52B0033AAEC /* APICall.swift */; };
 		0992AFE52BA9C6B10033AAEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFE42BA9C6B10033AAEC /* AppDelegate.swift */; };
@@ -135,6 +136,7 @@
 		09736E022B74109600B50164 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		09879DE12BAB5D3A005377A0 /* FavoriteBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBook.swift; sourceTree = "<group>"; };
 		09879DE32BAB61DF005377A0 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		09879DE52BAB6D1A005377A0 /* EmptyFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFavoritesView.swift; sourceTree = "<group>"; };
 		0992AFDF2BA9C5290033AAEC /* WebRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		0992AFE02BA9C52B0033AAEC /* APICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		0992AFE42BA9C6B10033AAEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				09F9AAAA2B7D1B8800C0FC8D /* FavoriteItem.swift */,
 				09879DE12BAB5D3A005377A0 /* FavoriteBook.swift */,
 				09879DE32BAB61DF005377A0 /* FavoriteViewModel.swift */,
+				09879DE52BAB6D1A005377A0 /* EmptyFavoritesView.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */,
 				09F757622B763C16004C849B /* CommunityListView.swift in Sources */,
 				099E9A0A2B83BBFA009CE7B0 /* ProfileEditorView.swift in Sources */,
+				09879DE62BAB6D1A005377A0 /* EmptyFavoritesView.swift in Sources */,
 				09736E012B7409BC00B50164 /* SearchView.swift in Sources */,
 				099A2D192B96303B00557DC5 /* AuthTextField.swift in Sources */,
 				09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */,
