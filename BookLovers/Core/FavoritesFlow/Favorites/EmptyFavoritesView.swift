@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Components
 
 struct EmptyFavoritesView: View {
+    @Environment(\.currentTab) var currentTab
+    
     var body: some View {
         VStack(spacing: 32) {
             Image(systemName: "heart")
@@ -27,14 +30,12 @@ struct EmptyFavoritesView: View {
         }
         .frame(maxHeight: .infinity)
         .overlay(alignment: .bottom) {
-            BigButton(title: "Search books", action: {})
+            BigButton(title: "Explore books", action: exploreTapped)
         }
         .padding()
     }
-}
-
-struct EmptyFavoritesView_Previews: PreviewProvider {
-    static var previews: some View {
-        EmptyFavoritesView()
+    
+    private func exploreTapped() {
+        currentTab.wrappedValue = .explore
     }
 }

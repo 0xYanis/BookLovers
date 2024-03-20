@@ -50,6 +50,7 @@
 		09879DE22BAB5D3A005377A0 /* FavoriteBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE12BAB5D3A005377A0 /* FavoriteBook.swift */; };
 		09879DE42BAB61DF005377A0 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE32BAB61DF005377A0 /* FavoriteViewModel.swift */; };
 		09879DE62BAB6D1A005377A0 /* EmptyFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE52BAB6D1A005377A0 /* EmptyFavoritesView.swift */; };
+		09879DE82BAB6EE0005377A0 /* CurrentTabEnvKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE72BAB6EE0005377A0 /* CurrentTabEnvKey.swift */; };
 		0992AFE12BA9C52B0033AAEC /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFDF2BA9C5290033AAEC /* WebRepository.swift */; };
 		0992AFE22BA9C52B0033AAEC /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFE02BA9C52B0033AAEC /* APICall.swift */; };
 		0992AFE52BA9C6B10033AAEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992AFE42BA9C6B10033AAEC /* AppDelegate.swift */; };
@@ -137,6 +138,7 @@
 		09879DE12BAB5D3A005377A0 /* FavoriteBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBook.swift; sourceTree = "<group>"; };
 		09879DE32BAB61DF005377A0 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		09879DE52BAB6D1A005377A0 /* EmptyFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFavoritesView.swift; sourceTree = "<group>"; };
+		09879DE72BAB6EE0005377A0 /* CurrentTabEnvKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTabEnvKey.swift; sourceTree = "<group>"; };
 		0992AFDF2BA9C5290033AAEC /* WebRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		0992AFE02BA9C52B0033AAEC /* APICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		0992AFE42BA9C6B10033AAEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			children = (
 				094A651C2B70EEE800E6FF4E /* MainTabbarView.swift */,
 				0950D8E52B725564005D755A /* TabItem.swift */,
+				09879DE72BAB6EE0005377A0 /* CurrentTabEnvKey.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				094A652A2B7109F800E6FF4E /* MenuOption.swift in Sources */,
 				0950D8E62B725564005D755A /* TabItem.swift in Sources */,
 				0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */,
+				09879DE82BAB6EE0005377A0 /* CurrentTabEnvKey.swift in Sources */,
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
 				0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */,
 				09F8A6712B8919E2002C3AC7 /* User.swift in Sources */,

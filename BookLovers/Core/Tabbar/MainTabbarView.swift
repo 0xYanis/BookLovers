@@ -41,6 +41,7 @@ struct MainTabbarView: View {
                 Text(item.name)
             }
             .badge(item == .community ? userStore.user.messages : 0)
+            .environment(\.currentTab, $selectedTab)
     }
     
     private func showAlert(_ state: Bool) {
