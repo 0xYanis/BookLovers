@@ -13,7 +13,8 @@ struct FavoritesView: View {
     @State private var selectedType: FavoriteType = .onReading
     @State private var requestSignIn = false
     @State private var barState: Visibility = .visible
-    @Namespace var animation
+    @StateObject private var viewModel = FavoriteViewModel()
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -55,8 +56,18 @@ struct FavoritesView: View {
     
     @ViewBuilder
     private func currentContentView() -> some View {
-        if UIDevice.isiPhone { stackView }
-        else { gridView }
+        if viewModel.books.isEmpty {
+            EmptyFavoritesView()
+        } else {
+            if UIDevice.isiPhone { stackView }
+            else { gridView }
+        }
+    }
+}
+
+struct EmptyFavoritesView: View {
+    var body: some View {
+        Text("EmptyFavoritesView")
     }
 }
 
