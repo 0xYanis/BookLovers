@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-
+#if os(macOS)
+#else
 public struct HideBarScrollView<Content>: View where Content : View {
     private var axis: Axis.Set
     private var showIndicator: Bool
@@ -96,3 +97,4 @@ fileprivate struct PanGestureView: UIViewRepresentable {
         }
     }
 }
+#endif

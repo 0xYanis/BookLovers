@@ -103,7 +103,7 @@ struct ExploreView: View {
                     NewParagraphView(title: "Most Popular") {
                         TabView {
                             ForEach(0..<3, id: \.self) { item in
-                                MostPopularItem(background: Color(.systemBackground))
+                                MostPopularItem()
                                     .padding(.horizontal)
                             }
                         }

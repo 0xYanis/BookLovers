@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-
+#if os(macOS)
+#else
 public extension EnvironmentValues {
     var safeAreaInsets: EdgeInsets {
         self[SafeAreaInsetsKey.self]
@@ -36,3 +37,4 @@ private extension UIWindow {
         return nil
     }
 }
+#endif

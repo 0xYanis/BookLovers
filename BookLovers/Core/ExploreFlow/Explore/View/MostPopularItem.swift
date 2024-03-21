@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct MostPopularItem: View {
+    @Environment(\.colorScheme) private var colorScheme
     let background: Color
+    
+    init(background: Color = .systemBackground) {
+        self.background = background
+    }
     
     var body: some View {
         HStack(alignment: .top) {
@@ -17,13 +22,23 @@ struct MostPopularItem: View {
         }
         .background(background)
         .clipShape(RoundedRectangle(cornerRadius: 12))
-        .shadow(color: .black.opacity(0.1), radius: 10)
     }
     
     private var image: some View {
-        Image("book1")
-            .resizable()
-            .scaledToFit()
+        Rectangle()
+            .fill(.green.opacity(0.8))
+            .overlay {
+                Color(colorScheme == .light ? .white : .black)
+                    .frame(width: 50, height: 50)
+                    .mask {
+                        Image("logo-small")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                    }
+            }
+            .frame(maxWidth: (UIWindow.current?.bounds.width ?? .zero) * 0.27)
+            .frame(maxHeight: 220)
     }
     
     private var description: some View {
@@ -70,6 +85,8 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
 
 struct MostPopularItem_Previews: PreviewProvider {
     static var previews: some View {
-        MostPopularItem(background: .white)
+        MostPopularItem()
+            .frame(height: 150)
+            .padding()
     }
 }

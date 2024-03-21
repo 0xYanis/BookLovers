@@ -28,7 +28,7 @@ struct SearchView: View {
                     NewParagraphView(title: "Discover") {
                         VStack {
                             TagCaruselView(tags: LiteraryGenre.asArray, onTap: sortByTag)
-                            MostPopularItem(background: Color(.tertiarySystemBackground))
+                            MostPopularItem()
                                 .frame(height: 150)
                                 .padding()
                         }
