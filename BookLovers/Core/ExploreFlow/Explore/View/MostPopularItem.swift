@@ -18,6 +18,7 @@ struct MostPopularItem: View {
     var body: some View {
         HStack(alignment: .top) {
             DefaultImageView()
+                .frame(width: 100)
             description.padding(5)
         }
         .background(background)

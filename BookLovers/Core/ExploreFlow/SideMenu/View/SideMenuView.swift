@@ -58,7 +58,9 @@ struct SideMenuView: View {
     #endif
     private var menuHeader: some View {
         VStack(spacing: 0) {
-            SideMenuHeader().padding(.horizontal)
+            SideMenuHeader()
+                .onTapGesture { navigationPath.append(MenuOption.profile) }
+                .padding(.horizontal)
             Divider()
         }
             
