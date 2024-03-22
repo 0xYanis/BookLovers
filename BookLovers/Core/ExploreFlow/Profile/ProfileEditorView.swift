@@ -32,12 +32,12 @@ struct ProfileEditorView: View {
                 
                 Section {
                     TextField("Status", text: $userStore.user.status)
-//                    Picker("Favorite genre:", selection: $userStore.user.favoriteGenre) {
-//                        ForEach(LiteraryGenre.allCases) { genre in
-//                            Text(genre.title).tag(genre)
-//                        }
-//                    }
-//                    .pickerStyle(.menu)
+                    Picker("Favorite genre:", selection: $userStore.user.favoriteGenre) {
+                        ForEach(LiteraryGenre.allCases) { genre in
+                            Text(genre.title).tag(genre)
+                        }
+                    }
+                    .pickerStyle(.menu)
                 } footer: {
                     Text("Tell the world about yourself in a nutshell.")
                 }
@@ -74,6 +74,7 @@ struct ProfileEditorView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
         .alertBar(
             isPresented: $showCleanAll,
             timeInterval: 10,
@@ -114,20 +115,11 @@ struct ProfileEditorView: View {
     }
     
     private func imageHeader() -> some View {
-        ZStack(alignment: .center) {
-            Color.clear
-            VStack(spacing: 25) {
-                Avatar(url: userStore.user.avatar)
-                    .scaledToFill()
-                    .frame(width: 130, height: 130)
-                    .clipShape(Circle())
-                    .clipped()
-                
-                PhotosPickerView("Change photo")
-            }
-            .padding(.vertical)
+        VStack {
+            ProfileAvatar()
+            PhotosPickerView("Change photo")
         }
-        .listRowInsets(EdgeInsets())
+        .frame(maxWidth: .infinity)
     }
     
     private func nameFooter() -> some View {

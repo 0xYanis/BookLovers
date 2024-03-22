@@ -53,5 +53,6 @@ struct MainTabbarView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabbarView()
             .environmentObject(UserStore())
+            .tint(.green)
     }
 }

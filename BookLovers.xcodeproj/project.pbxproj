@@ -59,7 +59,6 @@
 		099BBF832B925EE400A7B2A4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099BBF822B925EE400A7B2A4 /* Settings.swift */; };
 		099E9A0A2B83BBFA009CE7B0 /* ProfileEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099E9A092B83BBFA009CE7B0 /* ProfileEditorView.swift */; };
 		09A165662B80A64E008C0AB3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165652B80A64E008C0AB3 /* ProfileView.swift */; };
-		09A165692B80A79A008C0AB3 /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 09A165682B80A79A008C0AB3 /* ScalingHeaderScrollView */; };
 		09A1656F2B80BC5F008C0AB3 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A1656E2B80BC5F008C0AB3 /* ProfileHeader.swift */; };
 		09A165712B80C9B5008C0AB3 /* ProfileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165702B80C9B5008C0AB3 /* ProfileContent.swift */; };
 		09A165782B8120BE008C0AB3 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A165772B8120BD008C0AB3 /* UserStore.swift */; };
@@ -189,7 +188,6 @@
 				09DFDE742B99BF5E005821D7 /* Kingfisher in Frameworks */,
 				090180E12B90B24000820CAB /* AlertKit in Frameworks */,
 				0905C52E2B852AF9002342E9 /* Components in Frameworks */,
-				09A165692B80A79A008C0AB3 /* ScalingHeaderScrollView in Frameworks */,
 				091CC09A2BA5A2F900A077A4 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,7 +570,6 @@
 			);
 			name = BookLovers;
 			packageProductDependencies = (
-				09A165682B80A79A008C0AB3 /* ScalingHeaderScrollView */,
 				0905C52D2B852AF9002342E9 /* Components */,
 				0997103C2B8631F900630A16 /* Managers */,
 				0945AF3C2B89FF4E00A4623A /* WelcomeSheet */,
@@ -636,7 +633,6 @@
 			);
 			mainGroup = 0935485F2B5EAEDE00CC4955;
 			packageReferences = (
-				09A165672B80A79A008C0AB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
 				0945AF3B2B89FF4E00A4623A /* XCRemoteSwiftPackageReference "Welcome-Sheet" */,
 				090180DF2B90B24000820CAB /* XCRemoteSwiftPackageReference "AlertKit" */,
 				09DFDE632B98D16F005821D7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
@@ -1117,11 +1113,6 @@
 		0997103C2B8631F900630A16 /* Managers */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Managers;
-		};
-		09A165682B80A79A008C0AB3 /* ScalingHeaderScrollView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 09A165672B80A79A008C0AB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
-			productName = ScalingHeaderScrollView;
 		};
 		09A1656A2B80AB9C008C0AB3 /* ScalingHeaderScrollView */ = {
 			isa = XCSwiftPackageProductDependency;

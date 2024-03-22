@@ -9,81 +9,72 @@ import SwiftUI
 import Components
 
 struct ProfileContent: View {
+    @State private var showSignIn = false
     @EnvironmentObject private var userStore: UserStore
-    @Environment(\.colorScheme) private var scheme
     
     var body: some View {
-        VStack(spacing: 20) {
-            VStack {
-                HStack(spacing: 12) {
+        Form {
+            Section {
+                Label {
+                    PhotosPickerView("Change photo").foregroundStyle(.blue)
+                } icon: {
                     Image(systemName: "photo")
-                        .imageScale(.large)
-                    PhotosPickerView("Change photo")
                 }
-                .foregroundStyle(.green)
+            } header: {
+                VStack {
+                    ProfileAvatar()
+                    Text(userStore.user.username)
+                }
+                .frame(maxWidth: .infinity)
             }
-            .padding(10)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .headerProminence(.increased)
             
-            VStack(spacing: 0) {
+            Section {
                 if userStore.user.isAuthenticated {
-                    label(text: "Email", image: "mail", color: .blue, divider: true)
-                    label(text: "Password", image: "lock", color: .purple)
+                    Label {
+                        Text("Email:")
+                        Text(userStore.user.email)
+                            .foregroundStyle(.gray)
+                    } icon: {
+                        Image(systemName: "mail")
+                    }
                 }
+                
+                Label {
+                    Text("Status:")
+                    Text(userStore.user.status)
+                        .foregroundStyle(.gray)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                } icon: {
+                    Image(systemName: "quote.opening")
+                }
+
+                Picker("Favorite genre:", selection: $userStore.user.favoriteGenre) {
+                    ForEach(LiteraryGenre.allCases) { genre in
+                        Text(genre.title).tag(genre)
+                    }
+                }
+                .pickerStyle(.navigationLink)
             }
-            .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
-            .clipShape(userStore.user.isAuthenticated ?
-                       RoundedRectangle(cornerRadius: 10) :
-                        RoundedRectangle(cornerRadius: 25))
             
-            VStack(spacing: 0) {
-                label(text: "Status", image: "text.bubble", color: .pink, divider: true)
-                label(text: "Favorite genre", image: "book", color: .green)
-            }
-            .background(isDark ? Color(.tertiarySystemBackground) : Color.gray.opacity(0.15))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-        }
-    }
-    
-    private var isDark: Bool {
-        scheme == .dark
-    }
-    
-    private func label(
-        text: String,
-        image: String,
-        color: Color? = nil,
-        divider: Bool = false
-    ) -> some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 12) {
-                if let color = color {
-                    RectImage(
-                        systemImage: image,
-                        color: color,
-                        width: UIDevice.isiPhone ? screen.width : screen.width/2
-                    )
-                } else {
-                    Image(systemName: image)
-                        .padding(5)
+            if !userStore.user.isAuthenticated {
+                Section {
+                    Button("Sign in", action: { showSignIn.toggle() })
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .foregroundStyle(.white)
                 }
-                Text(text)
-            }
-            .padding(8)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            if divider {
-                Divider()
-                    .padding(.leading, 50)
+                .listRowBackground(Color.green)
             }
         }
+        .sheet(isPresented: $showSignIn, content: LoginView.init)
     }
 }
 
 struct ProfileContent_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileContent()
-            .environmentObject(UserStore())
+        NavigationStack {
+            ProfileContent()
+                .environmentObject(UserStore())
+        }
     }
 }
