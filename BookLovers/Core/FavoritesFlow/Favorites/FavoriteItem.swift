@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Components
 
 struct FavoriteItem: View {
+    var book: FavoriteBook
+    
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
             image
@@ -17,14 +20,14 @@ struct FavoriteItem: View {
                 titleLabel
                     .padding(.top)
                 
-                secondaryLabel(text: "Michail Bulgacov")
+                secondaryLabel(text: book.author)
                 
                 Spacer()
                 
                 HStack(spacing: 0) {
-                    secondaryLabel(text: "Pages 150/300")
+                    secondaryLabel(text: "Pages \(book.currentPage) / \(book.pages)")
                     Spacer()
-                    secondaryLabel(text: "50%")
+                    secondaryLabel(text: "\(book.percent) %")
                 }
                 
                 statusLine
@@ -38,29 +41,22 @@ struct FavoriteItem: View {
     }
     
     private var image: some View {
-        Image("book1")
-            .resizable()
-            .scaledToFit()
+        DefaultImageView()
+            .frame(width: 75)
             .clipShape(RoundedRectangle(cornerRadius: 12))
     }
     
     private var titleLabel: some View {
-        Text("The Master and Margarita")
+        Text(book.title)
             .font(.subheadline)
             .fontWeight(.semibold)
     }
     
     private var statusLine: some View {
-        ZStack(alignment: .leading) {
-            Capsule()
-                .fill(Color.green.opacity(0.1))
-                .frame(maxWidth: .infinity)
-                .frame(height: 8)
-            Capsule()
-                .fill(Color.green)
-                .frame(width: 150)
-                .frame(height: 8)
-        }
+        ProgressLine(
+            total: CGFloat(book.pages),
+            value: CGFloat(book.currentPage)
+        )
     }
     
     private func secondaryLabel(text: String) -> some View {
@@ -72,6 +68,6 @@ struct FavoriteItem: View {
 
 struct FavoriteItem_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteItem()
+        FavoriteItem(book: .preview.first!)
     }
 }

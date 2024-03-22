@@ -40,8 +40,8 @@ struct FavoritesView: View {
     // iPad & Mac
     private var gridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
-            ForEach(0..<10, id: \.self) { index in
-                FavoriteItem().tag(index)
+            ForEach(viewModel.books) { book in
+                FavoriteItem(book: book).tag(book.id)
             }
         }
         .padding()
@@ -50,8 +50,8 @@ struct FavoritesView: View {
     // iPhone
     private var stackView: some View {
         LazyVStack(spacing: 15) {
-            ForEach(0..<10, id: \.self) { index in
-                FavoriteItem().tag(index)
+            ForEach(viewModel.books) { book in
+                FavoriteItem(book: book).tag(book.id)
                     .padding(.horizontal)
             }
         }

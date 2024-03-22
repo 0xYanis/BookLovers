@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
+import Components
 
 struct MostPopularItem: View {
-    @Environment(\.colorScheme) private var colorScheme
     let background: Color
     
     init(background: Color = .systemBackground) {
@@ -17,28 +17,11 @@ struct MostPopularItem: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            image
+            DefaultImageView()
             description.padding(5)
         }
         .background(background)
         .clipShape(RoundedRectangle(cornerRadius: 12))
-    }
-    
-    private var image: some View {
-        Rectangle()
-            .fill(.green.opacity(0.8))
-            .overlay {
-                Color(colorScheme == .light ? .white : .black)
-                    .frame(width: 50, height: 50)
-                    .mask {
-                        Image("logo-small")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                    }
-            }
-            .frame(maxWidth: (UIWindow.current?.bounds.width ?? .zero) * 0.27)
-            .frame(maxHeight: 220)
     }
     
     private var description: some View {

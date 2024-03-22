@@ -10,4 +10,8 @@ import Foundation
 @MainActor
 final class FavoriteViewModel: ObservableObject {
     @Published var books = [FavoriteBook]()
+    
+    init() {
+        books = FavoriteBook.preview
+    }
 }

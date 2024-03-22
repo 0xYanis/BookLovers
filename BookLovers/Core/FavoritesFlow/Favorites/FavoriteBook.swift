@@ -17,6 +17,10 @@ struct FavoriteBook: Identifiable {
     let pages: Int
     let link: URL?
     var type: FavoriteType
+    
+    var percent: Int {
+        max((currentPage * 100) / pages, 0)
+    }
 }
 
 // MARK: - SwiftUI mock data
