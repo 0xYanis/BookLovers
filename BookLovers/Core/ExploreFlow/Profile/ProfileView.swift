@@ -19,9 +19,6 @@ struct ProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userStore: UserStore
     
-    private let minHeight: CGFloat = 100
-    private let maxHeight: CGFloat = 350
-    
     var body: some View {
         ZStack {
             if editMode?.wrappedValue == .active {
@@ -33,9 +30,7 @@ struct ProfileView: View {
         .navigationTitle("Profile · \(userStore.user.username)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
-        .toolbar {
-            EditButton()
-        }
+        .toolbar(content: EditButton.init)
     }
 }
 

@@ -14,21 +14,8 @@ struct ProfileContent: View {
     
     var body: some View {
         Form {
-            Section {
-                Label {
-                    PhotosPickerView("Change photo").foregroundStyle(.blue)
-                } icon: {
-                    Image(systemName: "photo")
-                }
-            } header: {
-                VStack {
-                    ProfileAvatar()
-                    Text(userStore.user.username)
-                }
-                .frame(maxWidth: .infinity)
-            }
-            .headerProminence(.increased)
-            
+            avatarView()
+
             Section {
                 if userStore.user.isAuthenticated {
                     Label {
@@ -39,34 +26,59 @@ struct ProfileContent: View {
                         Image(systemName: "mail")
                     }
                 }
-                
-                Label {
-                    Text("Status:")
-                    Text(userStore.user.status)
-                        .foregroundStyle(.gray)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                } icon: {
-                    Image(systemName: "quote.opening")
-                }
-
-                Picker("Favorite genre:", selection: $userStore.user.favoriteGenre) {
-                    ForEach(LiteraryGenre.allCases) { genre in
-                        Text(genre.title).tag(genre)
-                    }
-                }
-                .pickerStyle(.navigationLink)
+                userData()
             }
-            
-            if !userStore.user.isAuthenticated {
-                Section {
-                    Button("Sign in", action: { showSignIn.toggle() })
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundStyle(.white)
-                }
-                .listRowBackground(Color.green)
-            }
+            signInButton()
         }
         .sheet(isPresented: $showSignIn, content: LoginView.init)
+    }
+    
+    private func avatarView() -> some View {
+        Section {
+            Label {
+                PhotosPickerView("Change photo").foregroundStyle(.blue)
+            } icon: {
+                Image(systemName: "photo")
+            }
+        } header: {
+            VStack {
+                ProfileAvatar()
+                Text(userStore.user.username)
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .headerProminence(.increased)
+    }
+    
+    @ViewBuilder
+    private func userData() -> some View {
+        Label {
+            Text("Status:")
+            Text(userStore.user.status)
+                .foregroundStyle(.gray)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        } icon: {
+            Image(systemName: "quote.opening")
+        }
+
+        Picker("Favorite genre:", selection: $userStore.user.favoriteGenre) {
+            ForEach(LiteraryGenre.allCases) { genre in
+                Text(genre.title).tag(genre)
+            }
+        }
+        .pickerStyle(.navigationLink)
+    }
+    
+    @ViewBuilder
+    private func signInButton() -> some View {
+        if !userStore.user.isAuthenticated {
+            Section {
+                Button("Sign in", action: { showSignIn.toggle() })
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .foregroundStyle(.white)
+            }
+            .listRowBackground(Color.green)
+        }
     }
 }
 

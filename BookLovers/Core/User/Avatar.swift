@@ -22,11 +22,12 @@ struct Avatar: View {
     private func placeholder() -> some View {
         Image(systemName: "person.fill")
             .resizable()
+            //.padding()
     }
 }
 
 struct Avatar_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileEditorView().environmentObject(UserStore())
+        ExploreView().environmentObject(UserStore())
     }
 }
