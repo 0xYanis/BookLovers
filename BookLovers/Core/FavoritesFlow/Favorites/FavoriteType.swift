@@ -11,6 +11,7 @@ enum FavoriteType: String, CaseIterable, Identifiable {
     case onReading = "On reading"
     case readingList = "Reading list"
     case archived = "Archived"
+    case all = "All"
     
     var id: String { rawValue }
     
@@ -22,6 +23,8 @@ enum FavoriteType: String, CaseIterable, Identifiable {
             return "checklist"
         case .archived:
             return "archivebox"
+        case .all:
+            return ""
         }
     }
 }

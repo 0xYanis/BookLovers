@@ -9,8 +9,6 @@ import SwiftUI
 import Components
 
 struct FavoritesView: View {
-    @State private var searchText = ""
-    @State private var selectedType: FavoriteType = .onReading
     @State private var requestSignIn = false
     @State private var barState: Visibility = .visible
     @StateObject private var viewModel = FavoriteViewModel()
@@ -19,10 +17,10 @@ struct FavoritesView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 FavoriteHeader(
-                    searchText: $searchText,
-                    selectedType: $selectedType,
+                    searchText: $viewModel.searchText,
+                    selectedType: $viewModel.selectedType,
                     barState: $barState)
-                if viewModel.books.isEmpty {
+                if viewModel.allBooks.isEmpty {
                     EmptyFavoritesView()
                 } else {
                     HideBarScrollView(
@@ -40,7 +38,7 @@ struct FavoritesView: View {
     // iPad & Mac
     private var gridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
-            ForEach(viewModel.books) { book in
+            ForEach(viewModel.booksByType) { book in
                 FavoriteItem(book: book).tag(book.id)
             }
         }
@@ -50,7 +48,7 @@ struct FavoritesView: View {
     // iPhone
     private var stackView: some View {
         LazyVStack(spacing: 15) {
-            ForEach(viewModel.books) { book in
+            ForEach(viewModel.booksByType) { book in
                 FavoriteItem(book: book).tag(book.id)
                     .padding(.horizontal)
             }

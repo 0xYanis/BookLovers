@@ -55,46 +55,47 @@ struct FavoriteHeader: View {
     }
     
     private var tabbarTypePicker: some View {
-        HStack(spacing: 15) {
-            ForEach(FavoriteType.allCases) { type in
-                Button {
-                    tabTapped(type)
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: type.image)
-                            .imageScale(.small)
-                        Text(type.rawValue)
-                    }
-                    .font(.callout)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                    .contentShape(Capsule())
-                }
-                .buttonStyle(.plain)
-                .background {
-                    ZStack {
-                        if selectedType == type {
-                            VStack(spacing: 0) {
-                                Spacer()
-                                Capsule()
-                                    .fill(.green)
-                                    .frame(height: 4)
-                                    .matchedGeometryEffect(id: "favcapsule", in: animation)
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 15) {
+                    ForEach(FavoriteType.allCases) { type in
+                        Button {
+                            withAnimation(.spring()) {
+                                selectedType = type
+                                proxy.scrollTo(type, anchor: .center)
+                            }
+                        } label: {
+                            HStack(spacing: 5) {
+                                Image(systemName: type.image)
+                                    .imageScale(.small)
+                                Text(type.rawValue)
+                            }
+                            .font(.callout)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .contentShape(Capsule())
+                        }
+                        .buttonStyle(.plain)
+                        .background {
+                            ZStack {
+                                if selectedType == type {
+                                    VStack(spacing: 0) {
+                                        Spacer()
+                                        Capsule()
+                                            .fill(.green)
+                                            .frame(height: 4)
+                                            .matchedGeometryEffect(id: "favcapsule", in: animation)
+                                    }
+                                }
                             }
                         }
+                        .id(type)
                     }
                 }
-                .tag(type)
+                .padding(.horizontal)
             }
         }
         .animation(.spring(), value: selectedType)
-        .padding(.horizontal)
-    }
-    
-    private func tabTapped(_ type: FavoriteType) {
-        withAnimation(.spring()) {
-            selectedType = type
-        }
     }
 }
 
