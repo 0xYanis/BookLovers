@@ -9,9 +9,9 @@ import SwiftUI
 import Components
 
 struct SearchView: View {
-    @StateObject private var viewModel = SearchViewModel()
-    @Environment(\.dismiss) private var dismiss
     @FocusState private var isFocused: Bool
+    @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel = SearchViewModel()
     
     var body: some View {
         NavigationStack {
@@ -50,6 +50,10 @@ struct SearchView: View {
         }
         .onAppear {
             isFocused = true
+            viewModel.startQueryObserve()
+        }
+        .onDisappear {
+            viewModel.cancelSearchObserve()
         }
     }
     
@@ -106,11 +110,11 @@ struct SearchView: View {
     }
     
     private func setSortType(_ type: SortType) {
-        viewModel.sortSearchResults(by: type)
+        
     }
 
     private func sortByTag(_ id: Int) {
-        viewModel.sortSearchResults(by: id)
+        
     }
 }
 

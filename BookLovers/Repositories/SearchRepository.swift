@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol SearchRepository: WebRepository {
-    func search(query: String) -> AnyPublisher<[DTOBookList], Error>
+    func search(query: String) -> AnyPublisher<DTOBookList, Error>
     func search(id: String) -> AnyPublisher<DTOBook, Error>
 }
 
@@ -18,7 +18,7 @@ struct SearchRepositoryImpl: SearchRepository {
     var baseURL: String
     var bgQueue: DispatchQueue = DispatchQueue(label: "bg_parse_queue")
     
-    func search(query: String) -> AnyPublisher<[DTOBookList], Error> {
+    func search(query: String) -> AnyPublisher<DTOBookList, Error> {
         return call(endpoint: API.searchBooks(query))
     }
     

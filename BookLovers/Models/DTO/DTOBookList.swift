@@ -16,6 +16,12 @@ struct DTOBook: Identifiable, Decodable {
     let id: String
     let bookInfo: DTOBookInfo
     let accessInfo: DTOBookAccessInfo
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case bookInfo = "volumeInfo"
+        case accessInfo
+    }
 }
 
 struct DTOBookInfo: Decodable {
