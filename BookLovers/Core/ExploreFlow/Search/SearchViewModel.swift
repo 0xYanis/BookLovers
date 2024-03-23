@@ -29,6 +29,10 @@ final class SearchViewModel: ObservableObject {
         self.searchRepository = searchRepository
     }
     
+    func refresh() {
+        books.removeAll()
+    }
+    
     func startQueryObserve() {
         $searchText
             .debounce(for: 0.5, scheduler: DispatchQueue.main)

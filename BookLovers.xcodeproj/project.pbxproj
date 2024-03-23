@@ -45,7 +45,6 @@
 		0950D8E62B725564005D755A /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0950D8E52B725564005D755A /* TabItem.swift */; };
 		095FEB9E2B9A35A7006EE20F /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095FEB9D2B9A35A7006EE20F /* ResetPasswordView.swift */; };
 		096D47522B9BAB9100B2D84D /* AuthWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D47512B9BAB9100B2D84D /* AuthWorker.swift */; };
-		09736E012B7409BC00B50164 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E002B7409BC00B50164 /* SearchView.swift */; };
 		09736E032B74109600B50164 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09736E022B74109600B50164 /* SortType.swift */; };
 		09879DE22BAB5D3A005377A0 /* FavoriteBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE12BAB5D3A005377A0 /* FavoriteBook.swift */; };
 		09879DE42BAB61DF005377A0 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09879DE32BAB61DF005377A0 /* FavoriteViewModel.swift */; };
@@ -76,6 +75,7 @@
 		09E94BDE2BAECCF5000D7E60 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */; };
 		09E94BE02BAED218000D7E60 /* DTOBookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BDF2BAED218000D7E60 /* DTOBookList.swift */; };
 		09E94BE42BAF098D000D7E60 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BE32BAF098D000D7E60 /* Book.swift */; };
+		09E94BE82BAF31CC000D7E60 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BE72BAF31CC000D7E60 /* SearchView.swift */; };
 		09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */; };
 		09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */; };
 		09F7462E2B869CA300DEBB49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F7462D2B869CA300DEBB49 /* Assets.xcassets */; };
@@ -138,7 +138,6 @@
 		0950D8E52B725564005D755A /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		095FEB9D2B9A35A7006EE20F /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		096D47512B9BAB9100B2D84D /* AuthWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorker.swift; sourceTree = "<group>"; };
-		09736E002B7409BC00B50164 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		09736E022B74109600B50164 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		09879DE12BAB5D3A005377A0 /* FavoriteBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBook.swift; sourceTree = "<group>"; };
 		09879DE32BAB61DF005377A0 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -168,6 +167,7 @@
 		09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		09E94BDF2BAED218000D7E60 /* DTOBookList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOBookList.swift; sourceTree = "<group>"; };
 		09E94BE32BAF098D000D7E60 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		09E94BE72BAF31CC000D7E60 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeader.swift; sourceTree = "<group>"; };
 		09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteType.swift; sourceTree = "<group>"; };
 		09F746272B869CA000DEBB49 /* MacBookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,9 +229,9 @@
 		0901E85D2B73E843007C11A5 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				09E94BE72BAF31CC000D7E60 /* SearchView.swift */,
 				090F78152B8F621D00625729 /* SearchViewModel.swift */,
 				0901E85E2B73E855007C11A5 /* SearchBar.swift */,
-				09736E002B7409BC00B50164 /* SearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -721,7 +721,6 @@
 				099E9A0A2B83BBFA009CE7B0 /* ProfileEditorView.swift in Sources */,
 				09879DE62BAB6D1A005377A0 /* EmptyFavoritesView.swift in Sources */,
 				09E94BE42BAF098D000D7E60 /* Book.swift in Sources */,
-				09736E012B7409BC00B50164 /* SearchView.swift in Sources */,
 				099A2D192B96303B00557DC5 /* AuthTextField.swift in Sources */,
 				09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */,
 				090F78182B8F789500625729 /* AboutUsView.swift in Sources */,
@@ -735,6 +734,7 @@
 				094A652E2B710A5B00E6FF4E /* SideMenuHeader.swift in Sources */,
 				094E137C2B74C7E90052E0D8 /* SignInType.swift in Sources */,
 				094A651F2B70F50900E6FF4E /* ExploreView.swift in Sources */,
+				09E94BE82BAF31CC000D7E60 /* SearchView.swift in Sources */,
 				09FE21122BAC95CB0071DF10 /* Color+Extension.swift in Sources */,
 				09A165662B80A64E008C0AB3 /* ProfileView.swift in Sources */,
 				094A652A2B7109F800E6FF4E /* MenuOption.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Components
+import Kingfisher
 
 struct MostPopularItem: View {
     private let book: Book
@@ -18,24 +19,33 @@ struct MostPopularItem: View {
     }
     
     var body: some View {
-        HStack(alignment: .top) {
-            DefaultImageView()
+        HStack(alignment: .top, spacing: 0) {
+            KFImage(book.smallImage)
+                .placeholder(DefaultImageView.init)
+                .resizable()
+                .scaledToFit()
                 .frame(width: 100)
-            description.padding(5)
+                .clipped()
+            
+            description
+                .padding(5)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .background(background)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
     
     private var description: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(book.title)
-                .font(.headline)
+                .lineSpacing(0)
+                .font(.subheadline)
                 .fontWeight(.semibold)
             
             HStack(spacing: 4) {
                 Text("by")
                     .font(.caption)
+                    .lineLimit(1)
                 Text(book.authors)
                     .font(.caption)
                     .fontWeight(.semibold)
@@ -43,13 +53,8 @@ struct MostPopularItem: View {
             
             rating
             
-            Text(
-"""
-The novel is set in Moscow and tells the story of the devil Woland and his entourage, who arrive in the city and cause chaos. The story is intertwined with the story of the Master, a writer who has written a novel about Pontius Pilate, and Margarita, a woman who makes a deal with the devil to find her beloved Master.
-
-"""
-            )
-            .lineLimit(5)
+            Text(book.description)
+            .lineLimit(3)
             .font(.caption2)
             .foregroundStyle(.gray)
         }
@@ -62,6 +67,7 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
                     .imageScale(.small)
                     .foregroundStyle(.yellow)
             }
+            Spacer()
             Text("4.9")
                 .font(.callout)
                 .foregroundStyle(.gray)
@@ -71,7 +77,7 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
 
 struct MostPopularItem_Previews: PreviewProvider {
     static var previews: some View {
-        MostPopularItem(book: .mockPreview)
+        MostPopularItem(book: .preview)
             .frame(height: 150)
             .padding()
     }

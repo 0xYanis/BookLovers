@@ -22,10 +22,6 @@ struct Book: Identifiable {
     }
     
     private var authorsArray: [String]
-    
-    static var mockPreview: Book {
-        .init(id: "1", title: "", description: "", pages: 0, smallImage: nil, bigImage: nil, previewLink: nil, pdf: nil, genre: nil, authorsArray: [])
-    }
 }
 
 extension Book {
@@ -35,10 +31,27 @@ extension Book {
         self.authorsArray = dto.bookInfo.authors
         self.description = dto.bookInfo.description ?? ""
         self.pages = dto.bookInfo.pageCount
-        self.smallImage = URL(string: dto.bookInfo.imageLinks.smallThumbnail)
-        self.bigImage = URL(string: dto.bookInfo.imageLinks.thumbnail)
+        self.smallImage = URL(string: "https" + dto.bookInfo.imageLinks.smallThumbnail.dropFirst(4))
+        self.bigImage = URL(string: "https" + dto.bookInfo.imageLinks.thumbnail.dropFirst(4))
         self.previewLink = URL(string: dto.bookInfo.previewLink)
         self.pdf = URL(string: dto.accessInfo.pdf.acsTokenLink ?? "")
         self.genre = LiteraryGenre(rawValue: dto.bookInfo.categories?.first ?? "")
+    }
+}
+
+extension Book {
+    static var preview: Book {
+        .init(
+            id: "1",
+            title: "The master and Margarita",
+            description: "lOREM Ipsym is a dummy text..",
+            pages: 82,
+            smallImage: URL(string: "https://books.google.com/books/content?id=j5H4zgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"),
+            bigImage: URL(string: "https://books.google.com/books/content?id=j5H4zgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"),
+            previewLink: nil,
+            pdf: nil,
+            genre: nil,
+            authorsArray: ["Yanis, miyagis"]
+        )
     }
 }

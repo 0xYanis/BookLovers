@@ -29,11 +29,11 @@ struct SearchView: View {
                         LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
                             Section {
                                 ForEach(viewModel.books) { book in
-                                    MostPopularItem(book: book)
-                                        .frame(height: 150)
+                                    MostPopularItem(book: book, background: Color.gray.opacity(0.1))
                                         .padding(.horizontal)
                                         .padding(.bottom)
                                 }
+                                .transition(.scale)
                             } header: {
                                 TagCaruselView(
                                     tags: LiteraryGenre.asArray,
@@ -45,7 +45,9 @@ struct SearchView: View {
 
                         }
                     } topItem: {
-                        trailingParagraphItem
+                        if !viewModel.books.isEmpty {
+                            trailingParagraphItem
+                        }
                     }
                 }
             }
@@ -53,6 +55,7 @@ struct SearchView: View {
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .refreshable { viewModel.refresh() }
         .animation(.spring(), value: viewModel.isSearching)
         .onAppear {
             isFocused = true
@@ -112,6 +115,7 @@ struct SearchView: View {
                 Image(systemName: "arrow.up.arrow.down")
             }
             .font(.callout)
+            .transition(.opacity)
         }
     }
     
