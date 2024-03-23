@@ -23,6 +23,7 @@ struct MostPopularItem: View {
             KFImage(book.smallImage)
                 .placeholder(DefaultImageView.init)
                 .resizable()
+                .cacheMemoryOnly()
                 .scaledToFit()
                 .frame(width: 100)
                 .clipped()

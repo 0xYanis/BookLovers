@@ -18,6 +18,8 @@ final class SearchViewModel: ObservableObject {
         }
     }
     
+    private var startIndex: Int = 0
+    private var maxResults: Int = 20
     private var searchRepository: SearchRepository
     private var cancellabels: Set<AnyCancellable> = []
     
@@ -29,39 +31,60 @@ final class SearchViewModel: ObservableObject {
         self.searchRepository = searchRepository
     }
     
+    func loadMore() {
+        startIndex += maxResults
+        searchInWeb(startIndex: startIndex)
+    }
+    
     func refresh() {
+        startIndex = 0
         books.removeAll()
+        searchInWeb()
     }
     
     func startQueryObserve() {
         $searchText
-            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .debounce(for: 1, scheduler: DispatchQueue.main)
             .removeDuplicates()
-            .sink { [weak self] query in
-                if query.isEmpty {
-                    return
-                } else {
-                    self?.isSearching = true
-                    self?.searchRepo()
-                }
-            }
-            .store(in: &cancellabels)
-    }
-    
-    private func searchRepo() {
-        searchRepository
-            .search(query: searchText)
-            .sink { _ in
-                
-            } receiveValue: { list in
-                list.items.forEach { book in
-                    self.books.append(.init(dto: book))
-                }
+            .map { $0.isEmpty }
+            .sink { [weak self] isEmpty in
+                guard !isEmpty else { return }
+                self?.isSearching = true
+                self?.refresh()
             }
             .store(in: &cancellabels)
     }
     
     func cancelSearchObserve() {
         cancellabels.removeAll()
+    }
+    
+    // MARK: - Private methods
+    
+    private func searchInWeb(startIndex: Int = 0) {
+        searchRepository
+            .search(query: searchText, count: maxResults, startIndex: startIndex)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("FINISHED \n")
+                case .failure(let error):
+                    print(error)
+                }
+            } receiveValue: { [weak self] list in
+                self?.show(list: list)
+            }
+            .store(in: &cancellabels)
+    }
+    
+    private func show(list: DTOBookList) {
+        books.append(contentsOf: list.items.convert)
+    }
+}
+
+extension [DTOBook] {
+    var convert: [Book] {
+        let books = self.compactMap { Book(dto: $0) }
+        return books
     }
 }

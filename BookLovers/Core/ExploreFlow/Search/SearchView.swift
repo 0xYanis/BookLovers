@@ -9,6 +9,7 @@ import SwiftUI
 import Components
 
 struct SearchView: View {
+    @State private var showProgressView = false
     @FocusState private var isFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = SearchViewModel()
@@ -17,37 +18,17 @@ struct SearchView: View {
         NavigationStack {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 30) {
-                    //titleView
-                    
                     SearchBar("Search books", text: $viewModel.searchText)
                         .focused($isFocused)
                         .padding(.horizontal)
                     
                     historyView
                     
-                    NewParagraphView(title: "Discover") {
-                        LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
-                            Section {
-                                ForEach(viewModel.books) { book in
-                                    MostPopularItem(book: book, background: Color.gray.opacity(0.1))
-                                        .padding(.horizontal)
-                                        .padding(.bottom)
-                                }
-                                .transition(.scale)
-                            } header: {
-                                TagCaruselView(
-                                    tags: LiteraryGenre.asArray,
-                                    onTap: sortByTag
-                                )
-                                .padding(.vertical, 10)
-                                .background()
-                            }
-
-                        }
-                    } topItem: {
-                        if !viewModel.books.isEmpty {
-                            trailingParagraphItem
-                        }
+                    searchResultsView
+                    
+                    if showProgressView {
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
                     }
                 }
             }
@@ -63,12 +44,6 @@ struct SearchView: View {
         }
         .onDisappear {
             viewModel.cancelSearchObserve()
-        }
-    }
-    
-    private func trailingButton() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            XButton(action: dismiss.callAsFunction)
         }
     }
     
@@ -100,6 +75,33 @@ struct SearchView: View {
         }
     }
     
+    private var searchResultsView: some View {
+        NewParagraphView(title: "Discover") {
+            LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
+                Section {
+                    ForEach(viewModel.books) { book in
+                        MostPopularItem(book: book, background: Color.gray.opacity(0.1))
+                            .tag(book.id)
+                            .padding(.horizontal)
+                            .padding(.bottom)
+                            .onAppear { appearLastId(book.id) }
+                    }
+                } header: {
+                    TagCaruselView(
+                        tags: LiteraryGenre.asArray,
+                        onTap: sortByTag
+                    )
+                    .padding(.vertical, 10)
+                    .background()
+                }
+            }
+        } topItem: {
+            if !viewModel.books.isEmpty {
+                trailingParagraphItem
+            }
+        }
+    }
+    
     private var trailingParagraphItem: some View {
         Menu {
             ForEach(SortType.allCases) { type in
@@ -119,12 +121,27 @@ struct SearchView: View {
         }
     }
     
+    private func trailingButton() -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            XButton(action: dismiss.callAsFunction)
+        }
+    }
+    
     private func setSortType(_ type: SortType) {
         
     }
 
     private func sortByTag(_ id: Int) {
         
+    }
+    
+    private func appearLastId(_ id: String) {
+        if id == viewModel.books.last?.id {
+            showProgressView = true
+            viewModel.loadMore()
+        } else {
+            showProgressView = false
+        }
     }
 }
 
