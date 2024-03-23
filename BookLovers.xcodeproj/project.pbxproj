@@ -73,6 +73,8 @@
 		09DFDE6D2B99A746005821D7 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE6C2B99A746005821D7 /* LoginType.swift */; };
 		09DFDE742B99BF5E005821D7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 09DFDE732B99BF5E005821D7 /* Kingfisher */; };
 		09DFDE762B99C478005821D7 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE752B99C478005821D7 /* Avatar.swift */; };
+		09E94BDE2BAECCF5000D7E60 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */; };
+		09E94BE02BAED218000D7E60 /* DTOBookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BDF2BAED218000D7E60 /* DTOBookList.swift */; };
 		09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */; };
 		09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */; };
 		09F7462E2B869CA300DEBB49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F7462D2B869CA300DEBB49 /* Assets.xcassets */; };
@@ -162,6 +164,8 @@
 		09DFDE682B98DD73005821D7 /* verification.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verification.json; sourceTree = "<group>"; };
 		09DFDE6C2B99A746005821D7 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		09DFDE752B99C478005821D7 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		09E94BDF2BAED218000D7E60 /* DTOBookList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOBookList.swift; sourceTree = "<group>"; };
 		09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeader.swift; sourceTree = "<group>"; };
 		09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteType.swift; sourceTree = "<group>"; };
 		09F746272B869CA000DEBB49 /* MacBookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -460,6 +464,7 @@
 		0992AFE32BA9C6150033AAEC /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -479,11 +484,8 @@
 		09B358DF2B7176E400D1DA77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				09B358E02B71770300D1DA77 /* LiteraryGenre.swift */,
-				09736E022B74109600B50164 /* SortType.swift */,
-				094E137B2B74C7E90052E0D8 /* SignInType.swift */,
-				09F8A6702B8919E2002C3AC7 /* User.swift */,
-				099BBF822B925EE400A7B2A4 /* Settings.swift */,
+				09E94BE12BAED85F000D7E60 /* DTO */,
+				09E94BE22BAED86E000D7E60 /* General */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -505,6 +507,26 @@
 				091CC09D2BA5A35D00A077A4 /* UserWorker.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		09E94BE12BAED85F000D7E60 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				09E94BDF2BAED218000D7E60 /* DTOBookList.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		09E94BE22BAED86E000D7E60 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				09B358E02B71770300D1DA77 /* LiteraryGenre.swift */,
+				09736E022B74109600B50164 /* SortType.swift */,
+				094E137B2B74C7E90052E0D8 /* SignInType.swift */,
+				09F8A6702B8919E2002C3AC7 /* User.swift */,
+				099BBF822B925EE400A7B2A4 /* Settings.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		09F746282B869CA000DEBB49 /* MacBookLovers */ = {
@@ -688,6 +710,7 @@
 				09DFDE6D2B99A746005821D7 /* LoginType.swift in Sources */,
 				09F9AAAB2B7D1B8800C0FC8D /* FavoriteItem.swift in Sources */,
 				0945AF3F2B8A082C00A4623A /* WelcomePages.swift in Sources */,
+				09E94BE02BAED218000D7E60 /* DTOBookList.swift in Sources */,
 				099BBF832B925EE400A7B2A4 /* Settings.swift in Sources */,
 				0935486C2B5EAEDE00CC4955 /* BookLoversApp.swift in Sources */,
 				0901E85F2B73E855007C11A5 /* SearchBar.swift in Sources */,
@@ -716,6 +739,7 @@
 				09879DE82BAB6EE0005377A0 /* CurrentTabEnvKey.swift in Sources */,
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
 				0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */,
+				09E94BDE2BAECCF5000D7E60 /* SearchRepository.swift in Sources */,
 				09F8A6712B8919E2002C3AC7 /* User.swift in Sources */,
 				091CC09E2BA5A35D00A077A4 /* UserWorker.swift in Sources */,
 				09879DE42BAB61DF005377A0 /* FavoriteViewModel.swift in Sources */,
