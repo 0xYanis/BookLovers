@@ -34,7 +34,7 @@ public struct TagItem: View {
             .font(font)
             .padding(.horizontal, 6)
             .padding(6)
-            .background(Color(uiColor: isDark ? .tertiarySystemBackground : .white))
+            .background(Color(uiColor: isDark ? .tertiarySystemBackground : .secondarySystemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 6))
         #endif
     }

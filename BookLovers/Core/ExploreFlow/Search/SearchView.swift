@@ -16,7 +16,7 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 30) {
+                LazyVStack(alignment: .leading, spacing: 30) {
                     //titleView
                     
                     SearchBar("Search books", text: $viewModel.searchText)
@@ -26,21 +26,26 @@ struct SearchView: View {
                     historyView
                     
                     NewParagraphView(title: "Discover") {
-                        VStack {
-                            TagCaruselView(tags: LiteraryGenre.asArray, onTap: sortByTag)
-                            MostPopularItem()
-                                .frame(height: 150)
-                                .padding()
+                        LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
+                            Section {
+                                ForEach(viewModel.books) { book in
+                                    MostPopularItem(book: book)
+                                        .frame(height: 150)
+                                        .padding(.horizontal)
+                                        .padding(.bottom)
+                                }
+                            } header: {
+                                TagCaruselView(
+                                    tags: LiteraryGenre.asArray,
+                                    onTap: sortByTag
+                                )
+                                .padding(.vertical, 10)
+                                .background()
+                            }
+
                         }
                     } topItem: {
                         trailingParagraphItem
-                    }
-                }
-                .overlay {
-                    Button("change") {
-                        withAnimation(.spring()) {
-                            viewModel.isSearching.toggle()
-                        }
                     }
                 }
             }
@@ -48,6 +53,7 @@ struct SearchView: View {
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .animation(.spring(), value: viewModel.isSearching)
         .onAppear {
             isFocused = true
             viewModel.startQueryObserve()

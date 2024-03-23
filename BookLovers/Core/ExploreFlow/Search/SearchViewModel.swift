@@ -10,7 +10,8 @@ import Combine
 
 @MainActor
 final class SearchViewModel: ObservableObject {
-    @Published var isSearching = false
+    @Published private(set) var books = [Book]()
+    @Published private(set) var isSearching = false
     @Published var searchText = "" {
         didSet {
             if searchText.isEmpty { isSearching = false }
@@ -49,7 +50,9 @@ final class SearchViewModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { list in
-                print(list.items.count)
+                list.items.forEach { book in
+                    self.books.append(.init(dto: book))
+                }
             }
             .store(in: &cancellabels)
     }

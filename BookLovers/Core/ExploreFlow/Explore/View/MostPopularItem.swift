@@ -9,9 +9,11 @@ import SwiftUI
 import Components
 
 struct MostPopularItem: View {
-    let background: Color
+    private let book: Book
+    private let background: Color
     
-    init(background: Color = .systemBackground) {
+    init(book: Book, background: Color = .systemBackground) {
+        self.book = book
         self.background = background
     }
     
@@ -27,14 +29,14 @@ struct MostPopularItem: View {
     
     private var description: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("The Master and Margarita")
+            Text(book.title)
                 .font(.headline)
                 .fontWeight(.semibold)
             
             HStack(spacing: 4) {
                 Text("by")
                     .font(.caption)
-                Text("Mikhail Bulgakov")
+                Text(book.authors)
                     .font(.caption)
                     .fontWeight(.semibold)
             }
@@ -69,7 +71,7 @@ The novel is set in Moscow and tells the story of the devil Woland and his entou
 
 struct MostPopularItem_Previews: PreviewProvider {
     static var previews: some View {
-        MostPopularItem()
+        MostPopularItem(book: .mockPreview)
             .frame(height: 150)
             .padding()
     }

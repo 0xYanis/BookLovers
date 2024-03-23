@@ -37,7 +37,6 @@ public struct TagCaruselView: View {
                     }
                     .padding(.horizontal)
                 }
-                .shadow(color: .black.opacity(0.1), radius: 4)
             }
         }
     }

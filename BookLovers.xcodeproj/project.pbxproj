@@ -75,6 +75,7 @@
 		09DFDE762B99C478005821D7 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE752B99C478005821D7 /* Avatar.swift */; };
 		09E94BDE2BAECCF5000D7E60 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */; };
 		09E94BE02BAED218000D7E60 /* DTOBookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BDF2BAED218000D7E60 /* DTOBookList.swift */; };
+		09E94BE42BAF098D000D7E60 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BE32BAF098D000D7E60 /* Book.swift */; };
 		09EB28372B7B86B40049F5AA /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */; };
 		09EB283B2B7B8BFE0049F5AA /* FavoriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */; };
 		09F7462E2B869CA300DEBB49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F7462D2B869CA300DEBB49 /* Assets.xcassets */; };
@@ -166,6 +167,7 @@
 		09DFDE752B99C478005821D7 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		09E94BDF2BAED218000D7E60 /* DTOBookList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOBookList.swift; sourceTree = "<group>"; };
+		09E94BE32BAF098D000D7E60 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		09EB28362B7B86B40049F5AA /* FavoriteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeader.swift; sourceTree = "<group>"; };
 		09EB283A2B7B8BFE0049F5AA /* FavoriteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteType.swift; sourceTree = "<group>"; };
 		09F746272B869CA000DEBB49 /* MacBookLovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBookLovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -525,6 +527,7 @@
 				094E137B2B74C7E90052E0D8 /* SignInType.swift */,
 				09F8A6702B8919E2002C3AC7 /* User.swift */,
 				099BBF822B925EE400A7B2A4 /* Settings.swift */,
+				09E94BE32BAF098D000D7E60 /* Book.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				09F757622B763C16004C849B /* CommunityListView.swift in Sources */,
 				099E9A0A2B83BBFA009CE7B0 /* ProfileEditorView.swift in Sources */,
 				09879DE62BAB6D1A005377A0 /* EmptyFavoritesView.swift in Sources */,
+				09E94BE42BAF098D000D7E60 /* Book.swift in Sources */,
 				09736E012B7409BC00B50164 /* SearchView.swift in Sources */,
 				099A2D192B96303B00557DC5 /* AuthTextField.swift in Sources */,
 				09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */,
