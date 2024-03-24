@@ -22,9 +22,20 @@ struct SearchView: View {
                         .focused($isFocused)
                         .padding(.horizontal)
                     
-                    historyView
+                    if !viewModel.isSearching {
+                        HistorySearch(history: viewModel.history) { tappedLabel in
+                            viewModel.searchText = tappedLabel
+                        }
+                    }
                     
-                    searchResultsView
+                    if viewModel.books.isEmpty {
+                        EmptySearchView()
+                            .transition(.opacity)
+                            .padding(.top, 100)
+                    } else {
+                        searchResultsView
+                            .transition(.opacity)
+                    }
                     
                     if showProgressView {
                         ProgressView()
@@ -32,7 +43,7 @@ struct SearchView: View {
                     }
                 }
             }
-            .toolbar(content: trailingButton)
+            .toolbar { trailingButton }
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -52,27 +63,6 @@ struct SearchView: View {
             .font(.largeTitle)
             .fontWeight(.bold)
             .padding(.horizontal)
-    }
-    
-    @ViewBuilder
-    private var historyView: some View {
-        if viewModel.isSearching == false {
-            VStack(alignment: .leading, spacing: 15) {
-                ForEach(0..<3, id: \.self) { item in
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .padding(.horizontal)
-                            .foregroundStyle(.gray)
-                        Text("The Witcher")
-                        Spacer()
-                        Image(systemName: "clock.arrow.circlepath")
-                    }
-                    .font(.callout)
-                    Divider()
-                }
-            }
-            .padding()
-        }
     }
     
     private var searchResultsView: some View {
@@ -121,7 +111,7 @@ struct SearchView: View {
         }
     }
     
-    private func trailingButton() -> some ToolbarContent {
+    private var trailingButton: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             XButton(action: dismiss.callAsFunction)
         }

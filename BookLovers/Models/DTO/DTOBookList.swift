@@ -25,18 +25,18 @@ struct DTOBook: Identifiable, Decodable {
 }
 
 struct DTOBookInfo: Decodable {
-    let title: String
-    let authors: [String]
+    let title: String?
+    let authors: [String]?
     let publisher, publishedDate: String?
     let description: String?
-    let pageCount: Int
+    let pageCount: Int?
     let categories: [String]?
     let imageLinks: ImageLinks
-    let previewLink: String
-    let infoLink: String
+    let previewLink: String?
+    let infoLink: String?
     
     struct ImageLinks: Decodable {
-        let smallThumbnail, thumbnail: String
+        let smallThumbnail, thumbnail: String?
     }
 }
 

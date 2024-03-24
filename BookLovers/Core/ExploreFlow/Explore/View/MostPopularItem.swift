@@ -21,7 +21,7 @@ struct MostPopularItem: View {
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             KFImage(book.smallImage)
-                .placeholder(DefaultImageView.init)
+                .placeholder {ProgressView()}
                 .resizable()
                 .cacheMemoryOnly()
                 .scaledToFit()
@@ -39,11 +39,11 @@ struct MostPopularItem: View {
     private var description: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(book.title)
-                .lineSpacing(0)
+                .lineLimit(1)
                 .font(.subheadline)
                 .fontWeight(.semibold)
             
-            HStack(spacing: 4) {
+            HStack(alignment: .top, spacing: 4) {
                 Text("by")
                     .font(.caption)
                     .lineLimit(1)

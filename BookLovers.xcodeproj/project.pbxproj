@@ -42,6 +42,8 @@
 		094A652E2B710A5B00E6FF4E /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */; };
 		094A65302B710AAB00E6FF4E /* SideMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */; };
 		094E137C2B74C7E90052E0D8 /* SignInType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094E137B2B74C7E90052E0D8 /* SignInType.swift */; };
+		094ED3A12BAF8AA6004D4F0A /* HistorySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ED3A02BAF8AA6004D4F0A /* HistorySearch.swift */; };
+		094ED3A32BB062AD004D4F0A /* EmptySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ED3A22BB062AD004D4F0A /* EmptySearchView.swift */; };
 		0950D8E62B725564005D755A /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0950D8E52B725564005D755A /* TabItem.swift */; };
 		095FEB9E2B9A35A7006EE20F /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095FEB9D2B9A35A7006EE20F /* ResetPasswordView.swift */; };
 		096D47522B9BAB9100B2D84D /* AuthWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D47512B9BAB9100B2D84D /* AuthWorker.swift */; };
@@ -135,6 +137,8 @@
 		094A652D2B710A5B00E6FF4E /* SideMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeader.swift; sourceTree = "<group>"; };
 		094A652F2B710AAB00E6FF4E /* SideMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItem.swift; sourceTree = "<group>"; };
 		094E137B2B74C7E90052E0D8 /* SignInType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInType.swift; sourceTree = "<group>"; };
+		094ED3A02BAF8AA6004D4F0A /* HistorySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySearch.swift; sourceTree = "<group>"; };
+		094ED3A22BB062AD004D4F0A /* EmptySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchView.swift; sourceTree = "<group>"; };
 		0950D8E52B725564005D755A /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		095FEB9D2B9A35A7006EE20F /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		096D47512B9BAB9100B2D84D /* AuthWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorker.swift; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 				09E94BE72BAF31CC000D7E60 /* SearchView.swift */,
 				090F78152B8F621D00625729 /* SearchViewModel.swift */,
 				0901E85E2B73E855007C11A5 /* SearchBar.swift */,
+				094ED3A02BAF8AA6004D4F0A /* HistorySearch.swift */,
+				094ED3A22BB062AD004D4F0A /* EmptySearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -702,6 +708,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094ED3A32BB062AD004D4F0A /* EmptySearchView.swift in Sources */,
 				09DFDE622B98CD40005821D7 /* EmailVerificationView.swift in Sources */,
 				09D968B32B7A358E00D373A8 /* UIWindow+Extension.swift in Sources */,
 				095FEB9E2B9A35A7006EE20F /* ResetPasswordView.swift in Sources */,
@@ -740,6 +747,7 @@
 				094A652A2B7109F800E6FF4E /* MenuOption.swift in Sources */,
 				0950D8E62B725564005D755A /* TabItem.swift in Sources */,
 				0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */,
+				094ED3A12BAF8AA6004D4F0A /* HistorySearch.swift in Sources */,
 				09879DE82BAB6EE0005377A0 /* CurrentTabEnvKey.swift in Sources */,
 				094A65212B71059200E6FF4E /* ExploreHeader.swift in Sources */,
 				0901E8532B73A8CD007C11A5 /* CommunityView.swift in Sources */,

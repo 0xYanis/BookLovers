@@ -38,7 +38,7 @@ extension APICall {
     func urlRequest(baseURL: String) throws -> URLRequest {
         guard let url = URL(string: baseURL + path)
         else { throw APIError.invalidURL }
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData)
         request.httpMethod = method
         request.allHTTPHeaderFields = headers
         request.httpBody = try body()

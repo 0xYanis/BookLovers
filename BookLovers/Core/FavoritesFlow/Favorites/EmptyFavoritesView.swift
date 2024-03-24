@@ -12,25 +12,11 @@ struct EmptyFavoritesView: View {
     @Environment(\.currentTab) var currentTab
     
     var body: some View {
-        VStack(spacing: 32) {
-            Image(systemName: "heart")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(.gray)
-                .frame(width: 52, height: 52)
-                .padding()
-            VStack(spacing: 12) {
-                Text("Add books to favorites")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                Text("You can always have access to your favorites")
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.gray)
-                    .padding(.horizontal, 32)
-            }
-            .padding()
-        }
-        .frame(maxHeight: .infinity)
+        EmptyScreen(
+            title: "heart",
+            subtitle: "Add books to favorites",
+            systemImage: "You can always have access to your favorites"
+        )
         .overlay(alignment: .bottom) {
             BigButton(
                 title: "Explore books",

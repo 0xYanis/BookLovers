@@ -27,15 +27,22 @@ struct Book: Identifiable {
 extension Book {
     init(dto: DTOBook) {
         self.id = dto.id
-        self.title = dto.bookInfo.title
-        self.authorsArray = dto.bookInfo.authors
+        self.title = dto.bookInfo.title ?? ""
+        self.authorsArray = dto.bookInfo.authors ?? []
         self.description = dto.bookInfo.description ?? ""
-        self.pages = dto.bookInfo.pageCount
-        self.smallImage = URL(string: "https" + dto.bookInfo.imageLinks.smallThumbnail.dropFirst(4))
-        self.bigImage = URL(string: "https" + dto.bookInfo.imageLinks.thumbnail.dropFirst(4))
-        self.previewLink = URL(string: dto.bookInfo.previewLink)
+        self.pages = dto.bookInfo.pageCount ?? 0
+        self.smallImage = URL(string: "https" + (dto.bookInfo.imageLinks.smallThumbnail?.dropFirst(4) ?? ""))
+        self.bigImage = URL(string: "https" + (dto.bookInfo.imageLinks.thumbnail?.dropFirst(4) ?? ""))
+        self.previewLink = URL(string: dto.bookInfo.previewLink ?? "")
         self.pdf = URL(string: dto.accessInfo.pdf.acsTokenLink ?? "")
         self.genre = LiteraryGenre(rawValue: dto.bookInfo.categories?.first ?? "")
+    }
+}
+
+extension [DTOBook] {
+    var converted: [Book] {
+        let books = self.compactMap { Book(dto: $0) }
+        return books
     }
 }
 

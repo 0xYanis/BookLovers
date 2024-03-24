@@ -10,6 +10,7 @@ import Combine
 
 @MainActor
 final class SearchViewModel: ObservableObject {
+    @Published private(set) var history = [String]()
     @Published private(set) var books = [Book]()
     @Published private(set) var isSearching = false
     @Published var searchText = "" {
@@ -78,13 +79,13 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func show(list: DTOBookList) {
-        books.append(contentsOf: list.items.convert)
+        saveQuery()
+        books.append(contentsOf: list.items.converted)
     }
-}
-
-extension [DTOBook] {
-    var convert: [Book] {
-        let books = self.compactMap { Book(dto: $0) }
-        return books
+    
+    private func saveQuery() {
+        if history.count >= 3 { history.removeFirst() }
+        UserDefaults.standard.set(history, forKey: "History")
+        history.append(searchText)
     }
 }
