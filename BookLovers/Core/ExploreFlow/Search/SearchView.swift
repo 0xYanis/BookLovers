@@ -66,7 +66,7 @@ struct SearchView: View {
         if viewModel.books.isEmpty && !viewModel.isSearching {
             EmptySearchView()
                 .transition(.opacity)
-                .padding(.top, 100)
+                .padding(.top, 32)
         } else {
             searchResultsView
                 .transition(.opacity)
@@ -141,9 +141,9 @@ struct SearchView: View {
     private func searchButton(_ proxy: ScrollViewProxy) -> some View {
         if showSearchButton {
             Button {
+                isFocused = true
                 withAnimation {
                     proxy.scrollTo("searchbar", anchor: .top)
-                    isFocused = true
                 }
             } label: {
                 Image(systemName: "magnifyingglass")

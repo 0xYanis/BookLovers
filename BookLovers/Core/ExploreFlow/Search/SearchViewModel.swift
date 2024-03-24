@@ -38,6 +38,7 @@ final class SearchViewModel: ObservableObject {
     }
     
     func refresh() {
+        isSearching = true
         startIndex = 0
         books.removeAll()
         searchInWeb()
@@ -50,7 +51,6 @@ final class SearchViewModel: ObservableObject {
             .map { $0.isEmpty }
             .sink { [weak self] isEmpty in
                 guard !isEmpty else { return }
-                self?.isSearching = true
                 self?.refresh()
             }
             .store(in: &cancellabels)
@@ -86,8 +86,9 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func saveQuery() {
+        if history.contains(searchText) { return }
         if history.count >= 3 { history.removeFirst() }
         UserDefaults.standard.set(history, forKey: "History")
-        history.append(searchText)
+        history.insert(searchText, at: 0)
     }
 }

@@ -12,7 +12,7 @@ struct EmptySearchView: View {
     var body: some View {
         EmptyScreen(
             title: "Start typing into the search field",
-            subtitle: "Google's million library is at your service",
+            subtitle: "Bookly's biggest library is at your service",
             systemImage: "magnifyingglass"
         )
     }
