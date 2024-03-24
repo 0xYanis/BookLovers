@@ -9,6 +9,7 @@ import SwiftUI
 import Components
 
 struct SearchView: View {
+    @State private var showSearchButton = false
     @State private var showProgressView = false
     @FocusState private var isFocused: Bool
     @Environment(\.dismiss) private var dismiss
@@ -16,36 +17,32 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 30) {
-                    SearchBar("Search books", text: $viewModel.searchText)
-                        .focused($isFocused)
-                        .padding(.horizontal)
-                    
-                    if !viewModel.isSearching {
-                        HistorySearch(history: viewModel.history) { tappedLabel in
-                            viewModel.searchText = tappedLabel
-                        }
+            ScrollViewReader { proxy in
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 30) {
+                        SearchBar("Search books", text: $viewModel.searchText)
+                            .id("searchbar")
+                            .focused($isFocused)
+                            .padding(.horizontal)
+                            .onAppear(perform: searchBarAppear)
+                            .onDisappear(perform: searchBarDisappear)
+                        
+                        contentView
                     }
-                    
-                    if viewModel.books.isEmpty {
-                        EmptySearchView()
-                            .transition(.opacity)
-                            .padding(.top, 100)
-                    } else {
-                        searchResultsView
-                            .transition(.opacity)
-                    }
-                    
-                    if showProgressView {
+                }
+                .overlay(alignment: .bottomTrailing) {
+                    searchButton(proxy)
+                }
+                .overlay {
+                    if viewModel.isSearching {
                         ProgressView()
-                            .frame(maxWidth: .infinity)
                     }
                 }
             }
             .toolbar { trailingButton }
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
+            .animation(.easeInOut(duration: 0.3), value: showSearchButton)
         }
         .refreshable { viewModel.refresh() }
         .animation(.spring(), value: viewModel.isSearching)
@@ -55,6 +52,29 @@ struct SearchView: View {
         }
         .onDisappear {
             viewModel.cancelSearchObserve()
+        }
+    }
+    
+    @ViewBuilder
+    private var contentView: some View {
+        if !viewModel.isSearching {
+            HistorySearch(history: viewModel.history) { tappedLabel in
+                viewModel.searchText = tappedLabel
+            }
+        }
+        
+        if viewModel.books.isEmpty && !viewModel.isSearching {
+            EmptySearchView()
+                .transition(.opacity)
+                .padding(.top, 100)
+        } else {
+            searchResultsView
+                .transition(.opacity)
+        }
+        
+        if showProgressView {
+            ProgressView()
+                .frame(maxWidth: .infinity)
         }
     }
     
@@ -74,7 +94,7 @@ struct SearchView: View {
                             .tag(book.id)
                             .padding(.horizontal)
                             .padding(.bottom)
-                            .onAppear { appearLastId(book.id) }
+                            .onAppear { appearedItem(book.id) }
                     }
                 } header: {
                     TagCaruselView(
@@ -117,21 +137,52 @@ struct SearchView: View {
         }
     }
     
-    private func setSortType(_ type: SortType) {
+    @ViewBuilder
+    private func searchButton(_ proxy: ScrollViewProxy) -> some View {
+        if showSearchButton {
+            Button {
+                withAnimation {
+                    proxy.scrollTo("searchbar", anchor: .top)
+                    isFocused = true
+                }
+            } label: {
+                Image(systemName: "magnifyingglass")
+                    .padding(10)
+                    .background(Material.bar)
+                    .clipShape(Circle())
+                    .shadow(radius: 15)
+                    .padding()
+            }
+        }
+    }
+}
+
+// MARK: - Private logic methods
+
+private extension SearchView {
+    func setSortType(_ type: SortType) {
         
     }
 
-    private func sortByTag(_ id: Int) {
+    func sortByTag(_ id: Int) {
         
     }
     
-    private func appearLastId(_ id: String) {
+    func appearedItem(_ id: String) {
         if id == viewModel.books.last?.id {
             showProgressView = true
             viewModel.loadMore()
         } else {
             showProgressView = false
         }
+    }
+    
+    func searchBarAppear() {
+        showSearchButton = false
+    }
+    
+    func searchBarDisappear() {
+        showSearchButton = true
     }
 }
 

@@ -30,6 +30,7 @@ public struct EmptyScreen: View {
                 Text(title)
                     .font(.title)
                     .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
                 Text(subtitle)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.gray)

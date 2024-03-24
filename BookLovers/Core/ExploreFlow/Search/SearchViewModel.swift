@@ -70,6 +70,7 @@ final class SearchViewModel: ObservableObject {
                 case .finished:
                     print("FINISHED \n")
                 case .failure(let error):
+                    self.isSearching = false
                     print(error)
                 }
             } receiveValue: { [weak self] list in
@@ -79,6 +80,7 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func show(list: DTOBookList) {
+        isSearching = false
         saveQuery()
         books.append(contentsOf: list.items.converted)
     }
