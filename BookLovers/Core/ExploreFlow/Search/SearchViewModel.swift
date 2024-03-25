@@ -30,6 +30,7 @@ final class SearchViewModel: ObservableObject {
             baseURL: "https://www.googleapis.com/books/v1")
     ) {
         self.searchRepository = searchRepository
+        loadQuery()
     }
     
     func loadMore() {
@@ -92,5 +93,11 @@ final class SearchViewModel: ObservableObject {
         if history.count >= 3 { history.removeFirst() }
         UserDefaults.standard.set(history, forKey: "History")
         history.insert(searchText, at: 0)
+    }
+    
+    private func loadQuery() {
+        let ud = UserDefaults.standard
+        let savedHistory = ud.object(forKey: "History") as? [String]
+        self.history = savedHistory ?? []
     }
 }

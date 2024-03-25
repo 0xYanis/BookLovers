@@ -90,10 +90,16 @@ struct SearchView: View {
             .padding(.vertical, 10)
             .background()
             ForEach(viewModel.books) { book in
-                MostPopularItem(book: book, background: Color.gray.opacity(0.1))
-                    .padding(.horizontal)
-                    .onAppear { appearedItem(book.id) }
+                MostPopularItem(
+                    book: book,
+                    background: Color.gray.opacity(0.1)
+                )
+                .padding(.horizontal)
             }
+            Color.clear
+                .frame(height: 50)
+                .onAppear { loadMore(true) }
+                .onDisappear { loadMore(false) }
         } topItem: {
             if !viewModel.books.isEmpty {
                 trailingParagraphItem
@@ -157,8 +163,8 @@ private extension SearchView {
         
     }
     
-    func appearedItem(_ id: String) {
-        if id == viewModel.books.last?.id {
+    func loadMore(_ isAppeared: Bool) {
+        if isAppeared {
             showProgressView = true
             viewModel.loadMore()
         } else {
