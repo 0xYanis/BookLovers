@@ -27,6 +27,16 @@ struct SearchBar: View {
                 TextField(placeholder, text: $text)
                     .padding(.horizontal, 3)
                     .padding(.vertical, 7)
+                
+                if !text.isEmpty {
+                    Button {
+                        text.removeAll()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(.gray)
+                    }
+                }
+
             } else {
                 Text(placeholder)
                     .foregroundStyle(.gray)
