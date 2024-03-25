@@ -31,7 +31,7 @@ struct DTOBookInfo: Decodable {
     let description: String?
     let pageCount: Int?
     let categories: [String]?
-    let imageLinks: ImageLinks
+    let imageLinks: ImageLinks?
     let previewLink: String?
     let infoLink: String?
     

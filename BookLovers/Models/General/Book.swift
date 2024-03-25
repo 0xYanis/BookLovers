@@ -31,8 +31,8 @@ extension Book {
         self.authorsArray = dto.bookInfo.authors ?? []
         self.description = dto.bookInfo.description ?? ""
         self.pages = dto.bookInfo.pageCount ?? 0
-        self.smallImage = URL(string: "https" + (dto.bookInfo.imageLinks.smallThumbnail?.dropFirst(4) ?? ""))
-        self.bigImage = URL(string: "https" + (dto.bookInfo.imageLinks.thumbnail?.dropFirst(4) ?? ""))
+        self.smallImage = URL(string: "https" + (dto.bookInfo.imageLinks?.smallThumbnail?.dropFirst(4) ?? ""))
+        self.bigImage = URL(string: "https" + (dto.bookInfo.imageLinks?.thumbnail?.dropFirst(4) ?? ""))
         self.previewLink = URL(string: dto.bookInfo.previewLink ?? "")
         self.pdf = URL(string: dto.accessInfo.pdf.acsTokenLink ?? "")
         self.genre = LiteraryGenre(rawValue: dto.bookInfo.categories?.first ?? "")

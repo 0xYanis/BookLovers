@@ -66,6 +66,7 @@ final class SearchViewModel: ObservableObject {
     private func searchInWeb(startIndex: Int = 0) {
         searchRepository
             .search(query: searchText, count: maxResults, startIndex: startIndex)
+            .compactMap { $0.items }
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -80,10 +81,10 @@ final class SearchViewModel: ObservableObject {
             .store(in: &cancellabels)
     }
     
-    private func show(list: DTOBookList) {
+    private func show(list: [DTOBook]) {
         isSearching = false
         saveQuery()
-        books.append(contentsOf: list.items.converted)
+        books.append(contentsOf: list.converted)
     }
     
     private func saveQuery() {

@@ -19,24 +19,17 @@ struct SearchView: View {
         NavigationStack {
             ScrollViewReader { proxy in
                 ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 30) {
-                        SearchBar("Search books", text: $viewModel.searchText)
-                            .id("searchbar")
-                            .focused($isFocused)
-                            .padding(.horizontal)
-                            .onAppear(perform: searchBarAppear)
-                            .onDisappear(perform: searchBarDisappear)
-                        
+                    LazyVStack(
+                        alignment: .leading,
+                        spacing: 0,
+                        pinnedViews: .sectionHeaders
+                    ) {
+                        searchBarView
                         contentView
                     }
                 }
                 .overlay(alignment: .bottomTrailing) {
                     searchButton(proxy)
-                }
-                .overlay {
-                    if viewModel.isSearching {
-                        ProgressView()
-                    }
                 }
             }
             .toolbar { trailingButton }
@@ -55,12 +48,23 @@ struct SearchView: View {
         }
     }
     
+    private var searchBarView: some View {
+        SearchBar("Search books", text: $viewModel.searchText)
+            .id("searchbar")
+            .focused($isFocused)
+            .padding(.horizontal)
+            .onAppear(perform: searchBarAppear)
+            .onDisappear(perform: searchBarDisappear)
+            .padding(.vertical)
+    }
+    
     @ViewBuilder
     private var contentView: some View {
         if !viewModel.isSearching {
             HistorySearch(history: viewModel.history) { tappedLabel in
                 viewModel.searchText = tappedLabel
             }
+            .padding(.vertical)
         }
         
         if viewModel.books.isEmpty && !viewModel.isSearching {
@@ -69,41 +73,26 @@ struct SearchView: View {
                 .padding(.top, 32)
         } else {
             searchResultsView
-                .transition(.opacity)
         }
         
-        if showProgressView {
+        if showProgressView || viewModel.isSearching {
             ProgressView()
                 .frame(maxWidth: .infinity)
         }
     }
     
-    private var titleView: some View {
-        Text("Search")
-            .font(.largeTitle)
-            .fontWeight(.bold)
-            .padding(.horizontal)
-    }
-    
     private var searchResultsView: some View {
         NewParagraphView(title: "Discover") {
-            LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
-                Section {
-                    ForEach(viewModel.books) { book in
-                        MostPopularItem(book: book, background: Color.gray.opacity(0.1))
-                            .tag(book.id)
-                            .padding(.horizontal)
-                            .padding(.bottom)
-                            .onAppear { appearedItem(book.id) }
-                    }
-                } header: {
-                    TagCaruselView(
-                        tags: LiteraryGenre.asArray,
-                        onTap: sortByTag
-                    )
-                    .padding(.vertical, 10)
-                    .background()
-                }
+            TagCaruselView(
+                tags: LiteraryGenre.asArray,
+                onTap: sortByTag
+            )
+            .padding(.vertical, 10)
+            .background()
+            ForEach(viewModel.books) { book in
+                MostPopularItem(book: book, background: Color.gray.opacity(0.1))
+                    .padding(.horizontal)
+                    .onAppear { appearedItem(book.id) }
             }
         } topItem: {
             if !viewModel.books.isEmpty {
