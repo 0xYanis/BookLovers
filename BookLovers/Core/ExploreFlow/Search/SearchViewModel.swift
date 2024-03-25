@@ -38,6 +38,7 @@ final class SearchViewModel: ObservableObject {
     }
     
     func refresh() {
+        guard !searchText.isEmpty else { return }
         isSearching = true
         startIndex = 0
         books.removeAll()
