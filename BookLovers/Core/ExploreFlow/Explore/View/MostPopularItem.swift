@@ -50,9 +50,14 @@ struct MostPopularItem: View {
                 Text(book.authors)
                     .font(.caption)
                     .fontWeight(.semibold)
+                
+                Spacer()
+                
+                Text(book.publishedDate)
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.gray)
             }
-            
-            rating
             
             Text(book.description)
             .lineLimit(3)

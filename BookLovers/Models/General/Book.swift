@@ -11,18 +11,23 @@ struct Book: Identifiable {
     let id: String
     let title: String
     let description: String
+    let publisher: String
+    let publishedDate: String
     let pages: Int
     let smallImage: URL?
     let bigImage: URL?
     let previewLink: URL?
     let pdf: URL?
     let genre: LiteraryGenre?
-    var authors: String {
-        self.authorsArray.joined(separator: ", ")
-    }
+    
+    var categories: String { self.categoriesArray.joined(separator: " · ") }
+    var authors: String { self.authorsArray.joined(separator: ", ") }
     
     private var authorsArray: [String]
+    private var categoriesArray: [String]
 }
+
+// MARK: - DTO to Book
 
 extension Book {
     init(dto: DTOBook) {
@@ -36,6 +41,27 @@ extension Book {
         self.previewLink = URL(string: dto.bookInfo.previewLink ?? "")
         self.pdf = URL(string: dto.accessInfo.pdf.acsTokenLink ?? "")
         self.genre = LiteraryGenre(rawValue: dto.bookInfo.categories?.first ?? "")
+        self.categoriesArray = dto.bookInfo.categories ?? []
+        self.publisher = dto.bookInfo.publisher ?? ""
+        self.publishedDate = Book.dateConverter(string: dto.bookInfo.publishedDate)
+    }
+    
+    static func dateConverter(string: String?) -> String {
+        guard let string else { return "" }
+        let dateFormatter = DateFormatter()
+        //dateFormatter.locale = Locale(identifier: "ru_RU")
+        
+        if string.count == 4 { return string }
+
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = dateFormatter.date(from: string) {
+            dateFormatter.dateStyle = .medium
+            let converted = dateFormatter.string(from: date)
+            return converted
+        } else {
+            return string
+        }
     }
 }
 
@@ -46,19 +72,24 @@ extension [DTOBook] {
     }
 }
 
+// MARK: - SwiftUI Preview
+
 extension Book {
     static var preview: Book {
         .init(
-            id: "1",
-            title: "The master and Margarita",
-            description: "lOREM Ipsym is a dummy text..",
-            pages: 82,
-            smallImage: URL(string: "https://books.google.com/books/content?id=j5H4zgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"),
-            bigImage: URL(string: "https://books.google.com/books/content?id=j5H4zgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"),
+            id: "0",
+            title: "Title of the book",
+            description: "",
+            publisher: "",
+            publishedDate: "",
+            pages: 0,
+            smallImage: nil,
+            bigImage: nil,
             previewLink: nil,
             pdf: nil,
             genre: nil,
-            authorsArray: ["Yanis, miyagis"]
+            authorsArray: [],
+            categoriesArray: []
         )
     }
 }
