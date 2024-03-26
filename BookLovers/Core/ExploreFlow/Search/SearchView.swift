@@ -49,13 +49,18 @@ struct SearchView: View {
     }
     
     private var searchBarView: some View {
-        SearchBar("Search books", text: $viewModel.searchText)
-            .id("searchbar")
-            .focused($isFocused)
-            .padding(.horizontal)
-            .onAppear(perform: searchBarAppear)
-            .onDisappear(perform: searchBarDisappear)
-            .padding(.vertical)
+        HStack {
+            SearchBar("Search books", text: $viewModel.searchText)
+                .focused($isFocused)
+                .onAppear(perform: searchBarAppear)
+                .onDisappear(perform: searchBarDisappear)
+            
+            if !viewModel.books.isEmpty {
+                Button("Clear", action: clear)
+            }
+        }
+        .id("searchbar")
+        .padding()
     }
     
     @ViewBuilder
@@ -178,6 +183,10 @@ private extension SearchView {
     
     func searchBarDisappear() {
         showSearchButton = true
+    }
+    
+    func clear() {
+        viewModel.clear()
     }
 }
 

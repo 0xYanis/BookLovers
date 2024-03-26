@@ -46,6 +46,12 @@ final class SearchViewModel: ObservableObject {
         searchInWeb()
     }
     
+    func clear() {
+        startIndex = 0
+        books.removeAll()
+        searchText.removeAll()
+    }
+    
     func startQueryObserve() {
         $searchText
             .debounce(for: 1, scheduler: DispatchQueue.main)
