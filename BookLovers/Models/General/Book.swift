@@ -92,3 +92,33 @@ extension Book {
         )
     }
 }
+
+// MARK: - DTOBook init
+
+extension DTOBook {
+    init(model: Book) {
+        self.init(
+            id: model.id,
+            bookInfo: .init(
+                title: model.title,
+                authors: model.authors.components(separatedBy: ", "),
+                publisher: model.publisher,
+                publishedDate: model.publishedDate,
+                description: model.description,
+                pageCount: model.pages,
+                categories: model.categories.components(separatedBy: " · "),
+                imageLinks: .init(
+                    smallThumbnail: model.smallImage?.description,
+                    thumbnail: model.bigImage?.description
+                ),
+                previewLink: model.previewLink?.description,
+                infoLink: nil
+            ),
+            accessInfo: .init(
+                pdf: .init(
+                    isAvailable: !(model.pdf?.description.isEmpty ?? true),
+                    acsTokenLink: model.pdf?.description)
+            )
+        )
+    }
+}
