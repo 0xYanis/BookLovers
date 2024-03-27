@@ -6,10 +6,8 @@
 //
 
 import SwiftUI
-import Components
 
 struct CommunityView: View {
-    @State private var showLogin = false
     @EnvironmentObject private var userStore: UserStore
     
     var body: some View {
@@ -19,40 +17,53 @@ struct CommunityView: View {
     }
     
     private var currentView: some View {
-        createCommunityView
-            .overlay(alignment: .bottom) {
-                BigButton(title: "Create community", action: { showLogin.toggle() })
-                    .padding(.bottom, 64)
-                    .padding(.horizontal)
-            }
-            .sheet(isPresented: $showLogin) {
-                LoginView()
-                    .presentationDetents([.medium, .large])
-                    .presentationDragIndicator(.hidden)
-            }
+        CreateCommunityView()
+        //communityList
     }
     
-    private var createCommunityView: some View {
-        VStack(spacing: 32) {
-            Text("👨‍👩‍👧‍👦")
-                .font(.largeTitle)
-                .padding(20)
-                .background(Color.green)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding()
-            VStack(spacing: 12) {
-                Text("Create your community")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                Text("Invite friends and chat with like-minded people")
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.gray)
-                    .padding(.horizontal, 32)
-            }
-            .padding()
+    private var communityList: some View {
+        ScrollView {
+            
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .listStyle(.plain)
+        .toolbar {
+            titleLabel
+            addButton
+            userButton
+        }
+    }
+    
+    private var titleLabel: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            Text("Communities")
+                .font(.title)
+                .fontWeight(.bold)
+        }
+    }
+    
+    private var addButton: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+                
+            } label: {
+                Image(systemName: "plus.circle.fill")
+                    .font(.title3)
+                    .foregroundStyle(Color.gray)
+                    .clipShape(Circle())
+            }
+        }
+    }
+    
+    private var userButton: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            NavigationLink(destination: ProfileView()) {
+                Avatar(url: userStore.user.avatar)
+                    .scaledToFill()
+                    .frame(width: 25, height: 25)
+                    .background(Color.gray)
+                    .clipShape(Circle())
+            }
+        }
     }
 }
 

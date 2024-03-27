@@ -41,6 +41,51 @@ struct ExploreView: View {
     
     // MARK: - UI components
     
+    private func exploreScreen() -> some View {
+        ScrollView {
+            // header
+            LazyVStack(spacing: 0) {
+                ExploreHeader(showSearchView: $showSearchView)
+                    .padding(.bottom)
+                
+                LazyVStack(spacing: 0) {
+                    // most popular now
+                    NewParagraphView(title: "Most Popular") {
+                        TabView {
+                            ForEach(0..<3, id: \.self) { item in
+                                MostPopularItem(book: .preview)
+                                    .padding(.horizontal)
+                            }
+                        }
+                        .frame(height: 150)
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                    } topItem: {
+                        Button("View all", action: {})
+                            .foregroundStyle(.gray)
+                    }
+                    
+                    // all books
+                    Divider().padding(.horizontal)
+                    NewParagraphView(title: "Trending Books") {
+                        
+                    }
+                }
+                .padding(.top)
+                .frame(maxWidth: .infinity)
+                .background(Color(uiColor: .secondarySystemBackground))
+                .clipShape(CustomCornersShape(corners: [.topLeft, .topRight], radius: 25))
+            }
+        }
+        .toolbar {
+            leadingItem
+            centerItem
+            trailingItem
+        }
+        .onAppear {
+            selectedSideOption = .explore
+        }
+    }
+    
     private var leadingItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             if UIDevice.isiPhone {
@@ -86,53 +131,8 @@ struct ExploreView: View {
                 Avatar(url: userStore.user.avatar)
                     .scaledToFill()
                     .frame(width: 22, height: 22)
-                    .clipShape(Circle())   
+                    .clipShape(Circle())
             }
-        }
-    }
-    
-    private func exploreScreen() -> some View {
-        ScrollView {
-            // header
-            LazyVStack(spacing: 0) {
-                ExploreHeader(showSearchView: $showSearchView)
-                    .padding(.bottom)
-                
-                LazyVStack(spacing: 0) {
-                    // most popular now
-                    NewParagraphView(title: "Most Popular") {
-                        TabView {
-                            ForEach(0..<3, id: \.self) { item in
-                                MostPopularItem(book: .preview)
-                                    .padding(.horizontal)
-                            }
-                        }
-                        .frame(height: 150)
-                        .tabViewStyle(.page(indexDisplayMode: .never))
-                    } topItem: {
-                        Button("View all", action: {})
-                            .foregroundStyle(.gray)
-                    }
-                    
-                    // all books
-                    Divider().padding(.horizontal)
-                    NewParagraphView(title: "Trending Books") {
-                        
-                    }
-                }
-                .padding(.top)
-                .frame(maxWidth: .infinity)
-                .background(Color(uiColor: .secondarySystemBackground))
-                .clipShape(CustomCornersShape(corners: [.topLeft, .topRight], radius: 25))
-            }
-        }
-        .toolbar {
-            leadingItem
-            centerItem
-            trailingItem
-        }
-        .onAppear {
-            selectedSideOption = .explore
         }
     }
     

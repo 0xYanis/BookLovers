@@ -71,6 +71,7 @@
 		09DFDE742B99BF5E005821D7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 09DFDE732B99BF5E005821D7 /* Kingfisher */; };
 		09DFDE762B99C478005821D7 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE752B99C478005821D7 /* Avatar.swift */; };
 		09E4566D2BB3101800C4D9B5 /* Api in Frameworks */ = {isa = PBXBuildFile; productRef = 09E4566C2BB3101800C4D9B5 /* Api */; };
+		09E4566F2BB4332700C4D9B5 /* CreateCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4566E2BB4332700C4D9B5 /* CreateCommunityView.swift */; };
 		09E94BDE2BAECCF5000D7E60 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */; };
 		09E94BE02BAED218000D7E60 /* DTOBookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BDF2BAED218000D7E60 /* DTOBookList.swift */; };
 		09E94BE42BAF098D000D7E60 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E94BE32BAF098D000D7E60 /* Book.swift */; };
@@ -160,6 +161,7 @@
 		09DFDE6C2B99A746005821D7 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		09DFDE752B99C478005821D7 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		09E4566B2BB30E7E00C4D9B5 /* Api */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Api; sourceTree = "<group>"; };
+		09E4566E2BB4332700C4D9B5 /* CreateCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityView.swift; sourceTree = "<group>"; };
 		09E94BDD2BAECCF5000D7E60 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		09E94BDF2BAED218000D7E60 /* DTOBookList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOBookList.swift; sourceTree = "<group>"; };
 		09E94BE32BAF098D000D7E60 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				0901E8522B73A8CD007C11A5 /* CommunityView.swift */,
+				09E4566E2BB4332700C4D9B5 /* CreateCommunityView.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				0992AFE52BA9C6B10033AAEC /* AppDelegate.swift in Sources */,
 				09DFDE762B99C478005821D7 /* Avatar.swift in Sources */,
 				09736E032B74109600B50164 /* SortType.swift in Sources */,
+				09E4566F2BB4332700C4D9B5 /* CreateCommunityView.swift in Sources */,
 				09A165782B8120BE008C0AB3 /* UserStore.swift in Sources */,
 				094A651D2B70EEE800E6FF4E /* MainTabbarView.swift in Sources */,
 				09A1656F2B80BC5F008C0AB3 /* ProfileHeader.swift in Sources */,

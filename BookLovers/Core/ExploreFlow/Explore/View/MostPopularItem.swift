@@ -44,12 +44,8 @@ struct MostPopularItem: View {
                 .fontWeight(.semibold)
             
             HStack(alignment: .top, spacing: 4) {
-                Text("by")
+                Text("by \(book.authors)")
                     .font(.caption)
-                    .lineLimit(1)
-                Text(book.authors)
-                    .font(.caption)
-                    .fontWeight(.semibold)
                 
                 Spacer()
                 
