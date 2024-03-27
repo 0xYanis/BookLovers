@@ -10,6 +10,7 @@ import Components
 
 struct SearchView: View {
     @State private var showSearchButton = false
+    @Namespace private var animation
     @FocusState private var isFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = SearchViewModel()
@@ -95,7 +96,8 @@ struct SearchView: View {
             .padding(.vertical, 10)
             .background()
             ForEach(viewModel.sortedBooks) { book in
-                SearchCardView(book: book).tag(book.id)
+                SearchCardView(book: book, animation: animation)
+                    .tag(book.id)
             }
             Color.clear
                 .frame(height: 50)
