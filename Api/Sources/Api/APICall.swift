@@ -7,7 +7,14 @@
 
 import Foundation
 
-protocol APICall {
+public typealias HTTPCode = Int
+public typealias HTTPCodes = Range<HTTPCode>
+
+public extension HTTPCodes {
+    static let success = 200 ..< 300
+}
+
+public protocol APICall {
     var path: String { get }
     var method: String { get }
     var headers: [String: String]? { get }
@@ -15,26 +22,7 @@ protocol APICall {
     func body() throws -> Data?
 }
 
-enum APIError: Error {
-    case invalidURL
-    case httpCode(_ code: HTTPCode)
-    case unexpectedResponse
-}
-
-extension APIError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .invalidURL:
-            return "Invalid URL"
-        case .httpCode(let code):
-            return "Unexpected HTTP code: \(code)"
-        case .unexpectedResponse:
-            return "Unexpected response from server"
-        }
-    }
-}
-
-extension APICall {
+public extension APICall {
     func urlRequest(baseURL: String) throws -> URLRequest {
         guard let url = URL(string: baseURL + path)
         else { throw APIError.invalidURL }
@@ -44,11 +32,4 @@ extension APICall {
         request.httpBody = try body()
         return request
     }
-}
-
-typealias HTTPCode = Int
-typealias HTTPCodes = Range<HTTPCode>
-
-extension HTTPCodes {
-    static let success = 200 ..< 300
 }

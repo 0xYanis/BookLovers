@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Api
 
 protocol SearchRepository: WebRepository {
     func search(
