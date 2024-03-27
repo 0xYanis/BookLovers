@@ -95,11 +95,7 @@ struct SearchView: View {
             .padding(.vertical, 10)
             .background()
             ForEach(viewModel.books) { book in
-                MostPopularItem(
-                    book: book,
-                    background: Color.gray.opacity(0.1)
-                )
-                .padding(.horizontal)
+                SearchCardView(book: book).tag(book.id)
             }
             Color.clear
                 .frame(height: 50)

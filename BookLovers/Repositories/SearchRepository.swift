@@ -48,7 +48,7 @@ extension SearchRepositoryImpl.API: APICall {
     var path: String {
         switch self {
         case .searchBooks(let query, let count, let startIndex):
-            return "/volumes?q=\(query)&maxResults=\(count)&orderBy=relevance&startIndex=\(startIndex)"
+            return "/volumes?q=\(query)&maxResults=\(count)&orderBy=newest&startIndex=\(startIndex)"
         case .searchBook(let id):
             return "/\(id)"
         }

@@ -63,6 +63,7 @@
 		09BBB1752B7E297600F946F4 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBB1742B7E297600F946F4 /* ChatsView.swift */; };
 		09BBB1782B7E333700F946F4 /* ChatItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BBB1772B7E333700F946F4 /* ChatItemView.swift */; };
 		09D968B32B7A358E00D373A8 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D968B22B7A358E00D373A8 /* UIWindow+Extension.swift */; };
+		09DF0C6C2BB4787100354240 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF0C6B2BB4787100354240 /* SearchCardView.swift */; };
 		09DFDE602B98C3FB005821D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09DFDE5F2B98C3FB005821D7 /* GoogleService-Info.plist */; };
 		09DFDE622B98CD40005821D7 /* EmailVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDE612B98CD40005821D7 /* EmailVerificationView.swift */; };
 		09DFDE652B98D16F005821D7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 09DFDE642B98D16F005821D7 /* Lottie */; };
@@ -155,6 +156,7 @@
 		09BBB1772B7E333700F946F4 /* ChatItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemView.swift; sourceTree = "<group>"; };
 		09BED3032B625F7C00FDEB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09D968B22B7A358E00D373A8 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		09DF0C6B2BB4787100354240 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
 		09DFDE5F2B98C3FB005821D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		09DFDE612B98CD40005821D7 /* EmailVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationView.swift; sourceTree = "<group>"; };
 		09DFDE682B98DD73005821D7 /* verification.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verification.json; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				0901E85E2B73E855007C11A5 /* SearchBar.swift */,
 				094ED3A02BAF8AA6004D4F0A /* HistorySearch.swift */,
 				094ED3A22BB062AD004D4F0A /* EmptySearchView.swift */,
+				09DF0C6B2BB4787100354240 /* SearchCardView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				09A165662B80A64E008C0AB3 /* ProfileView.swift in Sources */,
 				094A652A2B7109F800E6FF4E /* MenuOption.swift in Sources */,
 				0950D8E62B725564005D755A /* TabItem.swift in Sources */,
+				09DF0C6C2BB4787100354240 /* SearchCardView.swift in Sources */,
 				0905C52A2B84FAB7002342E9 /* PhotosPickerView.swift in Sources */,
 				094ED3A12BAF8AA6004D4F0A /* HistorySearch.swift in Sources */,
 				09879DE82BAB6EE0005377A0 /* CurrentTabEnvKey.swift in Sources */,
