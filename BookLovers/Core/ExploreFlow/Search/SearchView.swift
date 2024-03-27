@@ -9,6 +9,8 @@ import SwiftUI
 import Components
 
 struct SearchView: View {
+    @State private var selectedBook: Book?
+    @State private var showDetailView = false
     @State private var showSearchButton = false
     @Namespace private var animation
     @FocusState private var isFocused: Bool
@@ -37,8 +39,12 @@ struct SearchView: View {
             .navigationBarTitleDisplayMode(.inline)
             .animation(.easeInOut(duration: 0.3), value: showSearchButton)
         }
+        .opacity(showDetailView ? 0.0 : 1.0)
         .refreshable { viewModel.refresh() }
         .animation(.spring(), value: viewModel.state)
+        .onChange(of: showDetailView) { show in
+            if !show { selectedBook = nil }
+        }
         .onAppear {
             isFocused = true
             viewModel.bind()
@@ -96,8 +102,11 @@ struct SearchView: View {
             .padding(.vertical, 10)
             .background()
             ForEach(viewModel.sortedBooks) { book in
-                SearchCardView(book: book, animation: animation)
-                    .tag(book.id)
+                SearchCardView(book: book, animation: animation) {
+                    showDetailView.toggle()
+                    selectedBook = book
+                }
+                .tag(book.id)
             }
             Color.clear
                 .frame(height: 50)

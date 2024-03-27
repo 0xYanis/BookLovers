@@ -8,9 +8,9 @@
 import SwiftUI
 import Kingfisher
 
-fileprivate enum SearchCardMenu: String, CaseIterable, Identifiable {
-    case show = "show details"
-    case save = "save to favorites"
+fileprivate enum SearchCardOption: String, CaseIterable, Identifiable {
+    case show = "Show details"
+    case save = "Save to favorites"
     
     var id: String { rawValue }
     var image: String {
@@ -24,44 +24,18 @@ fileprivate enum SearchCardMenu: String, CaseIterable, Identifiable {
 struct SearchCardView: View {
     var book: Book
     var animation: Namespace.ID
+    var action: () -> ()
     
     var body: some View {
-        Menu {
-            ForEach(SearchCardMenu.allCases) { item in
-                Button {
-                    
-                } label: {
-                    Label(
-                        item.rawValue.capitalized,
-                        systemImage: item.image
-                    )
-                }
-            }
-        } label: {
-            HStack(spacing: -25) {
-                cardView
-                .padding()
-                .frame(height: 120)
-                .background {
-                    RoundedRectangle(
-                        cornerRadius: 10,
-                        style: .continuous
-                    )
-                    .fill(Color(.tertiarySystemBackground))
-                }
-                .shadow(color: .black.opacity(0.15), radius: 15)
-                .zIndex(1)
-                
-                imageView
-                    .frame(width: 120)
-                    .clipShape(RoundedRectangle(
-                        cornerRadius: 10,
-                        style: .continuous)
-                    )
-                    .zIndex(0)
-            }
+        HStack(spacing: -25) {
+            cardView
+            .zIndex(1)
+            
+            imageView
+                .zIndex(0)
         }
         .padding(.horizontal)
+        //.onTapGesture(perform: action)
     }
     
     var cardView: some View {
@@ -91,7 +65,27 @@ struct SearchCardView: View {
                     .foregroundStyle(.green)
             }
         }
+        .padding()
+        .frame(height: 120)
+        .background {
+            RoundedRectangle(
+                cornerRadius: 10,
+                style: .continuous
+            )
+            .fill(Color(.tertiarySystemBackground))
+        }
+        .shadow(color: .black.opacity(0.15), radius: 15)
         .matchedGeometryEffect(id: book.id, in: animation)
+        .contextMenu {
+            ForEach(SearchCardOption.allCases) { option in
+                Button(action: { optionTapped(option) }) {
+                    Label(
+                        option.rawValue,
+                        systemImage: option.image
+                    )
+                }
+            }
+        }
     }
     
     var imageView: some View {
@@ -101,7 +95,15 @@ struct SearchCardView: View {
             .cacheMemoryOnly()
             .cancelOnDisappear(true)
             .scaledToFit()
-            .matchedGeometryEffect(id: book.id, in: animation)
+            .frame(width: 120)
+            .clipShape(RoundedRectangle(
+                cornerRadius: 10,
+                style: .continuous)
+            )
+    }
+    
+    private func optionTapped(_ option: SearchCardOption) {
+        
     }
 }
 
