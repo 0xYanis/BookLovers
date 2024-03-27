@@ -41,10 +41,10 @@ struct SearchView: View {
         .animation(.spring(), value: viewModel.isSearching)
         .onAppear {
             isFocused = true
-            viewModel.startQueryObserve()
+            viewModel.bind()
         }
         .onDisappear {
-            viewModel.cancelSearchObserve()
+            viewModel.unbind()
         }
     }
     
@@ -94,7 +94,7 @@ struct SearchView: View {
             )
             .padding(.vertical, 10)
             .background()
-            ForEach(viewModel.books) { book in
+            ForEach(viewModel.sortedBooks) { book in
                 SearchCardView(book: book).tag(book.id)
             }
             Color.clear
@@ -103,12 +103,12 @@ struct SearchView: View {
                 .onDisappear { loadMore(false) }
         } topItem: {
             if !viewModel.books.isEmpty {
-                trailingParagraphItem
+                sortByButton
             }
         }
     }
     
-    private var trailingParagraphItem: some View {
+    private var sortByButton: some View {
         Menu {
             ForEach(SortType.allCases) { type in
                 Button {
@@ -120,7 +120,7 @@ struct SearchView: View {
         } label: {
             Group {
                 Text("Sort by")
-                Image(systemName: "arrow.up.arrow.down")
+                Image(systemName: viewModel.sortType.image)
             }
             .font(.callout)
             .transition(.opacity)
@@ -157,7 +157,7 @@ struct SearchView: View {
 
 private extension SearchView {
     func setSortType(_ type: SortType) {
-        
+        viewModel.sortType = type
     }
 
     func sortByTag(_ id: Int) {

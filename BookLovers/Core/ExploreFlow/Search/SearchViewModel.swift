@@ -11,14 +11,16 @@ import Combine
 @MainActor
 final class SearchViewModel: ObservableObject {
     @Published private(set) var history = [String]()
-    @Published private(set) var books = [Book]()
+    @Published private(set) var sortedBooks = [Book]()
     @Published private(set) var isSearching = false
+    @Published var sortType: SortType = .initial
     @Published var searchText = "" {
         didSet {
             if searchText.isEmpty { isSearching = false }
         }
     }
     
+    private(set) var books = [Book]()
     private var startIndex: Int = 0
     private var maxResults: Int = 20
     private var searchRepository: SearchRepository
@@ -52,7 +54,7 @@ final class SearchViewModel: ObservableObject {
         searchText.removeAll()
     }
     
-    func startQueryObserve() {
+    func bind() {
         $searchText
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .removeDuplicates()
@@ -62,9 +64,15 @@ final class SearchViewModel: ObservableObject {
                 self?.refresh()
             }
             .store(in: &cancellabels)
+        
+        $sortType
+            .sink { [unowned self] _ in
+                self.updateSortType()
+            }
+            .store(in: &cancellabels)
     }
     
-    func cancelSearchObserve() {
+    func unbind() {
         cancellabels.removeAll()
     }
     
@@ -92,6 +100,7 @@ final class SearchViewModel: ObservableObject {
         isSearching = false
         saveQuery()
         books.append(contentsOf: list.converted)
+        updateSortType()
     }
     
     private func saveQuery() {
@@ -105,5 +114,18 @@ final class SearchViewModel: ObservableObject {
         let ud = UserDefaults.standard
         let savedHistory = ud.object(forKey: "History") as? [String]
         self.history = savedHistory ?? []
+    }
+    
+    private func updateSortType() {
+//        switch sortType {
+//        case .alphabetical:
+//            sortedBooks = books.sorted { $0.title < $1.title }
+//        case .byAuthor:
+//            sortedBooks = books.sorted { $0.authors < $1.authors }
+//        case .byDate:
+//            sortedBooks = books.sorted { $0.publishedDate < $1.publishedDate }
+//        case .initial:
+//            sortedBooks = books
+//        }
     }
 }
