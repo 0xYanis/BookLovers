@@ -8,15 +8,23 @@
 import Foundation
 import Combine
 
+enum SearchState: String {
+    case empty
+    case typing
+    case loading
+    case loaded
+    case failed
+}
+
 @MainActor
 final class SearchViewModel: ObservableObject {
+    @Published private(set) var state: SearchState = .empty
     @Published private(set) var history = [String]()
     @Published private(set) var sortedBooks = [Book]()
-    @Published private(set) var isSearching = false
     @Published var sortType: SortType = .initial
     @Published var searchText = "" {
         didSet {
-            if searchText.isEmpty { isSearching = false }
+            if searchText.isEmpty { state = .loaded }
         }
     }
     
@@ -38,11 +46,12 @@ final class SearchViewModel: ObservableObject {
     func loadMore() {
         startIndex += maxResults
         searchInWeb(startIndex: startIndex)
+        state = .loading
     }
     
     func refresh() {
         guard !searchText.isEmpty else { return }
-        isSearching = true
+        state = .loading
         startIndex = 0
         books.removeAll()
         searchInWeb()
@@ -51,7 +60,9 @@ final class SearchViewModel: ObservableObject {
     func clear() {
         startIndex = 0
         books.removeAll()
+        sortedBooks.removeAll()
         searchText.removeAll()
+        state = .empty
     }
     
     func bind() {
@@ -61,6 +72,7 @@ final class SearchViewModel: ObservableObject {
             .map { $0.isEmpty }
             .sink { [weak self] isEmpty in
                 guard !isEmpty else { return }
+                self?.state = .typing
                 self?.refresh()
             }
             .store(in: &cancellabels)
@@ -75,48 +87,51 @@ final class SearchViewModel: ObservableObject {
     func unbind() {
         cancellabels.removeAll()
     }
-    
-    // MARK: - Private methods
-    
-    private func searchInWeb(startIndex: Int = 0) {
+}
+
+// MARK: - Private methods
+
+private extension SearchViewModel {
+    func searchInWeb(startIndex: Int = 0) {
         searchRepository
             .search(query: searchText, count: maxResults, startIndex: startIndex)
             .compactMap { $0.items }
-            .sink { completion in
+            .sink { [unowned self] completion in
                 switch completion {
                 case .finished:
                     print("FINISHED \n")
                 case .failure(let error):
-                    self.isSearching = false
+                    self.state = .failed
                     print(error)
                 }
-            } receiveValue: { [weak self] list in
-                self?.show(list: list)
+            } receiveValue: { [unowned self] list in
+                self.show(list: list)
             }
             .store(in: &cancellabels)
     }
     
-    private func show(list: [DTOBook]) {
-        isSearching = false
+    func show(list: [DTOBook]) {
+        self.state = .loaded
         saveQuery()
         books.append(contentsOf: list.converted)
         updateSortType()
     }
     
-    private func saveQuery() {
+    func saveQuery() {
         if history.contains(searchText) { return }
         if history.count >= 3 { history.removeFirst() }
         UserDefaults.standard.set(history, forKey: "History")
         history.insert(searchText, at: 0)
     }
     
-    private func loadQuery() {
+    func loadQuery() {
         let ud = UserDefaults.standard
         let savedHistory = ud.object(forKey: "History") as? [String]
         self.history = savedHistory ?? []
     }
     
-    private func updateSortType() {
+    func updateSortType() {
+        sortedBooks = books
 //        switch sortType {
 //        case .alphabetical:
 //            sortedBooks = books.sorted { $0.title < $1.title }

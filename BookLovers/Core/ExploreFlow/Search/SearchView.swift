@@ -38,7 +38,7 @@ struct SearchView: View {
             .animation(.easeInOut(duration: 0.3), value: showSearchButton)
         }
         .refreshable { viewModel.refresh() }
-        .animation(.spring(), value: viewModel.isSearching)
+        .animation(.spring(), value: viewModel.state)
         .onAppear {
             isFocused = true
             viewModel.bind()
@@ -65,14 +65,14 @@ struct SearchView: View {
     
     @ViewBuilder
     private var contentView: some View {
-        if !viewModel.isSearching {
+        if viewModel.state != .loading {
             HistorySearch(history: viewModel.history) { tappedLabel in
                 viewModel.searchText = tappedLabel
             }
             .padding(.vertical)
         }
         
-        if viewModel.books.isEmpty && !viewModel.isSearching {
+        if viewModel.state == .empty {
             EmptySearchView()
                 .transition(.opacity)
                 .padding(.top, 32)
@@ -80,7 +80,7 @@ struct SearchView: View {
             searchResultsView
         }
         
-        if showProgressView || viewModel.isSearching {
+        if showProgressView || viewModel.state == .loading {
             ProgressView()
                 .frame(maxWidth: .infinity)
         }
