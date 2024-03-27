@@ -10,7 +10,6 @@ import Components
 
 struct SearchView: View {
     @State private var showSearchButton = false
-    @State private var showProgressView = false
     @FocusState private var isFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = SearchViewModel()
@@ -66,9 +65,10 @@ struct SearchView: View {
     @ViewBuilder
     private var contentView: some View {
         if viewModel.state != .loading {
-            HistorySearch(history: viewModel.history) { tappedLabel in
-                viewModel.searchText = tappedLabel
-            }
+            HistorySearch(
+                history: viewModel.history,
+                perform: historyTapped(_:)
+            )
             .padding(.vertical)
         }
         
@@ -80,7 +80,7 @@ struct SearchView: View {
             searchResultsView
         }
         
-        if showProgressView || viewModel.state == .loading {
+        if viewModel.state == .loading {
             ProgressView()
                 .frame(maxWidth: .infinity)
         }
@@ -99,8 +99,7 @@ struct SearchView: View {
             }
             Color.clear
                 .frame(height: 50)
-                .onAppear { loadMore(true) }
-                .onDisappear { loadMore(false) }
+                .onAppear(perform: loadMore)
         } topItem: {
             if !viewModel.books.isEmpty {
                 sortByButton
@@ -156,6 +155,10 @@ struct SearchView: View {
 // MARK: - Private logic methods
 
 private extension SearchView {
+    func historyTapped(_ history: String) {
+        viewModel.searchText = history
+    }
+    
     func setSortType(_ type: SortType) {
         viewModel.sortType = type
     }
@@ -164,13 +167,8 @@ private extension SearchView {
         
     }
     
-    func loadMore(_ isAppeared: Bool) {
-        if isAppeared {
-            showProgressView = true
-            viewModel.loadMore()
-        } else {
-            showProgressView = false
-        }
+    func loadMore() {
+        viewModel.loadMore()
     }
     
     func searchBarAppear() {
