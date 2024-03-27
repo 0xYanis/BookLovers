@@ -43,24 +43,23 @@ extension Book {
         self.genre = LiteraryGenre(rawValue: dto.bookInfo.categories?.first ?? "")
         self.categoriesArray = dto.bookInfo.categories ?? []
         self.publisher = dto.bookInfo.publisher ?? ""
-        self.publishedDate = Book.dateConverter(string: dto.bookInfo.publishedDate)
+        self.publishedDate = dto.bookInfo.publishedDate?.dateConverted() ?? ""
     }
-    
-    static func dateConverter(string: String?) -> String {
-        guard let string else { return "" }
+}
+
+// MARK: - Convert date string yyyy-MM-dd to medium dateStyle
+
+private extension String {
+    func dateConverted() -> String {
+        if self.count == 4 { return self }
         let dateFormatter = DateFormatter()
-        //dateFormatter.locale = Locale(identifier: "ru_RU")
-        
-        if string.count == 4 { return string }
-
         dateFormatter.dateFormat = "yyyy-MM-dd"
-
-        if let date = dateFormatter.date(from: string) {
+        if let date = dateFormatter.date(from: self) {
             dateFormatter.dateStyle = .medium
             let converted = dateFormatter.string(from: date)
             return converted
         } else {
-            return string
+            return self
         }
     }
 }

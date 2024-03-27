@@ -162,7 +162,7 @@ struct ExploreView: View {
         case .profile:
             ProfileView()
         case .communities:
-            CommunityListView()
+            CommunityView()
         case .privacyPolicy:
             Text(selected.title)
         case .support:
