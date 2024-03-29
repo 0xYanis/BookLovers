@@ -73,7 +73,7 @@ struct SearchView: View {
     private var contentView: some View {
         if viewModel.state != .loading {
             HistorySearch(
-                history: viewModel.history,
+                history: $viewModel.history,
                 perform: historyTapped(_:)
             )
             .padding(.vertical)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistorySearch: View {
-    var history: [String]
+    @Binding var history: [String]
     var perform: (String) -> ()
     
     var body: some View {
@@ -22,6 +22,12 @@ struct HistorySearch: View {
                                 .foregroundStyle(.gray)
                             Text(query)
                             Spacer()
+                            Button {
+                                deleteQuery(query)
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .imageScale(.small)
+                            }
                             Image(systemName: "clock.arrow.circlepath")
                         }
                         .font(.callout)
@@ -32,5 +38,11 @@ struct HistorySearch: View {
             }
             .padding()
         }
+    }
+    
+    private func deleteQuery(_ query: String) {
+        guard let index = history.firstIndex(of: query)
+        else { return }
+        history.remove(at: index)
     }
 }

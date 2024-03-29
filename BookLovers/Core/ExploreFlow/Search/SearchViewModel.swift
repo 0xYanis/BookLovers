@@ -19,9 +19,13 @@ enum SearchState: String {
 @MainActor
 final class SearchViewModel: ObservableObject {
     @Published private(set) var state: SearchState = .empty
-    @Published private(set) var history = [String]()
     @Published private(set) var sortedBooks = [Book]()
     @Published var sortType: SortType = .initial
+    @Published var history = [String]() {
+        didSet {
+            UserDefaults.standard.set(history, forKey: "History")
+        }
+    }
     @Published var searchText = "" {
         didSet {
             if searchText.isEmpty { state = .loaded }
@@ -120,7 +124,6 @@ private extension SearchViewModel {
     func saveQuery() {
         if history.contains(searchText) { return }
         if history.count >= 3 { history.removeFirst() }
-        UserDefaults.standard.set(history, forKey: "History")
         history.insert(searchText, at: 0)
     }
     
