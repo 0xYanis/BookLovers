@@ -28,7 +28,7 @@ final class SearchViewModel: ObservableObject {
     }
     @Published var searchText = "" {
         didSet {
-            if searchText.isEmpty { state = .loaded }
+            if searchText.isEmpty { state = .empty }
         }
     }
     
