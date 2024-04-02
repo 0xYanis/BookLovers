@@ -80,7 +80,7 @@ extension User {
             username: username ?? "",
             status: "",
             messages: 0,
-            favoriteGenre: .actionAdventure,
+            favoriteGenre: .art,
             isAuthenticated: isAuthenticated)
     }
 }

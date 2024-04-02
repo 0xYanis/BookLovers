@@ -24,7 +24,7 @@ struct User: Identifiable {
         username: "Anonymous#\(String.randomNum)",
         status: "Hello, Bookly!",
         messages: 0,
-        favoriteGenre: LiteraryGenre.allCases.randomElement() ?? .actionAdventure,
+        favoriteGenre: LiteraryGenre.allCases.randomElement() ?? .architecture,
         isAuthenticated: false
     )
 }
