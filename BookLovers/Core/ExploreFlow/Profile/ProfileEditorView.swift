@@ -17,60 +17,16 @@ struct ProfileEditorView: View {
     var body: some View {
         VStack {
             Form {
-                Section(
-                    content: {
-                        HStack {
-                            Text("Name")
-                            Divider()
-                            TextField("\(userStore.user.username)", text: $userStore.user.username)
-                        }
-                    },
-                    header: imageHeader,
-                    footer: nameFooter
-                )
-                .headerProminence(.increased)
+                usernameSection
                 
-                Section {
-                    TextField("Status", text: $userStore.user.status)
-                    Picker("Favorite genre:", selection: $userStore.user.favoriteGenre) {
-                        ForEach(LiteraryGenre.allCases) { genre in
-                            Text(genre.title).tag(genre)
-                        }
-                    }
-                    .pickerStyle(.menu)
-                } footer: {
-                    Text("Tell the world about yourself in a nutshell.")
-                }
+                statusGenreSection
                 
-                Section {
-                    if userStore.user.isAuthenticated {
-                        Label("Change email address", systemImage: "mail")
-                    } else {
-                        Button("Sign in", action: { showSignIn.toggle() })
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .tint(.white)
-                    }
-                } header: {
-                    Text("Account")
-                }
-                .listRowBackground(userStore.user.isAuthenticated ? .none : Color.green)
+                emailSection
                 
-                Section {
-                    Button(action: { showCleanAll.toggle() }) {
-                        Label("Clean all user data", systemImage: "trash")
-                            .foregroundStyle(.red)
-                    }
-                }
+                cleanAllSection
                 
                 if userStore.user.isAuthenticated {
-                    Section {
-                        Button("Remove account", action: { showDeleteAlert.toggle() })
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    } footer: {
-                        Text("You can easily delete your account and all data associated with it.")
-                    }
-                    .tint(.white)
-                    .listRowBackground(Color.red.opacity(userStore.user.isAuthenticated ? 1.0 : 0.5))
+                    removeAccountSection
                 }
             }
         }
@@ -80,22 +36,7 @@ struct ProfileEditorView: View {
             timeInterval: 10,
             shape: RoundedRectangle(cornerRadius: 15),
             background: Material.ultraThinMaterial) {
-                HStack {
-                    Button("Clean", action: { userStore.clearUserData() })
-                        .foregroundStyle(.white)
-                        .padding(12)
-                        .background(.red)
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                    Text("All data will be cleaned")
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                    Button("Cancel", action: { showCleanAll = false })
-                        .foregroundStyle(.white)
-                        .padding(12)
-                        .background(.secondary)
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                }
-                .frame(maxWidth: .infinity)
+                cleanAllAlertView
             }
             .shadow(color: .black.opacity(0.12), radius: 20)
         .sheet(isPresented: $showSignIn) {
@@ -112,6 +53,89 @@ struct ProfileEditorView: View {
         .onDisappear {
             userStore.setName(userStore.user.username)
         }
+    }
+    
+    private var usernameSection: some View {
+        Section(
+            content: {
+                HStack {
+                    Text("Name")
+                    Divider()
+                    TextField("\(userStore.user.username)", text: $userStore.user.username)
+                }
+            },
+            header: imageHeader,
+            footer: nameFooter
+        )
+        .headerProminence(.increased)
+    }
+    
+    private var statusGenreSection: some View {
+        Section {
+            TextField("Status", text: $userStore.user.status)
+            Picker("Favorite genre:", selection: $userStore.user.favoriteGenre) {
+                ForEach(LiteraryGenre.allCases) { genre in
+                    Text(genre.title).tag(genre)
+                }
+            }
+            .pickerStyle(.menu)
+        } footer: {
+            Text("Tell the world about yourself in a nutshell.")
+        }
+    }
+    
+    private var emailSection: some View {
+        Section {
+            if userStore.user.isAuthenticated {
+                Label("Change email address", systemImage: "mail")
+            } else {
+                Button("Sign in", action: { showSignIn.toggle() })
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .tint(.white)
+            }
+        } header: {
+            Text("Account")
+        }
+        .listRowBackground(userStore.user.isAuthenticated ? .none : Color.green)
+    }
+    
+    private var cleanAllSection: some View {
+        Section {
+            Button(action: { showCleanAll.toggle() }) {
+                Label("Clean all user data", systemImage: "trash")
+                    .foregroundStyle(.red)
+            }
+        }
+    }
+    
+    private var removeAccountSection: some View {
+        Section {
+            Button("Remove account", action: { showDeleteAlert.toggle() })
+                .frame(maxWidth: .infinity, alignment: .center)
+        } footer: {
+            Text("You can easily delete your account and all data associated with it.")
+        }
+        .tint(.white)
+        .listRowBackground(Color.red.opacity(userStore.user.isAuthenticated ? 1.0 : 0.5))
+    }
+    
+    private var cleanAllAlertView: some View {
+        HStack {
+            Button("Clean", action: { userStore.clearUserData() })
+                .foregroundStyle(.white)
+                .padding(12)
+                .background(.red)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+            Text("All data will be cleaned")
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity)
+            Button("Cancel", action: { showCleanAll = false })
+                .foregroundStyle(.white)
+                .padding(12)
+                .background(.secondary)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+        }
+        .frame(maxWidth: .infinity)
     }
     
     private func imageHeader() -> some View {

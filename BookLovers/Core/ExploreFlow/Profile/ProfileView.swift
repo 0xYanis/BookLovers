@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-enum SnapPosition {
-    case hide
-    case normal
-    case extended
-}
-
 struct ProfileView: View {
     @Namespace private var headerSnap
     @Environment(\.editMode) private var editMode
